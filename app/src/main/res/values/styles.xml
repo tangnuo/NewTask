@@ -1,0 +1,56 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="SearchTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.NoActionBar" />
+
+    <style name="HorizontalInludeTheme" parent="AppBaseTheme">
+
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="android:windowAnimationStyle">@style/SceneLudeHorizontal</item>
+        <!--注意上下顺序啊-->
+        <!--隐藏原来的ActionBar，为了在本project中使用ToolBar-->
+        <item name="windowActionBar">false</item>
+        <!--隐藏ActionBar的标题-->
+        <!--注意：http://www.jianshu.com/p/2089837b5cd7-->
+        <item name="windowNoTitle">true</item>
+        <!--自定义RecyvlerView分割线-->
+        <!--<item name="android:listDivider">@drawable/divider_bg</item>-->
+        <item name="android:windowSoftInputMode">adjustPan</item>
+        <item name="android:screenOrientation">portrait</item>
+    </style>
+
+    <style name="VerticalInludeTheme" parent="AppBaseTheme">
+
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="android:windowAnimationStyle">@style/SceneLudeVertical</item>
+    </style>
+
+    <!-- 左右动画效果 -->
+    <style name="SceneLudeHorizontal">
+        <item name="android:activityOpenEnterAnimation">@anim/h_sceneopenenter</item>
+        <item name="android:activityOpenExitAnimation">@anim/h_sceneopenexit</item>
+        <item name="android:activityCloseEnterAnimation">@anim/h_scenecloseenter</item>
+        <item name="android:activityCloseExitAnimation">@anim/h_scenecloseexit</item>
+    </style>
+
+    <!-- 上下动画效果 -->
+    <style name="SceneLudeVertical">
+        <item name="android:activityOpenEnterAnimation">@anim/v_sceneopenenter</item>
+        <item name="android:activityOpenExitAnimation">@anim/v_sceneopenexit</item>
+        <item name="android:activityCloseEnterAnimation">@anim/v_scenecloseenter</item>
+        <item name="android:activityCloseExitAnimation">@anim/v_scenecloseexit</item>
+    </style>
+
+</resources>

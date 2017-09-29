@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="TextColor2" format="color" />
+    <attr name="TextSize2" format="integer" />
+
+    <declare-styleable name="CaowjMyView4">
+        <attr name="TextColor" format="color" />
+        <attr name="TextSize" format="integer" />
+        <attr name="caowjBoolen" format="boolean" />
+        <attr name="caowjString" format="string" />
+        <attr name="caowjDimension" format="dimension" />
+        <attr name="caowjFloat" format="float" />
+        <attr name="caowjFraction" format="fraction" />
+        <attr name="caowjReference" format="reference" />
+    </declare-styleable>
+</resources>

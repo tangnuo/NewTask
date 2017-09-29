@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/bottom_nav_home"
+        android:enabled="true"
+        app:showAsAction="ifRoom"
+        android:title="@string/item_home"
+        android:icon="@drawable/radiobutton_bg_home"/>
+
+    <item android:id="@+id/bottom_nav_location"
+        android:enabled="true"
+        app:showAsAction="ifRoom"
+        android:title="@string/item_location"
+        android:icon="@drawable/radiobutton_bg_location"/>
+
+    <item android:id="@+id/bottom_nav_like"
+        android:enabled="true"
+        app:showAsAction="ifRoom"
+        android:title="@string/item_like"
+        android:icon="@drawable/radiobutton_bg_like"/>
+
+    <item android:id="@+id/bottom_nav_me"
+        android:enabled="true"
+        app:showAsAction="ifRoom"
+        android:title="@string/item_person"
+        android:icon="@drawable/radiobutton_bg_me"/>
+</menu>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.caowj.newtask">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".example.FunctionListActivity"
+            android:label="功能列表" />
+        <activity
+            android:name=".example.BottomNavigationActivity"
+            android:label="导航栏" />
+        <activity
+            android:name=".module1.activity.MvpLoginActivity"
+            android:label="MVP模式的登录" />
+        <activity android:name=".example.TranslucentSystemBarActivity" />
+        <activity android:name=".example.SwipeRefreshActivity" />
+        <activity
+            android:name=".example.ElemSearchActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".example.ElemSearchResultActivity"
+            android:theme="@style/SearchTheme" />
+        <activity android:name=".example.IndexableListActivity" />
+        <activity android:name=".example.IndexableListActivity2" />
+        <activity android:name=".example.ViewShowActivity" />
+        <activity android:name=".example.ZoomImageActivity" />
+        <activity android:name=".example.GestureDetectorActivity" />
+        <activity android:name=".example.TestCommonAdapterActivity1" />
+        <activity android:name=".example.TestCommonAdapterActivity2" />
+        <activity android:name=".example.TestMinaActivity"></activity>
+
+        <service android:name=".example.mina.MinaService" />
+    </application>
+
+</manifest>

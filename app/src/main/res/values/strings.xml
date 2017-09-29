@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">工程模板</string>
+
+    <string name="item_home">Home</string>
+    <string name="item_location">Location</string>
+    <string name="item_like">Like</string>
+    <string name="item_person">Me</string>
+</resources>
