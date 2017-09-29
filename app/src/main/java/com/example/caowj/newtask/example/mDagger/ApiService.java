@@ -12,6 +12,12 @@ import android.widget.Toast;
 public class ApiService {
     private static final String TAG = "ApiService";
 
+//通过构造函数提供依赖 （注释掉provideApiService()）
+//    @Inject
+//    public ApiService(){
+//
+//    }
+
     public void register(Context mContext) {
         //请求网络数据
         Log.i(TAG, "测试数据");

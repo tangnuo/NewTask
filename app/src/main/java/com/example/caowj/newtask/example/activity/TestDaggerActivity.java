@@ -17,7 +17,7 @@ import butterknife.ButterKnife;
 /**
  * 首次集成dagger2<br/>
  *
- * http://www.cnblogs.com/pedro-neer/archive/2016/03/23/5309841.html
+ * http://blog.csdn.net/chenrushui/article/details/71426097
  */
 public class TestDaggerActivity extends BaseActivity {
 
@@ -39,12 +39,19 @@ public class TestDaggerActivity extends BaseActivity {
         tvHint.setText("@Inject标识需要使用依赖\n\n@Modules标识提供依赖，内部通过@Provide具体操作\n\n@Component是连接的桥梁");
 
 
+        //主要两个问题:
+        //1）自定义Module需要传递上下文怎么办
+        //2）自定义Module中的方法中需要参数对象怎么处理？(构造函数、自己提供方法)
+
+
         //Dagger会自动创建这个类，以Dagger开头+UserComponent
         DaggerUserComponent.create().inject(this);
 
         //create()等同于builder().userModule(new UserModule()).build()
 //        DaggerUserComponent.builder().userModule(new UserModule()).build().inject(this);
 
+
+        //Dagger的关系非常简单，MainActivity中需要对象，那么就在Module中提供对象；而他们之间的桥梁就是componnent
 
 //        测试代码1
 //        apiService.register(this);
