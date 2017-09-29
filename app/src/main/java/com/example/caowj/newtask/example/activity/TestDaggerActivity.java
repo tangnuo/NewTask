@@ -1,10 +1,10 @@
 package com.example.caowj.newtask.example.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import com.example.caowj.newtask.R;
+import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.example.mDragger.ApiService;
 import com.example.caowj.newtask.example.mDragger.DaggerUserComponent;
 
@@ -13,7 +13,10 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class TestDaggerActivity extends AppCompatActivity {
+/**
+ * 首次集成dagger2
+ */
+public class TestDaggerActivity extends BaseActivity {
 
     @Inject
     ApiService apiService;
@@ -23,14 +26,23 @@ public class TestDaggerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test_dragger);
         ButterKnife.bind(this);
 
-        tvHint.setText("@Inject标识需要使用依赖\n@Modules标识提供依赖，内部通过@Provide具体操作\n@Component是连接的桥梁");
+        tvHint.setText("@Inject标识需要使用依赖\n\r@Modules标识提供依赖，内部通过@Provide具体操作\n\r@Component是连接的桥梁");
 
 
         //Dagger会自动创建这个类，以Dagger开头+UserComponent
         DaggerUserComponent.create().inject(this);
         apiService.register(this);
+    }
+
+    @Override
+    protected int getContentView() {
+        return R.layout.activity_test_dragger;
+    }
+
+    @Override
+    protected void memoryRecovery() {
+
     }
 }

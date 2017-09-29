@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
 
 import com.example.caowj.newtask.utils.LogUtil;
 
@@ -24,6 +25,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         // Title显示当前类名
         this.setTitle(mTag);
         mActivity = this;
+        if (getContentView() == 0) {
+            Toast.makeText(mActivity, "请传入布局文件", Toast.LENGTH_SHORT).show();
+            return;
+        }
         setContentView(getContentView());
         LogUtil.myD("111111");
         ButterKnife.bind(this);
