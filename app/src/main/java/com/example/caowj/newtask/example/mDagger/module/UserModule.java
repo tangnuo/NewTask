@@ -4,6 +4,9 @@ import android.content.Context;
 
 import com.example.caowj.newtask.example.mDagger.ApiService;
 import com.example.caowj.newtask.example.mDagger.UserManager;
+import com.example.caowj.newtask.example.mDagger.UserTools;
+
+import javax.inject.Named;
 
 import dagger.Module;
 import dagger.Provides;
@@ -13,8 +16,8 @@ import dagger.Provides;
  * author: Administrator
  * date: 2017/9/29 17:29
  */
-
-@Module
+//表示当前module引用HttpModule，进而提供OkHttpClient的对象
+@Module(includes = {HttpModule.class})
 public class UserModule {
 
     //在Module中传递上下文对象
@@ -46,5 +49,17 @@ public class UserModule {
     public UserManager provideUserManager(ApiService apiService) {
 
         return new UserManager(apiService);
+    }
+
+    @Named("dev")
+    @Provides
+    UserTools provideUserToolsDev() {
+        return new UserTools();
+    }
+
+    @Named("release")
+    @Provides
+    UserTools provideUserToolsRelease() {
+        return new UserTools();
     }
 }
