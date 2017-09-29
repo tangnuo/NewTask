@@ -5,9 +5,9 @@ import android.util.Log;
 import android.widget.Toast;
 
 /**
- * package: com.example.caowj.newtask.example.mDagger
+ * package: com.example.caowj.newtask.example.mDagger.user
  * author: Administrator
- * date: 2017/9/29 14:59
+ * date: 2017/9/29 17:25
  */
 public class ApiService {
     private static final String TAG = "ApiService";

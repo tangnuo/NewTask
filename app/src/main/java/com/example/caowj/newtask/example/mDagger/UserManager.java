@@ -1,14 +1,14 @@
 package com.example.caowj.newtask.example.mDagger;
 
 import android.content.Context;
-import android.util.Log;
 
-import static android.content.ContentValues.TAG;
+import com.example.caowj.newtask.example.mDagger.ApiService;
+import com.example.caowj.newtask.utils.LogUtil;
 
 /**
- * package: com.example.caowj.newtask.example.mDagger
+ * package: com.example.caowj.newtask.example.mDagger.user
  * author: Administrator
- * date: 2017/9/29 16:30
+ * date: 2017/9/29 17:26
  */
 public class UserManager {
 
@@ -20,7 +20,7 @@ public class UserManager {
 
     public void register(Context mContext) {
         //请求网络数据
-        Log.i(TAG, "UserManager--register");
+        LogUtil.myD("UserManager--register");
         mApiService.register(mContext);
     }
 }

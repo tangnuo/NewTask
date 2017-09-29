@@ -1,14 +1,17 @@
-package com.example.caowj.newtask.example.mDagger;
+package com.example.caowj.newtask.example.mDagger.module;
 
 import android.content.Context;
+
+import com.example.caowj.newtask.example.mDagger.ApiService;
+import com.example.caowj.newtask.example.mDagger.UserManager;
 
 import dagger.Module;
 import dagger.Provides;
 
 /**
- * package: com.example.caowj.newtask.example.mDagger
+ * package: com.example.caowj.newtask.example.mDagger.module
  * author: Administrator
- * date: 2017/9/29 15:00
+ * date: 2017/9/29 17:29
  */
 
 @Module

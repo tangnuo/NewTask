@@ -1,13 +1,14 @@
-package com.example.caowj.newtask.example.mDagger;
+package com.example.caowj.newtask.example.mDagger.component;
 
 import com.example.caowj.newtask.example.activity.TestDaggerActivity;
+import com.example.caowj.newtask.example.mDagger.module.UserModule;
 
 import dagger.Component;
 
 /**
- * package: com.example.caowj.newtask.example.mInterface
+ * package: com.example.caowj.newtask.example.mDagger.component
  * author: Administrator
- * date: 2017/9/29 14:58
+ * date: 2017/9/29 17:28
  */
 @Component(modules = {UserModule.class})
 public interface UserComponent {
