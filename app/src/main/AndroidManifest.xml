@@ -42,9 +42,11 @@
         <activity android:name=".example.GestureDetectorActivity" />
         <activity android:name=".example.TestCommonAdapterActivity1" />
         <activity android:name=".example.TestCommonAdapterActivity2" />
-        <activity android:name=".example.TestMinaActivity"></activity>
+        <activity android:name=".example.TestMinaActivity" />
 
         <service android:name=".example.mina.MinaService" />
+
+        <activity android:name=".example.activity.TestDaggerActivity"></activity>
     </application>
 
 </manifest>
