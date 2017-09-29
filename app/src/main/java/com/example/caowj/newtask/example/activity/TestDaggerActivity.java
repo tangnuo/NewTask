@@ -5,8 +5,9 @@ import android.widget.TextView;
 
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.base.BaseActivity;
-import com.example.caowj.newtask.example.mDragger.ApiService;
-import com.example.caowj.newtask.example.mDragger.DaggerUserComponent;
+import com.example.caowj.newtask.example.mDagger.ApiService;
+import com.example.caowj.newtask.example.mDagger.DaggerUserComponent;
+import com.example.caowj.newtask.example.mDagger.UserManager;
 
 import javax.inject.Inject;
 
@@ -20,10 +21,15 @@ import butterknife.ButterKnife;
  */
 public class TestDaggerActivity extends BaseActivity {
 
-    @Inject
-    ApiService apiService;
     @BindView(R.id.tv_hint)
     TextView tvHint;
+
+
+    @Inject
+    ApiService apiService;
+    @Inject
+    UserManager userManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +42,20 @@ public class TestDaggerActivity extends BaseActivity {
         //Dagger会自动创建这个类，以Dagger开头+UserComponent
         DaggerUserComponent.create().inject(this);
 
+        //create()等同于builder().userModule(new UserModule()).build()
+//        DaggerUserComponent.builder().userModule(new UserModule()).build().inject(this);
 
-        apiService.register(this);
+
+//        测试代码1
+//        apiService.register(this);
+
+
+//        测试代码2:
+        userManager.register(this);
+
+
     }
+
 
     @Override
     protected int getContentView() {

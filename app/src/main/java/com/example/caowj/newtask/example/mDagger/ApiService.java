@@ -1,11 +1,11 @@
-package com.example.caowj.newtask.example.mDragger;
+package com.example.caowj.newtask.example.mDagger;
 
 import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
 /**
- * package: com.example.caowj.newtask.example.mDragger
+ * package: com.example.caowj.newtask.example.mDagger
  * author: Administrator
  * date: 2017/9/29 14:59
  */

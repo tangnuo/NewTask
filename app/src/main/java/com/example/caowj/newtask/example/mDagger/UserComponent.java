@@ -1,4 +1,4 @@
-package com.example.caowj.newtask.example.mDragger;
+package com.example.caowj.newtask.example.mDagger;
 
 import com.example.caowj.newtask.example.activity.TestDaggerActivity;
 
