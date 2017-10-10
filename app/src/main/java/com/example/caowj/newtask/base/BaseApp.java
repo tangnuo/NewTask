@@ -9,7 +9,7 @@ import com.example.caowj.newtask.example.mDagger.module.AppModule;
 /**
  * Created by niuxiaowei on 16/3/19.
  */
-public class App extends Application {
+public class BaseApp extends Application {
 
     AppComponent mAppComponent;
 

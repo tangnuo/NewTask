@@ -1,10 +1,8 @@
 package com.example.caowj.newtask.example.activity;
 
-import android.net.Uri;
 import android.os.Bundle;
 
 import com.example.caowj.newtask.R;
-import com.example.caowj.newtask.example.fragment.TestDaggerFragment;
 import com.example.caowj.newtask.example.mDagger.component.DaggerTestDaggerComponent;
 import com.example.caowj.newtask.example.mDagger.component.TestDaggerComponent;
 import com.example.caowj.newtask.example.mDagger.module.ActivityModule;
@@ -17,7 +15,7 @@ import com.example.caowj.newtask.example.mDagger.module.TestDaggerModule;
  * 参考：https://github.com/niuxiaowei/Dagger2Sample
  * <p/>
  */
-public class TestDaggerActivity3 extends BaseDaggerActivity implements TestDaggerFragment.OnFragmentInteractionListener {
+public class TestDaggerActivity3 extends BaseDaggerActivity {
 
     private TestDaggerComponent mMainComponent;
 
@@ -36,8 +34,4 @@ public class TestDaggerActivity3 extends BaseDaggerActivity implements TestDagge
         return mMainComponent;
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
-    }
 }

@@ -3,7 +3,7 @@ package com.example.caowj.newtask.example.activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.example.caowj.newtask.base.App;
+import com.example.caowj.newtask.base.BaseApp;
 import com.example.caowj.newtask.example.mDagger.component.AppComponent;
 
 /**
@@ -13,7 +13,7 @@ import com.example.caowj.newtask.example.mDagger.component.AppComponent;
  */
 public class BaseDaggerActivity extends AppCompatActivity {
     public AppComponent getAppComponent() {
-        return ((App) getApplication()).getAppComponent();
+        return ((BaseApp) getApplication()).getAppComponent();
     }
 
     @Override

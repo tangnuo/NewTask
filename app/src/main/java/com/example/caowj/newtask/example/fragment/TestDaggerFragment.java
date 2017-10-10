@@ -1,7 +1,5 @@
 package com.example.caowj.newtask.example.fragment;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -27,26 +25,8 @@ public class TestDaggerFragment extends Fragment implements TestDaggerPresenter.
 
     private TestDaggerFragmentComponent fragmentComponent;
 
-    private OnFragmentInteractionListener mListener;
-
     public TestDaggerFragment() {
 
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment TestDaggerFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static TestDaggerFragment newInstance(String param1, String param2) {
-        TestDaggerFragment fragment = new TestDaggerFragment();
-//        Bundle args = new Bundle();
-
-        return fragment;
     }
 
     @Override
@@ -67,7 +47,6 @@ public class TestDaggerFragment extends Fragment implements TestDaggerPresenter.
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_test_dagger, container, false);
 
         view.findViewById(R.id.get_user).setOnClickListener(new View.OnClickListener() {
@@ -87,39 +66,14 @@ public class TestDaggerFragment extends Fragment implements TestDaggerPresenter.
         return view;
     }
 
-
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-
-
-    }
-
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
     }
 
     @Override
     public void setUserName(String name) {
         ((TextView) getView().findViewById(R.id.user_info)).setText(name);
-    }
-
-    public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(Uri uri);
     }
 
 }
