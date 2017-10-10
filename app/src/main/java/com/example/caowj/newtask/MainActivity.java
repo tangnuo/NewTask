@@ -5,7 +5,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.caowj.newtask.base.BaseActivity;
-import com.example.caowj.newtask.example.FunctionListActivity;
+import com.example.caowj.newtask.example.activity.FunctionListActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;

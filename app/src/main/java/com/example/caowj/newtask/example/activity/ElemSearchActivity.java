@@ -1,4 +1,4 @@
-package com.example.caowj.newtask.example;
+package com.example.caowj.newtask.example.activity;
 
 import android.content.Intent;
 import android.os.Bundle;

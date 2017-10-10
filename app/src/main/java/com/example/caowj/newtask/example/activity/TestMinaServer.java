@@ -1,4 +1,4 @@
-package com.example.caowj.newtask.example;
+package com.example.caowj.newtask.example.activity;
 
 import org.apache.mina.core.service.IoAcceptor;
 import org.apache.mina.core.service.IoHandlerAdapter;

@@ -1,4 +1,4 @@
-package com.example.caowj.newtask.example;
+package com.example.caowj.newtask.example.activity;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,9 +10,6 @@ import android.util.SparseArray;
 
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.base.BaseActivity;
-import com.example.caowj.newtask.example.activity.TestDaggerActivity;
-import com.example.caowj.newtask.example.activity.TestDaggerActivity2;
-import com.example.caowj.newtask.example.activity.TestDaggerActivity3;
 import com.example.caowj.newtask.example.adapter.FunctionListAdapter;
 import com.example.caowj.newtask.module1.activity.MvpLoginActivity;
 import com.example.caowj.newtask.utils.LogUtil;

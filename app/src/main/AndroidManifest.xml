@@ -20,30 +20,30 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".example.FunctionListActivity"
+            android:name=".example.activity.FunctionListActivity"
             android:label="功能列表" />
         <activity
-            android:name=".example.BottomNavigationActivity"
+            android:name=".example.activity.BottomNavigationActivity"
             android:label="导航栏" />
         <activity
             android:name=".module1.activity.MvpLoginActivity"
             android:label="MVP模式的登录" />
-        <activity android:name=".example.TranslucentSystemBarActivity" />
-        <activity android:name=".example.SwipeRefreshActivity" />
+        <activity android:name=".example.activity.TranslucentSystemBarActivity" />
+        <activity android:name=".example.activity.SwipeRefreshActivity" />
         <activity
-            android:name=".example.ElemSearchActivity"
+            android:name=".example.activity.ElemSearchActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".example.ElemSearchResultActivity"
+            android:name=".example.activity.ElemSearchResultActivity"
             android:theme="@style/SearchTheme" />
-        <activity android:name=".example.IndexableListActivity" />
-        <activity android:name=".example.IndexableListActivity2" />
-        <activity android:name=".example.ViewShowActivity" />
-        <activity android:name=".example.ZoomImageActivity" />
-        <activity android:name=".example.GestureDetectorActivity" />
-        <activity android:name=".example.TestCommonAdapterActivity1" />
-        <activity android:name=".example.TestCommonAdapterActivity2" />
-        <activity android:name=".example.TestMinaActivity" />
+        <activity android:name=".example.activity.IndexableListActivity" />
+        <activity android:name=".example.activity.IndexableListActivity2" />
+        <activity android:name=".example.activity.ViewShowActivity" />
+        <activity android:name=".example.activity.ZoomImageActivity" />
+        <activity android:name=".example.activity.GestureDetectorActivity" />
+        <activity android:name=".example.activity.TestCommonAdapterActivity1" />
+        <activity android:name=".example.activity.TestCommonAdapterActivity2" />
+        <activity android:name=".example.activity.TestMinaActivity" />
 
         <service android:name=".example.mina.MinaService" />
 
