@@ -1,13 +1,17 @@
 package com.example.caowj.newtask.example.mDagger.module;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.caowj.newtask.example.fragment.BaseFragment2;
+import com.example.caowj.newtask.utils.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
@@ -20,9 +24,14 @@ import dagger.Provides;
 @Module
 public class AppModule {
     private AppCompatActivity appCompatActivity;
+    private Context mContext;
 
     public AppModule(AppCompatActivity appCompatActivity) {
         this.appCompatActivity = appCompatActivity;
+    }
+
+    public AppModule(Context context) {
+        this.mContext = context;
     }
 
     @Provides
@@ -46,5 +55,24 @@ public class AppModule {
             fragments.add(BaseFragment2.getInstance(title));
         }
         return fragments;
+    }
+
+
+    @Provides
+    @Singleton
+    public Context provideContext() {
+        return mContext;
+    }
+
+//    @Provides
+//    @Singleton
+//    public Navigator provideNavigator() {
+//        return new Navigator();
+//    }
+
+    @Provides
+    @Singleton
+    public ToastUtil provideToastUtil() {
+        return new ToastUtil(mContext);
     }
 }

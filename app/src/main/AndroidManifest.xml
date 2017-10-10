@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".base.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -47,7 +48,8 @@
         <service android:name=".example.mina.MinaService" />
 
         <activity android:name=".example.activity.TestDaggerActivity" />
-        <activity android:name=".example.activity.TestDaggerActivity2"></activity>
+        <activity android:name=".example.activity.TestDaggerActivity2" />
+        <activity android:name=".example.activity.TestDaggerActivity3"></activity>
     </application>
 
 </manifest>
