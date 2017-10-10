@@ -2,6 +2,7 @@ package com.example.caowj.newtask.example.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
@@ -42,6 +43,11 @@ public class FunctionListAdapter extends RecyclerView.Adapter {
         final Class className = sparseArray.get(position);
         FunctionViewHolder fHolder = (FunctionViewHolder) holder;
         fHolder.tvTitle.setText(className.getSimpleName());
+        if (position % 3 == 0) {
+            fHolder.itemView.setBackgroundColor(Color.parseColor("#fa8072"));
+        } else {
+
+        }
 
         fHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

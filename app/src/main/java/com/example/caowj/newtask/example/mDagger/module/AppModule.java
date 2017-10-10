@@ -39,24 +39,6 @@ public class AppModule {
         return appCompatActivity.getSupportFragmentManager();
     }
 
-    @Provides
-    List<String> providesTitles() {
-        List<String> list = new ArrayList<>();
-        for (int i = 0; i < 9; i++) {
-            list.add("张三:" + i);
-        }
-        return list;
-    }
-
-    @Provides
-    List<Fragment> providesFragmentList(List<String> titles) {
-        List<Fragment> fragments = new ArrayList<>();
-        for (String title : titles) {
-            fragments.add(BaseFragment2.getInstance(title));
-        }
-        return fragments;
-    }
-
 
     @Provides
     @Singleton
@@ -75,4 +57,26 @@ public class AppModule {
     public ToastUtil provideToastUtil() {
         return new ToastUtil(mContext);
     }
+
+    /************************************提供数据******************************************/
+
+
+    @Provides
+    List<String> providesTitles() {
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < 9; i++) {
+            list.add("张三:" + i);
+        }
+        return list;
+    }
+
+    @Provides
+    List<Fragment> providesFragmentList(List<String> titles) {
+        List<Fragment> fragments = new ArrayList<>();
+        for (String title : titles) {
+            fragments.add(BaseFragment2.getInstance(title));
+        }
+        return fragments;
+    }
+
 }

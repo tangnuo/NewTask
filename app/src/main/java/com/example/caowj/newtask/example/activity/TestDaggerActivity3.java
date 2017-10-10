@@ -14,6 +14,8 @@ import com.example.caowj.newtask.example.mDagger.module.TestDaggerModule;
  * <p>
  * 参考：https://github.com/niuxiaowei/Dagger2Sample
  * <p/>
+ *
+ * 代码注解参考：http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0519/2892.html
  */
 public class TestDaggerActivity3 extends BaseDaggerActivity {
 
