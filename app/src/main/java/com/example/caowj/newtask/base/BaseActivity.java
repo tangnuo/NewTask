@@ -16,7 +16,7 @@ import butterknife.ButterKnife;
  * date: 2017/9/1 11:50
  */
 public abstract class BaseActivity extends AppCompatActivity {
-    public String mTag = this.getClass().getSimpleName();
+    public String mTag = this.getClass().getSimpleName() + "~~";
     public Activity mActivity;
 
     @Override

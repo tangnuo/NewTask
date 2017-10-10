@@ -83,6 +83,7 @@ public class FunctionListActivity extends BaseActivity {
         sparseArray.put(14, TestDaggerActivity.class);
         sparseArray.put(15, TestDaggerActivity2.class);
         sparseArray.put(16, TestDaggerActivity3.class);
+        sparseArray.put(17, TextViewShowHtmlActivity.class);
 
         functionListAdapter = new FunctionListAdapter(mActivity, sparseArray);
     }

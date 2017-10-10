@@ -3,6 +3,8 @@
     package="com.example.caowj.newtask">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".base.BaseApp"
@@ -49,7 +51,8 @@
 
         <activity android:name=".example.activity.TestDaggerActivity" />
         <activity android:name=".example.activity.TestDaggerActivity2" />
-        <activity android:name=".example.activity.TestDaggerActivity3"></activity>
+        <activity android:name=".example.activity.TestDaggerActivity3" />
+        <activity android:name=".example.activity.TextViewShowHtmlActivity"></activity>
     </application>
 
 </manifest>
