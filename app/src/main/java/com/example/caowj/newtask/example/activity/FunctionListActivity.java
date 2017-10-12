@@ -12,6 +12,7 @@ import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.example.adapter.FunctionListAdapter;
 import com.example.caowj.newtask.module1.activity.MvpLoginActivity;
+import com.example.caowj.newtask.module1.activity.QipaiNewActivity;
 import com.example.caowj.newtask.utils.LogUtil;
 
 import butterknife.BindView;
@@ -21,7 +22,6 @@ public class FunctionListActivity extends BaseActivity {
     @BindView(R.id.mRecyclerView)
     RecyclerView mRecyclerView;
 
-    //    private List<String> nameList;
     private SparseArray<Class> sparseArray;
     private Activity mActivity;
     private FunctionListAdapter functionListAdapter;
@@ -84,6 +84,8 @@ public class FunctionListActivity extends BaseActivity {
         sparseArray.put(15, TestDaggerActivity2.class);
         sparseArray.put(16, TestDaggerActivity3.class);
         sparseArray.put(17, TextViewShowHtmlActivity.class);
+        sparseArray.put(18, TestRrmActivity.class);
+        sparseArray.put(19, QipaiNewActivity.class);
 
         functionListAdapter = new FunctionListAdapter(mActivity, sparseArray);
     }

@@ -6,6 +6,16 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
     <application
         android:name=".base.BaseApp"
         android:allowBackup="true"
@@ -52,7 +62,9 @@
         <activity android:name=".example.activity.TestDaggerActivity" />
         <activity android:name=".example.activity.TestDaggerActivity2" />
         <activity android:name=".example.activity.TestDaggerActivity3" />
-        <activity android:name=".example.activity.TextViewShowHtmlActivity"></activity>
+        <activity android:name=".example.activity.TextViewShowHtmlActivity" />
+        <activity android:name=".example.activity.TestRrmActivity" />
+        <activity android:name=".module1.activity.QipaiNewActivity"></activity>
     </application>
 
 </manifest>
