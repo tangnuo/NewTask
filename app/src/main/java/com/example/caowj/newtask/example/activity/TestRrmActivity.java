@@ -10,7 +10,7 @@ import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.module1.Api.Api;
 import com.example.caowj.newtask.module1.Api.TianService;
-import com.example.caowj.newtask.module1.bean.NewsBean;
+import com.example.caowj.newtask.module1.bean.NewsBean2;
 import com.example.caowj.newtask.module1.bean.NewsInfo;
 import com.example.caowj.newtask.module1.constants.WSConstants;
 import com.example.caowj.newtask.utils.LogUtil;
@@ -151,7 +151,7 @@ public class TestRrmActivity extends BaseActivity {
                 if (response.isSuccessful()) {
                     NewsInfo body = response.body();
                     //获取json字符串
-                    List<NewsBean> newsBeanList = body.getNewslist();
+                    List<NewsBean2> newsBeanList = body.getNewslist();
 
                     LogUtil.myD("code:" + body.getCode() + ",,," + newsBeanList.get(0).getTitle());
                     MyAndroidUtils.showShortToast(mActivity, "title:" + newsBeanList.get(0).getTitle());
@@ -200,6 +200,9 @@ public class TestRrmActivity extends BaseActivity {
 
     ////////////////////////////////////////////////
 
+    /**
+     * 基础实例
+     */
     void Test() {
         Observable.create(new ObservableOnSubscribe<String>() {
             @Override

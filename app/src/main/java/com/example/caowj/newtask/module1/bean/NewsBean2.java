@@ -5,7 +5,7 @@ package com.example.caowj.newtask.module1.bean;
  * author: Administrator
  * date: 2017/10/12 16:34
  */
-public class NewsBean {
+public class NewsBean2 {
     private String ctime;
 
     private String title;

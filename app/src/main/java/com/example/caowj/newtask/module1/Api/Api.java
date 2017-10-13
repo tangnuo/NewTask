@@ -13,6 +13,8 @@ public class Api {
 
     public static final String PAIPININFO_URL = "PaipinInfo.asmx/";
 
+    public static final String PAIPINCATE_URL = "PaipinCate.asmx/";
+
 
     /////////////////////天行数据////////////////////////////
 

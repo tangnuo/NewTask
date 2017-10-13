@@ -5,25 +5,26 @@ import java.util.List;
 /**
  * package: com.example.caowj.newtask.module1.bean
  * author: Administrator
- * date: 2017/10/12 16:11
+ * date: 2017/10/13 17:18
  */
-public class PaiPinInfo2 {
-    private List<PaiPinBean> data;
+public class YawuInfo {
 
     private String code;
 
     private int gzcount;
 
+    private List<YawuBean> data;
+
     private int lineCount;
 
-//    private int datalist;
+    private int datalist;
 
 
-    public List<PaiPinBean> getData() {
+    public List<YawuBean> getData() {
         return data;
     }
 
-    public void setData(List<PaiPinBean> data) {
+    public void setData(List<YawuBean> data) {
         this.data = data;
     }
 
@@ -51,4 +52,11 @@ public class PaiPinInfo2 {
         this.lineCount = lineCount;
     }
 
+    public int getDatalist() {
+        return datalist;
+    }
+
+    public void setDatalist(int datalist) {
+        this.datalist = datalist;
+    }
 }

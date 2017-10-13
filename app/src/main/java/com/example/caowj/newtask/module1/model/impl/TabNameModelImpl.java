@@ -8,6 +8,7 @@ import com.example.caowj.newtask.module1.Api.CollectionService;
 import com.example.caowj.newtask.module1.bean.AdInfo;
 import com.example.caowj.newtask.module1.bean.BaseBean;
 import com.example.caowj.newtask.module1.bean.PaiPinInfo2;
+import com.example.caowj.newtask.module1.bean.YawuInfo;
 import com.example.caowj.newtask.module1.constants.WSConstants;
 import com.example.caowj.newtask.module1.model.BaseDataBridge;
 import com.example.caowj.newtask.module1.model.BaseModel;
@@ -46,12 +47,44 @@ public class TabNameModelImpl implements BaseModel.TabNameModel {
 
 //        test1(tabNameData);
 //        test3();
-        test4();
+//        test4();
+        test5();
 
     }
 
 /////////////////////////////////////////////////////////////////
 
+    /**
+     * 服务端返回null，失败
+     */
+    void test5() {
+        Retrofit Retrofit = new Retrofit.Builder()
+                .baseUrl(Api.BASE_API_QIPAI)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        //通过Retrofit实例，创建服务接口对象
+        CollectionService apiService = Retrofit.create(CollectionService.class);
+        //通过接口服务对象，调用接口中的方法，获取call对象
+        Call<YawuInfo> call = apiService.YaWuZhuanTi(0, WSConstants.WEB_SERVER_TOKEN);
+        //通过call对象执行网络请求(同步请求execute，异步请求enqueue)
+        call.enqueue(new Callback<YawuInfo>() {
+            @Override
+            public void onResponse(Call<YawuInfo> call, Response<YawuInfo> response) {
+                if (response.isSuccessful()) {
+                    YawuInfo body = response.body();
+                    //获取json字符串
+                    String result = body.toString();
+                    LogUtil.myD("code:" + result);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<YawuInfo> call, Throwable t) {
+                Log.i(TAG, "请求失败:" + t.getMessage());
+            }
+        });
+    }
 
     /**
      * 单纯使用Retr2访问数据，并将结果转换成json。（失败：返回值中有null）

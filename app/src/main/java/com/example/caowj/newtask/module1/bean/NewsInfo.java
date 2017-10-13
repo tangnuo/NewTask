@@ -12,7 +12,7 @@ public class NewsInfo {
 
     private String msg;
 
-    private List<NewsBean> newslist;
+    private List<NewsBean2> newslist;
 
 
     public int getCode() {
@@ -31,11 +31,11 @@ public class NewsInfo {
         this.msg = msg;
     }
 
-    public List<NewsBean> getNewslist() {
+    public List<NewsBean2> getNewslist() {
         return newslist;
     }
 
-    public void setNewslist(List<NewsBean> newslist) {
-        this.newslist = newslist;
+    public void setNewslist(List<NewsBean2> newslist2) {
+        this.newslist = newslist2;
     }
 }

@@ -14,7 +14,7 @@ public class PaiPinBean {
 
     private String paipinName;
 
-    private String paipinNum;
+    private int paipinNum;
 
     private int paipinCate;
 
@@ -48,7 +48,7 @@ public class PaiPinBean {
 
     private int IsExamine;
 
-    private String TimeExamine;
+    private int TimeExamine;
 
     private int RetainState;
 
@@ -64,7 +64,7 @@ public class PaiPinBean {
 
     private int TimeAdd;
 
-    private String TimeYKJ;
+    private int TimeYKJ;
 
     private int TimeS;
 
@@ -126,7 +126,7 @@ public class PaiPinBean {
 
     private int Prefecture;
 
-    private String examineTim;
+    private int examineTim;
 
     private int GuiGe;
 
@@ -148,31 +148,31 @@ public class PaiPinBean {
 
     private int IsDel;
 
-    private String PaipinExplainImgID;
-
-    private String Img;
-
-    private String MasterID;
-
-    private String MarketPrice;
-
-    private String OriginalPrice;
-
-    private String PaymentArrangementID;
-
-    private String PriceStartTime;
-
-    private String PriceEndTime;
-
-    private String MemberDiscount;
-
-    private String SceneType;
-
-    private String Introduction;
-
-    private String Highlights;
-
-    private String Cooperative;
+//    private int PaipinExplainImgID;
+//
+//    private String Img;
+//
+//    private String MasterID;
+//
+//    private String MarketPrice;
+//
+//    private String OriginalPrice;
+//
+//    private String PaymentArrangementID;
+//
+//    private String PriceStartTime;
+//
+//    private String PriceEndTime;
+//
+//    private String MemberDiscount;
+//
+//    private String SceneType;
+//
+//    private String Introduction;
+//
+//    private String Highlights;
+//
+//    private String Cooperative;
 
     private int ActivePrice;
 
@@ -201,11 +201,11 @@ public class PaiPinBean {
         this.paipinName = paipinName;
     }
 
-    public String getPaipinNum() {
+    public int getPaipinNum() {
         return paipinNum;
     }
 
-    public void setPaipinNum(String paipinNum) {
+    public void setPaipinNum(int paipinNum) {
         this.paipinNum = paipinNum;
     }
 
@@ -337,11 +337,11 @@ public class PaiPinBean {
         IsExamine = isExamine;
     }
 
-    public String getTimeExamine() {
+    public int getTimeExamine() {
         return TimeExamine;
     }
 
-    public void setTimeExamine(String timeExamine) {
+    public void setTimeExamine(int timeExamine) {
         TimeExamine = timeExamine;
     }
 
@@ -401,11 +401,11 @@ public class PaiPinBean {
         TimeAdd = timeAdd;
     }
 
-    public String getTimeYKJ() {
+    public int getTimeYKJ() {
         return TimeYKJ;
     }
 
-    public void setTimeYKJ(String timeYKJ) {
+    public void setTimeYKJ(int timeYKJ) {
         TimeYKJ = timeYKJ;
     }
 
@@ -649,11 +649,11 @@ public class PaiPinBean {
         Prefecture = prefecture;
     }
 
-    public String getExamineTim() {
+    public int getExamineTim() {
         return examineTim;
     }
 
-    public void setExamineTim(String examineTim) {
+    public void setExamineTim(int examineTim) {
         this.examineTim = examineTim;
     }
 
@@ -735,110 +735,6 @@ public class PaiPinBean {
 
     public void setIsDel(int isDel) {
         IsDel = isDel;
-    }
-
-    public String getPaipinExplainImgID() {
-        return PaipinExplainImgID;
-    }
-
-    public void setPaipinExplainImgID(String paipinExplainImgID) {
-        PaipinExplainImgID = paipinExplainImgID;
-    }
-
-    public String getImg() {
-        return Img;
-    }
-
-    public void setImg(String img) {
-        Img = img;
-    }
-
-    public String getMasterID() {
-        return MasterID;
-    }
-
-    public void setMasterID(String masterID) {
-        MasterID = masterID;
-    }
-
-    public String getMarketPrice() {
-        return MarketPrice;
-    }
-
-    public void setMarketPrice(String marketPrice) {
-        MarketPrice = marketPrice;
-    }
-
-    public String getOriginalPrice() {
-        return OriginalPrice;
-    }
-
-    public void setOriginalPrice(String originalPrice) {
-        OriginalPrice = originalPrice;
-    }
-
-    public String getPaymentArrangementID() {
-        return PaymentArrangementID;
-    }
-
-    public void setPaymentArrangementID(String paymentArrangementID) {
-        PaymentArrangementID = paymentArrangementID;
-    }
-
-    public String getPriceStartTime() {
-        return PriceStartTime;
-    }
-
-    public void setPriceStartTime(String priceStartTime) {
-        PriceStartTime = priceStartTime;
-    }
-
-    public String getPriceEndTime() {
-        return PriceEndTime;
-    }
-
-    public void setPriceEndTime(String priceEndTime) {
-        PriceEndTime = priceEndTime;
-    }
-
-    public String getMemberDiscount() {
-        return MemberDiscount;
-    }
-
-    public void setMemberDiscount(String memberDiscount) {
-        MemberDiscount = memberDiscount;
-    }
-
-    public String getSceneType() {
-        return SceneType;
-    }
-
-    public void setSceneType(String sceneType) {
-        SceneType = sceneType;
-    }
-
-    public String getIntroduction() {
-        return Introduction;
-    }
-
-    public void setIntroduction(String introduction) {
-        Introduction = introduction;
-    }
-
-    public String getHighlights() {
-        return Highlights;
-    }
-
-    public void setHighlights(String highlights) {
-        Highlights = highlights;
-    }
-
-    public String getCooperative() {
-        return Cooperative;
-    }
-
-    public void setCooperative(String cooperative) {
-        Cooperative = cooperative;
     }
 
     public int getActivePrice() {
