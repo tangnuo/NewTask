@@ -10,6 +10,7 @@ import com.example.caowj.newtask.module1.bean.BaseBean;
 import com.example.caowj.newtask.module1.bean.PaiPinInfo2;
 import com.example.caowj.newtask.module1.bean.YawuInfo;
 import com.example.caowj.newtask.module1.constants.WSConstants;
+import com.example.caowj.newtask.module1.converter.QipaiGsonConverterFactory;
 import com.example.caowj.newtask.module1.model.BaseDataBridge;
 import com.example.caowj.newtask.module1.model.BaseModel;
 import com.example.caowj.newtask.utils.LogUtil;
@@ -60,7 +61,8 @@ public class TabNameModelImpl implements BaseModel.TabNameModel {
     void test5() {
         Retrofit Retrofit = new Retrofit.Builder()
                 .baseUrl(Api.BASE_API_QIPAI)
-                .addConverterFactory(GsonConverterFactory.create())
+//                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(QipaiGsonConverterFactory.create())
                 .build();
 
         //通过Retrofit实例，创建服务接口对象
@@ -75,7 +77,7 @@ public class TabNameModelImpl implements BaseModel.TabNameModel {
                     YawuInfo body = response.body();
                     //获取json字符串
                     String result = body.toString();
-                    LogUtil.myD("code:" + result);
+                    LogUtil.myD("code:" + body.getCode() + ",dataList:" + body.getDatalist());
                 }
             }
 
