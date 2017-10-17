@@ -128,6 +128,7 @@ public class CollectionFragment extends BaseFragment implements TabLayout.OnTabS
 
     @Override
     public void netWorkError() {
+        hideProgress();
         MyAndroidUtils.showShortToast(mActivity, "网络请求失败22");
     }
 
