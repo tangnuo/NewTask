@@ -30,12 +30,17 @@ public class CollectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     private LayoutInflater layoutInflater;
     private List<PaiPinBean> paiPinInfoList;
 
+
     public CollectionAdapter(Context context, List<PaiPinBean> paiPinInfoList) {
         this.context = context;
         layoutInflater = LayoutInflater.from(context);
         this.paiPinInfoList = paiPinInfoList == null ? new ArrayList<PaiPinBean>() : paiPinInfoList;
     }
 
+    public void setPaiPinInfoList(List<PaiPinBean> paiPinInfoList) {
+        this.paiPinInfoList = paiPinInfoList;
+        notifyDataSetChanged();
+    }
 
     @Override
     public int getItemCount() {

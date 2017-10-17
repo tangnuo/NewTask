@@ -2,7 +2,9 @@ package com.example.caowj.newtask.module1.fragment;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +13,6 @@ import android.widget.ProgressBar;
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.base.BaseFragment;
 import com.example.caowj.newtask.module1.adapter.CollectionAdapter;
-import com.example.caowj.newtask.module1.constants.Constants;
 import com.example.caowj.newtask.module1.entity.bean.NavigationBean;
 import com.example.caowj.newtask.module1.entity.bean.PaiPinBean;
 import com.example.caowj.newtask.module1.presenter.BasePresenter;
@@ -45,19 +46,15 @@ public class CollectionFragment extends BaseFragment implements TabLayout.OnTabS
     Unbinder unbinder;
     @BindView(R.id.loading_progress)
     ProgressBar loadingProgress;
+    @BindView(R.id.swipe_refresh_layout)
+    SwipeRefreshLayout swipeRefreshLayout;
 
 
-    //当前页
-    private int pageIndex = 1;
-    //是否继续加载
-    private boolean isLoading = true;
     //分类下标的Id 默认选择全部0
     private int typeId;
     //选中下标位置
     private int index;
     private CollectionAdapter adapter;
-    //分类显示的商品信息
-    private List<PaiPinBean> fixedAuctionList = new ArrayList<>();
     //获取分类集合
     private List<NavigationBean> navigationInfoList = new ArrayList<>();
     //获取标题内容
@@ -70,9 +67,48 @@ public class CollectionFragment extends BaseFragment implements TabLayout.OnTabS
         super.onCreateView(inflater, container, savedInstanceState);
         unbinder = ButterKnife.bind(this, rootView);
 
-        adapter = new CollectionAdapter(mActivity, fixedAuctionList);
-        rvList.setLayoutManager(new LinearLayoutManager(mActivity));
+        adapter = new CollectionAdapter(mActivity, null);
+        final GridLayoutManager layoutManager = new GridLayoutManager(mActivity, 2);
+        rvList.setLayoutManager(layoutManager);
         rvList.setAdapter(adapter);
+        rvList.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (dy > 0) //向下滚动
+                {
+                    int visibleItemCount = layoutManager.getChildCount();
+                    int totalItemCount = layoutManager.getItemCount();
+                    int pastVisiblesItems = layoutManager.findFirstVisibleItemPosition();
+//                    LogUtil.myD(mTag+"visibleItemCount:"+visibleItemCount+",totalItemCount:"+totalItemCount+",pastVisiblesItems:"+pastVisiblesItems);
+
+                    //TODO 可能判断的不完善。
+                    if ((visibleItemCount + pastVisiblesItems) >= totalItemCount) {
+                        tabNamePresenter.onLoadMoreBegin();
+                    }
+                }
+            }
+        });
+
+        // 设置下拉进度的背景颜色，默认就是白色的
+        swipeRefreshLayout.setProgressBackgroundColorSchemeResource(android.R.color.white);
+        // 设置下拉进度的主题颜色
+        swipeRefreshLayout.setColorSchemeResources(R.color.colorAccent, R.color.colorPrimary, R.color.colorPrimaryDark);
+
+        // 下拉时触发SwipeRefreshLayout的下拉动画，动画完毕之后就会回调这个方法
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                LogUtil.myD(mTag + "开始刷新。。");
+                tabNamePresenter.onLoadMoreBegin();
+            }
+        });
+
 
         tlNav.addOnTabSelectedListener(this);
         return rootView;
@@ -106,7 +142,7 @@ public class CollectionFragment extends BaseFragment implements TabLayout.OnTabS
         LogUtil.d(mTag, "onTabSelected-->当前下标位置：" + index + "\ttypeId:" + typeId);
         //4.获取当前类别Id的数据
 //        setInitTypeData();
-        tabNamePresenter.getDataByTypeP(typeId, Constants.PAGESIZE, pageIndex);
+        tabNamePresenter.getDataByTypeP(typeId);
     }
 
     @Override
@@ -174,8 +210,10 @@ public class CollectionFragment extends BaseFragment implements TabLayout.OnTabS
 
     @Override
     public void showPaipinInfoV(List<PaiPinBean> paiPinBeanList) {
-        fixedAuctionList = paiPinBeanList;
-        adapter.notifyDataSetChanged();
+        if (swipeRefreshLayout.isRefreshing()) {
+            swipeRefreshLayout.setRefreshing(false);
+        }
+        adapter.setPaiPinInfoList(paiPinBeanList);
     }
 
 

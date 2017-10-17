@@ -312,7 +312,7 @@ public class GsonUtil {
     public static String getJsonData(String responseData) {
         final String START_FLAG = "<string xmlns=\"http://tempuri.org/\">";
         final String END_FLAG = "</string>";
-        LogUtil.myD("responseData:" + responseData);
+//        LogUtil.myD("responseData:" + responseData);
 
         if (responseData != null && responseData.contains(START_FLAG)) {
             int indexS = responseData.indexOf(START_FLAG);

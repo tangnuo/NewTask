@@ -2,6 +2,7 @@ package com.example.caowj.newtask.module1.presenter.impl;
 
 import android.content.Context;
 
+import com.example.caowj.newtask.module1.constants.Constants;
 import com.example.caowj.newtask.module1.entity.NavigationInfo;
 import com.example.caowj.newtask.module1.entity.PaiPinInfo2;
 import com.example.caowj.newtask.module1.entity.bean.NavigationBean;
@@ -28,6 +29,11 @@ public class TabNamePresenterImpl extends BasePresenterImpl<BaseView.TabNameView
 
     private final BaseModel.TabNameModel tabNameModel;
     private Context mContext;
+    private List<PaiPinBean> pinBeanList = new ArrayList<>();
+    //是否继续加载
+    private boolean isLoading = true;
+    private int pageIndex = 1;
+    private int typeId;
 
     public TabNamePresenterImpl(Context mContext, BaseView.TabNameView view) {
         super(view);
@@ -42,9 +48,37 @@ public class TabNamePresenterImpl extends BasePresenterImpl<BaseView.TabNameView
     }
 
     @Override
-    public void getDataByTypeP(int typeId, int pageSize, int pageIndex) {
+    public void getDataByTypeP(int typeId) {
+        this.typeId = typeId;
+        isLoading = true;
+        pageIndex = 1;
+
         view.showProgress();
-        tabNameModel.getDataByTypeM(typeId, pageSize, pageIndex, this);
+        tabNameModel.getDataByTypeM(typeId, Constants.PAGESIZE, pageIndex, this);
+    }
+
+    @Override
+    public void onRefreshBegin() {
+        pageIndex = 1;
+
+        view.showProgress();
+        tabNameModel.getDataByTypeM(typeId, Constants.PAGESIZE, pageIndex, this);
+    }
+
+    @Override
+    public void onLoadMoreBegin() {
+        view.showProgress();
+        if (JudgmentDataUtil.hasCollectionData(pinBeanList)) {
+            if (isLoading) {
+                pageIndex++;
+                tabNameModel.getDataByTypeM(typeId, Constants.PAGESIZE, pageIndex, this);
+            } else {
+                LogUtil.myD("无法加载更多了");
+            }
+        } else {
+            pageIndex = 1;
+            tabNameModel.getDataByTypeM(typeId, Constants.PAGESIZE, pageIndex, this);
+        }
     }
 
     @Override
@@ -112,20 +146,40 @@ public class TabNamePresenterImpl extends BasePresenterImpl<BaseView.TabNameView
         MyAndroidUtils.handleBroadcastReturn(code, new BroadcastCallback() {
             @Override
             public void return1001() {
-
+                if (pageIndex == 1) {
+                    pinBeanList.clear();
+                }
                 List<PaiPinBean> navigationBeanList = paiPinInfo.getData();
+                if (JudgmentDataUtil.hasCollectionData(navigationBeanList)) {
+                    isLoading = true;
+                    pinBeanList.addAll(navigationBeanList);
+                } else {
+                    isLoading = false;
+                }
 
-                view.showPaipinInfoV(navigationBeanList);
+                view.showPaipinInfoV(pinBeanList);
             }
 
             @Override
             public void return1002() {
-                LogUtil.myD("获取数据失败1002。。。");
-                MyAndroidUtils.showShortToast(mContext, "获取标题失败1002");
+                isLoading = false;
+                if (pageIndex == 1) {
+                    pinBeanList.clear();
+                    view.showPaipinInfoV(pinBeanList);
+                }
+                LogUtil.myD("没有数据返回1002。。。");
+                MyAndroidUtils.showShortToast(mContext, "没有数据返回1002");
             }
 
             @Override
             public void returnOther(String code) {
+                //最简单的方法：isLoading = false;
+
+                isLoading = true;
+                pageIndex--;
+                if (pageIndex < 1) {
+                    pageIndex = 1;
+                }
                 MyAndroidUtils.returnCodePrompt(mContext, code, null);
             }
         });

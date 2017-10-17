@@ -47,9 +47,7 @@ public class ProductsDetailUtil {
         holder.tvStoreName.setText("【" + shopName + "】");
         //商品售价
         holder.tvPrice.setText(Constants.RMBTag + (isActivePrice ? paiPinInfo.getActivePrice() : paiPinInfo.getY_price()));
-//        LogUtil.d(TAG,"商品名称："+paiPinInfo.getPaipinName()+"\t商家Id:" + paiPinInfo.getUserID() + "\t商品Id:" + paiPinInfo.getId() + "\t商家Logo:" + AlimmdnUtil.modifyImagePath(paiPinInfo.getUserPhoto()) + "\t商品封面：" + AlimmdnUtil.modifyImagePath(paiPinInfo.getPicFixedPrice()));
         int width = MyAndroidUtils.getScreenWidth(context) / 2;
-//        LogUtil.d(TAG,"index:"+position+"\tscreenWidth:"+MyAndroidUtils.getScreenWidth(context)+"\twidth:"+width);
         GridLayoutManager.LayoutParams parentParams = (GridLayoutManager.LayoutParams) holder.itemView.getLayoutParams();
         parentParams.width = width;
         holder.itemView.setLayoutParams(parentParams);

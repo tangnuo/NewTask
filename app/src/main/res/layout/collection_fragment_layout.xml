@@ -18,12 +18,19 @@
         app:tabSelectedTextColor="@color/black_5_alpha"
         app:tabTextColor="@color/collection_navigation_title" />
 
-    <com.example.caowj.newtask.widget.SlideRecyclerView
-        android:id="@+id/rv_list"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tl_nav"
-        android:background="@color/cutting_line" />
+        android:layout_below="@+id/tl_nav">
+
+        <com.example.caowj.newtask.widget.SlideRecyclerView
+            android:id="@+id/rv_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/cutting_line" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+
 
     <ProgressBar
         android:id="@+id/loading_progress"

@@ -25,6 +25,10 @@ public interface BasePresenter {
     interface TabNamePresenter {
         void getNavigationP();
 
-        void getDataByTypeP(int typeId, int pageSize, int pageIndex);
+        void getDataByTypeP(int typeId);
+
+        void onRefreshBegin();
+
+        void onLoadMoreBegin();
     }
 }

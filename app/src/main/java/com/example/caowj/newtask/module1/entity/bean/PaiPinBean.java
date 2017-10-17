@@ -7,14 +7,13 @@ package com.example.caowj.newtask.module1.entity.bean;
  */
 public class PaiPinBean {
 
-
     private int Id;
 
     private int UserID;
 
     private String paipinName;
 
-    private int paipinNum;
+    private String paipinNum;
 
     private int paipinCate;
 
@@ -48,7 +47,7 @@ public class PaiPinBean {
 
     private int IsExamine;
 
-    private int TimeExamine;
+    private String TimeExamine;
 
     private int RetainState;
 
@@ -64,7 +63,7 @@ public class PaiPinBean {
 
     private int TimeAdd;
 
-    private int TimeYKJ;
+    private String TimeYKJ;
 
     private int TimeS;
 
@@ -126,7 +125,7 @@ public class PaiPinBean {
 
     private int Prefecture;
 
-    private int examineTim;
+    private String examineTim;
 
     private int GuiGe;
 
@@ -148,34 +147,39 @@ public class PaiPinBean {
 
     private int IsDel;
 
-//    private int PaipinExplainImgID;
-//
-//    private String Img;
-//
-//    private String MasterID;
-//
-//    private String MarketPrice;
-//
-//    private String OriginalPrice;
-//
-//    private String PaymentArrangementID;
-//
-//    private String PriceStartTime;
-//
-//    private String PriceEndTime;
-//
-//    private String MemberDiscount;
-//
-//    private String SceneType;
-//
-//    private String Introduction;
-//
-//    private String Highlights;
-//
-//    private String Cooperative;
+    private String PaipinExplainImgID;
+
+    private String MasterID;
+
+    private String OriginalPrice;
+
+    private String MarketPrice;
+
+    private String userPhoto;
+
+    private String PaymentArrangementID;
+
+    private String PriceStartTime;
+
+    private String PriceEndTime;
+
+    private String MemberDiscount;
+
+    private String SceneType;
+
+    private String Introduction;
+
+    private String Highlights;
+
+    private String MerchantAvatar;
+
+    private String Cooperative;
+
+    private String PicFixedPriceNew;
+
+    private String ActivityType;
 
     private int ActivePrice;
-
 
     public int getId() {
         return Id;
@@ -201,11 +205,11 @@ public class PaiPinBean {
         this.paipinName = paipinName;
     }
 
-    public int getPaipinNum() {
+    public String getPaipinNum() {
         return paipinNum;
     }
 
-    public void setPaipinNum(int paipinNum) {
+    public void setPaipinNum(String paipinNum) {
         this.paipinNum = paipinNum;
     }
 
@@ -337,11 +341,11 @@ public class PaiPinBean {
         IsExamine = isExamine;
     }
 
-    public int getTimeExamine() {
+    public String getTimeExamine() {
         return TimeExamine;
     }
 
-    public void setTimeExamine(int timeExamine) {
+    public void setTimeExamine(String timeExamine) {
         TimeExamine = timeExamine;
     }
 
@@ -401,11 +405,11 @@ public class PaiPinBean {
         TimeAdd = timeAdd;
     }
 
-    public int getTimeYKJ() {
+    public String getTimeYKJ() {
         return TimeYKJ;
     }
 
-    public void setTimeYKJ(int timeYKJ) {
+    public void setTimeYKJ(String timeYKJ) {
         TimeYKJ = timeYKJ;
     }
 
@@ -649,11 +653,11 @@ public class PaiPinBean {
         Prefecture = prefecture;
     }
 
-    public int getExamineTim() {
+    public String getExamineTim() {
         return examineTim;
     }
 
-    public void setExamineTim(int examineTim) {
+    public void setExamineTim(String examineTim) {
         this.examineTim = examineTim;
     }
 
@@ -735,6 +739,134 @@ public class PaiPinBean {
 
     public void setIsDel(int isDel) {
         IsDel = isDel;
+    }
+
+    public String getPaipinExplainImgID() {
+        return PaipinExplainImgID;
+    }
+
+    public void setPaipinExplainImgID(String paipinExplainImgID) {
+        PaipinExplainImgID = paipinExplainImgID;
+    }
+
+    public String getMasterID() {
+        return MasterID;
+    }
+
+    public void setMasterID(String masterID) {
+        MasterID = masterID;
+    }
+
+    public String getOriginalPrice() {
+        return OriginalPrice;
+    }
+
+    public void setOriginalPrice(String originalPrice) {
+        OriginalPrice = originalPrice;
+    }
+
+    public String getMarketPrice() {
+        return MarketPrice;
+    }
+
+    public void setMarketPrice(String marketPrice) {
+        MarketPrice = marketPrice;
+    }
+
+    public String getUserPhoto() {
+        return userPhoto;
+    }
+
+    public void setUserPhoto(String userPhoto) {
+        this.userPhoto = userPhoto;
+    }
+
+    public String getPaymentArrangementID() {
+        return PaymentArrangementID;
+    }
+
+    public void setPaymentArrangementID(String paymentArrangementID) {
+        PaymentArrangementID = paymentArrangementID;
+    }
+
+    public String getPriceStartTime() {
+        return PriceStartTime;
+    }
+
+    public void setPriceStartTime(String priceStartTime) {
+        PriceStartTime = priceStartTime;
+    }
+
+    public String getPriceEndTime() {
+        return PriceEndTime;
+    }
+
+    public void setPriceEndTime(String priceEndTime) {
+        PriceEndTime = priceEndTime;
+    }
+
+    public String getMemberDiscount() {
+        return MemberDiscount;
+    }
+
+    public void setMemberDiscount(String memberDiscount) {
+        MemberDiscount = memberDiscount;
+    }
+
+    public String getSceneType() {
+        return SceneType;
+    }
+
+    public void setSceneType(String sceneType) {
+        SceneType = sceneType;
+    }
+
+    public String getIntroduction() {
+        return Introduction;
+    }
+
+    public void setIntroduction(String introduction) {
+        Introduction = introduction;
+    }
+
+    public String getHighlights() {
+        return Highlights;
+    }
+
+    public void setHighlights(String highlights) {
+        Highlights = highlights;
+    }
+
+    public String getMerchantAvatar() {
+        return MerchantAvatar;
+    }
+
+    public void setMerchantAvatar(String merchantAvatar) {
+        MerchantAvatar = merchantAvatar;
+    }
+
+    public String getCooperative() {
+        return Cooperative;
+    }
+
+    public void setCooperative(String cooperative) {
+        Cooperative = cooperative;
+    }
+
+    public String getPicFixedPriceNew() {
+        return PicFixedPriceNew;
+    }
+
+    public void setPicFixedPriceNew(String picFixedPriceNew) {
+        PicFixedPriceNew = picFixedPriceNew;
+    }
+
+    public String getActivityType() {
+        return ActivityType;
+    }
+
+    public void setActivityType(String activityType) {
+        ActivityType = activityType;
     }
 
     public int getActivePrice() {
