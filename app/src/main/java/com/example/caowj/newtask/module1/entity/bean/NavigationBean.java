@@ -22,7 +22,7 @@ public class NavigationBean implements Parcelable {
         }
     };
     /**
-     * Id
+     * typeId（不是下标）
      */
     private int Id;
     /**

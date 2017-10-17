@@ -2,6 +2,7 @@ package com.example.caowj.newtask.module1.view;
 
 import com.example.caowj.newtask.example.bean.Person;
 import com.example.caowj.newtask.module1.entity.bean.NavigationBean;
+import com.example.caowj.newtask.module1.entity.bean.PaiPinBean;
 
 import java.util.List;
 
@@ -20,24 +21,14 @@ public interface BaseView<T> {
 
     void showProgress();
 
-    void showFoot();
-
-    void hideFoot();
-
 
     interface NewsDetailView {
         void setData(Person datas);
-
-        void netWorkError();
-
-        void hideProgress();
-
-        void showProgress();
     }
 
     interface TabNameView extends BaseView {
-        void switchNews();
+        void showNavigationV(List<NavigationBean> datas);
 
-        void setTitleData(List<NavigationBean> datas);
+        void showPaipinInfoV(List<PaiPinBean> paiPinBeanList);
     }
 }

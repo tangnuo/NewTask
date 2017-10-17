@@ -7,8 +7,8 @@ import android.support.v7.widget.GridLayoutManager;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.caowj.newtask.module1.entity.PaiPinInfo;
 import com.example.caowj.newtask.module1.constants.Constants;
+import com.example.caowj.newtask.module1.entity.bean.PaiPinBean;
 import com.example.caowj.newtask.module1.viewHolder.FixedPriceProductVH;
 import com.example.caowj.newtask.utils.AlimmdnUtil;
 import com.example.caowj.newtask.utils.Glide.GlideUtils;
@@ -34,9 +34,9 @@ public class ProductsDetailUtil {
      * @param isActivePrice false:采用y_price true:activePrice
      * @param color         背景色
      */
-    public static void FixedPriceProductsViewHolder(FixedPriceProductVH holder, final Context context, List<PaiPinInfo> list, int position, boolean isActivePrice, String color) {
+    public static void FixedPriceProductsViewHolder(FixedPriceProductVH holder, final Context context, List<PaiPinBean> list, int position, boolean isActivePrice, String color) {
 
-        final PaiPinInfo paiPinInfo = list.get(position);
+        final PaiPinBean paiPinInfo = list.get(position);
         if (paiPinInfo == null) {
             return;
         }

@@ -10,16 +10,15 @@ import java.util.List;
  * date: 2017/10/12 16:11
  */
 public class PaiPinInfo2 {
-    private List<PaiPinBean> data;
-
     private String code;
 
     private int gzcount;
 
+    private List<PaiPinBean> data;
+
     private int lineCount;
 
-//    private int datalist;
-
+    private int datalist;
 
     public List<PaiPinBean> getData() {
         return data;
@@ -53,4 +52,11 @@ public class PaiPinInfo2 {
         this.lineCount = lineCount;
     }
 
+    public int getDatalist() {
+        return datalist;
+    }
+
+    public void setDatalist(int datalist) {
+        this.datalist = datalist;
+    }
 }

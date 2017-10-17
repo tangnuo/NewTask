@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.example.caowj.newtask.R;
-import com.example.caowj.newtask.module1.entity.PaiPinInfo;
+import com.example.caowj.newtask.module1.entity.bean.PaiPinBean;
 import com.example.caowj.newtask.module1.viewHolder.FixedPriceProductVH;
 import com.example.caowj.newtask.utils.JudgmentDataUtil;
 import com.example.caowj.newtask.utils.LogUtil;
@@ -28,12 +28,12 @@ public class CollectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     private Context context;
 
     private LayoutInflater layoutInflater;
-    private List<PaiPinInfo> paiPinInfoList;
+    private List<PaiPinBean> paiPinInfoList;
 
-    public CollectionAdapter(Context context, List<PaiPinInfo> paiPinInfoList) {
+    public CollectionAdapter(Context context, List<PaiPinBean> paiPinInfoList) {
         this.context = context;
         layoutInflater = LayoutInflater.from(context);
-        this.paiPinInfoList = paiPinInfoList == null ? new ArrayList<PaiPinInfo>() : paiPinInfoList;
+        this.paiPinInfoList = paiPinInfoList == null ? new ArrayList<PaiPinBean>() : paiPinInfoList;
     }
 
 

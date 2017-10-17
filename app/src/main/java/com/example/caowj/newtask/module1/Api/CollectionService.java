@@ -7,12 +7,15 @@ import com.example.caowj.newtask.module1.entity.PaiPinInfo2;
 import com.example.caowj.newtask.module1.entity.YawuInfo;
 import com.example.caowj.newtask.module1.entity.bean.BaseBean;
 
+import java.util.Map;
+
 import io.reactivex.Flowable;
 import io.reactivex.Observable;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
+import retrofit2.http.QueryMap;
 
 /**
  * by y on 2016/5/17.
@@ -56,7 +59,17 @@ public interface CollectionService {
      * @param token
      * @return
      */
-    @GET(Api.PAIPINCATE_URL + "/GetAllList")
+    @GET(Api.PAIPINCATE_URL + "GetAllList")
     Call<NavigationInfo> GetAllList(@Query("position") String position, @Query("token") String token);
 
+    /**
+     * 雅物分类商品信息
+     * http://test.qipaiapp.com/QiPaiAPI/Paipininfo.asmx/GetListYaWu?typeId=0&SceneType=0&pageSize=10&pageIndex=1&isDate=0&sprice=0&endPrice=0&sortType=0&token=1
+     *
+     * @param map
+     * @param token
+     * @return
+     */
+    @GET(Api.PAIPININFO_URL + "GetListYaWu")
+    Call<PaiPinInfo2> GetListYaWu(@QueryMap Map<String, Integer> map, @Query("token") String token);
 }

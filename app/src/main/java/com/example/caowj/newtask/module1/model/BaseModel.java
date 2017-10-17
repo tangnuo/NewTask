@@ -9,6 +9,7 @@ public interface BaseModel<T> {
     void netWork(T model);
 
     interface TabNameModel extends BaseModel<BaseDataBridge.TabNameData> {
+        void getDataByTypeM(int typeId, int pageSize, int pageIndex, BaseDataBridge.TabNameData tabNameData);
     }
 
 }
