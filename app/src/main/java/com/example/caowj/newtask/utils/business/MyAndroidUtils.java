@@ -39,6 +39,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.caowj.newtask.module1.constants.WSConstants;
+import com.example.caowj.newtask.module1.listener.BroadcastCallback;
 import com.example.caowj.newtask.utils.DensityUtil;
 import com.example.caowj.newtask.utils.LogUtil;
 
@@ -57,7 +58,17 @@ public class MyAndroidUtils {
     private static final String myTag = "MyAndroidUtils~~~";
     static Toast toast;
 
-
+    public static void handleBroadcastReturn(String code, BroadcastCallback broadcastCallback) {
+        if (code != null && code.equals(WSConstants.CODE_NUM_OK)) {
+            broadcastCallback.return1001();
+        } else if (code != null && code.equals(WSConstants.CODE_DATA_NULL)) {
+            broadcastCallback.return1002();
+            LogUtil.myD(myTag + ",code:" + code);
+        } else {
+            broadcastCallback.returnOther(code);
+            LogUtil.myD(myTag + "，code:" + code);
+        }
+    }
     /**
      * 获取TalkingData的渠道信息<br/>
      * 如果动态获取到的渠道信息为空，默认为官方

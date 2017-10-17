@@ -1,6 +1,6 @@
 package com.example.caowj.newtask.module1.listener;
 
-import com.example.caowj.newtask.module1.bean.User;
+import com.example.caowj.newtask.module1.entity.User;
 
 /**
  * package: com.example.caowj.newtask.module1.listener

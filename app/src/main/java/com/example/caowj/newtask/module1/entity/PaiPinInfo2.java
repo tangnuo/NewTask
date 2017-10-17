@@ -1,4 +1,6 @@
-package com.example.caowj.newtask.module1.bean;
+package com.example.caowj.newtask.module1.entity;
+
+import com.example.caowj.newtask.module1.entity.bean.PaiPinBean;
 
 import java.util.List;
 

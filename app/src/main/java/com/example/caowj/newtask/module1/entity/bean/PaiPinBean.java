@@ -1,4 +1,4 @@
-package com.example.caowj.newtask.module1.bean;
+package com.example.caowj.newtask.module1.entity.bean;
 
 /**
  * package: com.example.caowj.newtask.module1.bean

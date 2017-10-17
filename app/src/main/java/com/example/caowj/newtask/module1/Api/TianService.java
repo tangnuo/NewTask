@@ -1,7 +1,7 @@
 package com.example.caowj.newtask.module1.Api;
 
 
-import com.example.caowj.newtask.module1.bean.NewsInfo;
+import com.example.caowj.newtask.module1.entity.NewsInfo;
 
 import io.reactivex.Observable;
 import okhttp3.ResponseBody;

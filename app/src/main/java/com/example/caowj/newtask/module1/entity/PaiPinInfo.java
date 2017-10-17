@@ -1,4 +1,4 @@
-package com.example.caowj.newtask.module1.bean;
+package com.example.caowj.newtask.module1.entity;
 
 import android.annotation.SuppressLint;
 import android.os.Parcel;

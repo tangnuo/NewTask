@@ -3,7 +3,7 @@ package com.example.caowj.newtask.module1.presenter.impl;
 import android.os.Handler;
 import android.text.TextUtils;
 
-import com.example.caowj.newtask.module1.bean.User;
+import com.example.caowj.newtask.module1.entity.User;
 import com.example.caowj.newtask.module1.listener.OnLoginListener;
 import com.example.caowj.newtask.module1.model.IUserModel;
 import com.example.caowj.newtask.module1.model.impl.UserModel;

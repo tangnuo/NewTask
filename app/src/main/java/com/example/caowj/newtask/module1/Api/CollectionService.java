@@ -1,10 +1,11 @@
 package com.example.caowj.newtask.module1.Api;
 
 
-import com.example.caowj.newtask.module1.bean.AdInfo;
-import com.example.caowj.newtask.module1.bean.BaseBean;
-import com.example.caowj.newtask.module1.bean.PaiPinInfo2;
-import com.example.caowj.newtask.module1.bean.YawuInfo;
+import com.example.caowj.newtask.module1.entity.AdInfo;
+import com.example.caowj.newtask.module1.entity.NavigationInfo;
+import com.example.caowj.newtask.module1.entity.PaiPinInfo2;
+import com.example.caowj.newtask.module1.entity.YawuInfo;
+import com.example.caowj.newtask.module1.entity.bean.BaseBean;
 
 import io.reactivex.Flowable;
 import io.reactivex.Observable;
@@ -56,14 +57,6 @@ public interface CollectionService {
      * @return
      */
     @GET(Api.PAIPINCATE_URL + "/GetAllList")
-    Call<PaiPinInfo2> GetAllList(@Query("position") String position, @Query("token") String token);
-
-
-    /////////////////////////////////////////////////
-
-
-//
-//   @GET(Api.NEWS_LIST)
-//    Observable<BaseBean.NewsListBean> getNewsList(@Query("id") int id, @Query("page") int page);
+    Call<NavigationInfo> GetAllList(@Query("position") String position, @Query("token") String token);
 
 }

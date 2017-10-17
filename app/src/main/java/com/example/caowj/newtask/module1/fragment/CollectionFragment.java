@@ -10,8 +10,8 @@ import android.view.ViewGroup;
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.base.BaseFragment;
 import com.example.caowj.newtask.module1.adapter.CollectionAdapter;
-import com.example.caowj.newtask.module1.bean.NavigationInfo;
-import com.example.caowj.newtask.module1.bean.PaiPinInfo;
+import com.example.caowj.newtask.module1.entity.PaiPinInfo;
+import com.example.caowj.newtask.module1.entity.bean.NavigationBean;
 import com.example.caowj.newtask.module1.presenter.BasePresenter;
 import com.example.caowj.newtask.module1.presenter.impl.TabNamePresenterImpl;
 import com.example.caowj.newtask.module1.view.BaseView;
@@ -52,7 +52,7 @@ public class CollectionFragment extends BaseFragment implements TabLayout.OnTabS
     //分类显示的商品信息
     private List<PaiPinInfo> fixedAuctionList = new ArrayList<>();
     //获取分类集合
-    private List<NavigationInfo> navigationInfoList = new ArrayList<>();
+    private List<NavigationBean> navigationInfoList = new ArrayList<>();
     //获取标题内容
     private List<String> titles = new ArrayList<>();
 
@@ -71,7 +71,7 @@ public class CollectionFragment extends BaseFragment implements TabLayout.OnTabS
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        BasePresenter.TabNamePresenter tabNamePresenter = new TabNamePresenterImpl(this);
+        BasePresenter.TabNamePresenter tabNamePresenter = new TabNamePresenterImpl(mActivity, this);
         tabNamePresenter.requestNetWork();
     }
 
@@ -140,9 +140,27 @@ public class CollectionFragment extends BaseFragment implements TabLayout.OnTabS
     }
 
     @Override
-    public void setTitleData(List<NavigationInfo> datas) {
+    public void setTitleData(List<NavigationBean> titleList) {
+        //将分类集合添加到Tab中
+        boolean isSelected;//下标是否选中
+        String title;//下标标题名称
+        int tempID;//临时下标Id
+        for (int i = 0; i < titleList.size(); i++) {
+            tempID = titleList.get(i).getId();
+            title = titleList.get(i).getCateName();
+            //表示当前下标Id被选中
+            if (typeId == tempID) {
+                typeId = tempID;
+                index = i;
+                isSelected = true;
+            } else {
+                isSelected = false;
+            }
+            tlNav.addTab(tlNav.newTab().setText(title), i, isSelected);
+        }
 
     }
+
 
     @Override
     public void onDestroyView() {

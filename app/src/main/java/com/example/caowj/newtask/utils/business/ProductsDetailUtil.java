@@ -7,7 +7,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.caowj.newtask.module1.bean.PaiPinInfo;
+import com.example.caowj.newtask.module1.entity.PaiPinInfo;
 import com.example.caowj.newtask.module1.constants.Constants;
 import com.example.caowj.newtask.module1.viewHolder.FixedPriceProductVH;
 import com.example.caowj.newtask.utils.AlimmdnUtil;

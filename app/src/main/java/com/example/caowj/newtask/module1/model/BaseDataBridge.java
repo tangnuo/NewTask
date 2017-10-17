@@ -1,6 +1,7 @@
 package com.example.caowj.newtask.module1.model;
 
-import com.example.caowj.newtask.module1.bean.NavigationInfo;
+import com.example.caowj.newtask.module1.entity.NavigationInfo;
+import com.example.caowj.newtask.module1.entity.bean.NavigationBean;
 
 import java.util.List;
 
@@ -13,7 +14,8 @@ public interface BaseDataBridge<T> {
 
     void error();
 
-    interface TabNameData extends BaseDataBridge<NavigationInfo> {
+    interface TabNameData extends BaseDataBridge<NavigationBean> {
+        void addNavigation(NavigationInfo navigationInfo);
     }
 
 }

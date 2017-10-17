@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.example.caowj.newtask.R;
-import com.example.caowj.newtask.module1.bean.PaiPinInfo;
+import com.example.caowj.newtask.module1.entity.PaiPinInfo;
 import com.example.caowj.newtask.module1.viewHolder.FixedPriceProductVH;
 import com.example.caowj.newtask.utils.JudgmentDataUtil;
 import com.example.caowj.newtask.utils.LogUtil;

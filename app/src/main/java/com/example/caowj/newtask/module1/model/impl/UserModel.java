@@ -1,6 +1,6 @@
 package com.example.caowj.newtask.module1.model.impl;
 
-import com.example.caowj.newtask.module1.bean.User;
+import com.example.caowj.newtask.module1.entity.User;
 import com.example.caowj.newtask.module1.listener.OnLoginListener;
 import com.example.caowj.newtask.module1.model.IUserModel;
 

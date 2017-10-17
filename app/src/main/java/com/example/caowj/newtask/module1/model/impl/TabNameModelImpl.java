@@ -5,12 +5,13 @@ import android.util.Log;
 
 import com.example.caowj.newtask.module1.Api.Api;
 import com.example.caowj.newtask.module1.Api.CollectionService;
-import com.example.caowj.newtask.module1.bean.AdInfo;
-import com.example.caowj.newtask.module1.bean.BaseBean;
-import com.example.caowj.newtask.module1.bean.PaiPinInfo2;
-import com.example.caowj.newtask.module1.bean.YawuInfo;
 import com.example.caowj.newtask.module1.constants.WSConstants;
 import com.example.caowj.newtask.module1.converter.QipaiGsonConverterFactory;
+import com.example.caowj.newtask.module1.entity.AdInfo;
+import com.example.caowj.newtask.module1.entity.NavigationInfo;
+import com.example.caowj.newtask.module1.entity.PaiPinInfo2;
+import com.example.caowj.newtask.module1.entity.YawuInfo;
+import com.example.caowj.newtask.module1.entity.bean.BaseBean;
 import com.example.caowj.newtask.module1.model.BaseDataBridge;
 import com.example.caowj.newtask.module1.model.BaseModel;
 import com.example.caowj.newtask.utils.LogUtil;
@@ -46,10 +47,35 @@ public class TabNameModelImpl implements BaseModel.TabNameModel {
     @Override
     public void netWork(final BaseDataBridge.TabNameData tabNameData) {
 
-//        test1(tabNameData);
-//        test3();
-//        test4();
-        test5();
+        Retrofit Retrofit = new Retrofit.Builder()
+                .baseUrl(Api.BASE_API_QIPAI)
+//                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(QipaiGsonConverterFactory.create())
+                .build();
+
+        //通过Retrofit实例，创建服务接口对象
+        CollectionService apiService = Retrofit.create(CollectionService.class);
+        //通过接口服务对象，调用接口中的方法，获取call对象
+        Call<NavigationInfo> call = apiService.GetAllList("4", WSConstants.WEB_SERVER_TOKEN);
+        //通过call对象执行网络请求(同步请求execute，异步请求enqueue)
+        call.enqueue(new Callback<NavigationInfo>() {
+            @Override
+            public void onResponse(Call<NavigationInfo> call, Response<NavigationInfo> response) {
+                if (response.isSuccessful()) {
+                    NavigationInfo navigationInfo = response.body();
+                    //获取json字符串
+                    String result = navigationInfo.toString();
+                    LogUtil.myD("code:" + navigationInfo.getCode() + ",dataList:" + navigationInfo.getDatalist());
+
+                    tabNameData.addNavigation(navigationInfo);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<NavigationInfo> call, Throwable t) {
+                Log.i(TAG, "请求失败:" + t.getMessage());
+            }
+        });
 
     }
 
@@ -88,37 +114,15 @@ public class TabNameModelImpl implements BaseModel.TabNameModel {
         });
     }
 
+
     /**
-     * 单纯使用Retr2访问数据，并将结果转换成json。（失败：返回值中有null）
+     * 单纯使用Retr2访问数据，并将结果转换成json。（返回值不是json，需要处理）
      */
     void test4() {
         Retrofit Retrofit = new Retrofit.Builder()
                 .baseUrl(Api.BASE_API_QIPAI)
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(QipaiGsonConverterFactory.create())
                 .build();
-
-//        //通过Retrofit实例，创建服务接口对象
-//        CollectionService apiService = Retrofit.create(CollectionService.class);
-//        //通过接口服务对象，调用接口中的方法，获取call对象
-//        Call<AdInfo> call = apiService.GetAdList4(WSConstants.WEB_SERVER_TOKEN);
-//        //通过call对象执行网络请求(同步请求execute，异步请求enqueue)
-//        call.enqueue(new Callback<AdInfo>() {
-//            @Override
-//            public void onResponse(Call<AdInfo> call, Response<AdInfo> response) {
-//                if (response.isSuccessful()) {
-//                    AdInfo body = response.body();
-//                    //获取json字符串
-//                    String result = body.getCode();
-//                    LogUtil.myD("code:" + result);
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<AdInfo> call, Throwable t) {
-//                Log.i(TAG, "请求失败:" + t.getMessage());
-//            }
-//        });
-
 
         //通过Retrofit实例，创建服务接口对象
         CollectionService apiService = Retrofit.create(CollectionService.class);

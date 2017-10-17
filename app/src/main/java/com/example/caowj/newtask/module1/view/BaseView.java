@@ -1,7 +1,7 @@
 package com.example.caowj.newtask.module1.view;
 
 import com.example.caowj.newtask.example.bean.Person;
-import com.example.caowj.newtask.module1.bean.NavigationInfo;
+import com.example.caowj.newtask.module1.entity.bean.NavigationBean;
 
 import java.util.List;
 
@@ -38,6 +38,6 @@ public interface BaseView<T> {
     interface TabNameView extends BaseView {
         void switchNews();
 
-        void setTitleData(List<NavigationInfo> datas);
+        void setTitleData(List<NavigationBean> datas);
     }
 }

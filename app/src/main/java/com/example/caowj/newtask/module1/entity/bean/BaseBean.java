@@ -1,4 +1,4 @@
-package com.example.caowj.newtask.module1.bean;
+package com.example.caowj.newtask.module1.entity.bean;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class BaseBean<T> {
     }
 
 
-    public class TabNameBean extends BaseBean<NavigationInfo> {
+    public class TabNameBean extends BaseBean<NavigationBean> {
     }
 
 
