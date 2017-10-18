@@ -13,6 +13,7 @@ import android.widget.ProgressBar;
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.base.BaseFragment;
 import com.example.caowj.newtask.module1.adapter.CollectionAdapter;
+import com.example.caowj.newtask.module1.constants.TypeConstants;
 import com.example.caowj.newtask.module1.entity.bean.NavigationBean;
 import com.example.caowj.newtask.module1.entity.bean.PaiPinBean;
 import com.example.caowj.newtask.module1.presenter.BasePresenter;
@@ -69,6 +70,12 @@ public class CollectionFragment extends BaseFragment implements TabLayout.OnTabS
 
         adapter = new CollectionAdapter(mActivity, null);
         final GridLayoutManager layoutManager = new GridLayoutManager(mActivity, 2);
+        layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                return adapter.getItemViewType(position) == TypeConstants.TYPE_ITEM_NONE ? layoutManager.getSpanCount() : 1;
+            }
+        });
         rvList.setLayoutManager(layoutManager);
         rvList.setAdapter(adapter);
         rvList.addOnScrollListener(new RecyclerView.OnScrollListener() {

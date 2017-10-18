@@ -1,0 +1,34 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/iv_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/logo_qipai_grey2" />
+
+    <TextView
+        android:id="@+id/tv_hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:textColor="@color/find_item_82"
+        android:textSize="16sp" />
+
+    <!--<TextView-->
+    <!--android:id="@+id/tv_personal"-->
+    <!--android:layout_width="126dp"-->
+    <!--android:layout_height="38dp"-->
+    <!--android:layout_marginTop="30dp"-->
+    <!--android:background="@drawable/border_no_data"-->
+    <!--android:gravity="center"-->
+    <!--android:text="@string/personal_tailor"-->
+    <!--android:textColor="@color/white"-->
+    <!--android:textSize="15sp" />-->
+</LinearLayout>

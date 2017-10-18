@@ -6,10 +6,11 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.example.caowj.newtask.R;
+import com.example.caowj.newtask.module1.constants.TypeConstants;
 import com.example.caowj.newtask.module1.entity.bean.PaiPinBean;
+import com.example.caowj.newtask.module1.viewHolder.CommonVH;
 import com.example.caowj.newtask.module1.viewHolder.FixedPriceProductVH;
 import com.example.caowj.newtask.utils.JudgmentDataUtil;
-import com.example.caowj.newtask.utils.LogUtil;
 import com.example.caowj.newtask.utils.business.ProductsDetailUtil;
 
 import java.util.ArrayList;
@@ -38,20 +39,37 @@ public class CollectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
     public void setPaiPinInfoList(List<PaiPinBean> paiPinInfoList) {
-        this.paiPinInfoList = paiPinInfoList;
+        this.paiPinInfoList = paiPinInfoList == null ? new ArrayList<PaiPinBean>() : paiPinInfoList;
         notifyDataSetChanged();
+    }
+
+
+    @Override
+    public int getItemViewType(int position) {
+        if (JudgmentDataUtil.hasCollectionData(paiPinInfoList)) {
+            return TypeConstants.TYPE_ITEM_FIRST;
+        } else {
+            return TypeConstants.TYPE_ITEM_NONE;
+        }
     }
 
     @Override
     public int getItemCount() {
-        //轮播图+专题+拍品+暂无
-        return paiPinInfoList.size();
+        if (JudgmentDataUtil.hasCollectionData(paiPinInfoList)) {
+            return paiPinInfoList.size();
+        } else {
+            return 1;
+        }
     }
-
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new FixedPriceProductVH(layoutInflater.inflate(R.layout.yawu_collection_of_products_item_layout, parent, false));
+        if (viewType == TypeConstants.TYPE_ITEM_FIRST) {
+            return new FixedPriceProductVH(layoutInflater.inflate(R.layout.yawu_collection_of_products_item_layout, parent, false));
+        } else {
+            return new CommonVH.NoneDataViewHolder(layoutInflater.inflate(R.layout.item_mine_comment_none, parent, false));
+        }
+
     }
 
     @Override
@@ -59,7 +77,9 @@ public class CollectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         if (JudgmentDataUtil.hasCollectionData(paiPinInfoList)) {
             ProductsDetailUtil.FixedPriceProductsViewHolder((FixedPriceProductVH) holder, context, paiPinInfoList, position, true, "#DFDFDF");
         } else {
-            LogUtil.d(TAG, "暂无一口价数据");
+            CommonVH.NoneDataViewHolder noneDataViewHolder = (CommonVH.NoneDataViewHolder) holder;
+//                noneDataViewHolder.ivHint.setImageResource(R.drawable.icon_no_order_flag);
+            noneDataViewHolder.tvHint.setText("暂无活动数据哦");
         }
     }
 
