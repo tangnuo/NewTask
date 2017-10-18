@@ -1,7 +1,5 @@
 package com.example.caowj.newtask.module1.presenter;
 
-import com.example.caowj.newtask.example.bean.Person;
-
 /**
  * View发出请求后，通过这些接口通知model处理。
  * package: com.example.caowj.newtask.module1.presenter.impl
@@ -13,12 +11,6 @@ public interface BasePresenter {
         void requestNetWork(int id);
 
         void competence(int requestCode, int[] grantResults);
-    }
-
-    interface ImageListPresenter {
-        void requestNetWork(int id, int page, boolean isNull);
-
-        void onClick(Person info);
     }
 
 

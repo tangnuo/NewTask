@@ -165,11 +165,6 @@ public class CollectionFragment extends BaseFragment implements TabLayout.OnTabS
     /***************************************************/
 
     @Override
-    public void setData(List datas) {
-
-    }
-
-    @Override
     public void netWorkError() {
         hideProgress();
         MyAndroidUtils.showShortToast(mActivity, "网络请求失败22");
@@ -217,9 +212,7 @@ public class CollectionFragment extends BaseFragment implements TabLayout.OnTabS
 
     @Override
     public void showPaipinInfoV(List<PaiPinBean> paiPinBeanList) {
-        if (swipeRefreshLayout.isRefreshing()) {
-            swipeRefreshLayout.setRefreshing(false);
-        }
+        swipeRefreshLayout.setRefreshing(false);
         adapter.setPaiPinInfoList(paiPinBeanList);
     }
 

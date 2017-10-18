@@ -13,8 +13,6 @@ import java.util.List;
  */
 public interface BaseView<T> {
 
-    void setData(List<T> datas);
-
     void netWorkError();
 
     void hideProgress();

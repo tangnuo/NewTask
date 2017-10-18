@@ -61,7 +61,7 @@ public class TabNamePresenterImpl extends BasePresenterImpl<BaseView.TabNameView
     public void onRefreshBegin() {
         pageIndex = 1;
 
-        view.showProgress();
+//        view.showProgress();
         tabNameModel.getDataByTypeM(typeId, Constants.PAGESIZE, pageIndex, this);
     }
 
@@ -83,7 +83,7 @@ public class TabNamePresenterImpl extends BasePresenterImpl<BaseView.TabNameView
 
     @Override
     public void addData(List<NavigationBean> datas) {
-        view.setData(datas);
+
     }
 
     @Override
