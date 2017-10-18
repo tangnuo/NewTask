@@ -10,9 +10,9 @@ import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.module1.Api.Api;
 import com.example.caowj.newtask.module1.Api.TianService;
-import com.example.caowj.newtask.module1.entity.bean.NewsBean2;
-import com.example.caowj.newtask.module1.entity.NewsInfo;
 import com.example.caowj.newtask.module1.constants.WSConstants;
+import com.example.caowj.newtask.module1.entity.NewsInfo;
+import com.example.caowj.newtask.module1.entity.bean.NewsBean2;
 import com.example.caowj.newtask.utils.LogUtil;
 import com.example.caowj.newtask.utils.business.MyAndroidUtils;
 
@@ -86,6 +86,10 @@ public class TestRrmActivity extends BaseActivity {
                 test3();
                 break;
         }
+    }
+
+    void test4() {
+
     }
 
     /**
