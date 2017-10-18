@@ -9,7 +9,6 @@ import com.example.caowj.newtask.module1.constants.WSConstants;
 import com.example.caowj.newtask.module1.converter.QipaiGsonConverterFactory;
 import com.example.caowj.newtask.module1.entity.NavigationInfo;
 import com.example.caowj.newtask.module1.entity.PaiPinInfo2;
-import com.example.caowj.newtask.module1.entity.YawuInfo;
 import com.example.caowj.newtask.module1.model.BaseDataBridge;
 import com.example.caowj.newtask.module1.model.BaseModel;
 import com.example.caowj.newtask.utils.LogUtil;
@@ -27,11 +26,16 @@ import static com.chad.library.adapter.base.listener.SimpleClickListener.TAG;
 /**
  * by y on 2016/4/28.
  */
-public class TabNameModelImpl implements BaseModel.TabNameModel {
+public class TabNameModelImpl extends BaseModelImpl<BaseDataBridge.TabNameData> implements BaseModel.TabNameModel {
+
+
+    public TabNameModelImpl(BaseDataBridge.TabNameData modelImpl) {
+        super(modelImpl);
+    }
 
 
     @Override
-    public void netWork(final BaseDataBridge.TabNameData tabNameData) {
+    public void netWork() {
 
         Retrofit Retrofit = new Retrofit.Builder()
                 .baseUrl(Api.BASE_API_QIPAI)
@@ -53,57 +57,21 @@ public class TabNameModelImpl implements BaseModel.TabNameModel {
                     String result = navigationInfo.toString();
                     LogUtil.myD("code:" + navigationInfo.getCode() + ",dataList:" + navigationInfo.getDatalist());
 
-                    tabNameData.showNavigationP(navigationInfo);
+                    modelImpl.showNavigationP(navigationInfo);
                 }
             }
 
             @Override
             public void onFailure(Call<NavigationInfo> call, Throwable t) {
                 Log.i(TAG, "请求失败:" + t.getMessage());
-                tabNameData.error();
+                modelImpl.error();
             }
         });
 
     }
-
-/////////////////////////////////////////////////////////////////
-
-    /**
-     * 服务端返回null，失败
-     */
-    void test5() {
-        Retrofit Retrofit = new Retrofit.Builder()
-                .baseUrl(Api.BASE_API_QIPAI)
-//                .addConverterFactory(GsonConverterFactory.create())
-                .addConverterFactory(QipaiGsonConverterFactory.create())
-                .build();
-
-        //通过Retrofit实例，创建服务接口对象
-        CollectionService apiService = Retrofit.create(CollectionService.class);
-        //通过接口服务对象，调用接口中的方法，获取call对象
-        Call<YawuInfo> call = apiService.YaWuZhuanTi(0, WSConstants.WEB_SERVER_TOKEN);
-        //通过call对象执行网络请求(同步请求execute，异步请求enqueue)
-        call.enqueue(new Callback<YawuInfo>() {
-            @Override
-            public void onResponse(Call<YawuInfo> call, Response<YawuInfo> response) {
-                if (response.isSuccessful()) {
-                    YawuInfo body = response.body();
-                    //获取json字符串
-                    String result = body.toString();
-                    LogUtil.myD("code:" + body.getCode() + ",dataList:" + body.getDatalist());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<YawuInfo> call, Throwable t) {
-                Log.i(TAG, "请求失败:" + t.getMessage());
-            }
-        });
-    }
-
 
     @Override
-    public void getDataByTypeM(int typeId, int pageSize, int pageIndex, final BaseDataBridge.TabNameData tabNameData) {
+    public void getDataByTypeM(int typeId, int pageSize, int pageIndex) {
         Retrofit Retrofit = new Retrofit.Builder()
                 .baseUrl(Api.BASE_API_QIPAI)
 //                .addConverterFactory(GsonConverterFactory.create())
@@ -133,14 +101,14 @@ public class TabNameModelImpl implements BaseModel.TabNameModel {
                     String result = navigationInfo.toString();
                     LogUtil.myD("code:" + navigationInfo.getCode() + ",dataList:" + navigationInfo.getDatalist());
 
-                    tabNameData.showPaiPinInfoP(navigationInfo);
+                    modelImpl.showPaiPinInfoP(navigationInfo);
                 }
             }
 
             @Override
             public void onFailure(Call<PaiPinInfo2> call, Throwable t) {
                 Log.i(TAG, "请求失败:" + t.getMessage());
-                tabNameData.error();
+                modelImpl.error();
             }
         });
     }

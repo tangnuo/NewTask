@@ -6,10 +6,10 @@ package com.example.caowj.newtask.module1.presenter;
 @SuppressWarnings("ALL")
 public class BasePresenterImpl<T> {
 
-    public T view;
+    public T presenterImpl;
 
     public BasePresenterImpl(T view) {
-        this.view = view;
+        this.presenterImpl = view;
     }
 
 }

@@ -38,13 +38,13 @@ public class TabNamePresenterImpl extends BasePresenterImpl<BaseView.TabNameView
     public TabNamePresenterImpl(Context mContext, BaseView.TabNameView view) {
         super(view);
         this.mContext = mContext;
-        this.tabNameModel = new TabNameModelImpl();
+        this.tabNameModel = new TabNameModelImpl(this);
     }
 
     @Override
     public void getNavigationP() {
-        view.showProgress();
-        tabNameModel.netWork(this);
+        presenterImpl.showProgress();
+        tabNameModel.netWork();
     }
 
     @Override
@@ -53,8 +53,8 @@ public class TabNamePresenterImpl extends BasePresenterImpl<BaseView.TabNameView
         isLoading = true;
         pageIndex = 1;
 
-        view.showProgress();
-        tabNameModel.getDataByTypeM(typeId, Constants.PAGESIZE, pageIndex, this);
+        presenterImpl.showProgress();
+        tabNameModel.getDataByTypeM(typeId, Constants.PAGESIZE, pageIndex);
     }
 
     @Override
@@ -62,22 +62,22 @@ public class TabNamePresenterImpl extends BasePresenterImpl<BaseView.TabNameView
         pageIndex = 1;
 
 //        view.showProgress();
-        tabNameModel.getDataByTypeM(typeId, Constants.PAGESIZE, pageIndex, this);
+        tabNameModel.getDataByTypeM(typeId, Constants.PAGESIZE, pageIndex);
     }
 
     @Override
     public void onLoadMoreBegin() {
-        view.showProgress();
+        presenterImpl.showProgress();
         if (JudgmentDataUtil.hasCollectionData(pinBeanList)) {
             if (isLoading) {
                 pageIndex++;
-                tabNameModel.getDataByTypeM(typeId, Constants.PAGESIZE, pageIndex, this);
+                tabNameModel.getDataByTypeM(typeId, Constants.PAGESIZE, pageIndex);
             } else {
                 LogUtil.myD("无法加载更多了");
             }
         } else {
             pageIndex = 1;
-            tabNameModel.getDataByTypeM(typeId, Constants.PAGESIZE, pageIndex, this);
+            tabNameModel.getDataByTypeM(typeId, Constants.PAGESIZE, pageIndex);
         }
     }
 
@@ -88,12 +88,12 @@ public class TabNamePresenterImpl extends BasePresenterImpl<BaseView.TabNameView
 
     @Override
     public void error() {
-        view.netWorkError();
+        presenterImpl.netWorkError();
     }
 
     @Override
     public void showNavigationP(final NavigationInfo navigationInfo) {
-        view.hideProgress();
+        presenterImpl.hideProgress();
         String code = navigationInfo.getCode();
 
         MyAndroidUtils.handleBroadcastReturn(code, new BroadcastCallback() {
@@ -111,7 +111,7 @@ public class TabNamePresenterImpl extends BasePresenterImpl<BaseView.TabNameView
 
                     titleList.addAll(navigationBeanList);
 
-                    view.showNavigationV(titleList);
+                    presenterImpl.showNavigationV(titleList);
                 }
 //                int size = navigationBeanList.size();
 //                if (size > 0) {
@@ -140,7 +140,7 @@ public class TabNamePresenterImpl extends BasePresenterImpl<BaseView.TabNameView
 
     @Override
     public void showPaiPinInfoP(final PaiPinInfo2 paiPinInfo) {
-        view.hideProgress();
+        presenterImpl.hideProgress();
         String code = paiPinInfo.getCode();
 
         MyAndroidUtils.handleBroadcastReturn(code, new BroadcastCallback() {
@@ -157,7 +157,7 @@ public class TabNamePresenterImpl extends BasePresenterImpl<BaseView.TabNameView
                     isLoading = false;
                 }
 
-                view.showPaipinInfoV(pinBeanList);
+                presenterImpl.showPaipinInfoV(pinBeanList);
             }
 
             @Override
@@ -165,7 +165,7 @@ public class TabNamePresenterImpl extends BasePresenterImpl<BaseView.TabNameView
                 isLoading = false;
                 if (pageIndex == 1) {
                     pinBeanList.clear();
-                    view.showPaipinInfoV(pinBeanList);
+                    presenterImpl.showPaipinInfoV(pinBeanList);
                 }
                 LogUtil.myD("没有数据返回1002。。。");
                 MyAndroidUtils.showShortToast(mContext, "没有数据返回1002");
