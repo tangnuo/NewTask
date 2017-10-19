@@ -3,10 +3,8 @@ package com.example.caowj.newtask.module1.model.impl;
 
 import android.util.Log;
 
-import com.example.caowj.newtask.module1.Api.Api;
-import com.example.caowj.newtask.module1.Api.CollectionService;
+import com.example.caowj.newtask.module1.Api.Network;
 import com.example.caowj.newtask.module1.constants.WSConstants;
-import com.example.caowj.newtask.module1.converter.QipaiGsonConverterFactory;
 import com.example.caowj.newtask.module1.entity.NavigationInfo;
 import com.example.caowj.newtask.module1.entity.PaiPinInfo2;
 import com.example.caowj.newtask.module1.model.BaseDataBridge;
@@ -19,7 +17,6 @@ import java.util.Map;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 import static com.chad.library.adapter.base.listener.SimpleClickListener.TAG;
 
@@ -37,16 +34,8 @@ public class TabNameModelImpl extends BaseModelImpl<BaseDataBridge.TabNameData> 
     @Override
     public void netWork() {
 
-        Retrofit Retrofit = new Retrofit.Builder()
-                .baseUrl(Api.BASE_API_QIPAI)
-//                .addConverterFactory(GsonConverterFactory.create())
-                .addConverterFactory(QipaiGsonConverterFactory.create())
-                .build();
-
-        //通过Retrofit实例，创建服务接口对象
-        CollectionService apiService = Retrofit.create(CollectionService.class);
         //通过接口服务对象，调用接口中的方法，获取call对象
-        Call<NavigationInfo> call = apiService.GetAllList("4", WSConstants.WEB_SERVER_TOKEN);
+        Call<NavigationInfo> call = Network.getCollectionService().GetAllList("4", WSConstants.WEB_SERVER_TOKEN);
         //通过call对象执行网络请求(同步请求execute，异步请求enqueue)
         call.enqueue(new Callback<NavigationInfo>() {
             @Override
@@ -72,14 +61,7 @@ public class TabNameModelImpl extends BaseModelImpl<BaseDataBridge.TabNameData> 
 
     @Override
     public void getDataByTypeM(int typeId, int pageSize, int pageIndex) {
-        Retrofit Retrofit = new Retrofit.Builder()
-                .baseUrl(Api.BASE_API_QIPAI)
-//                .addConverterFactory(GsonConverterFactory.create())
-                .addConverterFactory(QipaiGsonConverterFactory.create())
-                .build();
 
-        //通过Retrofit实例，创建服务接口对象
-        CollectionService apiService = Retrofit.create(CollectionService.class);
         //通过接口服务对象，调用接口中的方法，获取call对象
         Map<String, Integer> properties = new HashMap<>();
         properties.put("typeID", typeId);
@@ -90,7 +72,7 @@ public class TabNameModelImpl extends BaseModelImpl<BaseDataBridge.TabNameData> 
         properties.put("sPrice", 0);
         properties.put("endPrice", 0);
         properties.put("sortType", 0);
-        Call<PaiPinInfo2> call = apiService.GetListYaWu(properties, WSConstants.WEB_SERVER_TOKEN);
+        Call<PaiPinInfo2> call = Network.getCollectionService().GetListYaWu(properties, WSConstants.WEB_SERVER_TOKEN);
         //通过call对象执行网络请求(同步请求execute，异步请求enqueue)
         call.enqueue(new Callback<PaiPinInfo2>() {
             @Override

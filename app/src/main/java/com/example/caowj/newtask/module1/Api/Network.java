@@ -1,6 +1,7 @@
 package com.example.caowj.newtask.module1.Api;
 
 
+import com.example.caowj.newtask.module1.converter.QipaiGsonConverterFactory;
 import com.example.caowj.newtask.utils.LogUtil;
 
 import java.io.IOException;
@@ -9,36 +10,31 @@ import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.ResponseBody;
-import retrofit2.Converter;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 /**
  * by y on 2016/4/28.
  */
-class Network {
+public class Network {
 
 
     private static CollectionService tngouApi;
 
-    private static final Converter.Factory gsonConverterFactory = GsonConverterFactory.create();
-//    private static final CallAdapter.Factory rxJavaCallAdapterFactory = RxJavaCallAdapterFactory.create();
-
-    public static CollectionService getTngouApi() {
+    public static CollectionService getCollectionService() {
         if (tngouApi == null) {
-            tngouApi = getRetrofit(Api.BASE_API_TNGOU).create(CollectionService.class);
+            tngouApi = getRetrofit(Api.BASE_API_QIPAI).create(CollectionService.class);
         }
         return tngouApi;
     }
 
 
     private static Retrofit getRetrofit(String baseUrl) {
-
         return new Retrofit.Builder()
                 .client(new OkHttpClient.Builder().addInterceptor(new LogInterceptor()).build())
                 .baseUrl(baseUrl)
-                .addConverterFactory(gsonConverterFactory)
-//                .addCallAdapterFactory(rxJavaCallAdapterFactory)
+                .addConverterFactory(QipaiGsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
     }
 
