@@ -31,6 +31,8 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -88,7 +90,44 @@ public class TestRrmActivity extends BaseActivity {
         }
     }
 
+
+    /**
+     * 操作符（详细见RxJavaSample-2.x）
+     * doOnSubscribe
+     * doOnError
+     * doOnNext
+     * doOnComplete
+     * .subscribe()
+     */
     void test4() {
+
+        Retrofit Retrofit = new Retrofit.Builder()
+                .baseUrl(Api.BASE_API_TX)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build();
+
+        //通过Retrofit实例，创建服务接口对象
+        TianService apiService = Retrofit.create(TianService.class);
+        //通过接口服务对象，调用接口中的方法，获取call对象
+        Observable<NewsInfo> call = apiService.GetWxNews2(10, WSConstants.TIAN_XING_API_KEY);
+
+        call
+                .map(new Function<NewsInfo, List<NewsBean2>>() {
+                    @Override
+                    public List<NewsBean2> apply(@NonNull NewsInfo newsInfo) throws Exception {
+                        return newsInfo.getNewslist();
+                    }
+                })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<List<NewsBean2>>() {
+                    @Override
+                    public void accept(List<NewsBean2> newsBean2s) throws Exception {
+
+                    }
+                });
+
 
     }
 
