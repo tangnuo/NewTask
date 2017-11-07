@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao' // apply plugin
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -16,6 +17,16 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+//    schemaVersion：当前版本的数据库模式。这被OpenHelpers类用于在模式版本之间迁移。如果更改了实体/数据库模式，则必须增加该值。默认为1。
+//    daoPackage：生成的Dao，DaoMaster和DaoSession的包名称。 默认为源实体的包名称。
+//    targetGenDir：生成源应存储在的位置。 默认为构建目录（ build / generated / source / greendao）中生成的源文件夹。
+//    generateTests： 设置为true以自动生成单元测试。
+//    targetGenDirTests： 应存储生成的单元测试的基本目录。默认为 src / androidTest / java。
+    greendao{
+        schemaVersion 3
+        targetGenDir 'src/main/java'
     }
 }
 
@@ -58,4 +69,6 @@ dependencies {
 
 //    折叠控件
     compile 'net.cachapa.expandablelayout:expandablelayout:2.9.2'
+//    greenDao
+    compile 'org.greenrobot:greendao:3.2.2' // add library
 }

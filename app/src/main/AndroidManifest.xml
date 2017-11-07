@@ -65,7 +65,8 @@
         <activity android:name=".module1.activity.QipaiNewActivity" />
         <activity
             android:name=".example.activity.ElemTabActivity"
-            android:theme="@style/ElemTheme"></activity>
+            android:theme="@style/ElemTheme" />
+        <activity android:name=".example.activity.TestGreenDaoActivity"></activity>
     </application>
 
 </manifest>
