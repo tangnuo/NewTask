@@ -24,15 +24,24 @@ import java.util.List;
 /**
  * 通过ExpandableLayout控制头部折叠，实现标题栏悬浮。
  * <p>
- * <p/>
- * <p>
+ *
+ * 缺点：布局过于复杂，使用了2个筛选标题（一个隐藏，一个显示）
  * Created by sunger on 2017/10/15.
  */
 
 public class StickHeaderFragment extends Fragment {
-    private RecyclerView recyclerView;
-    private RecyclerView recyclerViewFilter;
+    private RecyclerView contentRecyclerView;
+    /**
+     * 筛选条件展开(RecyclerView)
+     */
+    private RecyclerView filterRecyclerView;
+    /**
+     * 筛选条件标题
+     */
     private View layoutStickHeader;
+    /**
+     * 筛选条件展开(包含RecyclerView)
+     */
     private View layoutFilter;
     private ExpandableLayout expandableLayout;
     private CommonAdapter2 commonAdapter;
@@ -50,33 +59,35 @@ public class StickHeaderFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
-        recyclerViewFilter = (RecyclerView) view.findViewById(R.id.recyclerView_filter);
+        contentRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        filterRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerView_filter);
         layoutStickHeader = view.findViewById(R.id.layout_stick_header);
         layoutFilter = view.findViewById(R.id.layout_filter);
         expandableLayout = (ExpandableLayout) view.findViewById(R.id.expandableLayout);
+
         linearLayoutManager = new LinearLayoutManager(getContext());
-        recyclerViewFilter.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setLayoutManager(linearLayoutManager);
+        filterRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        contentRecyclerView.setLayoutManager(linearLayoutManager);
         commonAdapter = new CommonAdapter2(R.layout.item_common_text);
         List<String> data = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
             data.add("item" + i);
         }
-        View header1 = LayoutInflater.from(getContext()).inflate(R.layout.view_header_banner, recyclerView, false);
+        View header1 = LayoutInflater.from(getContext()).inflate(R.layout.view_header_banner, contentRecyclerView, false);
         commonAdapter.addHeaderView(header1);
 
 
-        View header2 = LayoutInflater.from(getContext()).inflate(R.layout.view_header_banner2, recyclerView, false);
+        View header2 = LayoutInflater.from(getContext()).inflate(R.layout.view_header_banner2, contentRecyclerView, false);
         commonAdapter.addHeaderView(header2);
 
-        final View header3 = LayoutInflater.from(getContext()).inflate(R.layout.view_header3, recyclerView, false);
+        final View header3 = LayoutInflater.from(getContext()).inflate(R.layout.view_header3, contentRecyclerView, false);
         initStickView(header3);
         commonAdapter.addHeaderView(header3);
         header3.setBackgroundColor(Color.BLUE);
 
         commonAdapter.addData(data);
-        recyclerView.setAdapter(commonAdapter);
+        contentRecyclerView.setAdapter(commonAdapter);
+
         layoutFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,7 +114,7 @@ public class StickHeaderFragment extends Fragment {
 
         CommonAdapter2 filterAdapter = new CommonAdapter2(R.layout.item_filter);
         filterAdapter.addData(dataFilter);
-        recyclerViewFilter.setAdapter(filterAdapter);
+        filterRecyclerView.setAdapter(filterAdapter);
         filterAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
@@ -114,6 +125,11 @@ public class StickHeaderFragment extends Fragment {
     }
 
 
+    /**
+     * 利用OnGlobalLayoutListener来获得一个视图的真实高度。
+     *
+     * @param view
+     */
     private void initStickView(final View view) {
         view.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
@@ -121,6 +137,8 @@ public class StickHeaderFragment extends Fragment {
                 top = view.getTop();
                 addHeaderFilterClickListener(view);
                 addScrollListener();
+
+                //需要注意的是OnGlobalLayoutListener可能会被多次触发，因此在得到了高度之后，要将OnGlobalLayoutListener注销掉。
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                     view.getViewTreeObserver().removeOnGlobalLayoutListener(this);
                 } else {
@@ -130,17 +148,24 @@ public class StickHeaderFragment extends Fragment {
         });
     }
 
+    /**
+     * 点击时，滚动并显示过滤条件
+     * @param view
+     */
     private void addHeaderFilterClickListener(final View view) {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                recyclerView.smoothScrollBy(0, view.getTop() - mScrollY);
+                contentRecyclerView.smoothScrollBy(0, view.getTop() - mScrollY);
                 showFilter();
             }
         });
     }
 
 
+    /**
+     * 显示过滤条件
+     */
     private void showFilter() {
         layoutFilter.postDelayed(new Runnable() {
             @Override
@@ -159,7 +184,7 @@ public class StickHeaderFragment extends Fragment {
     private void addScrollListener() {
 
         layoutStickHeader.setTranslationY(top);
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+        contentRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
