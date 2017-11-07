@@ -86,6 +86,7 @@ public class FunctionListActivity extends BaseActivity {
         sparseArray.put(17, TextViewShowHtmlActivity.class);
         sparseArray.put(18, TestRrmActivity.class);
         sparseArray.put(19, QipaiNewActivity.class);
+        sparseArray.put(20, ElemTabActivity.class);
 
         functionListAdapter = new FunctionListAdapter(mActivity, sparseArray);
     }

@@ -53,4 +53,16 @@
         <item name="android:activityCloseExitAnimation">@anim/v_scenecloseexit</item>
     </style>
 
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!--饿了么主题-->
+    <style name="ElemTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/elem_primary</item>
+        <item name="colorPrimaryDark">@color/elem_primary</item>
+        <item name="colorAccent">@color/white</item>
+    </style>
+
 </resources>

@@ -73,6 +73,7 @@
     <color name="primary_light">#B2DFDB</color>
     <!--登录界面 获取验证码 和 忘记密码 字体颜色-->
     <color name="login_get_info">#808080</color>
+    <color name="elem_primary">#079ff1</color>
 
     <!--日期选择器 begin-->
 

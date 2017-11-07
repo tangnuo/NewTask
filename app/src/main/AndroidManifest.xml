@@ -5,8 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
-
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -64,7 +62,10 @@
         <activity android:name=".example.activity.TestDaggerActivity3" />
         <activity android:name=".example.activity.TextViewShowHtmlActivity" />
         <activity android:name=".example.activity.TestRrmActivity" />
-        <activity android:name=".module1.activity.QipaiNewActivity"></activity>
+        <activity android:name=".module1.activity.QipaiNewActivity" />
+        <activity
+            android:name=".example.activity.ElemTabActivity"
+            android:theme="@style/ElemTheme"></activity>
     </application>
 
 </manifest>
