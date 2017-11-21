@@ -22,6 +22,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+ * 下载图片后，存入LruCache中，显示图片时取值。
  * package: com.example.caowj.newtask.example.adapter
  * author: Administrator
  * date: 2017/11/21 17:00
