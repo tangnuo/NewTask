@@ -42,7 +42,7 @@ public class UserDao extends AbstractDao<User, Long> {
      * Creates the underlying database table.
      */
     public static void createTable(Database db, boolean ifNotExists) {
-        String constraint = ifNotExists ? "IF NOT EXISTS " : "";
+        String constraint = ifNotExists ? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"USER\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY NOT NULL ," + // 0: id
                 "\"cName\" TEXT," + // 1: name
@@ -50,9 +50,7 @@ public class UserDao extends AbstractDao<User, Long> {
                 "\"STU_SEX\" TEXT);"); // 3: stuSex
     }
 
-    /**
-     * Drops the underlying database table.
-     */
+    /** Drops the underlying database table. */
     public static void dropTable(Database db, boolean ifExists) {
         String sql = "DROP TABLE " + (ifExists ? "IF EXISTS " : "") + "\"USER\"";
         db.execSQL(sql);
@@ -62,17 +60,17 @@ public class UserDao extends AbstractDao<User, Long> {
     protected final void bindValues(DatabaseStatement stmt, User entity) {
         stmt.clearBindings();
         stmt.bindLong(1, entity.getId());
-
+ 
         String name = entity.getName();
         if (name != null) {
             stmt.bindString(2, name);
         }
-
+ 
         String stuName = entity.getStuName();
         if (stuName != null) {
             stmt.bindString(3, stuName);
         }
-
+ 
         String stuSex = entity.getStuSex();
         if (stuSex != null) {
             stmt.bindString(4, stuSex);
@@ -83,17 +81,17 @@ public class UserDao extends AbstractDao<User, Long> {
     protected final void bindValues(SQLiteStatement stmt, User entity) {
         stmt.clearBindings();
         stmt.bindLong(1, entity.getId());
-
+ 
         String name = entity.getName();
         if (name != null) {
             stmt.bindString(2, name);
         }
-
+ 
         String stuName = entity.getStuName();
         if (stuName != null) {
             stmt.bindString(3, stuName);
         }
-
+ 
         String stuSex = entity.getStuSex();
         if (stuSex != null) {
             stmt.bindString(4, stuSex);
@@ -103,7 +101,7 @@ public class UserDao extends AbstractDao<User, Long> {
     @Override
     public Long readKey(Cursor cursor, int offset) {
         return cursor.getLong(offset + 0);
-    }
+    }    
 
     @Override
     public User readEntity(Cursor cursor, int offset) {
@@ -115,21 +113,21 @@ public class UserDao extends AbstractDao<User, Long> {
         );
         return entity;
     }
-
+     
     @Override
     public void readEntity(Cursor cursor, User entity, int offset) {
         entity.setId(cursor.getLong(offset + 0));
         entity.setName(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setStuName(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
         entity.setStuSex(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
-    }
-
+     }
+    
     @Override
     protected final Long updateKeyAfterInsert(User entity, long rowId) {
         entity.setId(rowId);
         return rowId;
     }
-
+    
     @Override
     public Long getKey(User entity) {
         if (entity != null) {
@@ -148,5 +146,5 @@ public class UserDao extends AbstractDao<User, Long> {
     protected final boolean isEntityUpdateable() {
         return true;
     }
-
+    
 }

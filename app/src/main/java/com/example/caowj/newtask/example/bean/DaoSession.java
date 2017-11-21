@@ -16,7 +16,7 @@ import com.example.caowj.newtask.example.bean.UserDao;
 
 /**
  * {@inheritDoc}
- *
+ * 
  * @see org.greenrobot.greendao.AbstractDaoSession
  */
 public class DaoSession extends AbstractDaoSession {
