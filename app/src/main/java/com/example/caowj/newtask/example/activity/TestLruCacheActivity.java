@@ -11,7 +11,7 @@ import com.example.caowj.newtask.example.data.Images;
 import butterknife.BindView;
 
 /**
- * LruCache缓存图片
+ * LruCache缓存图片（内存缓存）
  * http://blog.csdn.net/guolin_blog/article/details/9526203
  * <p>
  * <p>
