@@ -24,7 +24,7 @@ android {
 //    targetGenDir：生成源应存储在的位置。 默认为构建目录（ build / generated / source / greendao）中生成的源文件夹。
 //    generateTests： 设置为true以自动生成单元测试。
 //    targetGenDirTests： 应存储生成的单元测试的基本目录。默认为 src / androidTest / java。
-    greendao{
+    greendao {
         schemaVersion 3
         targetGenDir 'src/main/java'
     }
