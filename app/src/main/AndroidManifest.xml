@@ -70,7 +70,8 @@
             android:theme="@style/ElemTheme" />
         <activity android:name=".example.activity.TestGreenDaoActivity" />
         <activity android:name=".example.activity.TestLruCacheActivity" />
-        <activity android:name=".example.activity.TestLruCacheActivity2"></activity>
+        <activity android:name=".example.activity.TestLruCacheActivity2" />
+        <activity android:name=".example.activity.TextSwitcherActivity"></activity>
     </application>
 
 </manifest>
