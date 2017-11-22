@@ -89,6 +89,7 @@ public class FunctionListActivity extends BaseActivity {
         sparseArray.put(20, ElemTabActivity.class);
         sparseArray.put(21, TestGreenDaoActivity.class);
         sparseArray.put(22, TestLruCacheActivity.class);
+        sparseArray.put(23, TestLruCacheActivity2.class);
 
         functionListAdapter = new FunctionListAdapter(mActivity, sparseArray);
     }

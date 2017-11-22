@@ -71,4 +71,5 @@ dependencies {
     compile 'net.cachapa.expandablelayout:expandablelayout:2.9.2'
 //    greenDao
     compile 'org.greenrobot:greendao:3.2.2' // add library
+    compile 'com.jakewharton:disklrucache:2.0.2'
 }
