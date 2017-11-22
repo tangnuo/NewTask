@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.support.v4.util.LruCache;
 
 /**
+ * LruCache封装
  * package: com.example.caowj.newtask.utils
  * author: Administrator
  * date: 2017/11/21 17:25

@@ -7,7 +7,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Environment;
-import android.support.v4.util.LruCache;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +15,8 @@ import android.widget.GridView;
 import android.widget.ImageView;
 
 import com.example.caowj.newtask.R;
+import com.example.caowj.newtask.utils.ImageLoader;
+import com.example.caowj.newtask.utils.LogUtil;
 import com.jakewharton.disklrucache.DiskLruCache;
 
 import java.io.BufferedInputStream;
@@ -34,7 +35,7 @@ import java.util.Set;
 
 
 /**
- * 结合LruCache和DiskLruCache实现突破加载。
+ * 结合LruCache和DiskLruCache实现图片加载。
  * <p>
  * http://blog.csdn.net/guolin_blog/article/details/10470797
  * </p>
@@ -50,11 +51,6 @@ public class PhotoWallAdapter2 extends ArrayAdapter<String> {
     private Set<BitmapWorkerTask> taskCollection;
 
     /**
-     * 图片缓存技术的核心类，用于缓存所有下载好的图片，在程序内存达到设定值时会将最少最近使用的图片移除掉。
-     */
-    private LruCache<String, Bitmap> mMemoryCache;
-
-    /**
      * 图片硬盘缓存核心类。
      */
     private DiskLruCache mDiskLruCache;
@@ -68,22 +64,14 @@ public class PhotoWallAdapter2 extends ArrayAdapter<String> {
      * 记录每个子项的高度。
      */
     private int mItemHeight = 0;
+    private ImageLoader imageLoader;
 
     public PhotoWallAdapter2(Context context, int textViewResourceId, String[] objects,
                              GridView photoWall) {
         super(context, textViewResourceId, objects);
         mPhotoWall = photoWall;
         taskCollection = new HashSet<BitmapWorkerTask>();
-        // 获取应用程序最大可用内存
-        int maxMemory = (int) Runtime.getRuntime().maxMemory();
-        int cacheSize = maxMemory / 8;
-        // 设置图片缓存大小为程序最大可用内存的1/8
-        mMemoryCache = new LruCache<String, Bitmap>(cacheSize) {
-            @Override
-            protected int sizeOf(String key, Bitmap bitmap) {
-                return bitmap.getByteCount();
-            }
-        };
+        imageLoader = ImageLoader.getInstance();
         try {
             // 获取图片缓存路径
             File cacheDir = getDiskCacheDir(context, "thumb");
@@ -118,27 +106,6 @@ public class PhotoWallAdapter2 extends ArrayAdapter<String> {
         return view;
     }
 
-    /**
-     * 将一张图片存储到LruCache中。
-     *
-     * @param key    LruCache的键，这里传入图片的URL地址。
-     * @param bitmap LruCache的键，这里传入从网络上下载的Bitmap对象。
-     */
-    public void addBitmapToMemoryCache(String key, Bitmap bitmap) {
-        if (getBitmapFromMemoryCache(key) == null) {
-            mMemoryCache.put(key, bitmap);
-        }
-    }
-
-    /**
-     * 从LruCache中获取一张图片，如果不存在就返回null。
-     *
-     * @param key LruCache的键，这里传入图片的URL地址。
-     * @return 对应传入键的Bitmap对象，或者null。
-     */
-    public Bitmap getBitmapFromMemoryCache(String key) {
-        return mMemoryCache.get(key);
-    }
 
     /**
      * 加载Bitmap对象。此方法会在LruCache中检查所有屏幕中可见的ImageView的Bitmap对象，
@@ -146,12 +113,14 @@ public class PhotoWallAdapter2 extends ArrayAdapter<String> {
      */
     public void loadBitmaps(ImageView imageView, String imageUrl) {
         try {
-            Bitmap bitmap = getBitmapFromMemoryCache(imageUrl);
+            Bitmap bitmap = imageLoader.getBitmapFromMemoryCache(imageUrl);
             if (bitmap == null) {
                 BitmapWorkerTask task = new BitmapWorkerTask();
                 taskCollection.add(task);
                 task.execute(imageUrl);
+                LogUtil.myD("执行获取图片Task");
             } else {
+                LogUtil.myD("11，从LruCache中获取");
                 if (imageView != null && bitmap != null) {
                     imageView.setImageBitmap(bitmap);
                 }
@@ -279,6 +248,7 @@ public class PhotoWallAdapter2 extends ArrayAdapter<String> {
                     DiskLruCache.Editor editor = mDiskLruCache.edit(key);
                     if (editor != null) {
                         OutputStream outputStream = editor.newOutputStream(0);
+                        LogUtil.myD("33，从网络中获取");
                         if (downloadUrlToStream(imageUrl, outputStream)) {
                             editor.commit();
                         } else {
@@ -289,6 +259,7 @@ public class PhotoWallAdapter2 extends ArrayAdapter<String> {
                     snapShot = mDiskLruCache.get(key);
                 }
                 if (snapShot != null) {
+                    LogUtil.myD("22，从DiskLruCache中获取");
                     fileInputStream = (FileInputStream) snapShot.getInputStream(0);
                     fileDescriptor = fileInputStream.getFD();
                 }
@@ -299,7 +270,7 @@ public class PhotoWallAdapter2 extends ArrayAdapter<String> {
                 }
                 if (bitmap != null) {
                     // 将Bitmap对象添加到内存缓存当中
-                    addBitmapToMemoryCache(params[0], bitmap);
+                    imageLoader.addBitmapToMemoryCache(params[0], bitmap);
                 }
                 return bitmap;
             } catch (IOException e) {
@@ -365,7 +336,5 @@ public class PhotoWallAdapter2 extends ArrayAdapter<String> {
             }
             return false;
         }
-
     }
-
 }
