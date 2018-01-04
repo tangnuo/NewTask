@@ -71,7 +71,8 @@
         <activity android:name=".example.activity.TestGreenDaoActivity" />
         <activity android:name=".example.activity.TestLruCacheActivity" />
         <activity android:name=".example.activity.TestLruCacheActivity2" />
-        <activity android:name=".example.activity.TextSwitcherActivity"></activity>
+        <activity android:name=".example.activity.TextSwitcherActivity" />
+        <activity android:name=".example.activity.TestThreadPoolActivity"></activity>
     </application>
 
 </manifest>
