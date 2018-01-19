@@ -72,7 +72,8 @@
         <activity android:name=".example.activity.TestLruCacheActivity" />
         <activity android:name=".example.activity.TestLruCacheActivity2" />
         <activity android:name=".example.activity.TextSwitcherActivity" />
-        <activity android:name=".example.activity.TestThreadPoolActivity"></activity>
+        <activity android:name=".example.activity.TestThreadPoolActivity" />
+        <activity android:name=".example.activity.TestAudioActivity"></activity>
     </application>
 
 </manifest>
