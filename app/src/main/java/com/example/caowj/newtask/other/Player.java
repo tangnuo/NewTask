@@ -16,6 +16,8 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.SeekBar;
 
+import com.example.caowj.newtask.utils.LogUtil;
+
 import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -39,7 +41,7 @@ public class Player implements OnBufferingUpdateListener,
             Log.e("mediaPlayer", "error", e);
         }
 
-        mTimer.schedule(mTimerTask, 0, 1000);
+        mTimer.schedule(mTimerTask, 0, 500);
     }
 
     /*******************************************************
@@ -66,6 +68,9 @@ public class Player implements OnBufferingUpdateListener,
                 long pos = skbProgress.getMax() * position / duration;
                 skbProgress.setProgress((int) pos);
             }
+
+            LogUtil.myD("position:" + position + ",,duration:" + duration);
+//            if (position)
         }
 
         ;
@@ -144,11 +149,14 @@ public class Player implements OnBufferingUpdateListener,
             isPause = false;
         }
         Log.e("mediaPlayer", "onPrepared");
+        LogUtil.myD("onPrepared...");
     }
 
     @Override
     public void onCompletion(MediaPlayer arg0) {
         Log.e("mediaPlayer", "onCompletion");
+        LogUtil.myD("onCompletion（播放结束）...");
+
     }
 
     @Override
