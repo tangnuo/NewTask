@@ -73,7 +73,8 @@
         <activity android:name=".example.activity.TestLruCacheActivity2" />
         <activity android:name=".example.activity.TextSwitcherActivity" />
         <activity android:name=".example.activity.TestThreadPoolActivity" />
-        <activity android:name=".example.activity.TestAudioActivity"></activity>
+        <activity android:name=".example.activity.TestAudioActivity" />
+        <activity android:name=".example.activity.TestAudioListActivity"></activity>
     </application>
 
 </manifest>

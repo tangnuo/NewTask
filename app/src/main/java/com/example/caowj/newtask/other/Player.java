@@ -44,6 +44,18 @@ public class Player implements OnBufferingUpdateListener,
         mTimer.schedule(mTimerTask, 0, 500);
     }
 
+    public Player() {
+
+        try {
+            mediaPlayer = new MediaPlayer();
+            mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+            mediaPlayer.setOnBufferingUpdateListener(this);
+            mediaPlayer.setOnPreparedListener(this);
+        } catch (Exception e) {
+            Log.e("mediaPlayer", "error", e);
+        }
+    }
+
     /*******************************************************
      * 通过定时器和Handler来更新进度条
      ******************************************************/
@@ -161,9 +173,11 @@ public class Player implements OnBufferingUpdateListener,
 
     @Override
     public void onBufferingUpdate(MediaPlayer arg0, int bufferingProgress) {
-        skbProgress.setSecondaryProgress(bufferingProgress);
-        int currentProgress = skbProgress.getMax() * mediaPlayer.getCurrentPosition() / mediaPlayer.getDuration();
-        Log.e(currentProgress + "% play", bufferingProgress + "% buffer");
+        if (skbProgress != null) {
+            skbProgress.setSecondaryProgress(bufferingProgress);
+            int currentProgress = skbProgress.getMax() * mediaPlayer.getCurrentPosition() / mediaPlayer.getDuration();
+            Log.e(currentProgress + "% play", bufferingProgress + "% buffer");
+        }
     }
 
 }
