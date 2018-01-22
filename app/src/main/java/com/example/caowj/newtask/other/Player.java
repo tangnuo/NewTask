@@ -125,17 +125,6 @@ public class Player implements OnBufferingUpdateListener,
     }
 
     public void pauseOrStop(Button button) {
-//        if (mediaPlayer.isPlaying() && !isPause) {
-//            mediaPlayer.pause();
-//            isPause = true;
-//            button.setText("继续2");
-//            LogUtil.myD("55555555555");
-//        } else {
-//            mediaPlayer.stop();
-//            button.setText("播放2");
-//        }
-
-
         mediaPlayer.stop();
         mediaPlayer.release();
         mediaPlayer = null;
