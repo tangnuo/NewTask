@@ -42,7 +42,7 @@ public class TestAudioActivity extends BaseActivity {
         @Override
         public void onClick(View arg0) {
             if (arg0 == btnPause) {
-                player.pause();
+                player.pauseOrStart();
             } else if (arg0 == btnPlayUrl) {
                 //在百度MP3里随便搜索到的,大家可以试试别的链接
                 String url = "http://sc1.111ttt.cn:8282/2017/1/11m/11/304112003137.m4a?tflag=1516348800&pin=1d3e05b2704f5dca0b6ff2e5d040bf2c#.mp3";

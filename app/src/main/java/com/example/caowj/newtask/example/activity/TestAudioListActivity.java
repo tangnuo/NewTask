@@ -11,6 +11,7 @@ import android.widget.Button;
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.other.Player;
+import com.example.caowj.newtask.utils.LogUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -113,22 +114,31 @@ public class TestAudioListActivity extends BaseActivity {
                 ((PlayViewHolder) holder).btnOpen.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
-                        if (playerHashMap.get(lastPosition) != null) {
-                            playerHashMap.get(lastPosition).playUrl2(lastBtn, musicList.get(lastPosition));
-                        }
-
-
-                        Player player;
-                        if (playerHashMap.get(position) == null) {
-                            player = new Player();
-                            playerHashMap.put(position, player);
+//先停止上一个打开的
+                        Player oldPlayer = playerHashMap.get(lastPosition);
+                        if (oldPlayer != null && lastPosition != position) {
+                            //暂停（防止，player准备没有完成的情况。）
+                            oldPlayer.pauseOrStop(lastBtn);
+                            playerHashMap.remove(lastPosition);
+                            LogUtil.myD("停止其他lastPosition:" + lastPosition + ",position:" + position);
                         } else {
-                            player = playerHashMap.get(position);
+                            LogUtil.myD("无效lastPosition:" + lastPosition + ",position:" + position);
                         }
-                        player.playUrl2(((PlayViewHolder) holder).btnOpen, url);
+
+//新创建一个播放器
+                        Player newPlayer;
+                        if (playerHashMap.get(position) == null) {
+                            newPlayer = new Player();
+                            playerHashMap.put(position, newPlayer);
+                        } else {
+                            newPlayer = playerHashMap.get(position);
+                        }
+
+                        newPlayer.playUrl2(((PlayViewHolder) holder).btnOpen, url);
                         lastBtn = ((PlayViewHolder) holder).btnOpen;
                         lastPosition = position;
+
+
                     }
                 });
             }

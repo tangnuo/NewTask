@@ -102,6 +102,4 @@ public class FunctionListActivity extends BaseActivity {
     protected void memoryRecovery() {
 
     }
-
-
 }

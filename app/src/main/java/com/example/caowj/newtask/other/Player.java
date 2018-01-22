@@ -94,7 +94,8 @@ public class Player implements OnBufferingUpdateListener,
         try {
             mediaPlayer.reset();
             mediaPlayer.setDataSource(videoUrl);
-            mediaPlayer.prepare();//prepare之后自动播放
+//            mediaPlayer.prepare();//prepare之后自动播放
+            mediaPlayer.prepareAsync();//prepare之后自动播放
             //mediaPlayer.start();
         } catch (IllegalArgumentException e) {
             // TODO Auto-generated catch block
@@ -112,35 +113,56 @@ public class Player implements OnBufferingUpdateListener,
     /**
      * 暂停、继续
      */
-    public void pause() {
+    public void pauseOrStart() {
         if (mediaPlayer.isPlaying() && !isPause) {
             mediaPlayer.pause();
             isPause = true;
         } else {
-            mediaPlayer.start();
+//            mediaPlayer.start();
+            mediaPlayer.prepareAsync();
             isPause = false;
         }
+    }
+
+    public void pauseOrStop(Button button) {
+//        if (mediaPlayer.isPlaying() && !isPause) {
+//            mediaPlayer.pause();
+//            isPause = true;
+//            button.setText("继续2");
+//            LogUtil.myD("55555555555");
+//        } else {
+//            mediaPlayer.stop();
+//            button.setText("播放2");
+//        }
+
+
+        mediaPlayer.stop();
+        mediaPlayer.release();
+        mediaPlayer = null;
+        button.setText("播放2");
     }
 
     /**
      * 开始、暂停、继续
      */
     public void playUrl2(Button button, String videoUrl) {
-        if (mediaPlayer.getCurrentPosition() > 0) {
+        if (mediaPlayer != null && mediaPlayer.getCurrentPosition() > 0) {
             if (mediaPlayer.isPlaying() && !isPause) {
                 mediaPlayer.pause();
                 isPause = true;
                 button.setText("继续");
+                LogUtil.myD("333333333333");
             } else {
                 mediaPlayer.start();
                 isPause = false;
                 button.setText("暂停2");
+                LogUtil.myD("22222222222");
             }
         } else {
             playUrl(videoUrl);
             button.setText("暂停");
+            LogUtil.myD("111111111");
         }
-
     }
 
     public void stop() {
