@@ -36,6 +36,7 @@ public class Player implements OnBufferingUpdateListener,
             mediaPlayer = new MediaPlayer();
             mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
             mediaPlayer.setOnBufferingUpdateListener(this);
+            mediaPlayer.setOnCompletionListener(this);
             mediaPlayer.setOnPreparedListener(this);
         } catch (Exception e) {
             Log.e("mediaPlayer", "error", e);
@@ -50,6 +51,7 @@ public class Player implements OnBufferingUpdateListener,
             mediaPlayer = new MediaPlayer();
             mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
             mediaPlayer.setOnBufferingUpdateListener(this);
+            mediaPlayer.setOnCompletionListener(this);
             mediaPlayer.setOnPreparedListener(this);
         } catch (Exception e) {
             Log.e("mediaPlayer", "error", e);
