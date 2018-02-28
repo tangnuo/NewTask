@@ -94,6 +94,7 @@ public class FunctionListActivity extends BaseActivity {
         sparseArray.put(25, TestThreadPoolActivity.class);
         sparseArray.put(26, TestAudioActivity.class);
         sparseArray.put(27, TestAudioListActivity.class);
+        sparseArray.put(28, TestTextureViewActivity.class);
 
         functionListAdapter = new FunctionListAdapter(mActivity, sparseArray);
     }
