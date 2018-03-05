@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.example.activity.FunctionListActivity;
+import com.example.caowj.newtask.utils.AppIconManager;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -20,6 +21,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        new AppIconManager().pmTest(this);
     }
 
     @Override
