@@ -35,6 +35,18 @@
         </activity>
 
         <activity-alias
+            android:name=".MainActivity3"
+            android:enabled="false"
+            android:icon="@drawable/location"
+            android:label="工程3"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
             android:name=".MainActivity2"
             android:enabled="false"
             android:icon="@drawable/home"
@@ -47,18 +59,6 @@
             </intent-filter>
         </activity-alias>
 
-        <activity-alias
-            android:name=".MainActivity3"
-            android:enabled="false"
-            android:icon="@drawable/location"
-            android:label="工程3"
-            android:targetActivity=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity-alias>
         <activity
             android:name=".example.activity.FunctionListActivity"
             android:label="功能列表" />
@@ -103,7 +103,7 @@
         <activity android:name=".example.activity.TestThreadPoolActivity" />
         <activity android:name=".example.activity.TestAudioActivity" />
         <activity android:name=".example.activity.TestAudioListActivity" />
-        <activity android:name=".example.activity.TestTextureViewActivity"></activity>
+        <activity android:name=".example.activity.TestTextureViewActivity" />
 
         <receiver android:name=".other.BootupReceiver">
             <intent-filter android:priority="1000">
@@ -116,6 +116,9 @@
                 <data android:scheme="file" />
             </intent-filter>
         </receiver>
+
+        <activity android:name=".example.activity.TestIntentServiceActivity"></activity>
+        <service android:name=".example.service.MyIntentService" />
     </application>
 
 </manifest>
