@@ -12,4 +12,6 @@
     <string name="dialog_fragment">DialogFragment弹窗</string>
     <string name="cancle">取消</string>
     <string name="ok">确定</string>
+    <string name="test1">测试1</string>
+    <string name="test2">测试2</string>
 </resources>

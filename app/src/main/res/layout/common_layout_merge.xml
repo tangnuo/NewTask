@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Button
+        android:id="@+id/btn_test1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/test1" />
+
+
+    <Button
+        android:id="@+id/btn_test2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/test2" />
+
+
+    <ViewStub
+        android:id="@+id/stub"
+        android:inflatedId="@+id/subTree"
+        android:layout="@layout/my_sub_tree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</merge>

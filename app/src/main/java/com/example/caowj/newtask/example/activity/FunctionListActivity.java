@@ -97,6 +97,8 @@ public class FunctionListActivity extends BaseActivity {
         sparseArray.put(28, TestTextureViewActivity.class);
         sparseArray.put(29, TestIntentServiceActivity.class);
         sparseArray.put(30, TestFragmentDialogActivity.class);
+        sparseArray.put(31, TestUIActivity.class);
+        sparseArray.put(32, TestNestedScrollActivity.class);
 
         functionListAdapter = new FunctionListAdapter(mActivity, sparseArray);
     }

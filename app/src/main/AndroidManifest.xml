@@ -121,7 +121,11 @@
 
         <service android:name=".example.service.MyIntentService" />
 
-        <activity android:name=".example.activity.TestFragmentDialogActivity"></activity>
+        <activity android:name=".example.activity.TestFragmentDialogActivity" />
+        <activity android:name=".example.activity.TestUIActivity" />
+        <activity
+            android:name=".example.activity.TestNestedScrollActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
     </application>
 
 </manifest>
