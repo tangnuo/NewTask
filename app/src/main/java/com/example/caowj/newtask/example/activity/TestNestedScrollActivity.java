@@ -66,7 +66,7 @@ public class TestNestedScrollActivity extends BaseActivity {
             tabLayout.addTab(tabLayout.newTab().setText("TAB" + i));
         }
         //TabLayout的切换监听
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 initData(tab.getPosition() + 1);
