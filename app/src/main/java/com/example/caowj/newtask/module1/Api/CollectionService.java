@@ -18,6 +18,7 @@ import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 
 /**
+ * 网络请求接口
  * by y on 2016/5/17.
  */
 public interface CollectionService {

@@ -21,6 +21,8 @@ import retrofit2.Response;
 import static com.chad.library.adapter.base.listener.SimpleClickListener.TAG;
 
 /**
+ * 使用Retrofit2获取服务端数据。
+ *
  * by y on 2016/4/28.
  */
 public class TabNameModelImpl extends BaseModelImpl<BaseDataBridge.TabNameData> implements BaseModel.TabNameModel {

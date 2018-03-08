@@ -22,6 +22,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * <p>
+ * 处理业务逻辑；连接View和model。
+ * </p>
  * by 12406 on 2016/5/14.
  */
 public class TabNamePresenterImpl extends BasePresenterImpl<BaseView.TabNameView>
