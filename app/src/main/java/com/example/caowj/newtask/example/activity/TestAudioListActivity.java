@@ -22,6 +22,9 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+/**
+ * 音频列表播放（参考启拍V2.6.6 听游功能）
+ */
 public class TestAudioListActivity extends BaseActivity {
 
     @BindView(R.id.mRecyclerView)

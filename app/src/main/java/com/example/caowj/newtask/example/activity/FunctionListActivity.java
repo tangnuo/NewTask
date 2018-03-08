@@ -27,7 +27,13 @@ public class FunctionListActivity extends BaseActivity {
     private FunctionListAdapter functionListAdapter;
 
     public static void newInstance(Context context) {
-        Intent intent = new Intent(context, FunctionListActivity.class);
+        //显示Intent
+//        Intent intent = new Intent(context, FunctionListActivity.class);
+//        context.startActivity(intent);
+
+//        隐式Intent
+        String mAction = context.getPackageName() + ".FunctionList";
+        Intent intent = new Intent(mAction);
         context.startActivity(intent);
     }
 

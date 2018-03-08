@@ -15,6 +15,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
+ * TextureView使用<br/>
+ *
  * http://blog.csdn.net/HardWorkingAnt/article/details/72784044
  */
 public class TestTextureViewActivity extends BaseActivity implements TextureView.SurfaceTextureListener, MediaPlayer.OnPreparedListener {

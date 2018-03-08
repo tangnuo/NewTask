@@ -12,6 +12,9 @@ import com.example.caowj.newtask.widget.MyDialogFragment2;
 import butterknife.BindView;
 import butterknife.OnClick;
 
+/**
+ * FragmentDialog替代AlertDialog
+ */
 public class TestFragmentDialogActivity extends BaseActivity {
 
     @BindView(R.id.btn_test)

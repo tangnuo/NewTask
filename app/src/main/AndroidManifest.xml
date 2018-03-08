@@ -61,7 +61,12 @@
 
         <activity
             android:name=".example.activity.FunctionListActivity"
-            android:label="功能列表" />
+            android:label="功能列表">
+            <intent-filter>
+                <action android:name="${applicationId}.FunctionList" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".example.activity.BottomNavigationActivity"
             android:label="导航栏" />
@@ -81,6 +86,7 @@
         <activity android:name=".example.activity.ViewShowActivity" />
         <activity android:name=".example.activity.ZoomImageActivity" />
         <activity android:name=".example.activity.GestureDetectorActivity" />
+        <activity android:name=".example.activity.SearchViewActivity" />
         <activity android:name=".example.activity.TestCommonAdapterActivity1" />
         <activity android:name=".example.activity.TestCommonAdapterActivity2" />
         <activity android:name=".example.activity.TestMinaActivity" />

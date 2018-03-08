@@ -9,6 +9,9 @@ import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.other.Player;
 
+/**
+ * 音频播放一
+ */
 public class TestAudioActivity extends BaseActivity {
 
     private Button btnPause, btnPlayUrl, btnStop, btnOpen;

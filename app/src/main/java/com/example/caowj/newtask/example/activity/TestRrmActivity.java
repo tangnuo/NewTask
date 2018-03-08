@@ -46,6 +46,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * 根据天行数据，访问微信精选文章（成功）
  * <p/>
+ * Retrofit获取数据
  * <p>
  * http://api.tianapi.com/wxnew/?key=145170256f0d5a708fef46f45977122b&num=10
  */

@@ -18,6 +18,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+/**
+ * <p>
+ * 列表字母排序滑动索引
+ * </p>
+ */
 public class IndexableListActivity2 extends AppCompatActivity {
 
     private RecyclerView rvMain;

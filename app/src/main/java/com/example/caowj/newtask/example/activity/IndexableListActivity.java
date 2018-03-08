@@ -18,6 +18,9 @@ import java.util.Collections;
 import java.util.Comparator;
 
 /**
+ * <p>
+ *     列表字母排序滑动索引
+ * </p>
  * @deprecated {@link IndexableListActivity2 }
  */
 public class IndexableListActivity extends AppCompatActivity {

@@ -20,6 +20,9 @@ import java.util.concurrent.TimeUnit;
 import butterknife.BindView;
 import butterknife.OnClick;
 
+/**
+ * 线程池
+ */
 public class TestThreadPoolActivity extends BaseActivity {
 
     @BindView(R.id.btn_thread1)

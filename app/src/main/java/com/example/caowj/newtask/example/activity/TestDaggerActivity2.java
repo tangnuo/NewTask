@@ -12,6 +12,9 @@ import com.example.caowj.newtask.example.mDagger.module.AppModule;
 
 import javax.inject.Inject;
 
+/**
+ * dagger2实现依赖注入
+ */
 public class TestDaggerActivity2 extends BaseActivity {
     private ViewPager viewPager;
     private TabLayout tabLayout;

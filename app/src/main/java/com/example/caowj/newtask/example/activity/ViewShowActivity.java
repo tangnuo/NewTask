@@ -7,6 +7,9 @@ import com.example.caowj.newtask.R;
 
 /**
  * 自定义控件展示<br/>
+ * <p>
+ *     画笔、画布、路径
+ * </p>
  *
  * 推荐阅读：http://www.gcssloop.com/customview/CustomViewIndex<br/>
  *

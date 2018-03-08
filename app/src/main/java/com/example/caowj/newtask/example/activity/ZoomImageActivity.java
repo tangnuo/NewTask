@@ -5,6 +5,9 @@ import android.os.Bundle;
 
 import com.example.caowj.newtask.R;
 
+/**
+ * 图片中心点缩放（双击、手势）
+ */
 public class ZoomImageActivity extends AppCompatActivity {
 
     @Override

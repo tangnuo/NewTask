@@ -19,7 +19,7 @@ import butterknife.BindView;
 
 /**
  * <p>
- * 嵌套滚动
+ * NestedScrollView嵌套滚动
  * </p>
  */
 public class TestNestedScrollActivity extends BaseActivity {
