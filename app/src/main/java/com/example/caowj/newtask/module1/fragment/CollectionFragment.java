@@ -35,11 +35,15 @@ import butterknife.Unbinder;
  * Created by Pan S.Q
  * on 2017/5/4.
  * 雅集
+ * <p>
+ * 1、采用MVP架构重构了雅集列表的功能；
+ * 2、使用Retrofit2请求服务端数据；
+ * 3、官方刷新控件；
+ * </p>
  *
  * <p>
- *     1、采用MVP架构重构了雅集列表的功能。
- *     2、使用Retrofit2请求服务端数据。
- *     3、RxJava2的操作符没有使用。
+ *     缺点：RxJava2的操作符没有使用。<br/>
+ *     参考：https://github.com/nanchen2251/RxJava2Examples
  * </p>
  * http://admin.qipaiapp.com/QiPaiAPI/PaipinInfo.asmx?op=GetListYaWu 筛选条件
  */
