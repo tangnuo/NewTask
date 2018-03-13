@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 /**
  * https://github.com/jianghejie/XRecyclerView<p/>
- * 官方刷新控件+RecyclerView自动加载更多。<br/>
+ * 官方刷新控件+XRecyclerView自动加载更多。<br/>
  * 关键点：<p/>
  * 1、设置xRecyclerView不可下拉；<br/>
  * 2、在SwipeRefreshLayout外包裹一层FrameLayout。https://github.com/jianghejie/XRecyclerView/issues/163<br/>

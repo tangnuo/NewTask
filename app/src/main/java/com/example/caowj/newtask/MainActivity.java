@@ -52,7 +52,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initWidget() {
         super.initWidget();
-        btnGo.setText("去吧");
+        btnGo.setText("从这里开始");
     }
 
     @Override

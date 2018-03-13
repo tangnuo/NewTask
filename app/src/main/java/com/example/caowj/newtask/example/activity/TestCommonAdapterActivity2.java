@@ -49,7 +49,7 @@ public class TestCommonAdapterActivity2 extends BaseActivity {
         }
 
         personList2 = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 50; i++) {
             //数据组装时，注意Type
             if (i > 4) {
                 Person2 person3 = new Person2(Person2.IMG, "multiple--" + i);
