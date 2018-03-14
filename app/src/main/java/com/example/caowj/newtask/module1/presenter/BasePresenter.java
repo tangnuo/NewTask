@@ -14,6 +14,9 @@ public interface BasePresenter {
     }
 
 
+    /**
+     * 所有的接口面向View
+     */
     interface TabNamePresenter {
         void getNavigationP();
 
@@ -23,4 +26,10 @@ public interface BasePresenter {
 
         void onLoadMoreBegin();
     }
+
+    interface IndexPresenter {
+        void getAdInfoP();
+    }
 }
+
+

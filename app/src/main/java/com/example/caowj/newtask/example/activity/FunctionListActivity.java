@@ -12,6 +12,7 @@ import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.example.adapter.FunctionListAdapter;
 import com.example.caowj.newtask.module1.activity.MvpLoginActivity;
+import com.example.caowj.newtask.module1.activity.QipaiIndexActivity;
 import com.example.caowj.newtask.module1.activity.QipaiNewActivity;
 import com.example.caowj.newtask.utils.LogUtil;
 
@@ -60,6 +61,9 @@ public class FunctionListActivity extends BaseActivity {
 
     }
 
+    /**
+     *
+     */
     @Override
     protected void initData() {
         super.initData();
@@ -105,6 +109,7 @@ public class FunctionListActivity extends BaseActivity {
         sparseArray.put(30, TestFragmentDialogActivity.class);
         sparseArray.put(31, TestUIActivity.class);
         sparseArray.put(32, TestNestedScrollActivity.class);
+        sparseArray.put(33, QipaiIndexActivity.class);
 
         functionListAdapter = new FunctionListAdapter(mActivity, sparseArray);
     }

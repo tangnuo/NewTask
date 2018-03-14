@@ -3,11 +3,15 @@ package com.example.caowj.newtask.example.activity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.TextView;
 
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.example.adapter.MultipleItemQuickAdapter2;
+import com.example.caowj.newtask.example.adapter.MultipleItemQuickAdapter3;
 import com.example.caowj.newtask.example.adapter.TestCommonAdapterAdapter2;
+import com.example.caowj.newtask.example.adapter.TestCommonAdapterAdapter3;
 import com.example.caowj.newtask.example.bean.Person;
 import com.example.caowj.newtask.example.bean.Person2;
 
@@ -15,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * 使用：https://github.com/CymChad/BaseRecyclerViewAdapterHelper
@@ -74,6 +79,7 @@ public class TestCommonAdapterActivity2 extends BaseActivity {
     private void singleType() {
 
         TestCommonAdapterAdapter2 testCommonAdapterAdapter2 = new TestCommonAdapterAdapter2(R.layout.item_list, personList);
+        TestCommonAdapterAdapter3 testCommonAdapterAdapter3 = new TestCommonAdapterAdapter3(R.layout.item_list, personList);
         mRecyclerView.setAdapter(testCommonAdapterAdapter2);
     }
 
@@ -82,6 +88,7 @@ public class TestCommonAdapterActivity2 extends BaseActivity {
      */
     private void multipleType() {
         MultipleItemQuickAdapter2 multipleItemAdapter = new MultipleItemQuickAdapter2(personList2);
+        MultipleItemQuickAdapter3 multipleItemAdapter2 = new MultipleItemQuickAdapter3(personList2);
         mRecyclerView.setAdapter(multipleItemAdapter);
     }
 }

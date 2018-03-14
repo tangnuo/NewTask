@@ -7,7 +7,7 @@ import com.example.caowj.newtask.module1.Api.Network;
 import com.example.caowj.newtask.module1.constants.WSConstants;
 import com.example.caowj.newtask.module1.entity.NavigationInfo;
 import com.example.caowj.newtask.module1.entity.PaiPinInfo2;
-import com.example.caowj.newtask.module1.model.BaseDataBridge;
+import com.example.caowj.newtask.module1.presenter.BaseDataBridge;
 import com.example.caowj.newtask.module1.model.BaseModel;
 import com.example.caowj.newtask.utils.LogUtil;
 
@@ -25,10 +25,10 @@ import static com.chad.library.adapter.base.listener.SimpleClickListener.TAG;
  *
  * by y on 2016/4/28.
  */
-public class TabNameModelImpl extends BaseModelImpl<BaseDataBridge.TabNameData> implements BaseModel.TabNameModel {
+public class TabNameModelImpl extends BaseModelImpl<BaseDataBridge.TabNameDataBridge> implements BaseModel.TabNameModel {
 
 
-    public TabNameModelImpl(BaseDataBridge.TabNameData modelImpl) {
+    public TabNameModelImpl(BaseDataBridge.TabNameDataBridge modelImpl) {
         super(modelImpl);
     }
 

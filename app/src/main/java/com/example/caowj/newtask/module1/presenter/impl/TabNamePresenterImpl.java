@@ -8,7 +8,7 @@ import com.example.caowj.newtask.module1.entity.PaiPinInfo2;
 import com.example.caowj.newtask.module1.entity.bean.NavigationBean;
 import com.example.caowj.newtask.module1.entity.bean.PaiPinBean;
 import com.example.caowj.newtask.module1.listener.BroadcastCallback;
-import com.example.caowj.newtask.module1.model.BaseDataBridge;
+import com.example.caowj.newtask.module1.presenter.BaseDataBridge;
 import com.example.caowj.newtask.module1.model.BaseModel;
 import com.example.caowj.newtask.module1.model.impl.TabNameModelImpl;
 import com.example.caowj.newtask.module1.presenter.BasePresenter;
@@ -25,10 +25,12 @@ import java.util.List;
  * <p>
  * 处理业务逻辑；连接View和model。
  * </p>
+ *
+ *
  * by 12406 on 2016/5/14.
  */
 public class TabNamePresenterImpl extends BasePresenterImpl<BaseView.TabNameView>
-        implements BasePresenter.TabNamePresenter, BaseDataBridge.TabNameData {
+        implements BasePresenter.TabNamePresenter, BaseDataBridge.TabNameDataBridge {
 
     private final BaseModel.TabNameModel tabNameModel;
     private Context mContext;

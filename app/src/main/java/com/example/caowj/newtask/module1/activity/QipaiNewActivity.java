@@ -17,6 +17,7 @@ public class QipaiNewActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qipai_new);
+        //主要代码见Fragment
     }
 
 }

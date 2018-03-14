@@ -72,4 +72,8 @@ dependencies {
 //    greenDao
     compile 'org.greenrobot:greendao:3.2.2' // add library
     compile 'com.jakewharton:disklrucache:2.0.2'
+
+    compile('me.drakeet.multitype:multitype:3.4.4', {
+        exclude group: 'com.android.support'
+    })
 }

@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.caowj.newtask.example.activity.SwipeRefreshActivity">
+    tools:context="com.example.caowj.newtask.module1.activity.QipaiIndexActivity">
 
     <include layout="@layout/common_layout_swipe_recyclerview" />
-
 </android.support.constraint.ConstraintLayout>

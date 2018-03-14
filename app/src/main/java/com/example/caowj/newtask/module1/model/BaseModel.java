@@ -12,4 +12,8 @@ public interface BaseModel<T> {
         void getDataByTypeM(int typeId, int pageSize, int pageIndex);
     }
 
+
+    interface IndexModel extends BaseModel {
+        void getAdInfoM();
+    }
 }

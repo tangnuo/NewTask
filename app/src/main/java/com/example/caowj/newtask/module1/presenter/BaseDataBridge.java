@@ -1,5 +1,6 @@
-package com.example.caowj.newtask.module1.model;
+package com.example.caowj.newtask.module1.presenter;
 
+import com.example.caowj.newtask.module1.ItemViewBinder.ADInfoList;
 import com.example.caowj.newtask.module1.entity.NavigationInfo;
 import com.example.caowj.newtask.module1.entity.PaiPinInfo2;
 import com.example.caowj.newtask.module1.entity.bean.NavigationBean;
@@ -16,10 +17,16 @@ public interface BaseDataBridge<T> {
 
     void error();
 
-    interface TabNameData extends BaseDataBridge<NavigationBean> {
+    /**
+     * 所有的接口面向model
+     */
+    interface TabNameDataBridge extends BaseDataBridge<NavigationBean> {
         void showNavigationP(NavigationInfo navigationInfo);
 
         void showPaiPinInfoP(PaiPinInfo2 paiPinInfo);
     }
 
+    interface IndexDataBridge extends BaseDataBridge<ADInfoList> {
+        void showAdInfoListB(ADInfoList adInfoList);
+    }
 }
