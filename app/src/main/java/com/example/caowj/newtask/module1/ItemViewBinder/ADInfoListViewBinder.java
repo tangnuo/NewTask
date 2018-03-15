@@ -10,6 +10,7 @@ import android.widget.RelativeLayout;
 
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.module1.entity.bean.AdBean;
+import com.example.caowj.newtask.utils.LogUtil;
 import com.example.caowj.newtask.utils.business.MyAndroidUtils;
 import com.example.caowj.newtask.widget.BannerView;
 
@@ -40,6 +41,8 @@ public class ADInfoListViewBinder extends ItemViewBinder<ADInfoList, ADInfoListV
 
     @Override
     protected void onBindViewHolder(@NonNull BannerAndSearchViewHolder holder, @NonNull ADInfoList adInfoList) {
+
+        LogUtil.myD("轮播图开始显示了...");
         //根据是否有通知模块决定marginBottom的值
         RelativeLayout.LayoutParams parentParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         parentParams.setMargins(0, 0, 0, 16);
@@ -52,7 +55,7 @@ public class ADInfoListViewBinder extends ItemViewBinder<ADInfoList, ADInfoListV
         params.height = height;
         holder.slideshowView.setLayoutParams(params);
 
-        List<AdBean> adInfos = adInfoList.getAdInfoList();
+        List<AdBean> adInfos = adInfoList.getData();
         //当前集合大于1时执行轮播效果
         boolean isAuto = adInfos.size() > 1 ? true : false;
         BannerView slideshowView = holder.slideshowView;

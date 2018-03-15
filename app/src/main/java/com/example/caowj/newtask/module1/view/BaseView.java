@@ -1,6 +1,5 @@
 package com.example.caowj.newtask.module1.view;
 
-import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.caowj.newtask.example.bean.Person;
 import com.example.caowj.newtask.module1.ItemViewBinder.ADInfoList;
 import com.example.caowj.newtask.module1.entity.bean.NavigationBean;

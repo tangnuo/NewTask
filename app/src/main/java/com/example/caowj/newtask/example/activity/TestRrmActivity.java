@@ -9,6 +9,7 @@ import android.widget.Button;
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.module1.Api.Api;
+import com.example.caowj.newtask.module1.Api.Network;
 import com.example.caowj.newtask.module1.Api.TianService;
 import com.example.caowj.newtask.module1.constants.WSConstants;
 import com.example.caowj.newtask.module1.entity.NewsInfo;
@@ -46,7 +47,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * 根据天行数据，访问微信精选文章（成功）
  * <p/>
- * Retrofit获取数据
+ * Retrofit获取数据（基本用法）
  * <p>
  * http://api.tianapi.com/wxnew/?key=145170256f0d5a708fef46f45977122b&num=10
  */
@@ -136,6 +137,7 @@ public class TestRrmActivity extends BaseActivity {
      * Retrofit2+RxJava2访问api，返回json
      */
     void test3() {
+        // 写法一：
         Retrofit Retrofit = new Retrofit.Builder()
                 .baseUrl(Api.BASE_API_TX)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -144,6 +146,11 @@ public class TestRrmActivity extends BaseActivity {
 
         //通过Retrofit实例，创建服务接口对象
         TianService apiService = Retrofit.create(TianService.class);
+
+
+        //写法二
+        TianService apiService2 = Network.getTianService();
+
         //通过接口服务对象，调用接口中的方法，获取call对象
         Observable<NewsInfo> call = apiService.GetWxNews2(10, WSConstants.TIAN_XING_API_KEY);
 
@@ -211,7 +218,7 @@ public class TestRrmActivity extends BaseActivity {
 
 
     /**
-     * Retrofit2访问api，返回ResponseBody
+     * Retrofit2访问api，返回ResponseBody（返回Call对象的时候不支持RxJava。）
      */
     void test1() {
         Retrofit Retrofit = new Retrofit.Builder()

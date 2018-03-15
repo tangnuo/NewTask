@@ -5,6 +5,7 @@ package com.example.caowj.newtask.module1.presenter;
  */
 @SuppressWarnings("ALL")
 public class BasePresenterImpl<T> {
+    protected final String mTag = getClass().getSimpleName() + "~~~";
 
     public T presenterImpl;
 

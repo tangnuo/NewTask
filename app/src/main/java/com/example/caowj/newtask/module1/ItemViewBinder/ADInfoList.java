@@ -15,13 +15,13 @@ import java.util.List;
  */
 public class ADInfoList extends CommonBean {
 
-    private List<AdBean> adInfoList;
+    private List<AdBean> data;
 
-    public List<AdBean> getAdInfoList() {
-        return adInfoList;
+    public List<AdBean> getData() {
+        return data;
     }
 
-    public void setAdInfoList(List<AdBean> adInfoList) {
-        this.adInfoList = adInfoList;
+    public void setData(List<AdBean> data) {
+        this.data = data;
     }
 }

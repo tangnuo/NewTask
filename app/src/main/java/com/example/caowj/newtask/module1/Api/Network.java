@@ -14,12 +14,16 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 /**
+ * 参考：https://github.com/7449/Retrofit_RxJava_MVP/blob/master/app/src/main/java/com/example/y/mvp/network/Network.java
  * by y on 2016/4/28.
  */
 public class Network {
 
 
     private static CollectionService tngouApi;
+    private static TianService tianService;
+    private static IndexService indexService;
+
 
     public static CollectionService getCollectionService() {
         if (tngouApi == null) {
@@ -28,13 +32,40 @@ public class Network {
         return tngouApi;
     }
 
+    public static TianService getTianService() {
+        if (tianService == null) {
+            tianService = getRetrofit(Api.BASE_API_TX).create(TianService.class);
+        }
+        return tianService;
+    }
 
+    public static IndexService getIndexService() {
+        if (indexService == null) {
+            indexService = getRetrofit(Api.BASE_API_QIPAI).create(IndexService.class);
+        }
+        return indexService;
+    }
+
+    /******************************************************************/
+
+    /**
+     * 获取Retrofit实例
+     *
+     * @param baseUrl
+     * @return
+     */
     private static Retrofit getRetrofit(String baseUrl) {
         return new Retrofit.Builder()
                 .client(new OkHttpClient.Builder().addInterceptor(new LogInterceptor()).build())
                 .baseUrl(baseUrl)
                 .addConverterFactory(QipaiGsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())//添加RxJava2支持
+                //.addConverterFactory(ScalarsConverterFactory.create())
+                //.addConverterFactory(new StringConverterFactory())
+                //.addConverterFactory(new JsonConverterFactory())
+//                .addConverterFactory(GsonConverterFactory.create(gson))
+                //.addCallAdapterFactory()
+                //.addConverterFactory(new FileRequestBodyConverterFactory())
                 .build();
     }
 

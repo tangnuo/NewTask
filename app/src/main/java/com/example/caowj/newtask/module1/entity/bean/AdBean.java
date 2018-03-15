@@ -32,7 +32,7 @@ public class AdBean {
     /**
      * 添加时间
      */
-    private long AddTime;
+    private String AddTime;
     /**
      * 3：今日广告；4：一口价广告
      */
@@ -113,11 +113,11 @@ public class AdBean {
         Sort = sort;
     }
 
-    public long getAddTime() {
+    public String getAddTime() {
         return AddTime;
     }
 
-    public void setAddTime(long addTime) {
+    public void setAddTime(String addTime) {
         AddTime = addTime;
     }
 
