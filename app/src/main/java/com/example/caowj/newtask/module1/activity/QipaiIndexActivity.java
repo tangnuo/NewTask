@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.base.BaseActivity;
@@ -50,8 +49,7 @@ public class QipaiIndexActivity extends BaseActivity implements SwipeRefreshLayo
      */
     private MultiTypeAdapter mAdapter;
     private List<Object> listData;
-    private int refreshTime = 0;
-    private int times = 0;
+    private int pageIndex = 1;
 
 
     @Override
@@ -64,18 +62,6 @@ public class QipaiIndexActivity extends BaseActivity implements SwipeRefreshLayo
         listData = new ArrayList<>();
         indexPresenter = new IndexPresenterImpl(this);
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        mRecyclerView.setLayoutManager(layoutManager);
-
-//        mRecyclerView.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);
-//        mRecyclerView.setLoadingMoreProgressStyle(ProgressStyle.BallRotate);
-//        mRecyclerView.setArrowImageView(R.drawable.iconfont_downgrey);
-
-//        View header = LayoutInflater.from(this).inflate(R.layout.item_recyclerview_header, (ViewGroup) findViewById(android.R.id.content), false);
-//        mRecyclerView.addHeaderView(header);
-
-//        mRecyclerView.setPullRefreshEnabled(false);
 
         //设置刷新时动画的颜色，可以设置4个
         if (mSwipeRefreshLayout != null) {
@@ -84,68 +70,50 @@ public class QipaiIndexActivity extends BaseActivity implements SwipeRefreshLayo
             mSwipeRefreshLayout.setOnRefreshListener(this);
         }
 
-
-//        mRecyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
-//            @Override
-//            public void onRefresh() {
-//                initData();        //refresh data here
-//            }
-//
-//            @Override
-//            public void onLoadMore() {
-////                if (times < 2) {
-////                    new Handler().postDelayed(new Runnable() {
-////                        public void run() {
-////                            for (int i = 0; i < 15; i++) {
-////                                listData.add("item" + (1 + listData.size()));
-////                            }
-////                            mRecyclerView.loadMoreComplete();
-////                            mAdapter.notifyDataSetChanged();
-////                        }
-////                    }, 1000);
-////                } else {
-////                    new Handler().postDelayed(new Runnable() {
-////                        public void run() {
-////                            for (int i = 0; i < 9; i++) {
-////                                listData.add("item" + (1 + listData.size()));
-////                            }
-////                            mRecyclerView.setNoMore(true);
-////                            mAdapter.notifyDataSetChanged();
-////                        }
-////                    }, 1000);
-////                }
-////                times++;
-//            }
-//        });
-
+        final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        mRecyclerView.setLayoutManager(linearLayoutManager);
         mAdapter = new MultiTypeAdapter(listData);
         mAdapter.register(ADInfoList.class, new ADInfoListViewBinder(mActivity));
 //        mAdapter.register(ADInfoList.class, new ADInfoListViewBinder(mActivity));
         mRecyclerView.setAdapter(mAdapter);
 
+        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
 
-//        mAdapter.setItems();
-//        mAdapter.notifyDataSetChanged();
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (dy > 0) //向下滚动
+                {
+                    int visibleItemCount = linearLayoutManager.getChildCount();
+                    int totalItemCount = linearLayoutManager.getItemCount();
+                    int pastVisiblesItems = linearLayoutManager.findFirstVisibleItemPosition();
+
+//                    if (!loading && (visibleItemCount + pastVisiblesItems) >= totalItemCount) {
+                    if ((visibleItemCount + pastVisiblesItems) >= totalItemCount) {
+
+                        LogUtil.myD(mTag + "加载更多");
+//                        loading = true;
+//                        index+=1;
+                        loadMoreDate();
+                    }
+                }
+            }
+        });
+    }
+
+    private void loadMoreDate() {
+        pageIndex += 1;
     }
 
     @Override
     protected void initData() {
-
+        pageIndex = 1;
         indexPresenter.getAdInfoP();
-//        refreshTime++;
-//        times = 0;
-//        new Handler().postDelayed(new Runnable() {
-//            public void run() {
-//                listData.clear();
-//                for (int i = 0; i < 10; i++) {
-//                    listData.add("item" + i + "after " + refreshTime + " times of refresh");
-//                }
-//                mAdapter.notifyDataSetChanged();
-//                mRecyclerView.refreshComplete();
-//                mSwipeRefreshLayout.setRefreshing(false);
-//            }
-//
-//        }, 1000);            //refresh data here
     }
 
     @Override
@@ -160,9 +128,8 @@ public class QipaiIndexActivity extends BaseActivity implements SwipeRefreshLayo
 
     @Override
     public void onRefresh() {
-        mSwipeRefreshLayout.setRefreshing(true);
         initData();
-        Log.d("caowj", "mSwipeRefreshLayout is ok");
+        LogUtil.myD(mTag + "开始刷新");
     }
 
 
@@ -173,7 +140,7 @@ public class QipaiIndexActivity extends BaseActivity implements SwipeRefreshLayo
 
     @Override
     public void hideProgress() {
-
+        mSwipeRefreshLayout.setRefreshing(false);
     }
 
 
@@ -181,7 +148,7 @@ public class QipaiIndexActivity extends BaseActivity implements SwipeRefreshLayo
 
     @Override
     public void showProgress() {
-
+        mSwipeRefreshLayout.setRefreshing(true);
     }
 
 
@@ -191,6 +158,9 @@ public class QipaiIndexActivity extends BaseActivity implements SwipeRefreshLayo
         MyAndroidUtils.handleBroadcastReturn(code, new BroadcastCallback() {
             @Override
             public void return1001() {
+                if (pageIndex == 1) {
+                    listData.clear();
+                }
                 listData.add(adInfoList);
                 mAdapter.notifyDataSetChanged();
             }

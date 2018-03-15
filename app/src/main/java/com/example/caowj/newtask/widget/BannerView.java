@@ -171,7 +171,7 @@ public class BannerView extends FrameLayout {
                     adInfo = adInfoList.get(i - 1);
                 }
                 GlideUtils.loadStringRes(iv, AlimmdnUtil.modifyImagePath(adInfo.getImages()), GlideUtils.setConfigSize(adInfo.getImages(), 750, 500), null);
-                LogUtil.d(mTag, "当前轮播图信息：" + AlimmdnUtil.modifyImagePath(adInfo.getImages()));
+//                LogUtil.d(mTag, "当前轮播图信息：" + AlimmdnUtil.modifyImagePath(adInfo.getImages()));
                 imageViews.add(iv);
             }
         } else if (count == 1) {
@@ -180,10 +180,10 @@ public class BannerView extends FrameLayout {
             iv.setScaleType(ScaleType.CENTER_CROP);
             AdBean adInfo = adInfoList.get(count - 1);
             GlideUtils.loadStringRes(iv, AlimmdnUtil.modifyImagePath(adInfo.getImages()), GlideUtils.setConfigSize(adInfo.getImages(), 750, 500), null);
-            LogUtil.d(mTag, "当前轮播图信息：" + AlimmdnUtil.modifyImagePath(adInfo.getImages()));
+//            LogUtil.d(mTag, "当前轮播图信息：" + AlimmdnUtil.modifyImagePath(adInfo.getImages()));
             imageViews.add(iv);
         } else {
-            LogUtil.myD("没有轮播图片");
+            LogUtil.myW("没有轮播图片");
         }
 
     }

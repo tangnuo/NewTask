@@ -77,7 +77,8 @@ public class Network {
             okhttp3.Response response = chain.proceed(chain.request());
             okhttp3.MediaType mediaType = response.body().contentType();
             String content = response.body().string();
-            LogUtil.myD("response body:" + content);
+
+//            LogUtil.myD("response body:" + content);
             if (response.body() != null) {
                 ResponseBody body = ResponseBody.create(mediaType, content);
                 return response.newBuilder().body(body).build();
