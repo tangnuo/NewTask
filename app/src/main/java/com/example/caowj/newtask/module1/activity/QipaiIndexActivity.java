@@ -9,6 +9,8 @@ import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.module1.ItemViewBinder.ADInfoList;
 import com.example.caowj.newtask.module1.ItemViewBinder.ADInfoListViewBinder;
+import com.example.caowj.newtask.module1.ItemViewBinder.ScrollNotificationList;
+import com.example.caowj.newtask.module1.ItemViewBinder.ScrollNotificationListViewBinder;
 import com.example.caowj.newtask.module1.listener.BroadcastCallback;
 import com.example.caowj.newtask.module1.presenter.BasePresenter;
 import com.example.caowj.newtask.module1.presenter.impl.IndexPresenterImpl;
@@ -73,9 +75,10 @@ public class QipaiIndexActivity extends BaseActivity implements SwipeRefreshLayo
         final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(linearLayoutManager);
+
         mAdapter = new MultiTypeAdapter(listData);
         mAdapter.register(ADInfoList.class, new ADInfoListViewBinder(mActivity));
-//        mAdapter.register(ADInfoList.class, new ADInfoListViewBinder(mActivity));
+        mAdapter.register(ScrollNotificationList.class, new ScrollNotificationListViewBinder(mActivity));
         mRecyclerView.setAdapter(mAdapter);
 
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -113,6 +116,9 @@ public class QipaiIndexActivity extends BaseActivity implements SwipeRefreshLayo
     @Override
     protected void initData() {
         pageIndex = 1;
+        listData.clear();
+
+        indexPresenter.getNotificationP();
         indexPresenter.getAdInfoP();
     }
 
@@ -158,10 +164,29 @@ public class QipaiIndexActivity extends BaseActivity implements SwipeRefreshLayo
         MyAndroidUtils.handleBroadcastReturn(code, new BroadcastCallback() {
             @Override
             public void return1001() {
-                if (pageIndex == 1) {
-                    listData.clear();
-                }
                 listData.add(adInfoList);
+                mAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void return1002() {
+                LogUtil.myD("获取数据失败1002。。。");
+            }
+
+            @Override
+            public void returnOther(String code) {
+                MyAndroidUtils.returnCodePrompt(mActivity, code, null);
+            }
+        });
+    }
+
+    @Override
+    public void showNotificationV(final ScrollNotificationList notificationList) {
+        String code = notificationList.getCode();
+        MyAndroidUtils.handleBroadcastReturn(code, new BroadcastCallback() {
+            @Override
+            public void return1001() {
+                listData.add(notificationList);
                 mAdapter.notifyDataSetChanged();
             }
 

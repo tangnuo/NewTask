@@ -2,6 +2,7 @@ package com.example.caowj.newtask.module1.Api;
 
 
 import com.example.caowj.newtask.module1.ItemViewBinder.ADInfoList;
+import com.example.caowj.newtask.module1.ItemViewBinder.ScrollNotificationList;
 import com.example.caowj.newtask.module1.entity.NavigationInfo;
 import com.example.caowj.newtask.module1.entity.PaiPinInfo2;
 
@@ -53,6 +54,13 @@ public interface IndexService {
      */
     @GET(Api.PAIPININFO_URL + "GetAdList")
     Observable<ADInfoList> GetAdList(@Query("token") String token);
+
+    /**
+     * @param token
+     * @return
+     */
+    @GET(Api.SYSNEWS_URL + "SystemNotificationList")
+    Observable<ScrollNotificationList> GetNotificationList(@Query("token") String token);
 
 
 }

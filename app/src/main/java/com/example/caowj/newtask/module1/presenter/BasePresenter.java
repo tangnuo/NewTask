@@ -29,6 +29,8 @@ public interface BasePresenter {
 
     interface IndexPresenter {
         void getAdInfoP();
+
+        void getNotificationP();
     }
 }
 

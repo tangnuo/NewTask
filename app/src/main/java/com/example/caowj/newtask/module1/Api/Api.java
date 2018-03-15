@@ -9,11 +9,11 @@ public class Api {
 //  http://test.qipaiapp.com/QiPaiAPI/PaipinInfo.asmx/GetAdList?token=12
 
     /////////////////////启拍////////////////////////////
-    public static final String BASE_API_QIPAI = "http://test.qipaiapp.com/QiPaiAPI/";
+    public static final String BASE_API_QIPAI = "http://test.qipaiapp.com/QiPaiAPI_2_6_6/";
 
     public static final String PAIPININFO_URL = "PaipinInfo.asmx/";
-
     public static final String PAIPINCATE_URL = "PaipinCate.asmx/";
+    public static final String SYSNEWS_URL = "SysNews.asmx/";
 
 
     /////////////////////天行数据////////////////////////////

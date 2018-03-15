@@ -1,4 +1,4 @@
-package com.example.caowj.newtask.example.bean;/**
+package com.example.caowj.newtask.module1.entity.bean;/**
  * @author Dick.Pan
  * @date 2017/10/9
  */
@@ -8,9 +8,8 @@ import android.os.Parcelable;
 
 /**
  * 滚动通知
- *
- * @author Dick.Pan
- * @Date 2017/10/9$
+ *@author Dick.Pan
+ *@Date 2017/10/9$
  */
 public class ScrollNotification implements Parcelable {
     private int id;

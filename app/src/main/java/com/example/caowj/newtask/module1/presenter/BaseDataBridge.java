@@ -1,6 +1,7 @@
 package com.example.caowj.newtask.module1.presenter;
 
 import com.example.caowj.newtask.module1.ItemViewBinder.ADInfoList;
+import com.example.caowj.newtask.module1.ItemViewBinder.ScrollNotificationList;
 import com.example.caowj.newtask.module1.entity.NavigationInfo;
 import com.example.caowj.newtask.module1.entity.PaiPinInfo2;
 import com.example.caowj.newtask.module1.entity.bean.NavigationBean;
@@ -28,5 +29,7 @@ public interface BaseDataBridge<T> {
 
     interface IndexDataBridge extends BaseDataBridge<ADInfoList> {
         void showAdInfoListB(ADInfoList adInfoList);
+
+        void showNotificationB(ScrollNotificationList notificationList);
     }
 }

@@ -15,5 +15,7 @@ public interface BaseModel<T> {
 
     interface IndexModel extends BaseModel {
         void getAdInfoM();
+
+        void getNotificationM();
     }
 }

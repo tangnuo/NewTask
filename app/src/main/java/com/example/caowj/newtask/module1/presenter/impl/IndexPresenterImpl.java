@@ -1,6 +1,7 @@
 package com.example.caowj.newtask.module1.presenter.impl;
 
 import com.example.caowj.newtask.module1.ItemViewBinder.ADInfoList;
+import com.example.caowj.newtask.module1.ItemViewBinder.ScrollNotificationList;
 import com.example.caowj.newtask.module1.model.BaseModel;
 import com.example.caowj.newtask.module1.model.impl.IndexModelImpl;
 import com.example.caowj.newtask.module1.presenter.BaseDataBridge;
@@ -43,6 +44,11 @@ public class IndexPresenterImpl extends BasePresenterImpl<BaseView.IndexView> im
         indexModel.getAdInfoM();
     }
 
+    @Override
+    public void getNotificationP() {
+        indexModel.getNotificationM();
+    }
+
 
     /************************************************************/
 
@@ -54,6 +60,13 @@ public class IndexPresenterImpl extends BasePresenterImpl<BaseView.IndexView> im
             presenterImpl.showAdInfoV(adInfoList);
         } else {
             LogUtil.myW(mTag + "adInfoList is null...");
+        }
+    }
+
+    @Override
+    public void showNotificationB(ScrollNotificationList notificationList) {
+        if (notificationList != null && JudgmentDataUtil.hasCollectionData(notificationList.getData())) {
+            presenterImpl.showNotificationV(notificationList);
         }
     }
 

@@ -3,6 +3,7 @@ package com.example.caowj.newtask.module1.model.impl;
 import com.example.caowj.newtask.module1.Api.IndexService;
 import com.example.caowj.newtask.module1.Api.Network;
 import com.example.caowj.newtask.module1.ItemViewBinder.ADInfoList;
+import com.example.caowj.newtask.module1.ItemViewBinder.ScrollNotificationList;
 import com.example.caowj.newtask.module1.constants.WSConstants;
 import com.example.caowj.newtask.module1.model.BaseModel;
 import com.example.caowj.newtask.module1.presenter.BaseDataBridge;
@@ -34,6 +35,38 @@ public class IndexModelImpl extends BaseModelImpl<BaseDataBridge.IndexDataBridge
     public void getAdInfoM() {
 
         test1();
+    }
+
+    @Override
+    public void getNotificationM() {
+        IndexService apiService = Network.getIndexService();
+        Observable<ScrollNotificationList> call = apiService.GetNotificationList(WSConstants.WEB_SERVER_TOKEN);
+
+        call.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ScrollNotificationList>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+                        LogUtil.myD("onSubscribe...");
+                    }
+
+                    @Override
+                    public void onNext(ScrollNotificationList adInfoList) {
+//                        LogUtil.myD(mTag + "2onNext..." + adInfoList.getCode());
+
+                        modelImpl.showNotificationB(adInfoList);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        LogUtil.myE("onError..." + e.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        LogUtil.myD("onComplete...");
+                    }
+                });
     }
 
 

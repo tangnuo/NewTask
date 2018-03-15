@@ -19,7 +19,7 @@ import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.base.BaseActivity;
 
 /**
- * 消息提醒，上下滚动
+ * 消息提醒，上下滚动（TextSwitcher）
  */
 public class TextSwitcherActivity extends BaseActivity {
 

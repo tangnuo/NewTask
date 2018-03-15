@@ -2,6 +2,7 @@ package com.example.caowj.newtask.module1.view;
 
 import com.example.caowj.newtask.example.bean.Person;
 import com.example.caowj.newtask.module1.ItemViewBinder.ADInfoList;
+import com.example.caowj.newtask.module1.ItemViewBinder.ScrollNotificationList;
 import com.example.caowj.newtask.module1.entity.bean.NavigationBean;
 import com.example.caowj.newtask.module1.entity.bean.PaiPinBean;
 
@@ -34,5 +35,7 @@ public interface BaseView<T> {
     interface IndexView extends BaseView {
 
         void showAdInfoV(ADInfoList adInfoList);
+
+        void showNotificationV(ScrollNotificationList notificationList);
     }
 }
