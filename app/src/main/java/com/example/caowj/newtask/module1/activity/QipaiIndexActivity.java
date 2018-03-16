@@ -15,6 +15,7 @@ import com.example.caowj.newtask.module1.listener.BroadcastCallback;
 import com.example.caowj.newtask.module1.presenter.BasePresenter;
 import com.example.caowj.newtask.module1.presenter.impl.IndexPresenterImpl;
 import com.example.caowj.newtask.module1.view.BaseView;
+import com.example.caowj.newtask.other.OnLoadMoreListener;
 import com.example.caowj.newtask.utils.LogUtil;
 import com.example.caowj.newtask.utils.business.MyAndroidUtils;
 
@@ -81,33 +82,44 @@ public class QipaiIndexActivity extends BaseActivity implements SwipeRefreshLayo
         mAdapter.register(ScrollNotificationList.class, new ScrollNotificationListViewBinder(mActivity));
         mRecyclerView.setAdapter(mAdapter);
 
-        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+//        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+//            @Override
+//            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+//                super.onScrollStateChanged(recyclerView, newState);
+//            }
+//
+//            @Override
+//            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+//                super.onScrolled(recyclerView, dx, dy);
+//                if (dy > 0) //向下滚动
+//                {
+//                    int visibleItemCount = linearLayoutManager.getChildCount();
+//                    int totalItemCount = linearLayoutManager.getItemCount();
+//                    int pastVisiblesItems = linearLayoutManager.findFirstVisibleItemPosition();
+//
+////                    if (!loading && (visibleItemCount + pastVisiblesItems) >= totalItemCount) {
+//                    if ((visibleItemCount + pastVisiblesItems) >= totalItemCount) {
+//
+//                        LogUtil.myD(mTag + "加载更多");
+////                        loading = true;
+////                        index+=1;
+//                        loadMoreDate();
+//                    }
+//                }
+//            }
+//        });
+
+        mRecyclerView.addOnScrollListener(new OnLoadMoreListener() {
             @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-            }
-
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                if (dy > 0) //向下滚动
-                {
-                    int visibleItemCount = linearLayoutManager.getChildCount();
-                    int totalItemCount = linearLayoutManager.getItemCount();
-                    int pastVisiblesItems = linearLayoutManager.findFirstVisibleItemPosition();
-
-//                    if (!loading && (visibleItemCount + pastVisiblesItems) >= totalItemCount) {
-                    if ((visibleItemCount + pastVisiblesItems) >= totalItemCount) {
-
-                        LogUtil.myD(mTag + "加载更多");
+            public void onLoadMore() {
+                LogUtil.myD(mTag + "加载更多");
 //                        loading = true;
 //                        index+=1;
-                        loadMoreDate();
-                    }
-                }
+                loadMoreDate();
             }
         });
     }
+
 
     private void loadMoreDate() {
         pageIndex += 1;
