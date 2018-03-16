@@ -32,7 +32,7 @@ import me.drakeet.multitype.MultiTypeAdapter;
  * 1、MVP架构<br/>
  * 2、SwipeRefreshLayout+RecyclerView自动加载更多<br/>
  * 3、MultiType3.0简化adapter，实现多Type布局<br/>
- * 4、Retrofit+Rxjava实现网络请求和数据重构<br/>
+ * 4、Retrofit2+Rxjava2实现网络请求和数据重构<br/>
  * </p>
  */
 public class QipaiIndexActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener, BaseView.IndexView {
@@ -81,39 +81,10 @@ public class QipaiIndexActivity extends BaseActivity implements SwipeRefreshLayo
         mAdapter.register(ADInfoList.class, new ADInfoListViewBinder(mActivity));
         mAdapter.register(ScrollNotificationList.class, new ScrollNotificationListViewBinder(mActivity));
         mRecyclerView.setAdapter(mAdapter);
-
-//        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-//            @Override
-//            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-//                super.onScrollStateChanged(recyclerView, newState);
-//            }
-//
-//            @Override
-//            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-//                super.onScrolled(recyclerView, dx, dy);
-//                if (dy > 0) //向下滚动
-//                {
-//                    int visibleItemCount = linearLayoutManager.getChildCount();
-//                    int totalItemCount = linearLayoutManager.getItemCount();
-//                    int pastVisiblesItems = linearLayoutManager.findFirstVisibleItemPosition();
-//
-////                    if (!loading && (visibleItemCount + pastVisiblesItems) >= totalItemCount) {
-//                    if ((visibleItemCount + pastVisiblesItems) >= totalItemCount) {
-//
-//                        LogUtil.myD(mTag + "加载更多");
-////                        loading = true;
-////                        index+=1;
-//                        loadMoreDate();
-//                    }
-//                }
-//            }
-//        });
-
         mRecyclerView.addOnScrollListener(new OnLoadMoreListener() {
             @Override
             public void onLoadMore() {
                 LogUtil.myD(mTag + "加载更多");
-//                        loading = true;
 //                        index+=1;
                 loadMoreDate();
             }
@@ -130,8 +101,9 @@ public class QipaiIndexActivity extends BaseActivity implements SwipeRefreshLayo
         pageIndex = 1;
         listData.clear();
 
-        indexPresenter.getNotificationP();
-        indexPresenter.getAdInfoP();
+        indexPresenter.getFixedInfoP();
+//        indexPresenter.getNotificationP();
+//        indexPresenter.getAdInfoP();
     }
 
     @Override
@@ -162,13 +134,18 @@ public class QipaiIndexActivity extends BaseActivity implements SwipeRefreshLayo
     }
 
 
-    /************************************************************/
-
     @Override
     public void showProgress() {
         mSwipeRefreshLayout.setRefreshing(true);
     }
 
+    /************************************************************/
+
+    @Override
+    public void showFixedInfoV(List<Object> infoList) {
+        listData.addAll(infoList);
+        mAdapter.notifyDataSetChanged();
+    }
 
     @Override
     public void showAdInfoV(final ADInfoList adInfoList) {

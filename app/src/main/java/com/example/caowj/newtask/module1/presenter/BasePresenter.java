@@ -28,6 +28,11 @@ public interface BasePresenter {
     }
 
     interface IndexPresenter {
+        /**
+         * 获取固定信息
+         */
+        void getFixedInfoP();
+
         void getAdInfoP();
 
         void getNotificationP();

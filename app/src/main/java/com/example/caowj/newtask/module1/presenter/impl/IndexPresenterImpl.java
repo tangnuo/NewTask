@@ -39,6 +39,12 @@ public class IndexPresenterImpl extends BasePresenterImpl<BaseView.IndexView> im
     }
 
     @Override
+    public void getFixedInfoP() {
+        presenterImpl.showProgress();
+        indexModel.getFixedInfoM();
+    }
+
+    @Override
     public void getAdInfoP() {
         presenterImpl.showProgress();
         indexModel.getAdInfoM();
@@ -70,4 +76,11 @@ public class IndexPresenterImpl extends BasePresenterImpl<BaseView.IndexView> im
         }
     }
 
+    @Override
+    public void showFixedInfoB(List<Object> infoList) {
+        presenterImpl.hideProgress();
+        if (infoList != null && JudgmentDataUtil.hasCollectionData(infoList)) {
+            presenterImpl.showFixedInfoV(infoList);
+        }
+    }
 }

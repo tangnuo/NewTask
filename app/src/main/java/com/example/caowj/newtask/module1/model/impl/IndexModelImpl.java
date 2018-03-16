@@ -9,11 +9,15 @@ import com.example.caowj.newtask.module1.model.BaseModel;
 import com.example.caowj.newtask.module1.presenter.BaseDataBridge;
 import com.example.caowj.newtask.utils.LogUtil;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Function3;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -32,9 +36,60 @@ public class IndexModelImpl extends BaseModelImpl<BaseDataBridge.IndexDataBridge
     }
 
     @Override
-    public void getAdInfoM() {
+    public void getFixedInfoM() {
+        test2();
+    }
 
+    @Override
+    public void getAdInfoM() {
         test1();
+    }
+
+    private void test2() {
+
+        IndexService apiService = Network.getIndexService();
+        Observable<ScrollNotificationList> observable1 = apiService.GetNotificationList(WSConstants.WEB_SERVER_TOKEN);
+        Observable<ScrollNotificationList> observable2 = apiService.GetNotificationList(WSConstants.WEB_SERVER_TOKEN);
+        Observable<ADInfoList> observable3 = apiService.GetAdList(WSConstants.WEB_SERVER_TOKEN);
+
+        Observable.zip(observable1, observable2, observable3, new Function3<ScrollNotificationList, ScrollNotificationList, ADInfoList, List<Object>>() {
+
+            @Override
+            public List<Object> apply(ScrollNotificationList notificationList, ScrollNotificationList notificationList2, ADInfoList adInfoList) throws Exception {
+                List<Object> dataList = new ArrayList<>();
+
+                LogUtil.myD(mTag + "消息：" + notificationList.getCode() + ",轮播：" + adInfoList.getCode());
+
+                dataList.add(adInfoList);
+                dataList.add(notificationList);
+                dataList.add(notificationList2);
+                return dataList;
+            }
+        }).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<List<Object>>() {
+
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        LogUtil.myD("onSubscribe...");
+                    }
+
+                    @Override
+                    public void onNext(List<Object> objects) {
+                        modelImpl.showFixedInfoB(objects);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        LogUtil.myE("onError..." + e.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        LogUtil.myD("onComplete...");
+                    }
+                });
+
     }
 
     @Override
