@@ -54,9 +54,6 @@ public class QipaiIndexActivity extends BaseActivity implements SwipeRefreshLayo
      */
     private MultiTypeAdapter mAdapter;
     private List<Object> listData;
-    private List<Object> listBasic;
-    private List<Object> listChange1;
-    private List<Object> listChange2;
 
     private int pageIndex = 1;
 
@@ -96,6 +93,7 @@ public class QipaiIndexActivity extends BaseActivity implements SwipeRefreshLayo
                 loadMoreDate();
             }
         });
+
     }
 
 
@@ -149,6 +147,7 @@ public class QipaiIndexActivity extends BaseActivity implements SwipeRefreshLayo
 
     @Override
     public void showMoreInfoV(List<Object> infoList) {
+        LogUtil.myD(mTag + "showMore:" + infoList.size());
         listData.addAll(infoList);
         mAdapter.notifyDataSetChanged();
     }

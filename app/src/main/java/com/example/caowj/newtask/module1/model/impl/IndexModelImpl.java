@@ -18,7 +18,8 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Function3;
+import io.reactivex.functions.BiFunction;
+import io.reactivex.functions.Function4;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -27,13 +28,63 @@ import io.reactivex.schedulers.Schedulers;
  */
 
 public class IndexModelImpl extends BaseModelImpl<BaseDataBridge.IndexDataBridge> implements BaseModel.IndexModel {
+    private List<Object> listChange1;
+    private List<Object> listChange2;
+
     public IndexModelImpl(BaseDataBridge.IndexDataBridge modelImpl) {
         super(modelImpl);
+        listChange1 = new ArrayList<>();
+        listChange2 = new ArrayList<>();
     }
+
 
     @Override
     public void netWork() {
 
+    }
+
+    @Override
+    public void getMoreInfoM2(int pageIndex) {
+        IndexService apiService = Network.getIndexService();
+
+        Observable<ChoiceArticleList> observable1 = apiService.GetListWenZhang(3, pageIndex, WSConstants.WEB_SERVER_TOKEN);
+        Observable<ChoiceArticleList> observable2 = apiService.GetListWangQiWenZhang(3, pageIndex, WSConstants.WEB_SERVER_TOKEN);
+
+        Observable.zip(observable1, observable2, new BiFunction<ChoiceArticleList, ChoiceArticleList, List<Object>>() {
+            @Override
+            public List<Object> apply(ChoiceArticleList choiceArticleList, ChoiceArticleList choiceArticleList2) throws Exception {
+                List<Object> dataList = new ArrayList<>();
+                listChange1.addAll(choiceArticleList.getData());
+                listChange2.addAll(choiceArticleList2.getData());
+                dataList.addAll(listChange1);
+                dataList.addAll(listChange2);
+                LogUtil.myD("size1:" + listChange1.size() + ",size2:" + listChange2.size());
+                return dataList;
+            }
+        }).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<List<Object>>() {
+
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        LogUtil.myD("onSubscribe...");
+                    }
+
+                    @Override
+                    public void onNext(List<Object> objects) {
+                        modelImpl.showMoreInfoB(objects);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        LogUtil.myE("onError..." + e.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        LogUtil.myD("onComplete...");
+                    }
+                });
     }
 
     @Override
@@ -86,18 +137,28 @@ public class IndexModelImpl extends BaseModelImpl<BaseDataBridge.IndexDataBridge
         Observable<ScrollNotificationList> observable1 = apiService.GetNotificationList(WSConstants.WEB_SERVER_TOKEN);
         Observable<ChoiceArticleList> observable2 = apiService.GetListWenZhang(3, 1, WSConstants.WEB_SERVER_TOKEN);
         Observable<ADInfoList> observable3 = apiService.GetAdList(WSConstants.WEB_SERVER_TOKEN);
+        Observable<ChoiceArticleList> observable4 = apiService.GetListWangQiWenZhang(3, 1, WSConstants.WEB_SERVER_TOKEN);
 
-        Observable.zip(observable1, observable2, observable3, new Function3<ScrollNotificationList, ChoiceArticleList, ADInfoList, List<Object>>() {
+        Observable.zip(observable1, observable2, observable3, observable4, new Function4<ScrollNotificationList, ChoiceArticleList, ADInfoList, ChoiceArticleList, List<Object>>() {
 
             @Override
-            public List<Object> apply(ScrollNotificationList notificationList, ChoiceArticleList choiceArticleList, ADInfoList adInfoList) throws Exception {
+            public List<Object> apply(ScrollNotificationList notificationList, ChoiceArticleList choiceArticleList, ADInfoList adInfoList, ChoiceArticleList choiceArticleList2) throws Exception {
                 List<Object> dataList = new ArrayList<>();
+                listChange1 = new ArrayList<>();
+                listChange2 = new ArrayList<>();
 
-                LogUtil.myD(mTag + "消息：" + notificationList.getCode() + ",轮播：" + adInfoList.getCode() + ",文章：" + choiceArticleList.getCode());
+                LogUtil.myD(mTag + "消息：" + notificationList.getCode() + ",轮播：" + adInfoList.getCode() + ",精选文章：" + choiceArticleList.getCode() + ",往期文章：" + choiceArticleList2.getCode());
 
-                dataList.add(adInfoList);
-                dataList.add(notificationList);
-                dataList.addAll(choiceArticleList.getData());
+
+                listChange1.add(adInfoList);
+                listChange1.add(notificationList);
+                listChange1.addAll(choiceArticleList.getData());
+
+                listChange2.addAll(choiceArticleList2.getData());
+
+                dataList.addAll(listChange1);
+                dataList.addAll(listChange2);
+                LogUtil.myD("size1:" + listChange1.size() + ",size2:" + listChange2.size());
                 return dataList;
             }
         }).subscribeOn(Schedulers.io())

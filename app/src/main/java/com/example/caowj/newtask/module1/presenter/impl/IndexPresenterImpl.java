@@ -47,7 +47,11 @@ public class IndexPresenterImpl extends BasePresenterImpl<BaseView.IndexView> im
     @Override
     public void getMoreInfoP(int pageIndex) {
         presenterImpl.showProgress();
-        indexModel.getMoreInfoM(pageIndex);
+//        一个页面中有一个分页
+//        indexModel.getMoreInfoM(pageIndex);
+
+//        一个页面有两个分页
+        indexModel.getMoreInfoM2(pageIndex);
     }
 
     @Override
@@ -88,7 +92,7 @@ public class IndexPresenterImpl extends BasePresenterImpl<BaseView.IndexView> im
     public void showMoreInfoB(List<Object> infoList) {
         presenterImpl.hideProgress();
         if (infoList != null && JudgmentDataUtil.hasCollectionData(infoList)) {
-            presenterImpl.showFixedInfoV(infoList);
+            presenterImpl.showMoreInfoV(infoList);
         } else {
             LogUtil.myW(mTag + "infoList is null...");
         }

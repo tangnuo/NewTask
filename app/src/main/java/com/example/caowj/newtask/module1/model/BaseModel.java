@@ -14,6 +14,8 @@ public interface BaseModel<T> {
 
 
     interface IndexModel extends BaseModel {
+        void getMoreInfoM2(int pageIndex);
+
         void getMoreInfoM(int pageIndex);
 
         void getFixedInfoM();
