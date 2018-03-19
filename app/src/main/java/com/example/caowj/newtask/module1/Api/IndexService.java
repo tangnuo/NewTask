@@ -5,7 +5,8 @@ import com.example.caowj.newtask.module1.ItemViewBinder.ADInfoList;
 import com.example.caowj.newtask.module1.ItemViewBinder.ChoiceArticleList;
 import com.example.caowj.newtask.module1.ItemViewBinder.ScrollNotificationList;
 import com.example.caowj.newtask.module1.entity.NavigationInfo;
-import com.example.caowj.newtask.module1.entity.PaiPinInfo2;
+import com.example.caowj.newtask.module1.entity.PaiPinInfoList;
+import com.example.caowj.newtask.module1.entity.SysPicInfoList;
 
 import java.util.Map;
 
@@ -40,7 +41,7 @@ public interface IndexService {
      * @return
      */
     @GET(Api.PAIPININFO_URL + "GetListYaWu")
-    Call<PaiPinInfo2> GetListYaWu(@QueryMap Map<String, Integer> map, @Query("token") String token);
+    Call<PaiPinInfoList> GetListYaWu(@QueryMap Map<String, Integer> map, @Query("token") String token);
 
 
 /*******************************************************************/
@@ -58,9 +59,10 @@ public interface IndexService {
 
     /**
      * 滚动广告
-     *<p>
-     *     http://test.qipaiapp.com/QiPaiAPI_2_6_6/SysNews.asmx/SystemNotificationList?token=QWASD874HAsSF8asJAYOgaIU3JG98hDSN2g3SD671g29385FSA811NASs
-     *</p>
+     * <p>
+     * http://test.qipaiapp.com/QiPaiAPI_2_6_6/SysNews.asmx/SystemNotificationList?token=QWASD874HAsSF8asJAYOgaIU3JG98hDSN2g3SD671g29385FSA811NASs
+     * </p>
+     *
      * @param token
      * @return
      */
@@ -94,4 +96,32 @@ public interface IndexService {
      */
     @GET(Api.PAIPININFO_URL + "GetListWangQiWenZhang")
     Observable<ChoiceArticleList> GetListWangQiWenZhang(@Query("pageSize") int pageSize, @Query("pageIndex") int pageIndex, @Query("token") String token);
+
+    /**
+     * 根据拍品ID获取拍品信息
+     * <br/>
+     * http://test.qipaiapp.com/QiPaiAPI_2_6_4/PaipinInfo.asmx?op=GetPaiPiID
+     *
+     * @param paipinID 拍品ID(例如：23645)
+     * @param token
+     * @return
+     */
+    @GET(Api.PAIPININFO_URL + "GetPaiPiID")
+    Observable<PaiPinInfoList> GetPaiPiID(@Query("paipinID") int paipinID, @Query("token") String token);
+
+
+    /**
+     * 根据图片串码获取图片真实路径
+     * <p>
+     * http://test.qipaiapp.com/QiPaiAPI_2_6_6/Syspic.asmx?op=GetPICNO
+     * </p>
+     *
+     * @param picno：PicCarousel201712120953223151bN1BKN
+     * @param token
+     * @return
+     */
+    @GET(Api.SYSPIC_URL + "GetPICNO")
+    Observable<SysPicInfoList> GetPICNO(@Query("picno") String picno, @Query("token") String token);
+
+
 }

@@ -6,7 +6,7 @@ import android.util.Log;
 import com.example.caowj.newtask.module1.Api.Network;
 import com.example.caowj.newtask.module1.constants.WSConstants;
 import com.example.caowj.newtask.module1.entity.NavigationInfo;
-import com.example.caowj.newtask.module1.entity.PaiPinInfo2;
+import com.example.caowj.newtask.module1.entity.PaiPinInfoList;
 import com.example.caowj.newtask.module1.presenter.BaseDataBridge;
 import com.example.caowj.newtask.module1.model.BaseModel;
 import com.example.caowj.newtask.utils.LogUtil;
@@ -74,13 +74,13 @@ public class TabNameModelImpl extends BaseModelImpl<BaseDataBridge.TabNameDataBr
         properties.put("sPrice", 0);
         properties.put("endPrice", 0);
         properties.put("sortType", 0);
-        Call<PaiPinInfo2> call = Network.getCollectionService().GetListYaWu(properties, WSConstants.WEB_SERVER_TOKEN);
+        Call<PaiPinInfoList> call = Network.getCollectionService().GetListYaWu(properties, WSConstants.WEB_SERVER_TOKEN);
         //通过call对象执行网络请求(同步请求execute，异步请求enqueue)
-        call.enqueue(new Callback<PaiPinInfo2>() {
+        call.enqueue(new Callback<PaiPinInfoList>() {
             @Override
-            public void onResponse(Call<PaiPinInfo2> call, Response<PaiPinInfo2> response) {
+            public void onResponse(Call<PaiPinInfoList> call, Response<PaiPinInfoList> response) {
                 if (response.isSuccessful()) {
-                    PaiPinInfo2 navigationInfo = response.body();
+                    PaiPinInfoList navigationInfo = response.body();
                     //获取json字符串
                     String result = navigationInfo.toString();
                     LogUtil.myD("code:" + navigationInfo.getCode() + ",dataList:" + navigationInfo.getDatalist());
@@ -90,7 +90,7 @@ public class TabNameModelImpl extends BaseModelImpl<BaseDataBridge.TabNameDataBr
             }
 
             @Override
-            public void onFailure(Call<PaiPinInfo2> call, Throwable t) {
+            public void onFailure(Call<PaiPinInfoList> call, Throwable t) {
                 Log.i(TAG, "请求失败:" + t.getMessage());
                 modelImpl.error();
             }

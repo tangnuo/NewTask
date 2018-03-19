@@ -81,7 +81,7 @@ public class ChoiceArticleListViewBinder extends ItemViewBinder<ChoiceArticle, C
                 final String text = articleLabel.getWordposition();
                 labelView.setLabelContent(text);
                 //设置显示位置
-                LogUtil.d("caowj", "内容：" + text + "\t方向：" + articleLabel.getPosition() + "\t" + (articleLabel.getPosition() == 0 ? "右" : "左") + "\tx:" + articleLabel.getX() + "\ty:" + articleLabel.getY());
+//                LogUtil.d("caowj", "内容：" + text + "\t方向：" + articleLabel.getPosition() + "\t" + (articleLabel.getPosition() == 0 ? "右" : "左") + "\tx:" + articleLabel.getX() + "\ty:" + articleLabel.getY());
                 labelView.setDisplayPosition(holder.rl_label, MyAndroidUtils.getScreenWidth(mActivity), height, articleLabel.getX(), articleLabel.getY());
                 //标签监听点击
                 labelView.setOnClickListener(new View.OnClickListener() {

@@ -3,7 +3,7 @@ package com.example.caowj.newtask.module1.Api;
 
 import com.example.caowj.newtask.module1.ItemViewBinder.ADInfoList;
 import com.example.caowj.newtask.module1.entity.NavigationInfo;
-import com.example.caowj.newtask.module1.entity.PaiPinInfo2;
+import com.example.caowj.newtask.module1.entity.PaiPinInfoList;
 import com.example.caowj.newtask.module1.entity.YawuInfo;
 import com.example.caowj.newtask.module1.entity.bean.BaseBean;
 
@@ -44,7 +44,7 @@ public interface CollectionService {
     //////////////////////////////////////////////////
 
     @GET(Api.PAIPININFO_URL + "/GetPaiPiID")
-    Call<PaiPinInfo2> GetPaiPiID(@Query("paipinID") int paipinID, @Query("token") String token);
+    Call<PaiPinInfoList> GetPaiPiID(@Query("paipinID") int paipinID, @Query("token") String token);
 
 
 //    http://test.qipaiapp.com/QiPaiAPI/PaipinInfo.asmx/YaWuZhuanTi
@@ -72,5 +72,5 @@ public interface CollectionService {
      * @return
      */
     @GET(Api.PAIPININFO_URL + "GetListYaWu")
-    Call<PaiPinInfo2> GetListYaWu(@QueryMap Map<String, Integer> map, @Query("token") String token);
+    Call<PaiPinInfoList> GetListYaWu(@QueryMap Map<String, Integer> map, @Query("token") String token);
 }

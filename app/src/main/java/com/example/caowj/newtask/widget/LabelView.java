@@ -88,13 +88,13 @@ public class LabelView extends LinearLayout {
         //1.将该自定义控件添加到指定的父布局中
         parent.addView(this);
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        LogUtil.d(TAG, "width:" + width + "\theight:" + height + "\tleft:" + (width * proportionX - 62 / 2) + "\ttop:" + (height * proportionY - 39 / 2));
+//        LogUtil.d(TAG, "width:" + width + "\theight:" + height + "\tleft:" + (width * proportionX - 62 / 2) + "\ttop:" + (height * proportionY - 39 / 2));
         //实际Y轴显示位置
         int showHeight = textHeight > effectiveHeight ? (textBgHeight + (textHeight - effectiveHeight)) / 2 : textBgHeight / 2;
         if (direction == Direction.RIGHT) {
             //表示方向朝右
             int textWidth = (int) mLabelContent.getPaint().measureText(text);
-            LogUtil.d(TAG, text + "\tsize:" + textWidth);
+//            LogUtil.d(TAG, text + "\tsize:" + textWidth);
             //实际X轴显示位置
             int showWidth = textWidth > effectiveWidth ? textBgWidth + (textWidth - effectiveWidth) + pointWidth / 2 : textBgWidth + pointWidth / 2;
             layoutParams.setMargins((int) (width * proportionX - showWidth), (int) (height * proportionY - showHeight), 0, 0);

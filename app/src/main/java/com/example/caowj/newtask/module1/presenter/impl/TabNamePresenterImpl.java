@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.example.caowj.newtask.module1.constants.Constants;
 import com.example.caowj.newtask.module1.entity.NavigationInfo;
-import com.example.caowj.newtask.module1.entity.PaiPinInfo2;
+import com.example.caowj.newtask.module1.entity.PaiPinInfoList;
 import com.example.caowj.newtask.module1.entity.bean.NavigationBean;
 import com.example.caowj.newtask.module1.entity.bean.PaiPinBean;
 import com.example.caowj.newtask.module1.listener.BroadcastCallback;
@@ -144,7 +144,7 @@ public class TabNamePresenterImpl extends BasePresenterImpl<BaseView.TabNameView
     }
 
     @Override
-    public void showPaiPinInfoP(final PaiPinInfo2 paiPinInfo) {
+    public void showPaiPinInfoP(final PaiPinInfoList paiPinInfo) {
         presenterImpl.hideProgress();
         String code = paiPinInfo.getCode();
 

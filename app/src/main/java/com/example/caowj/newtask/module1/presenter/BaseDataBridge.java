@@ -3,7 +3,7 @@ package com.example.caowj.newtask.module1.presenter;
 import com.example.caowj.newtask.module1.ItemViewBinder.ADInfoList;
 import com.example.caowj.newtask.module1.ItemViewBinder.ScrollNotificationList;
 import com.example.caowj.newtask.module1.entity.NavigationInfo;
-import com.example.caowj.newtask.module1.entity.PaiPinInfo2;
+import com.example.caowj.newtask.module1.entity.PaiPinInfoList;
 import com.example.caowj.newtask.module1.entity.bean.NavigationBean;
 
 import java.util.List;
@@ -24,7 +24,7 @@ public interface BaseDataBridge<T> {
     interface TabNameDataBridge extends BaseDataBridge<NavigationBean> {
         void showNavigationP(NavigationInfo navigationInfo);
 
-        void showPaiPinInfoP(PaiPinInfo2 paiPinInfo);
+        void showPaiPinInfoP(PaiPinInfoList paiPinInfo);
     }
 
     interface IndexDataBridge extends BaseDataBridge<ADInfoList> {

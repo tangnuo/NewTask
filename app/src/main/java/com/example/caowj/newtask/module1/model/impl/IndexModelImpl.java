@@ -6,6 +6,8 @@ import com.example.caowj.newtask.module1.ItemViewBinder.ADInfoList;
 import com.example.caowj.newtask.module1.ItemViewBinder.ChoiceArticleList;
 import com.example.caowj.newtask.module1.ItemViewBinder.ScrollNotificationList;
 import com.example.caowj.newtask.module1.constants.WSConstants;
+import com.example.caowj.newtask.module1.entity.PaiPinInfoList;
+import com.example.caowj.newtask.module1.entity.SysPicInfoList;
 import com.example.caowj.newtask.module1.model.BaseModel;
 import com.example.caowj.newtask.module1.presenter.BaseDataBridge;
 import com.example.caowj.newtask.utils.LogUtil;
@@ -14,11 +16,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Observable;
+import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.BiFunction;
+import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
 import io.reactivex.functions.Function4;
 import io.reactivex.schedulers.Schedulers;
 
@@ -124,6 +129,9 @@ public class IndexModelImpl extends BaseModelImpl<BaseDataBridge.IndexDataBridge
     @Override
     public void getFixedInfoM() {
         test2();
+
+        //测试代码
+        getImageDetail();
     }
 
     @Override
@@ -251,6 +259,36 @@ public class IndexModelImpl extends BaseModelImpl<BaseDataBridge.IndexDataBridge
                     @Override
                     public void onComplete() {
                         LogUtil.myD("onComplete...");
+                    }
+                });
+    }
+
+
+    /**
+     * 获取图片详情案例（多个网络请求依次依赖：flatMap（））
+     * <p>
+     * 先获取图片详情，再根据串码获取真实图片路径。
+     * </p>
+     */
+    private void getImageDetail() {
+        final IndexService apiService = Network.getIndexService();
+        Observable<PaiPinInfoList> call = apiService.GetPaiPiID(23645, WSConstants.WEB_SERVER_TOKEN);
+
+        Observable<SysPicInfoList> observable = call.flatMap(new Function<PaiPinInfoList, ObservableSource<SysPicInfoList>>() {
+            @Override
+            public ObservableSource<SysPicInfoList> apply(PaiPinInfoList paiPinInfoList) throws Exception {
+                String picN = paiPinInfoList.getData().get(0).getPic();
+                LogUtil.myD(mTag + "code:" + paiPinInfoList.getCode() + "，图片串码：" + picN);
+                return apiService.GetPICNO(picN, WSConstants.WEB_SERVER_TOKEN);
+            }
+        });
+
+        observable.subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<SysPicInfoList>() {
+                    @Override
+                    public void accept(@NonNull SysPicInfoList sysPicInfoList) throws Exception {
+                        LogUtil.myD(mTag + "code:" + sysPicInfoList.getCode() + "，图片详情：" + sysPicInfoList.getData().size());
                     }
                 });
     }

@@ -14,6 +14,7 @@ public class Api {
     public static final String PAIPININFO_URL = "PaipinInfo.asmx/";
     public static final String PAIPINCATE_URL = "PaipinCate.asmx/";
     public static final String SYSNEWS_URL = "SysNews.asmx/";
+    public static final String SYSPIC_URL = "Syspic.asmx/";
 
 
     /////////////////////天行数据////////////////////////////
