@@ -13,7 +13,7 @@ import java.util.List;
  * 精选-文章
  */
 
-public class ChoiceArticle implements Parcelable {
+public class ChoiceArticle {
 
     private int id;
     //文章标题
@@ -24,18 +24,8 @@ public class ChoiceArticle implements Parcelable {
     private String img;
     //文章跳转链接地址
     private String aurl;
-    //标签显示位置信息
-    private String tags;
     //标签显示位置集合
-    private List<ArticleLabel> articleLabelList;
-
-    public List<ArticleLabel> getArticleLabelList() {
-        return articleLabelList;
-    }
-
-    public void setArticleLabelList(List<ArticleLabel> articleLabelList) {
-        this.articleLabelList = articleLabelList;
-    }
+    private List<ArticleLabel> tags;
 
     public int getId() {
         return id;
@@ -77,53 +67,11 @@ public class ChoiceArticle implements Parcelable {
         this.aurl = aurl;
     }
 
-    public String getTags() {
+    public List<ArticleLabel> getTags() {
         return tags;
     }
 
-    public void setTags(String tags) {
+    public void setTags(List<ArticleLabel> tags) {
         this.tags = tags;
     }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(this.id);
-        dest.writeString(this.title);
-        dest.writeString(this.introduce);
-        dest.writeString(this.img);
-        dest.writeString(this.aurl);
-        dest.writeString(this.tags);
-        dest.writeList(this.articleLabelList);
-    }
-
-    public ChoiceArticle() {
-    }
-
-    protected ChoiceArticle(Parcel in) {
-        this.id = in.readInt();
-        this.title = in.readString();
-        this.introduce = in.readString();
-        this.img = in.readString();
-        this.aurl = in.readString();
-        this.tags = in.readString();
-        this.articleLabelList = new ArrayList<ArticleLabel>();
-        in.readList(this.articleLabelList, ArticleLabel.class.getClassLoader());
-    }
-
-    public static final Parcelable.Creator<ChoiceArticle> CREATOR = new Parcelable.Creator<ChoiceArticle>() {
-        @Override
-        public ChoiceArticle createFromParcel(Parcel source) {
-            return new ChoiceArticle(source);
-        }
-
-        @Override
-        public ChoiceArticle[] newArray(int size) {
-            return new ChoiceArticle[size];
-        }
-    };
 }

@@ -3,6 +3,7 @@ package com.example.caowj.newtask.module1.model.impl;
 import com.example.caowj.newtask.module1.Api.IndexService;
 import com.example.caowj.newtask.module1.Api.Network;
 import com.example.caowj.newtask.module1.ItemViewBinder.ADInfoList;
+import com.example.caowj.newtask.module1.ItemViewBinder.ChoiceArticleList;
 import com.example.caowj.newtask.module1.ItemViewBinder.ScrollNotificationList;
 import com.example.caowj.newtask.module1.constants.WSConstants;
 import com.example.caowj.newtask.module1.model.BaseModel;
@@ -36,6 +37,40 @@ public class IndexModelImpl extends BaseModelImpl<BaseDataBridge.IndexDataBridge
     }
 
     @Override
+    public void getMoreInfoM(int pageIndex) {
+        IndexService apiService = Network.getIndexService();
+        Observable<ChoiceArticleList> observable = apiService.GetListWenZhang(3, pageIndex, WSConstants.WEB_SERVER_TOKEN);
+
+        observable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ChoiceArticleList>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+                        LogUtil.myD("onSubscribe...");
+                    }
+
+                    @Override
+                    public void onNext(ChoiceArticleList adInfoList) {
+//                        LogUtil.myD(mTag + "2onNext..." + adInfoList.getCode());
+                        List<Object> objectList = new ArrayList<>();
+                        objectList.addAll(adInfoList.getData());
+
+                        modelImpl.showMoreInfoB(objectList);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        LogUtil.myE("onError..." + e.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        LogUtil.myD("onComplete...");
+                    }
+                });
+    }
+
+    @Override
     public void getFixedInfoM() {
         test2();
     }
@@ -49,20 +84,20 @@ public class IndexModelImpl extends BaseModelImpl<BaseDataBridge.IndexDataBridge
 
         IndexService apiService = Network.getIndexService();
         Observable<ScrollNotificationList> observable1 = apiService.GetNotificationList(WSConstants.WEB_SERVER_TOKEN);
-        Observable<ScrollNotificationList> observable2 = apiService.GetNotificationList(WSConstants.WEB_SERVER_TOKEN);
+        Observable<ChoiceArticleList> observable2 = apiService.GetListWenZhang(3, 1, WSConstants.WEB_SERVER_TOKEN);
         Observable<ADInfoList> observable3 = apiService.GetAdList(WSConstants.WEB_SERVER_TOKEN);
 
-        Observable.zip(observable1, observable2, observable3, new Function3<ScrollNotificationList, ScrollNotificationList, ADInfoList, List<Object>>() {
+        Observable.zip(observable1, observable2, observable3, new Function3<ScrollNotificationList, ChoiceArticleList, ADInfoList, List<Object>>() {
 
             @Override
-            public List<Object> apply(ScrollNotificationList notificationList, ScrollNotificationList notificationList2, ADInfoList adInfoList) throws Exception {
+            public List<Object> apply(ScrollNotificationList notificationList, ChoiceArticleList choiceArticleList, ADInfoList adInfoList) throws Exception {
                 List<Object> dataList = new ArrayList<>();
 
-                LogUtil.myD(mTag + "消息：" + notificationList.getCode() + ",轮播：" + adInfoList.getCode());
+                LogUtil.myD(mTag + "消息：" + notificationList.getCode() + ",轮播：" + adInfoList.getCode() + ",文章：" + choiceArticleList.getCode());
 
                 dataList.add(adInfoList);
                 dataList.add(notificationList);
-                dataList.add(notificationList2);
+                dataList.addAll(choiceArticleList.getData());
                 return dataList;
             }
         }).subscribeOn(Schedulers.io())

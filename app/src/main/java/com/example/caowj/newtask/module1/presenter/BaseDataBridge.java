@@ -28,6 +28,8 @@ public interface BaseDataBridge<T> {
     }
 
     interface IndexDataBridge extends BaseDataBridge<ADInfoList> {
+        void showMoreInfoB(List<Object> infoList);
+
         void showFixedInfoB(List<Object> infoList);
 
         void showAdInfoListB(ADInfoList adInfoList);

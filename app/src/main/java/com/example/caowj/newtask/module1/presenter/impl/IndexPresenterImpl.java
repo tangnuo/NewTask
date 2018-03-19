@@ -45,6 +45,12 @@ public class IndexPresenterImpl extends BasePresenterImpl<BaseView.IndexView> im
     }
 
     @Override
+    public void getMoreInfoP(int pageIndex) {
+        presenterImpl.showProgress();
+        indexModel.getMoreInfoM(pageIndex);
+    }
+
+    @Override
     public void getAdInfoP() {
         presenterImpl.showProgress();
         indexModel.getAdInfoM();
@@ -73,6 +79,18 @@ public class IndexPresenterImpl extends BasePresenterImpl<BaseView.IndexView> im
     public void showNotificationB(ScrollNotificationList notificationList) {
         if (notificationList != null && JudgmentDataUtil.hasCollectionData(notificationList.getData())) {
             presenterImpl.showNotificationV(notificationList);
+        } else {
+            LogUtil.myW(mTag + "notificationList is null...");
+        }
+    }
+
+    @Override
+    public void showMoreInfoB(List<Object> infoList) {
+        presenterImpl.hideProgress();
+        if (infoList != null && JudgmentDataUtil.hasCollectionData(infoList)) {
+            presenterImpl.showFixedInfoV(infoList);
+        } else {
+            LogUtil.myW(mTag + "infoList is null...");
         }
     }
 
@@ -81,6 +99,8 @@ public class IndexPresenterImpl extends BasePresenterImpl<BaseView.IndexView> im
         presenterImpl.hideProgress();
         if (infoList != null && JudgmentDataUtil.hasCollectionData(infoList)) {
             presenterImpl.showFixedInfoV(infoList);
+        } else {
+            LogUtil.myW(mTag + "infoList is null...");
         }
     }
 }

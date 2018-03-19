@@ -33,6 +33,8 @@ public interface BasePresenter {
          */
         void getFixedInfoP();
 
+        void getMoreInfoP(int pageIndex);
+
         void getAdInfoP();
 
         void getNotificationP();

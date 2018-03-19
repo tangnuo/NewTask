@@ -7,8 +7,10 @@ import android.support.v7.widget.RecyclerView;
 
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.base.BaseActivity;
+import com.example.caowj.newtask.example.bean.ChoiceArticle;
 import com.example.caowj.newtask.module1.ItemViewBinder.ADInfoList;
 import com.example.caowj.newtask.module1.ItemViewBinder.ADInfoListViewBinder;
+import com.example.caowj.newtask.module1.ItemViewBinder.ChoiceArticleListViewBinder;
 import com.example.caowj.newtask.module1.ItemViewBinder.ScrollNotificationList;
 import com.example.caowj.newtask.module1.ItemViewBinder.ScrollNotificationListViewBinder;
 import com.example.caowj.newtask.module1.listener.BroadcastCallback;
@@ -52,6 +54,10 @@ public class QipaiIndexActivity extends BaseActivity implements SwipeRefreshLayo
      */
     private MultiTypeAdapter mAdapter;
     private List<Object> listData;
+    private List<Object> listBasic;
+    private List<Object> listChange1;
+    private List<Object> listChange2;
+
     private int pageIndex = 1;
 
 
@@ -80,6 +86,7 @@ public class QipaiIndexActivity extends BaseActivity implements SwipeRefreshLayo
         mAdapter = new MultiTypeAdapter(listData);
         mAdapter.register(ADInfoList.class, new ADInfoListViewBinder(mActivity));
         mAdapter.register(ScrollNotificationList.class, new ScrollNotificationListViewBinder(mActivity));
+        mAdapter.register(ChoiceArticle.class, new ChoiceArticleListViewBinder(mActivity));
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.addOnScrollListener(new OnLoadMoreListener() {
             @Override
@@ -94,6 +101,7 @@ public class QipaiIndexActivity extends BaseActivity implements SwipeRefreshLayo
 
     private void loadMoreDate() {
         pageIndex += 1;
+        indexPresenter.getMoreInfoP(pageIndex);
     }
 
     @Override
@@ -137,6 +145,12 @@ public class QipaiIndexActivity extends BaseActivity implements SwipeRefreshLayo
     @Override
     public void showProgress() {
         mSwipeRefreshLayout.setRefreshing(true);
+    }
+
+    @Override
+    public void showMoreInfoV(List<Object> infoList) {
+        listData.addAll(infoList);
+        mAdapter.notifyDataSetChanged();
     }
 
     /************************************************************/

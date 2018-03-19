@@ -33,6 +33,8 @@ public interface BaseView<T> {
     }
 
     interface IndexView extends BaseView {
+        void showMoreInfoV(List<Object> infoList);
+
         void showFixedInfoV(List<Object> infoList);
 
         void showAdInfoV(ADInfoList adInfoList);

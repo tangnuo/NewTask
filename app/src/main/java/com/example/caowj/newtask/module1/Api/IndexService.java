@@ -2,6 +2,7 @@ package com.example.caowj.newtask.module1.Api;
 
 
 import com.example.caowj.newtask.module1.ItemViewBinder.ADInfoList;
+import com.example.caowj.newtask.module1.ItemViewBinder.ChoiceArticleList;
 import com.example.caowj.newtask.module1.ItemViewBinder.ScrollNotificationList;
 import com.example.caowj.newtask.module1.entity.NavigationInfo;
 import com.example.caowj.newtask.module1.entity.PaiPinInfo2;
@@ -56,6 +57,10 @@ public interface IndexService {
     Observable<ADInfoList> GetAdList(@Query("token") String token);
 
     /**
+     * 滚动广告
+     *<p>
+     *     http://test.qipaiapp.com/QiPaiAPI_2_6_6/SysNews.asmx/SystemNotificationList?token=QWASD874HAsSF8asJAYOgaIU3JG98hDSN2g3SD671g29385FSA811NASs
+     *</p>
      * @param token
      * @return
      */
@@ -63,4 +68,30 @@ public interface IndexService {
     Observable<ScrollNotificationList> GetNotificationList(@Query("token") String token);
 
 
+    /**
+     * 精选文章
+     * <p>
+     * http://test.qipaiapp.com/QiPaiAPI_2_6_6/Paipininfo.asmx?op=GetListWenZhang
+     * </p>
+     *
+     * @param token
+     * @return
+     */
+    @GET(Api.PAIPININFO_URL + "GetListWenZhang")
+    Observable<ChoiceArticleList> GetListWenZhang(@Query("pageSize") int pageSize, @Query("pageIndex") int pageIndex, @Query("token") String token);
+
+
+    /**
+     * 往期文章
+     * <p>
+     * http://test.qipaiapp.com/QiPaiAPI_2_6_6/Paipininfo.asmx?op=GetListWangQiWenZhang
+     * </p>
+     *
+     * @param pageSize
+     * @param pageIndex
+     * @param token
+     * @return
+     */
+    @GET(Api.PAIPININFO_URL + "GetListWangQiWenZhang")
+    Observable<ChoiceArticleList> GetListWangQiWenZhang(@Query("pageSize") int pageSize, @Query("pageIndex") int pageIndex, @Query("token") String token);
 }
