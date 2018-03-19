@@ -128,7 +128,7 @@ public class IndexModelImpl extends BaseModelImpl<BaseDataBridge.IndexDataBridge
 
     @Override
     public void getFixedInfoM() {
-        test2();
+        testZip();
 
         //测试代码
         getImageDetail();
@@ -139,7 +139,11 @@ public class IndexModelImpl extends BaseModelImpl<BaseDataBridge.IndexDataBridge
         test1();
     }
 
-    private void test2() {
+
+    /**
+     * 多接口请求（zip（））
+     */
+    private void testZip() {
 
         IndexService apiService = Network.getIndexService();
         Observable<ScrollNotificationList> observable1 = apiService.GetNotificationList(WSConstants.WEB_SERVER_TOKEN);
@@ -263,6 +267,39 @@ public class IndexModelImpl extends BaseModelImpl<BaseDataBridge.IndexDataBridge
                 });
     }
 
+
+    /**
+     * 连接两个或多个同类型数据（concat（））。
+     */
+    private void testConcat() {
+        IndexService apiService = Network.getIndexService();
+        Observable<ChoiceArticleList> observable2 = apiService.GetListWenZhang(3, 1, WSConstants.WEB_SERVER_TOKEN);
+        Observable<ChoiceArticleList> observable4 = apiService.GetListWangQiWenZhang(3, 1, WSConstants.WEB_SERVER_TOKEN);
+        Observable.concat(observable2, observable4).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ChoiceArticleList>() {
+
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        LogUtil.myD("onSubscribe...");
+                    }
+
+                    @Override
+                    public void onNext(ChoiceArticleList choiceArticleList) {
+                        LogUtil.myD(mTag + "code:" + choiceArticleList.getCode());
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        LogUtil.myE("onError..." + e.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        LogUtil.myD("onComplete...");
+                    }
+                });
+    }
 
     /**
      * 获取图片详情案例（多个网络请求依次依赖：flatMap（））
