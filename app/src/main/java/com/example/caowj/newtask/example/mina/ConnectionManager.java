@@ -113,6 +113,8 @@ public class ConnectionManager {
                 LocalBroadcastManager.getInstance(mContext).sendBroadcast(intent);
 
                 LogUtil.myD("接收到的消息：" + message);
+            } else {
+                LogUtil.myD("mContext is null,消息丢失：" + message);
             }
         }
 

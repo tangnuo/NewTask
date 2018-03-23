@@ -25,6 +25,8 @@ import com.example.caowj.newtask.utils.LogUtil;
  * 1、启动服务端测试类：TestMinaServer.java
  * 2、启动服务连接服务端
  * 3、发送数据。
+ *
+ * @deprecated see { MinaDemo项目 }
  */
 public class TestMinaActivity extends BaseActivity implements View.OnClickListener {
 
@@ -65,7 +67,8 @@ public class TestMinaActivity extends BaseActivity implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn1:
-                SessionManager.getInstance().writeToServer("1234");
+//                SessionManager.getInstance().writeToServer("1234");
+                SessionManager.getInstance().writeToServer("I am android client ~ start connect222。/n");
                 LogUtil.myD("发送消息。。。");
                 break;
             case R.id.btn2:
