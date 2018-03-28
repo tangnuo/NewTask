@@ -5,13 +5,16 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewStub;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.base.BaseActivity;
+import com.example.caowj.newtask.utils.CodeUtils;
 
 import java.util.Calendar;
 
@@ -29,6 +32,8 @@ public class TestUIActivity extends BaseActivity {
     Button btnTest2;
     @BindView(R.id.stub)
     ViewStub stub;
+    @BindView(R.id.iv_verification_code)
+    ImageView ivVerificationCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +50,7 @@ public class TestUIActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.btn_test1, R.id.btn_test2})
+    @OnClick({R.id.btn_test1, R.id.btn_test2, R.id.iv_verification_code})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_test1:
@@ -58,6 +63,9 @@ public class TestUIActivity extends BaseActivity {
             case R.id.btn_test2:
 //                sendNotification();
                 sendBroadcast();
+                break;
+            case R.id.iv_verification_code:
+                verificationCode();
                 break;
         }
     }
@@ -101,4 +109,15 @@ public class TestUIActivity extends BaseActivity {
         PendingIntent broadcast = PendingIntent.getBroadcast(this, 0, alarmIntent, 0);
         alarmService.setRepeating(AlarmManager.RTC_WAKEUP, instance.getTimeInMillis(), INTERVAL, broadcast);
     }
+
+
+    /**
+     * 图片验证码
+     */
+    private void verificationCode() {
+        Bitmap bitmap = CodeUtils.getInstance().createBitmap();
+        ivVerificationCode.setImageBitmap(bitmap);
+    }
+
+
 }
