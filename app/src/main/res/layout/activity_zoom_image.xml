@@ -5,16 +5,17 @@
     android:layout_height="match_parent"
     tools:context="com.example.caowj.newtask.example.activity.ZoomImageActivity">
 
-    <!--<com.example.caowj.newtask.widget.ZoomImageView-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:src="@mi"/>-->
 
-    <com.example.caowj.newtask.widget.ZoomImageView
-        android:layout_width="368dp"
-        android:layout_height="495dp"
-        android:src="@mipmap/ele_bg"
-        android:scaleType="matrix"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp" />
+    <!--<com.example.caowj.newtask.widget.ZoomImageView-->
+    <!--android:layout_width="368dp"-->
+    <!--android:layout_height="495dp"-->
+    <!--android:src="@mipmap/ele_bg"-->
+    <!--android:scaleType="matrix"-->
+    <!--tools:layout_editor_absoluteY="8dp"-->
+    <!--tools:layout_editor_absoluteX="8dp" />-->
+
+    <com.example.caowj.newtask.widget.imageView.LargeImageView
+        android:id="@+id/large_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </RelativeLayout>
