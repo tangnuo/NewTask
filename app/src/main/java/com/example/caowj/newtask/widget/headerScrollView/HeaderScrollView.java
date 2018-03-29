@@ -42,7 +42,7 @@ public class HeaderScrollView extends LinearLayout {
     private boolean mDisallowIntercept;  //是否允许拦截事件
     private boolean isClickHead;         //当前点击区域是否在头部
     private OnScrollListener onScrollListener;   //滚动的监听
-    private HeaderScrollHelper mScrollable;
+    private HeaderScrollHelper scrollHelper;
 
     public interface OnScrollListener {
         void onScroll(int currentY, int maxY);
@@ -68,7 +68,7 @@ public class HeaderScrollView extends LinearLayout {
         a.recycle();
 
         mScroller = new Scroller(context);
-        mScrollable = new HeaderScrollHelper();
+        scrollHelper = new HeaderScrollHelper();
         ViewConfiguration configuration = ViewConfiguration.get(context);
         mTouchSlop = configuration.getScaledTouchSlop();   //表示滑动的时候，手的移动要大于这个距离才开始移动控件。
         mMinimumVelocity = configuration.getScaledMinimumFlingVelocity(); //允许执行一个fling手势动作的最小速度值
@@ -142,7 +142,7 @@ public class HeaderScrollView extends LinearLayout {
                  * 头部没有固定，允许滑动的View处于第一条可见，当前按下的点在头部区域
                  * 三个条件满足一个即表示需要滚动当前布局，否者不处理，将事件交给子View去处理
                  */
-                if (verticalScrollFlag && (!isStickied() || mScrollable.isTop() || isClickHead)) {
+                if (verticalScrollFlag && (!isStickied() || scrollHelper.isTop() || isClickHead)) {
                     //如果是向下滑，则deltaY小于0，对于scrollBy来说
                     //正值为向上和向左滑，负值为向下和向右滑，这里要注意
                     scrollBy(0, (int) (deltaY + 0.5));
@@ -212,7 +212,7 @@ public class HeaderScrollView extends LinearLayout {
                     //这里主要是将快速滚动时的速度对接起来，让布局看起来滚动连贯
                     int distance = mScroller.getFinalY() - currY;    //除去布局滚动消耗的时间后，剩余的时间
                     int duration = calcDuration(mScroller.getDuration(), mScroller.timePassed()); //除去布局滚动的距离后，剩余的距离
-                    mScrollable.smoothScrollBy(getScrollerVelocity(distance, duration), distance, duration);
+                    scrollHelper.smoothScrollBy(getScrollerVelocity(distance, duration), distance, duration);
                     //外层布局已经滚动到指定位置，不需要继续滚动了
                     mScroller.abortAnimation();
                     return;
@@ -222,7 +222,7 @@ public class HeaderScrollView extends LinearLayout {
                 }
             } else {
                 // 手势向下划，内部View已经滚动到顶了，需要滚动外层的View
-                if (mScrollable.isTop() || isClickHead) {
+                if (scrollHelper.isTop() || isClickHead) {
                     int deltaY = (currY - mLastScrollerY);
                     int toY = getScrollY() + deltaY;
                     scrollTo(0, toY);
@@ -306,7 +306,7 @@ public class HeaderScrollView extends LinearLayout {
      * 是否允许下拉，与PTR结合使用
      */
     public boolean canPtr() {
-        return verticalScrollFlag && mCurY == minY && mScrollable.isTop();
+        return verticalScrollFlag && mCurY == minY && scrollHelper.isTop();
     }
 
     public void setTopOffset(int topOffset) {
@@ -314,6 +314,6 @@ public class HeaderScrollView extends LinearLayout {
     }
 
     public void setCurrentScrollableContainer(HeaderScrollHelper.ScrollableContainer scrollableContainer) {
-        mScrollable.setCurrentScrollableContainer(scrollableContainer);
+        scrollHelper.setCurrentScrollableContainer(scrollableContainer);
     }
 }
