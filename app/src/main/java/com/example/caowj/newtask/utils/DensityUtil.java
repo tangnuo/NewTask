@@ -3,6 +3,8 @@ package com.example.caowj.newtask.utils;
 import android.content.Context;
 import android.util.DisplayMetrics;
 
+import java.lang.reflect.Field;
+
 /**
  * 密度转换工具
  * package: com.jsfengling.qipai.tools
@@ -12,6 +14,32 @@ import android.util.DisplayMetrics;
  *         date：2015年9月17日 下午6:33:14
  */
 public class DensityUtil {
+
+    /**
+     * 获取状态栏的高度
+     *
+     * @param context
+     * @return
+     */
+    public static int getBarHeight(Context context) {
+        Class<?> c = null;
+        Object obj = null;
+        Field field = null;
+        int x = 0, sbar = 38;//默认为38，貌似大部分是这样的
+
+        try {
+            c = Class.forName("com.android.internal.R$dimen");
+            obj = c.newInstance();
+            field = c.getField("status_bar_height");
+            x = Integer.parseInt(field.get(obj).toString());
+            sbar = context.getResources().getDimensionPixelSize(x);
+
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+        return sbar;
+    }
+
 
     /**
      * 根据手机的分辨率从 dp 的单位 转成为 px(像素) <br/>

@@ -13,4 +13,10 @@
         <attr name="caowjFraction" format="fraction" />
         <attr name="caowjReference" format="reference" />
     </declare-styleable>
+
+
+    <declare-styleable name="CTTourHeaderScrollView">
+        <attr name="top_offset" format="dimension" />
+    </declare-styleable>
+
 </resources>

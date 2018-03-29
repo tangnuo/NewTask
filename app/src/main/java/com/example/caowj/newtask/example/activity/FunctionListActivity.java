@@ -113,6 +113,7 @@ public class FunctionListActivity extends BaseActivity {
         sparseArray.put(34, TestCountdownActivity.class);
         sparseArray.put(35, TestOpenGLActivity.class);
         sparseArray.put(36, TestSynchronizedActivity.class);
+        sparseArray.put(37, TestWeiboDetailActivity.class);
 
 
         functionListAdapter = new FunctionListAdapter(mActivity, sparseArray);
