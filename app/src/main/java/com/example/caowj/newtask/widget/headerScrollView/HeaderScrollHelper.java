@@ -68,6 +68,15 @@ public class HeaderScrollHelper {
         throw new IllegalStateException("scrollableView must be a instance of AdapterView|ScrollView|RecyclerView");
     }
 
+
+    public boolean isBottom() {
+        View scrollableView = getScrollableView();
+        if (scrollableView == null) {
+            throw new NullPointerException("You should call ScrollableHelper.setCurrentScrollableContainer() to set ScrollableContainer.");
+        }
+        return !canChildScrollDown(scrollableView);
+    }
+
     private boolean isRecyclerViewTop(RecyclerView recyclerView) {
         if (recyclerView != null) {
             RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
@@ -80,6 +89,30 @@ public class HeaderScrollHelper {
             }
         }
         return false;
+    }
+
+
+    private boolean canChildScrollDown(View view) {
+        if (android.os.Build.VERSION.SDK_INT < 14) {
+            if (view instanceof AbsListView) {
+                final AbsListView absListView = (AbsListView) view;
+                return absListView.getChildCount() > 0
+                        && (absListView.getLastVisiblePosition() < absListView.getChildCount() - 1
+                        || absListView.getChildAt(absListView.getChildCount() - 1).getBottom() > absListView.getPaddingBottom());
+            } else if (view instanceof ScrollView) {
+                ScrollView scrollView = (ScrollView) view;
+                if (scrollView.getChildCount() == 0) {
+                    return false;
+                } else {
+                    return scrollView.getScrollY() < scrollView.getChildAt(0).getHeight() - scrollView.getHeight();
+                }
+            } else {
+//                throw new IllegalStateException("scrollableView must be a instance of AdapterView|ScrollView|RecyclerView");
+                return false;
+            }
+        } else {
+            return view.canScrollVertically(1);
+        }
     }
 
     private boolean isAdapterViewTop(AdapterView adapterView) {

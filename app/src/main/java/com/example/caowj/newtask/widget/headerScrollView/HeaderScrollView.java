@@ -309,6 +309,10 @@ public class HeaderScrollView extends LinearLayout {
         return verticalScrollFlag && mCurY == minY && scrollHelper.isTop();
     }
 
+    public boolean canLoadMore() {
+        return verticalScrollFlag && mCurY == maxY && scrollHelper.isBottom();
+    }
+
     public void setTopOffset(int topOffset) {
         this.topOffset = topOffset;
     }
