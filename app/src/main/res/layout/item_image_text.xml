@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?><!--图文详情布局-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/iv_item_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="2dp"
+        android:src="@drawable/img_loading" />
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="11dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:paddingRight="11dp"
+        android:lineSpacingExtra="6dp"
+        android:text="@string/test1"
+        android:textColor="@color/find_item_6e6c6c"
+        android:textSize="13sp" />
+</RelativeLayout>

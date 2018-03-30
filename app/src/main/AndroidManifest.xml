@@ -35,10 +35,10 @@
         </activity>
 
         <activity-alias
-            android:name=".MainActivity3"
+            android:name=".MainActivity2"
             android:enabled="false"
-            android:icon="@drawable/location"
-            android:label="工程3"
+            android:icon="@drawable/home"
+            android:label="工程2"
             android:targetActivity=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,10 +47,10 @@
             </intent-filter>
         </activity-alias>
         <activity-alias
-            android:name=".MainActivity2"
+            android:name=".MainActivity3"
             android:enabled="false"
-            android:icon="@drawable/home"
-            android:label="工程2"
+            android:icon="@drawable/location"
+            android:label="工程3"
             android:targetActivity=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -138,7 +138,8 @@
         <activity android:name=".example.activity.TestOpenGLActivity" />
         <activity android:name=".example.activity.TestSynchronizedActivity" />
         <activity android:name=".example.activity.TestWeiboDetailActivity" />
-        <activity android:name=".example.activity.TestVelocityTrackerActivity"></activity>
+        <activity android:name=".example.activity.TestVelocityTrackerActivity" />
+        <activity android:name=".example.activity.TestMasterVoiceActivity"></activity>
     </application>
 
 </manifest>

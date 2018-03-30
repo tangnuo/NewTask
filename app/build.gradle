@@ -51,6 +51,7 @@ dependencies {
     compile 'com.github.open-android:pinyin4j:2.5.0'
     compile 'jp.wasabeef:glide-transformations:2.0.2'
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.28'
+    compile 'de.hdodenhof:circleimageview:2.2.0'
 
     //dagger2，依赖注入
     compile 'com.google.dagger:dagger:2.11'

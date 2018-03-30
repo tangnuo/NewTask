@@ -11,8 +11,9 @@ import com.example.caowj.newtask.example.adapter.ViewPagerAdapter;
 import com.example.caowj.newtask.example.fragment.StickHeaderFragment;
 
 /**
- * 仿饿了么标题悬浮
+ * 仿饿了么标题、条件栏悬浮；筛选条件。
  * <p>
+ *     Fragment中，通过ExpandableLayout控制头部折叠，实现标题栏悬浮。
  * <p/>
  * 使用折叠控件：https://github.com/cachapa/ExpandableLayout
  */

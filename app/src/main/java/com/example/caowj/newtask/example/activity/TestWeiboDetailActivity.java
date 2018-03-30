@@ -14,7 +14,7 @@ import com.example.caowj.newtask.widget.headerScrollView.HeaderScrollHelper;
 import com.example.caowj.newtask.widget.headerScrollView.HeaderScrollView;
 
 /**
- * 微博详情页（标题置顶）
+ * 微博详情页（标题置顶），HeaderScrollView+RecyclerView。
  * <br/>
  * 博客：https://blog.csdn.net/colinandroid/article/details/72770863
  * <br/>

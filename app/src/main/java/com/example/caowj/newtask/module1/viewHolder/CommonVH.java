@@ -37,15 +37,15 @@ public class CommonVH {
     /**
      * 图文详情
      */
-//    public static class ImageTextViewHolder extends RecyclerView.ViewHolder {
-//        @BindView(R.id.iv_item_image)
-//        public ImageView ivItemImage;
-//        @BindView(R.id.tv_content)
-//        public TextView tvContent;
-//
-//        public ImageTextViewHolder(View itemView) {
-//            super(itemView);
-//            ButterKnife.bind(this, itemView);
-//        }
-//    }
+    public static class ImageTextViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.iv_item_image)
+        public ImageView ivItemImage;
+        @BindView(R.id.tv_content)
+        public TextView tvContent;
+
+        public ImageTextViewHolder(View itemView) {
+            super(itemView);
+            ButterKnife.bind(this, itemView);
+        }
+    }
 }
