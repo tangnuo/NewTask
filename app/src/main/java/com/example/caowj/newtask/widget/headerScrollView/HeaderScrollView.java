@@ -23,6 +23,9 @@ import com.example.caowj.newtask.R;
  * <p>
  *     控件内部职能包含两部分：头部（任意布局）+列表部分（RecyclerView等）
  * </p>
+ * <p>
+ *     源码来源：见有道云。
+ * </p>
  * @author Zhenhua on 2018/03/19
  * @email zhshan@ctrip.com ^.^
  */
