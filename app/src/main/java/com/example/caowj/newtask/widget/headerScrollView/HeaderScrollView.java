@@ -16,6 +16,9 @@ import com.example.caowj.newtask.R;
 
 
 /**
+ * 博客：https://blog.csdn.net/colinandroid/article/details/72770863
+ * <p>用于携程旅游中</p>
+ *
  * @author Zhenhua on 2018/03/19
  * @email zhshan@ctrip.com ^.^
  */
@@ -43,6 +46,10 @@ public class HeaderScrollView extends LinearLayout {
     private boolean isClickHead;         //当前点击区域是否在头部
     private OnScrollListener onScrollListener;   //滚动的监听
     private HeaderScrollHelper scrollHelper;
+    private float mDownX;  //第一次按下的x坐标
+    private float mDownY;  //第一次按下的y坐标
+    private float mLastY;  //最后一次移动的Y坐标
+    private boolean verticalScrollFlag = false;   //是否允许垂直滚动
 
     public interface OnScrollListener {
         void onScroll(int currentY, int maxY);
@@ -78,6 +85,7 @@ public class HeaderScrollView extends LinearLayout {
 
     @Override
     protected void onFinishInflate() {
+        //当View中所有的子控件均被映射成xml后触发
         super.onFinishInflate();
         if (mHeadView != null && !mHeadView.isClickable()) {
             mHeadView.setClickable(true);
@@ -101,11 +109,6 @@ public class HeaderScrollView extends LinearLayout {
         super.requestDisallowInterceptTouchEvent(disallowIntercept);
         mDisallowIntercept = disallowIntercept;
     }
-
-    private float mDownX;  //第一次按下的x坐标
-    private float mDownY;  //第一次按下的y坐标
-    private float mLastY;  //最后一次移动的Y坐标
-    private boolean verticalScrollFlag = false;   //是否允许垂直滚动
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
@@ -195,6 +198,9 @@ public class HeaderScrollView extends LinearLayout {
         mVelocityTracker.addMovement(event);
     }
 
+    /**
+     * 回收
+     */
     private void recycleVelocityTracker() {
         if (mVelocityTracker != null) {
             mVelocityTracker.recycle();
@@ -294,6 +300,11 @@ public class HeaderScrollView extends LinearLayout {
         return duration - timepass;
     }
 
+    public void setCurrentScrollableContainer(HeaderScrollHelper.ScrollableContainer scrollableContainer) {
+        scrollHelper.setCurrentScrollableContainer(scrollableContainer);
+    }
+
+
     public int getMaxY() {
         return maxY;
     }
@@ -309,6 +320,11 @@ public class HeaderScrollView extends LinearLayout {
         return verticalScrollFlag && mCurY == minY && scrollHelper.isTop();
     }
 
+    /**
+     * 可以加载更多（自己写的，未测试，可能有bug）
+     *
+     * @return
+     */
     public boolean canLoadMore() {
         return verticalScrollFlag && mCurY == maxY && scrollHelper.isBottom();
     }
@@ -317,7 +333,4 @@ public class HeaderScrollView extends LinearLayout {
         this.topOffset = topOffset;
     }
 
-    public void setCurrentScrollableContainer(HeaderScrollHelper.ScrollableContainer scrollableContainer) {
-        scrollHelper.setCurrentScrollableContainer(scrollableContainer);
-    }
 }
