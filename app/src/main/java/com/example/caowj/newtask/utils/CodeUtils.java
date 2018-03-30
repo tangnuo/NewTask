@@ -8,6 +8,7 @@ import android.graphics.Paint;
 import java.util.Random;
 
 /**
+ * 随机验证码图片
  * @Author : caowj
  * @Date : 2018/3/28
  * 博客地址：http://blog.csdn.net/qq_33078541?viewmode=list
@@ -32,7 +33,7 @@ public class CodeUtils {
     private static final int DEFAULT_LINE_NUMBER = 3;//多少条干扰线
     private static final int BASE_PADDING_LEFT = 20; //左边距
     private static final int RANGE_PADDING_LEFT = 35;//左边距范围值
-    private static final int BASE_PADDING_TOP = 42;//上边距
+    private static final int BASE_PADDING_TOP = 63;//上边距
     private static final int RANGE_PADDING_TOP = 15;//上边距范围值
     private static final int DEFAULT_WIDTH = 200;//默认宽度.图片的总宽
     private static final int DEFAULT_HEIGHT = 100;//默认高度.图片的总高
@@ -55,6 +56,7 @@ public class CodeUtils {
 
         //生成的验证码
         String code = createCode();
+        LogUtil.myD("验证码：" + code);
 
         canvas.drawColor(Color.rgb(DEFAULT_COLOR, DEFAULT_COLOR, DEFAULT_COLOR));
         Paint paint = new Paint();
@@ -99,7 +101,11 @@ public class CodeUtils {
         canvas.drawLine(startX, startY, stopX, stopY, paint);
     }
 
-    //随机颜色
+    /**
+     * 随机颜色
+     *
+     * @return
+     */
     private int randomColor() {
         mBuilder.delete(0, mBuilder.length()); //使用之前首先清空内容
 
@@ -116,7 +122,10 @@ public class CodeUtils {
         return Color.parseColor("#" + mBuilder.toString());
     }
 
-    //随机文本样式
+    /**
+     * 随机文本样式
+     * @param paint
+     */
     private void randomTextStyle(Paint paint) {
         int color = randomColor();
         paint.setColor(color);
