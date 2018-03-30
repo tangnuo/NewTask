@@ -19,6 +19,10 @@ import com.example.caowj.newtask.R;
  * 博客：https://blog.csdn.net/colinandroid/article/details/72770863
  * <p>用于携程旅游中</p>
  *
+ * 分析：
+ * <p>
+ *     控件内部职能包含两部分：头部（任意布局）+列表部分（RecyclerView等）
+ * </p>
  * @author Zhenhua on 2018/03/19
  * @email zhshan@ctrip.com ^.^
  */

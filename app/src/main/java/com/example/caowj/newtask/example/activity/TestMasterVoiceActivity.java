@@ -25,7 +25,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 /**
  * 微博详情页，在{@link TestWeiboDetailActivity}的基础上继续深化。
  * <p>
- * HeaderScrollView + ViewPager + RecyclerView
+ * HeaderScrollView + ViewPager + RecyclerView.
+ * 如果配合刷新控件，最好的解决办法就是将加载更多放入RecyclerView中；针对不同的Fragment，请求不同的数据，降低耦合度。
  * </p>
  */
 public class TestMasterVoiceActivity extends BaseActivity implements HeaderScrollHelper.ScrollableContainer {
