@@ -14,6 +14,8 @@ import butterknife.BindView;
 /**
  * 底部导航栏<br/>
  * https://segmentfault.com/a/1190000007697941
+ * <br/>
+ * 进阶：https://blog.csdn.net/xiaoyangsavvy/article/details/70213537
  */
 public class BottomNavigationActivity extends BaseActivity {
 
