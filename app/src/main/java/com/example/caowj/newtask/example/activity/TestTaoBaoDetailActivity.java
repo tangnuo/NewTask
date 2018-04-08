@@ -35,7 +35,6 @@ public class TestTaoBaoDetailActivity extends BaseActivity {
     private List<String> dataList2 = new ArrayList<>();
     private List<String> dataList3 = new ArrayList<>();
     private int colors[] = new int[2];
-    private int firstVisible;
     private LinearLayoutManager layoutManager;
 
     @Override
@@ -68,7 +67,7 @@ public class TestTaoBaoDetailActivity extends BaseActivity {
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 LinearLayoutManager layoutManager1 = (LinearLayoutManager) recyclerView.getLayoutManager();
-                firstVisible = layoutManager1.findFirstVisibleItemPosition();
+                int firstVisible = layoutManager1.findFirstVisibleItemPosition();
 
                 tvTitle1.setTextColor(colors[0]);
                 tvTitle2.setTextColor(colors[0]);
