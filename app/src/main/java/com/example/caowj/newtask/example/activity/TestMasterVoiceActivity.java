@@ -34,8 +34,6 @@ public class TestMasterVoiceActivity extends BaseActivity implements HeaderScrol
     TextView tvName;
     @BindView(R.id.iv_photo)
     CircleImageView ivPhoto;
-    @BindView(R.id.iv_play)
-    ImageView ivPlay;
     @BindView(R.id.seekbar)
     AppCompatSeekBar seekbar;
     @BindView(R.id.tv_play_progress)
@@ -121,13 +119,12 @@ public class TestMasterVoiceActivity extends BaseActivity implements HeaderScrol
         return mRecyclerView;
     }
 
-    @OnClick({R.id.iv_photo, R.id.iv_play})
+    @OnClick({R.id.iv_photo})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_photo:
                 break;
-            case R.id.iv_play:
-                break;
+
         }
     }
 }
