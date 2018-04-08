@@ -115,7 +115,9 @@ public class ZoomImageActivity extends AppCompatActivity {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             InputStream is = (InputStream) msg.obj;
-            mLargeImageView.setInputStream(is);
+            if (mLargeImageView != null) {
+                mLargeImageView.setInputStream(is);
+            }
         }
     }
 }
