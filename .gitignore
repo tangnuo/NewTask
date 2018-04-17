@@ -15,3 +15,7 @@
 release/
 src/main/assets/
 src/main/java/com/example/caowj/newtask/other/ItemDecoration/
+.idea/fileTemplates/
+app/src/main/assets/
+app/src/main/java/com/example/caowj/newtask/other/ItemDecoration/
+/app/baseApk/
