@@ -12,3 +12,6 @@
 .idea/copyright/
 .idea/misc.xml
 .idea/modules.xml
+release/
+src/main/assets/
+src/main/java/com/example/caowj/newtask/other/ItemDecoration/
