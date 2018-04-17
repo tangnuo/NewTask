@@ -3,6 +3,7 @@ package com.example.caowj.newtask.utils.business;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.ActivityManager.RunningTaskInfo;
+import android.app.Application;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -38,6 +39,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.example.caowj.newtask.base.BaseApp;
 import com.example.caowj.newtask.module1.constants.WSConstants;
 import com.example.caowj.newtask.module1.listener.BroadcastCallback;
 import com.example.caowj.newtask.utils.DensityUtil;
@@ -812,6 +814,20 @@ public class MyAndroidUtils {
     public static int getScreenWidth(Context mContext) {
         int width = 0;
         WindowManager wm = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        //        width = display.getWidth();//已过时
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        display.getMetrics(displayMetrics);
+        width = displayMetrics.widthPixels;
+        return width;
+    }
+
+    /**
+     * @return
+     */
+    public static int getScreenWidth() {
+        int width = 0;
+        WindowManager wm = (WindowManager) BaseApp.getInstance().getSystemService(Context.WINDOW_SERVICE);
         Display display = wm.getDefaultDisplay();
         //        width = display.getWidth();//已过时
         DisplayMetrics displayMetrics = new DisplayMetrics();

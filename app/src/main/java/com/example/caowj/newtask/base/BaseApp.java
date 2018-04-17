@@ -12,6 +12,7 @@ import com.example.caowj.newtask.example.mDagger.module.AppModule;
 public class BaseApp extends Application {
 
     AppComponent mAppComponent;
+    private static BaseApp instance;
 
     @Override
     public void onCreate() {
@@ -21,6 +22,17 @@ public class BaseApp extends Application {
 
     }
 
+    public BaseApp() {
+    }
+
+
+    // 单例模式获取唯一的MyApplication实例
+    public static BaseApp getInstance() {
+        if (null == instance) {
+            instance = new BaseApp();
+        }
+        return instance;
+    }
 
     public AppComponent getAppComponent() {
         return mAppComponent;
