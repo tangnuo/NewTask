@@ -1,7 +1,37 @@
 apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao' // apply plugin
+apply plugin: 'channel'
 
 android {
+
+    signingConfigs{
+        newTask_signing {
+//            storeFile file('C:/Users/Administrator/Desktop/mKeyStore.jks')
+            storeFile file('config/mKeyStore.jks')
+            storePassword '411524'
+            keyAlias '曹维健'
+            keyPassword '046834'
+        }
+//        release {
+//            storeFile file("release.keystore")
+//            storePassword "123456"
+//            keyAlias "leon"
+//            keyPassword "123456"
+//            v1SigningEnabled true
+//            v2SigningEnabled false
+//        }
+//
+
+        debug {
+            storeFile file('C:/Users/Administrator/Desktop/mKeyStore.jks')
+            storePassword '411524'
+            keyAlias '曹维健'
+            keyPassword '046834'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
     defaultConfig {
@@ -16,6 +46,13 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.newTask_signing
+        }
+
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.newTask_signing
         }
     }
 
@@ -28,6 +65,35 @@ android {
         schemaVersion 3
         targetGenDir 'src/main/java'
     }
+}
+
+//不需要加固的情况下使用：
+//channel{
+//    //指定渠道文件
+//    channelFile = file("../channel.txt")
+//    //多渠道包的输出目录，默认为new File(project.buildDir,"channel")
+//    baseOutputDir = new File(project.buildDir,"channel")
+//    //多渠道包的命名规则，默认为：${appName}-${versionName}-${versionCode}-${flavorName}-${buildType}
+//    apkNameFormat ='${appName}-${versionName}-${versionCode}-${flavorName}-${buildType}'
+//    //快速模式：生成渠道包时不进行校验（速度可以提升10倍以上）
+//    isFastMode = false
+//}
+
+
+
+//需要加固的情况下使用：
+rebuildChannel {
+    //指定渠道文件
+    channelFile = file("../channel.txt")
+//    baseDebugApk = new File(project.projectDir, "baseApk/app-base-debug.apk")
+    //注意目录和文件名称（名称中必须包含base）
+    baseReleaseApk = new File(project.projectDir, "baseApk/app-base-release.apk")
+    //默认为new File(project.buildDir, "rebuildChannel/debug")
+    debugOutputDir = new File(project.buildDir, "rebuildChannel/debug")
+    //默认为new File(project.buildDir, "rebuildChannel/release")
+    releaseOutputDir = new File(project.buildDir, "rebuildChannel/release")
+    //快速模式：生成渠道包时不进行校验（速度可以提升10倍以上）
+    isFastMode = false
 }
 
 dependencies {
@@ -77,4 +143,7 @@ dependencies {
     compile('me.drakeet.multitype:multitype:3.4.4', {
         exclude group: 'com.android.support'
     })
+
+    //多渠道打包
+    api 'com.leon.channel:helper:1.1.7'
 }

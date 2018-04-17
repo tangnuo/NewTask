@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.example.activity.FunctionListActivity;
+import com.example.caowj.newtask.utils.business.MyAndroidUtils;
+import com.leon.channel.helper.ChannelReaderUtil;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -73,12 +75,28 @@ public class MainActivity extends BaseActivity {
                 FunctionListActivity.newInstance(this);
                 break;
             case R.id.btn_test:
-//                全局广播和局部广播
-                Intent mIntent = new Intent();
-                mIntent.setAction("BROADCAST_GOTO_INDEX");
-//                sendBroadcast(mIntent);
-                localBroadcastManager.sendBroadcast(mIntent);
+//                testLocalBroadcast();
+                testVasDolly();
                 break;
         }
+    }
+
+    /**
+     * 测试本地广播
+     */
+    private void testLocalBroadcast() {
+//                全局广播和局部广播
+        Intent mIntent = new Intent();
+        mIntent.setAction("BROADCAST_GOTO_INDEX");
+//                sendBroadcast(mIntent);
+        localBroadcastManager.sendBroadcast(mIntent);
+    }
+
+    /**
+     * 测试多渠道信息
+     */
+    private void testVasDolly() {
+        String channel = ChannelReaderUtil.getChannel(getApplicationContext());
+        MyAndroidUtils.showShortToast(mActivity, "渠道信息：" + channel);
     }
 }
