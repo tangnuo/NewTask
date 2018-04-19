@@ -53,7 +53,7 @@ public class FunctionListAdapter extends RecyclerView.Adapter {
             @Override
             public void onClick(View view) {
                 Intent mIntent = new Intent(mContext, className);
-                mIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                mIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mContext.startActivity(mIntent);
             }
         });

@@ -4,7 +4,7 @@ apply plugin: 'channel'
 
 android {
 
-    signingConfigs{
+    signingConfigs {
         newTask_signing {
 //            storeFile file('C:/Users/Administrator/Desktop/mKeyStore.jks')
             storeFile file('config/mKeyStore.jks')
@@ -78,8 +78,6 @@ android {
 //    //快速模式：生成渠道包时不进行校验（速度可以提升10倍以上）
 //    isFastMode = false
 //}
-
-
 
 //需要加固的情况下使用：
 rebuildChannel {
