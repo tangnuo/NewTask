@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewStub;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.base.BaseActivity;
@@ -39,7 +40,10 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 /**
- * 使用OKHttp3<br/>
+ * 使用OKHttp3
+ * <p>
+ * 参考写法，有些代码没有输出结果。
+ * </p>
  * https://blog.csdn.net/fightingxia/article/details/70947701
  */
 public class TestOkHttpActivity extends BaseActivity {
@@ -50,6 +54,8 @@ public class TestOkHttpActivity extends BaseActivity {
     Button btnTest2;
     @BindView(R.id.stub)
     ViewStub stub;
+    @BindView(R.id.tv_title)
+    TextView tvTitle;
 
     private OkHttpClient client;
     private static final String POST_URL = "http://zhushou.72g.com/app/gift/gift_list/";
@@ -59,6 +65,7 @@ public class TestOkHttpActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        tvTitle.setText("参考代码写法，有些代码没有输出结果。");
         initOkHttp();
     }
 
@@ -96,12 +103,12 @@ public class TestOkHttpActivity extends BaseActivity {
 //                    }
 //                });
 
-                testGet2();
+                testGetSynchronous();
                 break;
             case R.id.btn_test2:
 //                testPost();
 //                testPost2();
-                testPost3();
+                testPostForm();
                 break;
             case R.id.stub:
                 break;
@@ -112,7 +119,7 @@ public class TestOkHttpActivity extends BaseActivity {
     /**
      * 测试GET请求（异步）
      */
-    private void testGet2() {
+    private void testGetAsynchronous() {
 
         Request request = new Request.Builder()
                 .get()
@@ -142,7 +149,7 @@ public class TestOkHttpActivity extends BaseActivity {
     /**
      * 测试GET请求（同步）
      */
-    private void testGet() {
+    private void testGetSynchronous() {
         String url = GankUtil.getUrl(1, 10, 1);
 
         OkHttpClient client = new OkHttpClient();
@@ -167,7 +174,7 @@ public class TestOkHttpActivity extends BaseActivity {
     /**
      * 测试POST请求(提交表单)
      */
-    private void testPost() {
+    private void testPostForm() {
         //    请求条件：platform=2&gifttype=2&compare=60841c5b7c69a1bbb3f06536ed685a48
         //    请求参数：page=1&code=news&pageSize=20&parentid=0&type=1
 
@@ -204,7 +211,7 @@ public class TestOkHttpActivity extends BaseActivity {
     /**
      * 测试POST请求(提交文件)
      */
-    private void testPost2() {
+    private void testPostFile() {
         File file = new File(Environment.getExternalStorageDirectory(), "dd.mp4");
         if (!file.exists()) {
             MyAndroidUtils.showShortToast(mActivity, "文件不存在");
@@ -240,7 +247,7 @@ public class TestOkHttpActivity extends BaseActivity {
     /**
      * 测试POST请求（提交JSON）
      */
-    private void testPost3() {
+    private void testPostJson() {
         OkHttpClient client = new OkHttpClient();//创建OkHttpClient对象。
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");//数据类型为json格式，
         String jsonStr = "{\"username\":\"lisi\",\"nickname\":\"李四\"}";//json数据.
@@ -270,7 +277,7 @@ public class TestOkHttpActivity extends BaseActivity {
     /**
      * 测试POST请求（MultipartBody,多重body）
      */
-    private void testPost4() {
+    private void testPostMulti() {
         File file = new File(Environment.getExternalStorageDirectory(), "dd.mp4");
         if (!file.exists()) {
             MyAndroidUtils.showShortToast(mActivity, "文件不存在");

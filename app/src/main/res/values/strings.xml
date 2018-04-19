@@ -14,4 +14,5 @@
     <string name="ok">确定</string>
     <string name="test1">测试1</string>
     <string name="test2">测试2</string>
+    <string name="test_hint">参考代码写法，有些代码没有输出结果。</string>
 </resources>
