@@ -1,6 +1,7 @@
 package com.example.caowj.newtask.base;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.example.caowj.newtask.example.mDagger.component.AppComponent;
 import com.example.caowj.newtask.example.mDagger.component.DaggerAppComponent;
@@ -13,11 +14,12 @@ public class BaseApp extends Application {
 
     AppComponent mAppComponent;
     private static BaseApp instance;
+    public static Context AppContext;
 
     @Override
     public void onCreate() {
         super.onCreate();
-
+        AppContext = getApplicationContext();
         mAppComponent = DaggerAppComponent.builder().appModule(new AppModule(this)).build();
 
     }

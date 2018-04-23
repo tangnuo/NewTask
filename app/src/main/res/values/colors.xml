@@ -182,6 +182,8 @@
     <color name="item_91">#919191</color>
     <color name="item_b4282d">#b4282d</color>
     <color name="item_f7">#f7f7f7</color>
-
+    <color name="Blue_Grey">#607d8b</color>
+    <color name="textColorPrimary">#616161</color>
+    <color name="viewBackground">@android:color/white</color>
 
 </resources>

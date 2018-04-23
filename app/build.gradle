@@ -65,6 +65,10 @@ android {
         schemaVersion 3
         targetGenDir 'src/main/java'
     }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 }
 
 //不需要加固的情况下使用：
