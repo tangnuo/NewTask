@@ -71,8 +71,8 @@ public class AppIconManager {
         //得到此activity的全限定名
         componentNameDefault = mContext.getComponentName();
         //根据全限定名创建一个组件，即activity-alias 节点下的name：HomeActivity2 对应的组件
-        componentName2 = new ComponentName(mContext.getBaseContext(), "com.example.caowj.newtask.MainActivity2");
-        componentName3 = new ComponentName(mContext.getBaseContext(), "com.example.caowj.newtask.MainActivity3");
+        componentName2 = new ComponentName(mContext.getBaseContext(), "com.example.caowj.newtask.SplashActivity2");
+        componentName3 = new ComponentName(mContext.getBaseContext(), "com.example.caowj.newtask.SplashActivity3");
 
         LogUtil.myD("default:" + componentNameDefault + "\ncomponentName2:" + componentName2 + "\ncomponentName3:" + componentName3);
 //        String action = mContext.getActionFromServer();//从后台获取到应该使用那一个组件，或者根据时间来判断
