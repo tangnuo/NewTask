@@ -1,5 +1,6 @@
 package com.example.caowj.newtask.toutiao.module.news;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -18,9 +19,9 @@ import com.example.caowj.newtask.toutiao.bean.news.NewsChannelBean;
 import com.example.caowj.newtask.toutiao.database.dao.NewsChannelDao;
 import com.example.caowj.newtask.toutiao.module.base.BaseListFragment;
 import com.example.caowj.newtask.toutiao.module.news.article.NewsArticleView;
+import com.example.caowj.newtask.toutiao.module.news.channel.NewsChannelActivity;
 import com.example.caowj.newtask.toutiao.util.RxBus;
 import com.example.caowj.newtask.toutiao.util.SettingUtil;
-import com.example.caowj.newtask.utils.business.MyAndroidUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -77,8 +78,8 @@ public class NewsTabLayout extends Fragment {
         tab_layout.setTabMode(TabLayout.MODE_SCROLLABLE);
         ImageView add_channel_iv = view.findViewById(R.id.add_channel_iv);
         add_channel_iv.setOnClickListener(v ->
-                        MyAndroidUtils.showShortToast(getActivity(), "修改渠道信息")
-//                startActivity(new Intent(getActivity(), NewsChannelActivity.class))
+//                        MyAndroidUtils.showShortToast(getActivity(), "修改渠道信息")
+                        startActivity(new Intent(getActivity(), NewsChannelActivity.class))
         );
         linearLayout = view.findViewById(R.id.header_layout);
         linearLayout.setBackgroundColor(SettingUtil.getInstance().getColor());

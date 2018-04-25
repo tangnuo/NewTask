@@ -150,6 +150,11 @@
         <activity android:name=".example.activity.TestMasterVoiceActivity" />
         <activity android:name=".example.activity.TestTaoBaoDetailActivity" />
         <activity android:name=".example.activity.TestOkHttpActivity" />
+        <activity
+            android:name=".toutiao.module.news.channel.NewsChannelActivity"
+            android:configChanges="orientation|screenSize|uiMode"
+            android:label="@string/title_item_drag"
+            android:theme="@style/AppTheme.NoActionBar.Slidable" />
     </application>
 
 </manifest>
