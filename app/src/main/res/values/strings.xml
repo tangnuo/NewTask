@@ -26,5 +26,12 @@
     <string name="navigation_drawer_close">关闭侧栏</string>
     <string name="action_search">搜索</string>
     <string name="double_click_exit">再按一次退出程序</string>
+    <string name="network_error">网络错误</string>
+    <string name="title_comment">评论</string>
+    <string name="share_to">分享</string>
+    <string name="copied_to_clipboard">复杂成功</string>
+    <string name="share_content">分享内容</string>
+    <string name="copy_content">复制内容</string>
+    <string name="no_more_content">暂无更多内容</string>
 
 </resources>

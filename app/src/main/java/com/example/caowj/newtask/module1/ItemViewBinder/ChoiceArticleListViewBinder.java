@@ -1,10 +1,8 @@
 package com.example.caowj.newtask.module1.ItemViewBinder;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +13,8 @@ import android.widget.TextView;
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.example.bean.ArticleLabel;
 import com.example.caowj.newtask.example.bean.ChoiceArticle;
+import com.example.caowj.newtask.toutiao.util.GlideUtil;
 import com.example.caowj.newtask.utils.AlimmdnUtil;
-import com.example.caowj.newtask.utils.Glide.GlideUtils;
 import com.example.caowj.newtask.utils.JudgmentDataUtil;
 import com.example.caowj.newtask.utils.LogUtil;
 import com.example.caowj.newtask.utils.business.MyAndroidUtils;
@@ -60,7 +58,8 @@ public class ChoiceArticleListViewBinder extends ItemViewBinder<ChoiceArticle, C
         params.height = height;
         holder.ivArticlePoster.setLayoutParams(params);
         //文章封面
-        GlideUtils.loadStringRes(holder.ivArticlePoster, AlimmdnUtil.modifyImagePath(choiceArticle.getImg()));
+        GlideUtil.loadNormal(mActivity, AlimmdnUtil.modifyImagePath(choiceArticle.getImg()), holder.ivArticlePoster);
+//        GlideUtils.loadStringRes(holder.ivArticlePoster, AlimmdnUtil.modifyImagePath(choiceArticle.getImg()));
         //添加标签的控件
         ViewGroup.LayoutParams lp = holder.rl_label.getLayoutParams();
         lp.height = height;

@@ -93,6 +93,7 @@ public class TextSwitcherActivity extends BaseActivity {
             }
         });
 
+        Class s;
         new Thread() {
             @Override
             public void run() {

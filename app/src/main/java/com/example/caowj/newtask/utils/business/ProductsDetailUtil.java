@@ -7,11 +7,11 @@ import android.support.v7.widget.GridLayoutManager;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.caowj.newtask.toutiao.util.GlideUtil;
 import com.example.caowj.newtask.module1.constants.Constants;
 import com.example.caowj.newtask.module1.entity.bean.PaiPinBean;
 import com.example.caowj.newtask.module1.viewHolder.FixedPriceProductVH;
 import com.example.caowj.newtask.utils.AlimmdnUtil;
-import com.example.caowj.newtask.utils.Glide.GlideUtils;
 
 import java.util.List;
 
@@ -69,7 +69,8 @@ public class ProductsDetailUtil {
         holder.border.setLayoutParams(borderParams);
         //一口价尺寸 360*270px
         String url = paiPinInfo.getPicFixedPrice();
-        GlideUtils.loadStringRes(holder.ivPoster, AlimmdnUtil.modifyImagePath(url), GlideUtils.setConfigSize(url, 360, 270), null);
+        GlideUtil.loadNormal(holder.ivPoster.getContext(), AlimmdnUtil.modifyImagePath(url), holder.ivPoster);
+//        GlideUtils.loadStringRes(holder.ivPoster, AlimmdnUtil.modifyImagePath(url), GlideUtils.setConfigSize(url, 360, 270), null);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

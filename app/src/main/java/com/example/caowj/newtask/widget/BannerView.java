@@ -1,12 +1,10 @@
 package com.example.caowj.newtask.widget;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Handler;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,20 +14,13 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 
-
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.example.bean.PaiPinInfo;
+import com.example.caowj.newtask.toutiao.util.GlideUtil;
 import com.example.caowj.newtask.module1.entity.bean.AdBean;
-import com.example.caowj.newtask.utils.AlimmdnUtil;
-import com.example.caowj.newtask.utils.Glide.GlideUtils;
 import com.example.caowj.newtask.utils.LogUtil;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -170,7 +161,8 @@ public class BannerView extends FrameLayout {
                 } else {
                     adInfo = adInfoList.get(i - 1);
                 }
-                GlideUtils.loadStringRes(iv, AlimmdnUtil.modifyImagePath(adInfo.getImages()), GlideUtils.setConfigSize(adInfo.getImages(), 750, 500), null);
+                GlideUtil.loadNormal(mContext, adInfo.getImages(), iv);
+//                GlideUtils.loadStringRes(iv, AlimmdnUtil.modifyImagePath(adInfo.getImages()), GlideUtils.setConfigSize(adInfo.getImages(), 750, 500), null);
 //                LogUtil.d(mTag, "当前轮播图信息：" + AlimmdnUtil.modifyImagePath(adInfo.getImages()));
                 imageViews.add(iv);
             }
@@ -179,7 +171,8 @@ public class BannerView extends FrameLayout {
             ImageView iv = new ImageView(mContext);
             iv.setScaleType(ScaleType.CENTER_CROP);
             AdBean adInfo = adInfoList.get(count - 1);
-            GlideUtils.loadStringRes(iv, AlimmdnUtil.modifyImagePath(adInfo.getImages()), GlideUtils.setConfigSize(adInfo.getImages(), 750, 500), null);
+            GlideUtil.loadNormal(mContext, adInfo.getImages(), iv);
+//            GlideUtils.loadStringRes(iv, AlimmdnUtil.modifyImagePath(adInfo.getImages()), GlideUtils.setConfigSize(adInfo.getImages(), 750, 500), null);
 //            LogUtil.d(mTag, "当前轮播图信息：" + AlimmdnUtil.modifyImagePath(adInfo.getImages()));
             imageViews.add(iv);
         } else {
@@ -226,7 +219,7 @@ public class BannerView extends FrameLayout {
             paiPinInfo = null;
         }
         registerCount = 0;
-        GlideUtils.cleanAll(mContext);
+//        GlideUtils.cleanAll(mContext);
     }
 
     private class BannerPagerAdapter extends PagerAdapter {
