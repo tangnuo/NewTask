@@ -17,6 +17,7 @@ import com.example.caowj.newtask.toutiao.binder.news.NewsCommentViewBinder;
 import me.drakeet.multitype.MultiTypeAdapter;
 
 /**
+ * MultiTypeAdapter的工具类。
  * Created by Meiji on 2017/6/9.
  */
 
