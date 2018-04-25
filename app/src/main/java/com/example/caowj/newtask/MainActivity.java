@@ -13,8 +13,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.example.activity.FunctionListActivity;
+import com.example.caowj.newtask.toutiao.module.base.BaseActivity;
 import com.example.caowj.newtask.toutiao.module.media.MediaTabLayout;
 import com.example.caowj.newtask.toutiao.module.news.NewsTabLayout;
 import com.example.caowj.newtask.toutiao.module.photo.PhotoTabLayout;
@@ -46,8 +46,9 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.activity_main);
         initView();
+
         if (savedInstanceState != null) {
             newsTabLayout = (NewsTabLayout) getSupportFragmentManager().findFragmentByTag(NewsTabLayout.class.getName());
             photoTabLayout = (PhotoTabLayout) getSupportFragmentManager().findFragmentByTag(PhotoTabLayout.class.getName());
@@ -109,22 +110,22 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
     public void doubleClick(int index) {
 //        双击刷新
-//        long secondClickTime = System.currentTimeMillis();
-//        if ((secondClickTime - firstClickTime < 500)) {
-//            switch (index) {
-//                case FRAGMENT_NEWS:
-//                    newsTabLayout.onDoubleClick();
-//                    break;
-//                case FRAGMENT_PHOTO:
-//                    photoTabLayout.onDoubleClick();
-//                    break;
-//                case FRAGMENT_VIDEO:
-//                    videoTabLayout.onDoubleClick();
-//                    break;
-//            }
-//        } else {
-//            firstClickTime = secondClickTime;
-//        }
+        long secondClickTime = System.currentTimeMillis();
+        if ((secondClickTime - firstClickTime < 500)) {
+            switch (index) {
+                case FRAGMENT_NEWS:
+                    newsTabLayout.onDoubleClick();
+                    break;
+                case FRAGMENT_PHOTO:
+                    photoTabLayout.onDoubleClick();
+                    break;
+                case FRAGMENT_VIDEO:
+                    videoTabLayout.onDoubleClick();
+                    break;
+            }
+        } else {
+            firstClickTime = secondClickTime;
+        }
     }
 
     private void showFragment(int index) {
@@ -240,14 +241,14 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 //                getWindow().setWindowAnimations(R.style.WindowAnimationFadeInOut);
 //                recreate();
 
-                MyAndroidUtils.showShortToast(mActivity, "昼夜模式");
+                MyAndroidUtils.showShortToast(this, "昼夜模式");
                 return false;
 
             case R.id.nav_setting:
 //                startActivity(new Intent(this, SettingActivity.class));
 //                drawer_layout.closeDrawers();
 
-                MyAndroidUtils.showShortToast(mActivity, "设置");
+                MyAndroidUtils.showShortToast(this, "设置");
                 return false;
 
             case R.id.nav_share:
@@ -261,15 +262,4 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         }
         return false;
     }
-
-    @Override
-    protected int getContentView() {
-        return R.layout.activity_main;
-    }
-
-    @Override
-    protected void memoryRecovery() {
-
-    }
-
 }

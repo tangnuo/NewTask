@@ -22,6 +22,8 @@ import com.example.caowj.newtask.toutiao.util.SettingUtil;
 import com.example.caowj.newtask.toutiao.util.TimeUtil;
 import com.example.caowj.newtask.widget.imageView.CircleImageView;
 
+import java.util.concurrent.TimeUnit;
+
 import me.drakeet.multitype.ItemViewBinder;
 
 /**
@@ -80,9 +82,11 @@ public class NewsArticleTextViewBinder extends ItemViewBinder<MultiNewsArticleDa
                 popupMenu.show();
             });
 
+//            //跳转详情页
 //            RxView.clicks(holder.itemView)
 //                    .throttleFirst(1, TimeUnit.SECONDS)
 //                    .subscribe(o -> NewsContentActivity.launch(item));
+
         } catch (Exception e) {
             ErrorAction.print(e);
         }

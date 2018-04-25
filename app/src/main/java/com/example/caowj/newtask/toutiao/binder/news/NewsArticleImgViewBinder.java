@@ -90,10 +90,12 @@ public class NewsArticleImgViewBinder extends ItemViewBinder<MultiNewsArticleDat
                 popupMenu.show();
             });
 
+//            跳转详情
 //            final String finalImgUrl = imgUrl;
 //            RxView.clicks(holder.itemView)
 //                    .throttleFirst(1, TimeUnit.SECONDS)
 //                    .subscribe(o -> NewsContentActivity.launch(item, finalImgUrl));
+
         } catch (Exception e) {
             ErrorAction.print(e);
         }

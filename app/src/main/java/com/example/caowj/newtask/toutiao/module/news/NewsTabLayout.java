@@ -10,18 +10,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.example.adapter.BasePagerAdapter;
 import com.example.caowj.newtask.toutiao.Constant;
-import com.example.caowj.newtask.toutiao.module.base.BaseListFragment;
 import com.example.caowj.newtask.toutiao.bean.news.NewsChannelBean;
 import com.example.caowj.newtask.toutiao.database.dao.NewsChannelDao;
+import com.example.caowj.newtask.toutiao.module.base.BaseListFragment;
 import com.example.caowj.newtask.toutiao.module.news.article.NewsArticleView;
 import com.example.caowj.newtask.toutiao.util.RxBus;
 import com.example.caowj.newtask.toutiao.util.SettingUtil;
-import com.example.caowj.newtask.utils.ToastUtil;
 import com.example.caowj.newtask.utils.business.MyAndroidUtils;
 
 import java.util.ArrayList;
