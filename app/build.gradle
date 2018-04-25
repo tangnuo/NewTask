@@ -161,5 +161,6 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.6.1'
 // MD dialog
     implementation 'com.afollestad.material-dialogs:commons:0.9.6.0'
-
+    // RxBinding
+    implementation 'com.jakewharton.rxbinding2:rxbinding-appcompat-v7:2.1.1'
 }

@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.toutiao.ErrorAction;
 import com.example.caowj.newtask.toutiao.IntentAction;
@@ -20,7 +19,9 @@ import com.example.caowj.newtask.toutiao.bean.news.MultiNewsArticleDataBean;
 import com.example.caowj.newtask.toutiao.util.GlideUtil;
 import com.example.caowj.newtask.toutiao.util.SettingUtil;
 import com.example.caowj.newtask.toutiao.util.TimeUtil;
+import com.example.caowj.newtask.utils.business.MyAndroidUtils;
 import com.example.caowj.newtask.widget.imageView.CircleImageView;
+import com.jakewharton.rxbinding2.view.RxView;
 
 import java.util.concurrent.TimeUnit;
 
@@ -83,9 +84,13 @@ public class NewsArticleTextViewBinder extends ItemViewBinder<MultiNewsArticleDa
             });
 
 //            //跳转详情页
-//            RxView.clicks(holder.itemView)
-//                    .throttleFirst(1, TimeUnit.SECONDS)
-//                    .subscribe(o -> NewsContentActivity.launch(item));
+            RxView.clicks(holder.itemView)
+                    .throttleFirst(1, TimeUnit.SECONDS)
+                    .subscribe(o ->
+
+//                            NewsContentActivity.launch(item);
+                                    MyAndroidUtils.showShortToast(context, "Article_url:" + item.getArticle_url())
+                    );
 
         } catch (Exception e) {
             ErrorAction.print(e);

@@ -11,6 +11,9 @@ import io.reactivex.subjects.PublishSubject;
 import io.reactivex.subjects.Subject;
 
 /**
+ *  利用 PublishSubject的特性：与普通的Subject不同，在订阅时并不立即触发订阅事件，
+ * 而是允许我们在任意时刻手动调用onNext(),onError(),onCompleted来触发事件。
+ *
  * https://juejin.im/entry/58ff2e26a0bb9f0065d2c5f2
  */
 

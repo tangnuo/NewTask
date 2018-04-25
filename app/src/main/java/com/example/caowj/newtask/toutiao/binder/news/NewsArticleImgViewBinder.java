@@ -20,9 +20,12 @@ import com.example.caowj.newtask.toutiao.bean.news.MultiNewsArticleDataBean;
 import com.example.caowj.newtask.toutiao.util.GlideUtil;
 import com.example.caowj.newtask.toutiao.util.SettingUtil;
 import com.example.caowj.newtask.toutiao.util.TimeUtil;
+import com.example.caowj.newtask.utils.business.MyAndroidUtils;
 import com.example.caowj.newtask.widget.imageView.CircleImageView;
+import com.jakewharton.rxbinding2.view.RxView;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import me.drakeet.multitype.ItemViewBinder;
 
@@ -91,10 +94,13 @@ public class NewsArticleImgViewBinder extends ItemViewBinder<MultiNewsArticleDat
             });
 
 //            跳转详情
-//            final String finalImgUrl = imgUrl;
-//            RxView.clicks(holder.itemView)
-//                    .throttleFirst(1, TimeUnit.SECONDS)
-//                    .subscribe(o -> NewsContentActivity.launch(item, finalImgUrl));
+            final String finalImgUrl = imgUrl;
+            RxView.clicks(holder.itemView)
+                    .throttleFirst(1, TimeUnit.SECONDS)
+                    .subscribe(o ->
+//                                    NewsContentActivity.launch(item, finalImgUrl)
+                                    MyAndroidUtils.showShortToast(context, "图片路径" + finalImgUrl)
+                    );
 
         } catch (Exception e) {
             ErrorAction.print(e);
