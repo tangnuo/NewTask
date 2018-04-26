@@ -21,7 +21,7 @@ public class InjectViewUtils {
      * @author Caowj
      * @Date 2018/4/26 11:14
      */
-    public static void inject(final Activity activity) throws Exception {
+    public static void inject(final Activity activity) {
         Class clazz = activity.getClass();
         //通过字节码获取field的时候一定要用getDeclaredField(),只有该方法才能获取到任何权限修饰符的Field
         Field[] fields = clazz.getDeclaredFields();
@@ -38,11 +38,12 @@ public class InjectViewUtils {
                 }
 
                 int id = injectView.value();//获取注解中的值
-                if (id < 0) {
-                    throw new Exception("id must not be null");
-                } else {
-                    View view = activity.findViewById(id);//获取控件
+
+                View view = activity.findViewById(id);//获取控件
+                try {
                     f.set(activity, view);//将控件设置给field对象
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
                 }
             }
         }
