@@ -8,31 +8,42 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
+ * 自定义注解的解释器
+ *
  * @Author : caowj
  * @Date : 2018/4/26
  */
-
 public class InjectViewUtils {
-    public static void inject(final Activity activity) {
+
+    /**
+     * 通过反射获取字段的id，然后获取控件，然后做相应的设定
+     *
+     * @author Caowj
+     * @Date 2018/4/26 11:14
+     */
+    public static void inject(final Activity activity) throws Exception {
         Class clazz = activity.getClass();
+        //通过字节码获取field的时候一定要用getDeclaredField(),只有该方法才能获取到任何权限修饰符的Field
         Field[] fields = clazz.getDeclaredFields();
 
-        for (int i = 0; i < fields.length; i++) {
-            Field f = fields[i];
+        for (Field f : fields) {
+            //设置为可访问，暴力反射，私有也能访问
             f.setAccessible(true);
-            InjectView injectView = f.getAnnotation(InjectView.class);
-            if (injectView == null) {
-                continue;
-            }
 
-            int id = injectView.value();
+            if (f.isAnnotationPresent(InjectView.class)) {
+                //获取到字段的注解对象
+                InjectView injectView = f.getAnnotation(InjectView.class);
+                if (injectView == null) {
+                    continue;//如果该方法上没有注解，循环下一个
+                }
 
-            View view = activity.findViewById(id);
-
-            try {
-                f.set(activity, view);
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
+                int id = injectView.value();//获取注解中的值
+                if (id < 0) {
+                    throw new Exception("id must not be null");
+                } else {
+                    View view = activity.findViewById(id);//获取控件
+                    f.set(activity, view);//将控件设置给field对象
+                }
             }
         }
 

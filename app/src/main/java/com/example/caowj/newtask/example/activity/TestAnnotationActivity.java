@@ -21,7 +21,6 @@ public class TestAnnotationActivity extends AppCompatActivity {
 
     @InjectView(R.id.button4)
     Button button4;
-
     @InjectView(R.id.button5)
     Button button5;
 
