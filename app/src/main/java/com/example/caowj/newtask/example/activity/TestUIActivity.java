@@ -11,10 +11,14 @@ import android.view.View;
 import android.view.ViewStub;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.utils.CodeUtils;
+import com.example.caowj.newtask.utils.DataList.DataList;
+import com.example.caowj.newtask.utils.business.MyAndroidUtils;
+import com.example.caowj.newtask.widget.imageView.MultiImageView;
 
 import java.util.Calendar;
 
@@ -34,10 +38,21 @@ public class TestUIActivity extends BaseActivity {
     ViewStub stub;
     @BindView(R.id.iv_verification_code)
     ImageView ivVerificationCode;
+    @BindView(R.id.tv_title)
+    TextView tvTitle;
+    @BindView(R.id.img_multi)
+    MultiImageView imgMulti;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        imgMulti.setList(DataList.getImageUrlListByCount(5));
+        imgMulti.setOnItemClickListener(new MultiImageView.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                MyAndroidUtils.showShortToast(mActivity, "点击了position:" + position);
+            }
+        });
     }
 
     @Override

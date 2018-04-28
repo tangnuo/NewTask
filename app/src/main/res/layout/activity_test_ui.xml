@@ -6,10 +6,17 @@
 
     <ImageView
         android:id="@+id/iv_verification_code"
-        android:layout_margin="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:contentDescription="@string/verificate_code"
         android:src="@mipmap/ic_launcher" />
+
     <include layout="@layout/common_layout_merge" />
+
+    <com.example.caowj.newtask.widget.imageView.MultiImageView
+        android:id="@+id/img_multi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>
 

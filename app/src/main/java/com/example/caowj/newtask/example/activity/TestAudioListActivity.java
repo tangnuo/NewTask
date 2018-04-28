@@ -11,6 +11,7 @@ import android.widget.Button;
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.other.Player;
+import com.example.caowj.newtask.utils.DataList.DataList;
 import com.example.caowj.newtask.utils.LogUtil;
 
 import java.util.ArrayList;
@@ -70,37 +71,7 @@ public class TestAudioListActivity extends BaseActivity {
         Button lastBtn;
 
         public AudioAdapter() {
-            musicList.add("http://mp4.111ttt.cn/2017/xc/08/ANB.mp4?#.mp3");
-            musicList.add("http://sc1.111ttt.cn:8282/2017/1/11m/11/304112003137.m4a?tflag=1516348800&pin=1d3e05b2704f5dca0b6ff2e5d040bf2c#.mp3");
-            musicList.add("http://sc1.111ttt.cn:8282/2017/1/11m/11/304112004168.m4a?tflag=1516348800&pin=1d3e05b2704f5dca0b6ff2e5d040bf2c#.mp3");
-            musicList.add("http://sc1.111ttt.cn:8282/2017/1/11m/11/304112002593.m4a?tflag=1516348800&pin=1d3e05b2704f5dca0b6ff2e5d040bf2c#.mp3");
-            musicList.add("http://sc1.111ttt.cn:8282/2017/1/11m/11/304112002493.m4a?tflag=1516348800&pin=1d3e05b2704f5dca0b6ff2e5d040bf2c#.mp3");
-            musicList.add("http://mp4.111ttt.cn/2017/xc/08/ANB.mp4?#.mp3");
-            musicList.add("http://sc1.111ttt.cn:8282/2017/1/11m/11/304112003137.m4a?tflag=1516348800&pin=1d3e05b2704f5dca0b6ff2e5d040bf2c#.mp3");
-            musicList.add("http://sc1.111ttt.cn:8282/2017/1/11m/11/304112004168.m4a?tflag=1516348800&pin=1d3e05b2704f5dca0b6ff2e5d040bf2c#.mp3");
-            musicList.add("http://sc1.111ttt.cn:8282/2017/1/11m/11/304112002593.m4a?tflag=1516348800&pin=1d3e05b2704f5dca0b6ff2e5d040bf2c#.mp3");
-            musicList.add("http://sc1.111ttt.cn:8282/2017/1/11m/11/304112002493.m4a?tflag=1516348800&pin=1d3e05b2704f5dca0b6ff2e5d040bf2c#.mp3");
-            musicList.add("http://mp4.111ttt.cn/2017/xc/08/ANB.mp4?#.mp3");
-            musicList.add("http://sc1.111ttt.cn:8282/2017/1/11m/11/304112003137.m4a?tflag=1516348800&pin=1d3e05b2704f5dca0b6ff2e5d040bf2c#.mp3");
-            musicList.add("http://sc1.111ttt.cn:8282/2017/1/11m/11/304112004168.m4a?tflag=1516348800&pin=1d3e05b2704f5dca0b6ff2e5d040bf2c#.mp3");
-            musicList.add("http://sc1.111ttt.cn:8282/2017/1/11m/11/304112002593.m4a?tflag=1516348800&pin=1d3e05b2704f5dca0b6ff2e5d040bf2c#.mp3");
-            musicList.add("http://sc1.111ttt.cn:8282/2017/1/11m/11/304112002493.m4a?tflag=1516348800&pin=1d3e05b2704f5dca0b6ff2e5d040bf2c#.mp3");
-            musicList.add("http://mp4.111ttt.cn/2017/xc/08/ANB.mp4?#.mp3");
-            musicList.add("http://sc1.111ttt.cn:8282/2017/1/11m/11/304112003137.m4a?tflag=1516348800&pin=1d3e05b2704f5dca0b6ff2e5d040bf2c#.mp3");
-            musicList.add("http://sc1.111ttt.cn:8282/2017/1/11m/11/304112004168.m4a?tflag=1516348800&pin=1d3e05b2704f5dca0b6ff2e5d040bf2c#.mp3");
-            musicList.add("http://sc1.111ttt.cn:8282/2017/1/11m/11/304112002593.m4a?tflag=1516348800&pin=1d3e05b2704f5dca0b6ff2e5d040bf2c#.mp3");
-            musicList.add("http://sc1.111ttt.cn:8282/2017/1/11m/11/304112002493.m4a?tflag=1516348800&pin=1d3e05b2704f5dca0b6ff2e5d040bf2c#.mp3");
-            musicList.add("http://mp4.111ttt.cn/2017/xc/08/ANB.mp4?#.mp3");
-            musicList.add("http://sc1.111ttt.cn:8282/2017/1/11m/11/304112003137.m4a?tflag=1516348800&pin=1d3e05b2704f5dca0b6ff2e5d040bf2c#.mp3");
-            musicList.add("http://sc1.111ttt.cn:8282/2017/1/11m/11/304112004168.m4a?tflag=1516348800&pin=1d3e05b2704f5dca0b6ff2e5d040bf2c#.mp3");
-            musicList.add("http://sc1.111ttt.cn:8282/2017/1/11m/11/304112002593.m4a?tflag=1516348800&pin=1d3e05b2704f5dca0b6ff2e5d040bf2c#.mp3");
-            musicList.add("http://sc1.111ttt.cn:8282/2017/1/11m/11/304112002493.m4a?tflag=1516348800&pin=1d3e05b2704f5dca0b6ff2e5d040bf2c#.mp3");
-            musicList.add("http://mp4.111ttt.cn/2017/xc/08/ANB.mp4?#.mp3");
-            musicList.add("http://sc1.111ttt.cn:8282/2017/1/11m/11/304112003137.m4a?tflag=1516348800&pin=1d3e05b2704f5dca0b6ff2e5d040bf2c#.mp3");
-            musicList.add("http://sc1.111ttt.cn:8282/2017/1/11m/11/304112004168.m4a?tflag=1516348800&pin=1d3e05b2704f5dca0b6ff2e5d040bf2c#.mp3");
-            musicList.add("http://sc1.111ttt.cn:8282/2017/1/11m/11/304112002593.m4a?tflag=1516348800&pin=1d3e05b2704f5dca0b6ff2e5d040bf2c#.mp3");
-            musicList.add("http://sc1.111ttt.cn:8282/2017/1/11m/11/304112002493.m4a?tflag=1516348800&pin=1d3e05b2704f5dca0b6ff2e5d040bf2c#.mp3");
-
+            musicList = DataList.getAudioList();
         }
 
         @Override
