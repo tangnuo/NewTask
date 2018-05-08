@@ -43,20 +43,20 @@
 
     <!--FingerPrint start-->
 
-    <string name="fingerprint_description">Confirm your fingerprint.</string>
-    <string name="fingerprint_hint">Touch sensor</string>
+    <string name="fingerprint_description">确认您的指纹。</string>
+    <string name="fingerprint_hint">触摸传感器</string>
 
     <!-- Button text -->
     <string name="start_btn">Start</string>
     <string name="cancel_btn">Cancel</string>
 
-    <string name="fingerprint_success">Fingerprint recognized.</string>
-    <string name="fingerprint_not_recognized">Fingerprint not recognized. Try again.</string>
+    <string name="fingerprint_success">指纹验证通过.</string>
+    <string name="fingerprint_not_recognized">指纹验证失败. Try again.</string>
 
     <!-- Dialog info -->
-    <string name="no_sensor_dialog_title">No fingerprint sensor</string>
+    <string name="no_sensor_dialog_title">没有指纹传感器</string>
     <string name="no_sensor_dialog_message">No fingerprint sensor on your device, click cancel to exit.</string>
-    <string name="no_fingerprint_enrolled_dialog_title">No fingerprint enrolled</string>
+    <string name="no_fingerprint_enrolled_dialog_title">没有登记的指纹</string>
     <string name="no_fingerprint_enrolled_dialog_message">No fingerprint enrolled, enter\n
         <font fgcolor="green">Setting->Security->Nexus Imprint\n</font>
         to enrollor click cancel to exit.</string>
@@ -65,14 +65,9 @@
 
     <!-- auth result error amd help code warning -->
     <string name="AcquiredGood_warning">The image acquired was good.</string>
-    <string name="AcquiredImageDirty_warning">The fingerprint image was too noisy due to suspected or detected dirt on the sensor.
-        For example, it\'s reasonable to return this after multiple AcquiredInsufficient or
-        actual detection of dirt on the sensor (stuck pixels, swaths, etc.).
-        The user is expected to take action to clean the sensor when this is returned.</string>
-    <string name="AcquiredInsufficient_warning">The fingerprint image was too noisy to process due to
-        a detected condition (i.e. dry skin) or a possibly dirty sensor.</string>
-    <string name="AcquiredPartial_warning">Only a partial fingerprint image was detected.
-        During enrollment, the user should be informed on what needs to happen to resolve this problem, e.g., "press firmly on sensor."</string>
+    <string name="AcquiredImageDirty_warning">由于怀疑或检测到传感器上的污垢，指纹图像太过嘈杂。例如，在多次获得足够或足够的条件后，返回这个值是合理的。实际检测传感器上的污垢(粘贴像素、扫描件等)。当这个传感器返回时，用户将会采取行动清理传感器。</string>
+    <string name="AcquiredInsufficient_warning">指纹图像太吵，无法处理。检测到的情况(即干性皮肤)或可能是脏的传感器。</string>
+    <string name="AcquiredPartial_warning">只有部分指纹图像被检测到。在注册过程中，用户应该了解需要解决的问题，例如“按下传感器”。</string>
     <string name="AcquiredTooFast_warning">The fingerprint image was incomplete due to quick motion.
         While mostly appropriate for linear array sensors, this could also happen if the finger was moved during acquisition.
         The user should be asked to move the finger slower (linear) or leave the finger on the sensor longer.</string>
@@ -83,12 +78,10 @@
         the device is locked, or another pending operation prevents or disables it.</string>
     <string name="ErrorHwUnavailable_warning">The hardware is unavailable. Try again later.</string>
     <string name="ErrorLockout_warning">The operation was canceled because the API is locked out due to too many attempts.</string>
-    <string name="ErrorNoSpace_warning">Error state returned for operations like enrollment;
-        the operation cannot be completed because there\'s not enough storage remaining to complete the operation.</string>
-    <string name="ErrorTimeout_warning">Error state returned when the current request has been running too long.
-        This is intended to prevent programs from waiting for the fingerprint sensor indefinitely.
-        The timeout is platform and sensor-specific, but is generally about 30 seconds.</string>
-    <string name="ErrorUnableToProcess_warning">Error state returned when the sensor was unable to process the current image.</string>
+    <string name="ErrorNoSpace_warning">如注册等操作返回错误状态;操作无法完成，因为没有足够的存储空间来完成操作。.</string>
+    <string name="ErrorTimeout_warning">当当前请求运行时间过长时，返回错误状态。这是为了防止程序无限期地等待指纹传感器。超时是平台和sensor-specific，但通常是30秒。.</string>
+    <string name="ErrorUnableToProcess_warning">当传感器无法处理当前图像时返回错误状态.</string>
+
     <!--FingerPrint end-->
 
 </resources>
