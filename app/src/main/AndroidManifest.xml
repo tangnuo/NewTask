@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!-- 在SD卡中创建与删除文件权限 -->
     <uses-permission android:name="android.permission.MOUNT_FORMAT_FILESYSTEMS" />
@@ -38,10 +39,10 @@
         </activity>
 
         <activity-alias
-            android:name=".SplashActivity2"
+            android:name=".SplashActivity3"
             android:enabled="false"
-            android:icon="@drawable/home"
-            android:label="工程2"
+            android:icon="@drawable/location"
+            android:label="工程3"
             android:targetActivity=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -50,10 +51,10 @@
             </intent-filter>
         </activity-alias>
         <activity-alias
-            android:name=".SplashActivity3"
+            android:name=".SplashActivity2"
             android:enabled="false"
-            android:icon="@drawable/location"
-            android:label="工程3"
+            android:icon="@drawable/home"
+            android:label="工程2"
             android:targetActivity=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -157,6 +158,7 @@
             android:theme="@style/AppTheme.NoActionBar.Slidable" />
         <activity android:name=".example.activity.TestAnnotationActivity" />
         <activity android:name=".example.activity.TestReflectActivity" />
+        <activity android:name=".example.activity.TestFingerPrintActivity"></activity>
     </application>
 
 </manifest>
