@@ -121,6 +121,7 @@ public class FunctionListActivity extends BaseActivity {
         sparseArray.put(42, TestAnnotationActivity.class);
         sparseArray.put(43, TestReflectActivity.class);
         sparseArray.put(44, TestFingerPrintActivity.class);
+        sparseArray.put(45, TestPremissionActivity.class);
 
 
         functionListAdapter = new FunctionListAdapter(mActivity, sparseArray);
