@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.caowj.newtask.utils.business.MyAndroidUtils;
@@ -30,6 +31,10 @@ public class TestPremissionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(android.R.layout.activity_list_item);
+        TextView textView = findViewById(android.R.id.text1);
+        textView.setText("Android 6.0 动态权限申请");
+
 
         // android系统大于等于6.0时需要处理时权限
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -40,7 +45,7 @@ public class TestPremissionActivity extends AppCompatActivity {
     }
 
     private void successToast() {
-        MyAndroidUtils.showShortToast(this, "已经拥有这些权限了");
+        MyAndroidUtils.showLongToast(this, "已经拥有这些权限了");
     }
 
     /**
