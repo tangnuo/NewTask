@@ -10,6 +10,7 @@ import android.util.SparseArray;
 
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.base.BaseActivity;
+import com.example.caowj.newtask.designPattern.TestDesignPatternActivity;
 import com.example.caowj.newtask.example.adapter.FunctionListAdapter;
 import com.example.caowj.newtask.module1.activity.MvpLoginActivity;
 import com.example.caowj.newtask.module1.activity.QipaiIndexActivity;
@@ -122,6 +123,7 @@ public class FunctionListActivity extends BaseActivity {
         sparseArray.put(43, TestReflectActivity.class);
         sparseArray.put(44, TestFingerPrintActivity.class);
         sparseArray.put(45, TestPremissionActivity.class);
+        sparseArray.put(46, TestDesignPatternActivity.class);
 
 
         functionListAdapter = new FunctionListAdapter(mActivity, sparseArray);
