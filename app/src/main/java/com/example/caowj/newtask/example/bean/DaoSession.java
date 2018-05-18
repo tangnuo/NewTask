@@ -36,7 +36,7 @@ public class DaoSession extends AbstractDaoSession {
 
         registerDao(User.class, userDao);
     }
-
+    
     public void clear() {
         userDaoConfig.clearIdentityScope();
     }
