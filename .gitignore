@@ -19,3 +19,5 @@ src/main/java/com/example/caowj/newtask/other/ItemDecoration/
 app/src/main/assets/
 app/src/main/java/com/example/caowj/newtask/other/ItemDecoration/
 /app/baseApk/
+.idea
+app/build

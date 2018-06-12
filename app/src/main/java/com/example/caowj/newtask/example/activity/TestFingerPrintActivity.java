@@ -1,5 +1,6 @@
 package com.example.caowj.newtask.example.activity;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.base.BaseActivity;
+import com.example.caowj.newtask.base.BaseHandler;
 import com.example.caowj.newtask.example.helper.fingerPrint.CryptoObjectHelper;
 import com.example.caowj.newtask.example.helper.fingerPrint.MyAuthCallback;
 
@@ -34,7 +36,7 @@ public class TestFingerPrintActivity extends BaseActivity {
     private MyAuthCallback myAuthCallback = null;
     private CancellationSignal cancellationSignal = null;//用来在指纹识别器扫描用户指纹的时候取消当前的扫描操作,如果不取消的话，那么指纹扫描器会移植扫描直到超时（一般为30s，取决于具体的厂商实现）.
 
-    private Handler handler = null;
+    private MyHandler handler = new MyHandler(this);
     public static final int MSG_AUTH_SUCCESS = 100;
     public static final int MSG_AUTH_FAILED = 101;
     public static final int MSG_AUTH_ERROR = 102;
@@ -53,73 +55,39 @@ public class TestFingerPrintActivity extends BaseActivity {
         mStartBtn.setEnabled(true);
 
         // set button listeners
-        mCancelBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // set button state
-                mCancelBtn.setEnabled(false);
-                mStartBtn.setEnabled(true);
+        mCancelBtn.setOnClickListener(v -> {
+            // set button state
+            mCancelBtn.setEnabled(false);
+            mStartBtn.setEnabled(true);
 
-                // cancel fingerprint auth here.
-                cancellationSignal.cancel();
-                cancellationSignal = null;
+            // cancel fingerprint auth here.
+            cancellationSignal.cancel();
+            cancellationSignal = null;
+        });
+
+        mStartBtn.setOnClickListener(v -> {
+            // reset result info.
+            mResultInfo.setText(R.string.fingerprint_hint);
+            mResultInfo.setTextColor(getResources().getColor(R.color.hint_color));
+
+            // start fingerprint auth here.
+            try {
+                CryptoObjectHelper cryptoObjectHelper = new CryptoObjectHelper();
+                if (cancellationSignal == null) {
+                    cancellationSignal = new CancellationSignal();
+                }
+                //开始扫描用户按下的指纹
+                fingerprintManager.authenticate(cryptoObjectHelper.buildCryptoObject(), 0,
+                        cancellationSignal, myAuthCallback, null);
+                // set button state.
+                mStartBtn.setEnabled(false);
+                mCancelBtn.setEnabled(true);
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(mActivity, "Fingerprint init failed! Try again!", Toast.LENGTH_SHORT).show();
             }
         });
 
-        mStartBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // reset result info.
-                mResultInfo.setText(R.string.fingerprint_hint);
-                mResultInfo.setTextColor(getResources().getColor(R.color.hint_color));
-
-                // start fingerprint auth here.
-                try {
-                    CryptoObjectHelper cryptoObjectHelper = new CryptoObjectHelper();
-                    if (cancellationSignal == null) {
-                        cancellationSignal = new CancellationSignal();
-                    }
-                    //开始扫描用户按下的指纹
-                    fingerprintManager.authenticate(cryptoObjectHelper.buildCryptoObject(), 0,
-                            cancellationSignal, myAuthCallback, null);
-                    // set button state.
-                    mStartBtn.setEnabled(false);
-                    mCancelBtn.setEnabled(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    Toast.makeText(mActivity, "Fingerprint init failed! Try again!", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-        handler = new Handler() {
-            @Override
-            public void handleMessage(Message msg) {
-                super.handleMessage(msg);
-
-                Log.d(mTag, "msg: " + msg.what + " ,arg1: " + msg.arg1);
-                switch (msg.what) {
-                    case MSG_AUTH_SUCCESS:
-                        setResultInfo(R.string.fingerprint_success);
-                        mCancelBtn.setEnabled(false);
-                        mStartBtn.setEnabled(true);
-                        cancellationSignal = null;
-                        break;
-                    case MSG_AUTH_FAILED:
-                        setResultInfo(R.string.fingerprint_not_recognized);
-                        mCancelBtn.setEnabled(false);
-                        mStartBtn.setEnabled(true);
-                        cancellationSignal = null;
-                        break;
-                    case MSG_AUTH_ERROR:
-                        handleErrorCode(msg.arg1);
-                        break;
-                    case MSG_AUTH_HELP:
-                        handleHelpCode(msg.arg1);
-                        break;
-                }
-            }
-        };
 
         // init fingerprint.
         fingerprintManager = FingerprintManagerCompat.from(this);
@@ -133,12 +101,7 @@ public class TestFingerPrintActivity extends BaseActivity {
             builder.setMessage(R.string.no_sensor_dialog_message);
             builder.setIcon(android.R.drawable.stat_sys_warning);
             builder.setCancelable(false);
-            builder.setNegativeButton(R.string.cancel_btn_dialog, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    finish();
-                }
-            });
+            builder.setNegativeButton(R.string.cancel_btn_dialog, (dialog, which) -> finish());
             // show this dialog.
             builder.create().show();
         } else if (!fingerprintManager.hasEnrolledFingerprints()) {
@@ -149,12 +112,7 @@ public class TestFingerPrintActivity extends BaseActivity {
             builder.setMessage(R.string.no_fingerprint_enrolled_dialog_message);
             builder.setIcon(android.R.drawable.stat_sys_warning);
             builder.setCancelable(false);
-            builder.setNegativeButton(R.string.cancel_btn_dialog, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    finish();
-                }
-            });
+            builder.setNegativeButton(R.string.cancel_btn_dialog, (dialog, which) -> finish());
             // show this dialog
             builder.create().show();
         } else {
@@ -166,6 +124,42 @@ public class TestFingerPrintActivity extends BaseActivity {
         }
     }
 
+
+    private static class MyHandler extends BaseHandler<TestFingerPrintActivity> {
+
+
+        public MyHandler(TestFingerPrintActivity referencedObject) {
+            super(referencedObject);
+        }
+
+        @Override
+        public void handleMessage2(Message msg, int what) {
+            TestFingerPrintActivity reference = getWeakReference();
+            Log.d("caowj", "msg: " + msg.what + " ,arg1: " + msg.arg1);
+            String jsonStr = (String) msg.obj;
+            switch (msg.what) {
+                case MSG_AUTH_SUCCESS:
+                    reference.setResultInfo(R.string.fingerprint_success);
+                    reference.mCancelBtn.setEnabled(false);
+                    reference.mStartBtn.setEnabled(true);
+                    reference.cancellationSignal = null;
+                    break;
+                case MSG_AUTH_FAILED:
+                    reference.setResultInfo(R.string.fingerprint_not_recognized);
+                    reference.mCancelBtn.setEnabled(false);
+                    reference.mStartBtn.setEnabled(true);
+                    reference.cancellationSignal = null;
+                    break;
+                case MSG_AUTH_ERROR:
+                    reference.handleErrorCode(msg.arg1);
+                    break;
+                case MSG_AUTH_HELP:
+                    reference.handleHelpCode(msg.arg1);
+                    break;
+            }
+
+        }
+    }
 
     @Override
     protected void onDestroy() {
