@@ -1,11 +1,8 @@
 package com.kedacom.imageloader;
 
-import android.content.Context;
 import android.widget.ImageView;
 
 import com.bumptech.glide.request.RequestListener;
-import com.kedacom.imageloader.IImageLoader;
-import com.kedacom.imageloader.ImageLoader;
 import com.kedacom.imageloader.glide.GlideImpl;
 
 /**
@@ -55,6 +52,10 @@ public class GlideUtil {
 
     public static void loadNormal(String url, ImageView view) {
         ImageLoader.getInstance().load(view, url);
+    }
+
+    public static void loadResourceId(int url, ImageView view) {
+        ImageLoader.getInstance().loadResourceId(view, url);
     }
 
 

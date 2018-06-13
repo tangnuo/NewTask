@@ -1,5 +1,6 @@
 package com.example.caowj.newtask.toutiao.module.media;
 
+
 import android.support.v4.app.Fragment;
 
 /**
@@ -17,4 +18,6 @@ public class MediaTabLayout extends Fragment {
         }
         return instance;
     }
+
+
 }

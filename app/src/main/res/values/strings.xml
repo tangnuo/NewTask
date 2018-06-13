@@ -83,5 +83,6 @@
     <string name="ErrorUnableToProcess_warning">当传感器无法处理当前图像时返回错误状态.</string>
 
     <!--FingerPrint end-->
-
+    <string name="loaded_desc">没有更多了</string>
+    <string name="loading_desc">正在加载</string>
 </resources>

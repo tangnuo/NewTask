@@ -7,10 +7,12 @@ import android.widget.ImageView;
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.MultiTransformation;
 import com.bumptech.glide.load.Option;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
 import com.kedacom.imageloader.IImageLoader;
 import com.kedacom.imageloader.R;
@@ -34,23 +36,39 @@ public class GlideImpl implements IImageLoader {
 
     @Override
     public void load(ImageView imageView, String url) {
-        GlideApp.with(imageView.getContext())
-                .load(url)
-                .set(TIMEOUT_OPTION, TIMEOUT_MS)
-                .transition(normalTransitionOptions)
+
+        RequestOptions options = new RequestOptions()
+                .centerCrop()
+//                .fitCenter()
                 .placeholder(R.drawable.ic_launcher)
                 .error(R.drawable.ic_launcher)
+                .set(TIMEOUT_OPTION, TIMEOUT_MS)
+                .diskCacheStrategy(DiskCacheStrategy.NONE);
+
+
+        GlideApp.with(imageView.getContext())
+                .load(url)
+                .transition(normalTransitionOptions)
+                .apply(options)
                 .into(imageView);
     }
 
     @Override
     public void load(ImageView imageView, String url, int placeholderId, int errorId) {
+
+        RequestOptions options = new RequestOptions()
+                .centerCrop()
+                .placeholder(placeholderId)
+                .error(errorId)
+                .diskCacheStrategy(DiskCacheStrategy.NONE);
+//                .override(200, 100);//指定图片大小;
+
+
         GlideApp.with(imageView.getContext())
                 .load(url)
                 .set(TIMEOUT_OPTION, TIMEOUT_MS)
                 .transition(normalTransitionOptions)
-                .placeholder(placeholderId)
-                .error(errorId)
+                .apply(options)
                 .into(imageView);
     }
 
@@ -127,7 +145,7 @@ public class GlideImpl implements IImageLoader {
     }
 
     @Override
-    public void loadCropCircle(ImageView imageView, int resId) {
+    public void loadResourceId(ImageView imageView, int resId) {
         GlideApp.with(imageView.getContext())
                 .load(resId)
                 .set(TIMEOUT_OPTION, TIMEOUT_MS)
@@ -137,4 +155,5 @@ public class GlideImpl implements IImageLoader {
                 .error(R.drawable.ic_launcher_round)
                 .into(imageView);
     }
+
 }

@@ -23,5 +23,5 @@ public interface IImageLoader {
 
     void loadCropCircle(ImageView imageView, String url);
 
-    void loadCropCircle(ImageView imageView, int resId);
+    void loadResourceId(ImageView imageView, int resId);
 }

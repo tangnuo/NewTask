@@ -9,13 +9,13 @@ import android.widget.Toast;
  */
 public class ToastUtil {
 
-    private Context mContext;
+    private static Context mContext;
 
     public ToastUtil(Context context) {
         this.mContext = context;
     }
 
-    public void showToast(String message) {
+    public static void showToast(String message) {
         Toast.makeText(mContext, message, Toast.LENGTH_LONG).show();
     }
 

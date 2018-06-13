@@ -14,11 +14,11 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.caowj.newtask.example.activity.FunctionListActivity;
+import com.example.caowj.newtask.mvvm.VideoTabLayout;
 import com.example.caowj.newtask.toutiao.module.base.BaseActivity;
 import com.example.caowj.newtask.toutiao.module.media.MediaTabLayout;
 import com.example.caowj.newtask.toutiao.module.news.NewsTabLayout;
 import com.example.caowj.newtask.toutiao.module.photo.PhotoTabLayout;
-import com.example.caowj.newtask.toutiao.module.video.VideoTabLayout;
 import com.example.caowj.newtask.utils.business.MyAndroidUtils;
 import com.example.caowj.newtask.widget.helper.BottomNavigationViewHelper;
 
