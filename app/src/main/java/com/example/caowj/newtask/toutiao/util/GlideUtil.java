@@ -6,9 +6,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.annotation.GlideModule;
 import com.bumptech.glide.module.AppGlideModule;
 import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.RequestOptions;
-
-import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
+import com.kedacom.imageloader.ImageLoader;
 
 /**
  * Created by Meiji on 2017/5/31.
@@ -20,11 +18,12 @@ public class GlideUtil extends AppGlideModule {
         if (SettingUtil.getInstance().getIsNoPhotoMode() && NetWorkUtil.isMobileConnected(context)) {
             view.setImageResource(defaultResId);
         } else {
-            GlideApp.with(context)
+            /*GlideApp.with(context)
                     .load(url)
                     .transition(withCrossFade())
                     .apply(new RequestOptions().centerCrop())
-                    .into(view);
+                    .into(view);*/
+            ImageLoader.getInstance().load(view, url);
         }
     }
 
@@ -35,11 +34,13 @@ public class GlideUtil extends AppGlideModule {
         if (SettingUtil.getInstance().getIsNoPhotoMode() && NetWorkUtil.isMobileConnected(context)) {
             view.setImageResource(defaultResId);
         } else {
-            GlideApp.with(context)
+            /*GlideApp.with(context)
                     .load(url)
                     .transition(withCrossFade())
                     .apply(new RequestOptions().centerCrop().error(errorResId))
-                    .into(view);
+                    .into(view);*/
+
+            ImageLoader.getInstance().load(view, url);
         }
     }
 
@@ -47,16 +48,19 @@ public class GlideUtil extends AppGlideModule {
      * 带监听处理
      */
     public static void loadCenterCrop(Context context, String url, ImageView view, RequestListener listener) {
-        GlideApp.with(context)
-                .load(url)
-                .transition(withCrossFade())
-                .apply(new RequestOptions().centerCrop())
-                .listener(listener)
-                .into(view);
+//        GlideApp.with(context)
+//                .load(url)
+//                .transition(withCrossFade())
+//                .apply(new RequestOptions().centerCrop())
+//                .listener(listener)
+//                .into(view);
+
+        ImageLoader.getInstance().load(view, url, listener);
     }
 
     public static void loadNormal(Context context, String url, ImageView view) {
-        GlideApp.with(context).load(url).into(view);
+
+        ImageLoader.getInstance().load(view, url);
     }
 
 }
