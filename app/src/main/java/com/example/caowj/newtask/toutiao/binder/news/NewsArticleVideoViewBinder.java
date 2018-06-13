@@ -17,7 +17,7 @@ import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.toutiao.ErrorAction;
 import com.example.caowj.newtask.toutiao.IntentAction;
 import com.example.caowj.newtask.toutiao.bean.news.MultiNewsArticleDataBean;
-import com.example.caowj.newtask.toutiao.util.GlideUtil;
+import com.example.caowj.newtask.toutiao.util.GlideUtils;
 import com.example.caowj.newtask.toutiao.util.SettingUtil;
 import com.example.caowj.newtask.toutiao.util.TimeUtil;
 import com.example.caowj.newtask.widget.imageView.CircleImageView;
@@ -49,7 +49,7 @@ public class NewsArticleVideoViewBinder extends ItemViewBinder<MultiNewsArticleD
                 if (null != item.getVideo_detail_info().getDetail_video_large_image()) {
                     String image = item.getVideo_detail_info().getDetail_video_large_image().getUrl();
                     if (!TextUtils.isEmpty(image)) {
-                        GlideUtil.loadCenterCrop(context, image, holder.iv_video_image, R.color.viewBackground, R.mipmap.error_image);
+                        GlideUtils.loadCenterCrop(context, image, holder.iv_video_image, R.color.viewBackground, R.mipmap.error_image);
                     }
                 }
             } else {
@@ -59,7 +59,7 @@ public class NewsArticleVideoViewBinder extends ItemViewBinder<MultiNewsArticleD
             if (null != item.getUser_info()) {
                 String avatar_url = item.getUser_info().getAvatar_url();
                 if (!TextUtils.isEmpty(avatar_url)) {
-                    GlideUtil.loadCenterCrop(context, avatar_url, holder.iv_media, R.color.viewBackground);
+                    GlideUtils.loadCenterCrop(context, avatar_url, holder.iv_media, R.color.viewBackground);
                 }
             }
 

@@ -18,7 +18,7 @@ import com.example.caowj.newtask.toutiao.ErrorAction;
 import com.example.caowj.newtask.toutiao.IntentAction;
 import com.example.caowj.newtask.toutiao.module.base.BaseActivity;
 import com.example.caowj.newtask.toutiao.bean.news.NewsCommentBean;
-import com.example.caowj.newtask.toutiao.util.GlideUtil;
+import com.example.caowj.newtask.toutiao.util.GlideUtils;
 import com.example.caowj.newtask.widget.BottomSheetDialogFixed;
 
 import me.drakeet.multitype.ItemViewBinder;
@@ -47,7 +47,7 @@ public class NewsCommentViewBinder extends ItemViewBinder<NewsCommentBean.DataBe
             String tv_text = item.getText();
             int tv_likes = item.getDigg_count();
 
-            GlideUtil.loadCenterCrop(context, iv_avatar, holder.iv_avatar, R.color.viewBackground);
+            GlideUtils.loadCenterCrop(context, iv_avatar, holder.iv_avatar, R.color.viewBackground);
             holder.tv_username.setText(tv_username);
             holder.tv_text.setText(tv_text);
             holder.tv_likes.setText(tv_likes + "赞");

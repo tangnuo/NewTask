@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.example.bean.ArticleLabel;
 import com.example.caowj.newtask.example.bean.ChoiceArticle;
-import com.example.caowj.newtask.toutiao.util.GlideUtil;
+import com.example.caowj.newtask.toutiao.util.GlideUtils;
 import com.example.caowj.newtask.utils.AlimmdnUtil;
 import com.example.caowj.newtask.utils.JudgmentDataUtil;
 import com.example.caowj.newtask.utils.LogUtil;
@@ -58,7 +58,7 @@ public class ChoiceArticleListViewBinder extends ItemViewBinder<ChoiceArticle, C
         params.height = height;
         holder.ivArticlePoster.setLayoutParams(params);
         //文章封面
-        GlideUtil.loadNormal(mActivity, AlimmdnUtil.modifyImagePath(choiceArticle.getImg()), holder.ivArticlePoster);
+        GlideUtils.loadNormal(mActivity, AlimmdnUtil.modifyImagePath(choiceArticle.getImg()), holder.ivArticlePoster);
 //        GlideUtils.loadStringRes(holder.ivArticlePoster, AlimmdnUtil.modifyImagePath(choiceArticle.getImg()));
         //添加标签的控件
         ViewGroup.LayoutParams lp = holder.rl_label.getLayoutParams();

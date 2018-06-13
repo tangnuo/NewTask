@@ -17,7 +17,7 @@ import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.toutiao.ErrorAction;
 import com.example.caowj.newtask.toutiao.IntentAction;
 import com.example.caowj.newtask.toutiao.bean.news.MultiNewsArticleDataBean;
-import com.example.caowj.newtask.toutiao.util.GlideUtil;
+import com.example.caowj.newtask.toutiao.util.GlideUtils;
 import com.example.caowj.newtask.toutiao.util.SettingUtil;
 import com.example.caowj.newtask.toutiao.util.TimeUtil;
 import com.example.caowj.newtask.utils.business.MyAndroidUtils;
@@ -53,7 +53,7 @@ public class NewsArticleImgViewBinder extends ItemViewBinder<MultiNewsArticleDat
             List<MultiNewsArticleDataBean.ImageListBean> image_list = item.getImage_list();
             if (image_list != null && image_list.size() != 0) {
                 String url = image_list.get(0).getUrl();
-                GlideUtil.loadCenterCrop(context, url, holder.iv_image, R.color.viewBackground);
+                GlideUtils.loadCenterCrop(context, url, holder.iv_image, R.color.viewBackground);
                 if (!TextUtils.isEmpty(image_list.get(0).getUri())) {
                     imgUrl += image_list.get(0).getUri().replace("list", "large");
                 }
@@ -62,7 +62,7 @@ public class NewsArticleImgViewBinder extends ItemViewBinder<MultiNewsArticleDat
             if (null != item.getUser_info()) {
                 String avatar_url = item.getUser_info().getAvatar_url();
                 if (!TextUtils.isEmpty(avatar_url)) {
-                    GlideUtil.loadCenterCrop(context, avatar_url, holder.iv_media, R.color.viewBackground);
+                    GlideUtils.loadCenterCrop(context, avatar_url, holder.iv_media, R.color.viewBackground);
                 }
             }
 

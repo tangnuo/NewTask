@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.example.caowj.newtask.toutiao.util.GlideUtil;
+import com.example.caowj.newtask.toutiao.util.GlideUtils;
 import com.example.caowj.newtask.utils.LogUtil;
 
 import java.util.List;
@@ -214,7 +214,7 @@ public class MultiImageView extends LinearLayout {
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             imageView.setLayoutParams(position % MAX_PER_ROW_COUNT == 0 ? moreParaColumnFirst : morePara);
             //设置网络图片
-            GlideUtil.loadNormal(context, url, imageView);
+            GlideUtils.loadNormal(context, url, imageView);
 //            GlideUtils.loadStringRes(imageView, AlimmdnUtil.modifyImagePath(url), null, null);
         } else {
             //单张图
@@ -224,7 +224,7 @@ public class MultiImageView extends LinearLayout {
 //            imageView.setMaxHeight(pxOneMaxWandH);
 //            imageView.setLayoutParams(onePicPara);
 //            imageView.setLayoutParams(new ViewGroup.LayoutParams(pxOneMaxWandH,pxOneMaxWandH));
-            GlideUtil.loadNormal(context, url, imageView);
+            GlideUtils.loadNormal(context, url, imageView);
 
 //            GlideUtils.loadDetailImageBitmap(context, AlimmdnUtil.modifyImagePath(url), new BitmapLoadingListener() {
 //                @Override

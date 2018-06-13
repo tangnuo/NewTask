@@ -16,7 +16,7 @@ import android.widget.LinearLayout;
 
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.example.bean.PaiPinInfo;
-import com.example.caowj.newtask.toutiao.util.GlideUtil;
+import com.example.caowj.newtask.toutiao.util.GlideUtils;
 import com.example.caowj.newtask.module1.entity.bean.AdBean;
 import com.example.caowj.newtask.utils.LogUtil;
 
@@ -161,7 +161,7 @@ public class BannerView extends FrameLayout {
                 } else {
                     adInfo = adInfoList.get(i - 1);
                 }
-                GlideUtil.loadNormal(mContext, adInfo.getImages(), iv);
+                GlideUtils.loadNormal(mContext, adInfo.getImages(), iv);
 //                GlideUtils.loadStringRes(iv, AlimmdnUtil.modifyImagePath(adInfo.getImages()), GlideUtils.setConfigSize(adInfo.getImages(), 750, 500), null);
 //                LogUtil.d(mTag, "当前轮播图信息：" + AlimmdnUtil.modifyImagePath(adInfo.getImages()));
                 imageViews.add(iv);
@@ -171,7 +171,7 @@ public class BannerView extends FrameLayout {
             ImageView iv = new ImageView(mContext);
             iv.setScaleType(ScaleType.CENTER_CROP);
             AdBean adInfo = adInfoList.get(count - 1);
-            GlideUtil.loadNormal(mContext, adInfo.getImages(), iv);
+            GlideUtils.loadNormal(mContext, adInfo.getImages(), iv);
 //            GlideUtils.loadStringRes(iv, AlimmdnUtil.modifyImagePath(adInfo.getImages()), GlideUtils.setConfigSize(adInfo.getImages(), 750, 500), null);
 //            LogUtil.d(mTag, "当前轮播图信息：" + AlimmdnUtil.modifyImagePath(adInfo.getImages()));
             imageViews.add(iv);

@@ -12,7 +12,7 @@ import com.kedacom.imageloader.ImageLoader;
  * Created by Meiji on 2017/5/31.
  */
 @GlideModule
-public class GlideUtil extends AppGlideModule {
+public class GlideUtils extends AppGlideModule {
 
     public static void loadCenterCrop(Context context, String url, ImageView view, int defaultResId) {
         if (SettingUtil.getInstance().getIsNoPhotoMode() && NetWorkUtil.isMobileConnected(context)) {

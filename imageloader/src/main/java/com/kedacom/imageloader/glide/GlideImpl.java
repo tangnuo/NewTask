@@ -44,6 +44,17 @@ public class GlideImpl implements IImageLoader {
     }
 
     @Override
+    public void load(ImageView imageView, String url, int placeholderId, int errorId) {
+        GlideApp.with(imageView.getContext())
+                .load(url)
+                .set(TIMEOUT_OPTION, TIMEOUT_MS)
+                .transition(normalTransitionOptions)
+                .placeholder(placeholderId)
+                .error(errorId)
+                .into(imageView);
+    }
+
+    @Override
     public void load(ImageView imageView, String url, final RequestListener<Drawable> listener) {
         GlideApp.with(imageView.getContext())
                 .load(url)
