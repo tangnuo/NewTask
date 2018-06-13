@@ -8,12 +8,12 @@ import android.widget.Button;
 
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.base.BaseActivity;
-import com.example.caowj.newtask.module1.Api.Api;
-import com.example.caowj.newtask.module1.Api.Network;
-import com.example.caowj.newtask.module1.Api.TianService;
-import com.example.caowj.newtask.module1.constants.WSConstants;
-import com.example.caowj.newtask.module1.entity.NewsInfo;
-import com.example.caowj.newtask.module1.entity.bean.NewsBean2;
+import com.example.caowj.newtask.mvp.Api.Api;
+import com.example.caowj.newtask.mvp.Api.Network;
+import com.example.caowj.newtask.mvp.Api.TianService;
+import com.example.caowj.newtask.mvp.constants.WSConstants;
+import com.example.caowj.newtask.mvp.entity.NewsInfo;
+import com.example.caowj.newtask.mvp.entity.bean.NewsBean2;
 import com.example.caowj.newtask.utils.business.MyAndroidUtils;
 import com.kedacom.utils.LogUtil;
 

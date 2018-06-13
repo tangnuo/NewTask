@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
 import com.example.caowj.newtask.R;
-import com.example.caowj.newtask.module1.viewHolder.CommonVH;
+import com.example.caowj.newtask.mvp.viewHolder.CommonVH;
 import com.kedacom.utils.LogUtil;
 
 import java.util.ArrayList;

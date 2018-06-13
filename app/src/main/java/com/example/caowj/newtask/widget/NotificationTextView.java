@@ -18,7 +18,7 @@ import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
-import com.example.caowj.newtask.module1.entity.bean.ScrollNotification;
+import com.example.caowj.newtask.mvp.entity.bean.ScrollNotification;
 
 import java.util.List;
 

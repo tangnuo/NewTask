@@ -3,11 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.caowj.newtask.module1.activity.QipaiNewActivity">
+    tools:context="com.example.caowj.newtask.mvp.activity.QipaiNewActivity">
 
     <fragment
         android:id="@+id/frame_content"
-        android:name="com.example.caowj.newtask.module1.fragment.CollectionFragment"
+        android:name="com.example.caowj.newtask.mvp.fragment.CollectionFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </android.support.constraint.ConstraintLayout>

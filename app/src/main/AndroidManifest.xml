@@ -88,7 +88,7 @@
             android:name=".example.activity.BottomNavigationActivity"
             android:label="导航栏" />
         <activity
-            android:name=".module1.activity.MvpLoginActivity"
+            android:name=".mvp.activity.MvpLoginActivity"
             android:label="MVP模式的登录" />
         <activity android:name=".example.activity.TranslucentSystemBarActivity" />
         <activity android:name=".example.activity.SwipeRefreshActivity" />
@@ -115,7 +115,7 @@
         <activity android:name=".example.activity.TestDaggerActivity3" />
         <activity android:name=".example.activity.TextViewShowHtmlActivity" />
         <activity android:name=".example.activity.TestRrmActivity" />
-        <activity android:name=".module1.activity.QipaiNewActivity" />
+        <activity android:name=".mvp.activity.QipaiNewActivity" />
         <activity
             android:name=".example.activity.ElemTabActivity"
             android:theme="@style/ElemTheme" />
@@ -149,7 +149,7 @@
         <activity
             android:name=".example.activity.TestNestedScrollActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".module1.activity.QipaiIndexActivity" />
+        <activity android:name=".mvp.activity.QipaiIndexActivity" />
         <activity android:name=".example.activity.TestCountdownActivity" />
         <activity android:name=".example.activity.TestOpenGLActivity" />
         <activity android:name=".example.activity.TestSynchronizedActivity" />

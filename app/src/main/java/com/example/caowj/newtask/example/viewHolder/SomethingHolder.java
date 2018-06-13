@@ -1,10 +1,9 @@
 package com.example.caowj.newtask.example.viewHolder;
 
-import android.content.BroadcastReceiver;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.example.caowj.newtask.module1.listener.BroadcastCallback;
+import com.example.caowj.newtask.mvp.listener.BroadcastCallback;
 
 /**
  * @Author : caowj

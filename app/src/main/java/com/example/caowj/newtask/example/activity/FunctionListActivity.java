@@ -12,9 +12,9 @@ import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.designPattern.TestDesignPatternActivity;
 import com.example.caowj.newtask.example.adapter.FunctionListAdapter;
-import com.example.caowj.newtask.module1.activity.MvpLoginActivity;
-import com.example.caowj.newtask.module1.activity.QipaiIndexActivity;
-import com.example.caowj.newtask.module1.activity.QipaiNewActivity;
+import com.example.caowj.newtask.mvp.activity.MvpLoginActivity;
+import com.example.caowj.newtask.mvp.activity.QipaiIndexActivity;
+import com.example.caowj.newtask.mvp.activity.QipaiNewActivity;
 import com.kedacom.utils.LogUtil;
 
 import butterknife.BindView;

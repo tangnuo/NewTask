@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.caowj.newtask.R;
-import com.example.caowj.newtask.module1.constants.TypeConstants;
+import com.example.caowj.newtask.mvp.constants.TypeConstants;
 import com.kedacom.utils.JudgmentDataUtil;
 import com.kedacom.utils.LogUtil;
 
