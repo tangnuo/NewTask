@@ -15,7 +15,7 @@ import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.example.mina.ConnectionManager;
 import com.example.caowj.newtask.example.mina.MinaService;
 import com.example.caowj.newtask.example.mina.SessionManager;
-import com.example.caowj.newtask.utils.LogUtil;
+import com.kedacom.utils.LogUtil;
 
 /**
  * http://blog.csdn.net/zxc123e/article/details/54692437<p/>

@@ -2,7 +2,7 @@ package com.example.caowj.newtask.toutiao.module.photo;
 
 import android.support.v4.app.Fragment;
 
-import com.example.caowj.newtask.utils.LogUtil;
+import com.kedacom.utils.LogUtil;
 
 /**
  * @Author : caowj

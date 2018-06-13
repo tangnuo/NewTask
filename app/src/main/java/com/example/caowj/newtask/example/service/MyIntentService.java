@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.support.v4.content.LocalBroadcastManager;
 
 import com.example.caowj.newtask.example.activity.TestIntentServiceActivity;
-import com.example.caowj.newtask.utils.LogUtil;
+import com.kedacom.utils.LogUtil;
 
 /**
  * IntentService:

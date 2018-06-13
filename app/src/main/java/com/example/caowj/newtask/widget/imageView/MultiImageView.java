@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.caowj.newtask.toutiao.util.GlideUtils;
-import com.example.caowj.newtask.utils.LogUtil;
+import com.kedacom.utils.LogUtil;
 
 import java.util.List;
 

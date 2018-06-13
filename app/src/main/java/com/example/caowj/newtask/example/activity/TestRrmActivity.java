@@ -14,8 +14,8 @@ import com.example.caowj.newtask.module1.Api.TianService;
 import com.example.caowj.newtask.module1.constants.WSConstants;
 import com.example.caowj.newtask.module1.entity.NewsInfo;
 import com.example.caowj.newtask.module1.entity.bean.NewsBean2;
-import com.example.caowj.newtask.utils.LogUtil;
 import com.example.caowj.newtask.utils.business.MyAndroidUtils;
+import com.kedacom.utils.LogUtil;
 
 import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;

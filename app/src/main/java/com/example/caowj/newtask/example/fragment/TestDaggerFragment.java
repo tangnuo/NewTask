@@ -11,7 +11,7 @@ import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.example.activity.TestDaggerActivity3;
 import com.example.caowj.newtask.example.mDagger.component.TestDaggerFragmentComponent;
 import com.example.caowj.newtask.example.presenter.TestDaggerPresenter;
-import com.example.caowj.newtask.utils.ToastUtil;
+import com.kedacom.utils.ToastUtil;
 
 import javax.inject.Inject;
 

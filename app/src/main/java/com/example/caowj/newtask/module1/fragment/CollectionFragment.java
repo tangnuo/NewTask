@@ -19,10 +19,10 @@ import com.example.caowj.newtask.module1.entity.bean.PaiPinBean;
 import com.example.caowj.newtask.module1.presenter.BasePresenter;
 import com.example.caowj.newtask.module1.presenter.impl.TabNamePresenterImpl;
 import com.example.caowj.newtask.module1.view.BaseView;
-import com.example.caowj.newtask.utils.LogUtil;
 import com.example.caowj.newtask.utils.business.CommonTools;
 import com.example.caowj.newtask.utils.business.MyAndroidUtils;
 import com.example.caowj.newtask.widget.SlideRecyclerView;
+import com.kedacom.utils.LogUtil;
 
 import java.util.ArrayList;
 import java.util.List;

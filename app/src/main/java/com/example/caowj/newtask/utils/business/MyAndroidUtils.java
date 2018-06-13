@@ -3,7 +3,6 @@ package com.example.caowj.newtask.utils.business;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.ActivityManager.RunningTaskInfo;
-import android.app.Application;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -42,8 +41,8 @@ import android.widget.Toast;
 import com.example.caowj.newtask.base.BaseApp;
 import com.example.caowj.newtask.module1.constants.WSConstants;
 import com.example.caowj.newtask.module1.listener.BroadcastCallback;
-import com.example.caowj.newtask.utils.DensityUtil;
-import com.example.caowj.newtask.utils.LogUtil;
+import com.kedacom.utils.DensityUtil;
+import com.kedacom.utils.LogUtil;
 
 import java.util.List;
 

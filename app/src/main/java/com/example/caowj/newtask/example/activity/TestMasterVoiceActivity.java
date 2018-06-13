@@ -6,7 +6,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.AppCompatSeekBar;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -14,9 +13,9 @@ import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.example.adapter.ViewPagerAdapter;
 import com.example.caowj.newtask.example.fragment.MasterDetailShowFragment;
-import com.example.caowj.newtask.utils.LogUtil;
 import com.example.caowj.newtask.widget.headerScrollView.HeaderScrollHelper;
 import com.example.caowj.newtask.widget.headerScrollView.HeaderScrollView;
+import com.kedacom.utils.LogUtil;
 
 import butterknife.BindView;
 import butterknife.OnClick;

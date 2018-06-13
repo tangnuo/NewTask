@@ -15,7 +15,7 @@ import com.example.caowj.newtask.example.adapter.FunctionListAdapter;
 import com.example.caowj.newtask.module1.activity.MvpLoginActivity;
 import com.example.caowj.newtask.module1.activity.QipaiIndexActivity;
 import com.example.caowj.newtask.module1.activity.QipaiNewActivity;
-import com.example.caowj.newtask.utils.LogUtil;
+import com.kedacom.utils.LogUtil;
 
 import butterknife.BindView;
 

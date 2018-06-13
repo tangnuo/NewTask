@@ -8,8 +8,8 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.example.caowj.newtask.utils.LogUtil;
-import com.example.caowj.newtask.utils.TimeUtil;
+import com.kedacom.utils.LogUtil;
+import com.kedacom.utils.TimeUtil;
 
 import java.util.Date;
 

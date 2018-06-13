@@ -10,9 +10,9 @@ import android.widget.RelativeLayout;
 
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.module1.entity.bean.AdBean;
-import com.example.caowj.newtask.utils.LogUtil;
 import com.example.caowj.newtask.utils.business.MyAndroidUtils;
 import com.example.caowj.newtask.widget.BannerView;
+import com.kedacom.utils.LogUtil;
 
 import java.util.List;
 

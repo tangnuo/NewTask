@@ -10,8 +10,6 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.example.caowj.newtask.utils.LogUtil;
-
 import java.io.IOException;
 import java.io.InputStream;
 

@@ -7,9 +7,8 @@ import android.util.SparseBooleanArray;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.caowj.newtask.utils.DensityUtil;
-import com.example.caowj.newtask.utils.LogUtil;
 import com.example.caowj.newtask.utils.business.MyAndroidUtils;
+import com.kedacom.utils.LogUtil;
 
 /**
  * 学习自定义LayoutManager

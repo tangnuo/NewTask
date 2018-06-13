@@ -11,8 +11,8 @@ import android.widget.Button;
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.other.Player;
-import com.example.caowj.newtask.utils.DataList.DataList;
-import com.example.caowj.newtask.utils.LogUtil;
+import com.kedacom.utils.DataList.DataList;
+import com.kedacom.utils.LogUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;

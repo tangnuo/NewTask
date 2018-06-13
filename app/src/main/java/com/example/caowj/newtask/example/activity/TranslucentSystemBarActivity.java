@@ -7,7 +7,7 @@ import android.webkit.WebViewClient;
 
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.base.BaseActivity;
-import com.example.caowj.newtask.utils.StatusBarCompat;
+import com.kedacom.utils.StatusBarCompat;
 
 import butterknife.BindView;
 

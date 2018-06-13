@@ -10,8 +10,8 @@ import com.example.caowj.newtask.module1.constants.TypeConstants;
 import com.example.caowj.newtask.module1.entity.bean.PaiPinBean;
 import com.example.caowj.newtask.module1.viewHolder.CommonVH;
 import com.example.caowj.newtask.module1.viewHolder.FixedPriceProductVH;
-import com.example.caowj.newtask.utils.JudgmentDataUtil;
 import com.example.caowj.newtask.utils.business.ProductsDetailUtil;
+import com.kedacom.utils.JudgmentDataUtil;
 
 import java.util.ArrayList;
 import java.util.List;

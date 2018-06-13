@@ -15,7 +15,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.caowj.newtask.R;
-import com.example.caowj.newtask.utils.LogUtil;
 
 
 /**

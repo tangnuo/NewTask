@@ -8,8 +8,8 @@ import android.widget.TextView;
 
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.module1.constants.TypeConstants;
-import com.example.caowj.newtask.utils.JudgmentDataUtil;
-import com.example.caowj.newtask.utils.LogUtil;
+import com.kedacom.utils.JudgmentDataUtil;
+import com.kedacom.utils.LogUtil;
 
 import java.util.ArrayList;
 import java.util.List;

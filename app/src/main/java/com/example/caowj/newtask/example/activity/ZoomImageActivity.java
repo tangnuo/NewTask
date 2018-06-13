@@ -7,8 +7,8 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.caowj.newtask.R;
-import com.example.caowj.newtask.utils.LogUtil;
 import com.example.caowj.newtask.widget.imageView.LargeImageView;
+import com.kedacom.utils.LogUtil;
 
 import java.io.InputStream;
 import java.net.HttpURLConnection;

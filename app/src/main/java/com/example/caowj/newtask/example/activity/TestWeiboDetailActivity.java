@@ -9,9 +9,9 @@ import android.widget.LinearLayout;
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.example.adapter.HoveringAdapter;
-import com.example.caowj.newtask.utils.DensityUtil;
 import com.example.caowj.newtask.widget.headerScrollView.HeaderScrollHelper;
 import com.example.caowj.newtask.widget.headerScrollView.HeaderScrollView;
+import com.kedacom.utils.DensityUtil;
 
 /**
  * 微博详情页（标题置顶），HeaderScrollView+RecyclerView。

@@ -12,7 +12,7 @@ import com.example.caowj.newtask.example.mDagger.component.DaggerMultiModuleComp
 import com.example.caowj.newtask.example.mDagger.component.DaggerUserComponent;
 import com.example.caowj.newtask.example.mDagger.module.HttpModule;
 import com.example.caowj.newtask.example.mDagger.module.UserModule;
-import com.example.caowj.newtask.utils.LogUtil;
+import com.kedacom.utils.LogUtil;
 
 import javax.inject.Inject;
 import javax.inject.Named;

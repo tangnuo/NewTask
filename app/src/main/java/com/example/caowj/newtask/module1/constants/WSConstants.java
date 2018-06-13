@@ -1,7 +1,7 @@
 package com.example.caowj.newtask.module1.constants;
 
 
-import com.example.caowj.newtask.utils.LogUtil;
+import com.kedacom.utils.LogUtil;
 
 /**
  * webservice常量

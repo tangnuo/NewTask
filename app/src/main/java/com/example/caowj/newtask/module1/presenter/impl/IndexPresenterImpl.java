@@ -8,8 +8,8 @@ import com.example.caowj.newtask.module1.presenter.BaseDataBridge;
 import com.example.caowj.newtask.module1.presenter.BasePresenter;
 import com.example.caowj.newtask.module1.presenter.BasePresenterImpl;
 import com.example.caowj.newtask.module1.view.BaseView;
-import com.example.caowj.newtask.utils.JudgmentDataUtil;
-import com.example.caowj.newtask.utils.LogUtil;
+import com.kedacom.utils.JudgmentDataUtil;
+import com.kedacom.utils.LogUtil;
 
 import java.util.List;
 

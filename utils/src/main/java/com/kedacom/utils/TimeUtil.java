@@ -1,7 +1,6 @@
-package com.example.caowj.newtask.utils;
+package com.kedacom.utils;
 
 import android.annotation.SuppressLint;
-
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -356,7 +355,7 @@ public class TimeUtil {
             if (dateTime < limitDateTime) {
                 dateTime = dateTime * 1000;
             }
-            date = new java.text.SimpleDateFormat(format).format(new java.util.Date(dateTime));
+            date = new SimpleDateFormat(format).format(new Date(dateTime));
         }
 
         return date;

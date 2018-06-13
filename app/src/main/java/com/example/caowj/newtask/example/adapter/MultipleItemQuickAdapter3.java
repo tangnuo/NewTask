@@ -7,7 +7,7 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.example.bean.Person2;
 import com.example.caowj.newtask.example.viewHolder.SomethingHolder;
-import com.example.caowj.newtask.utils.LogUtil;
+import com.kedacom.utils.LogUtil;
 
 import java.util.List;
 

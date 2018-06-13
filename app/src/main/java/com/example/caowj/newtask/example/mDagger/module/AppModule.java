@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.caowj.newtask.example.fragment.BaseFragment2;
-import com.example.caowj.newtask.utils.ToastUtil;
+import com.kedacom.utils.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;

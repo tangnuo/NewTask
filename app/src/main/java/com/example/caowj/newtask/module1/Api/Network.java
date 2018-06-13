@@ -2,7 +2,7 @@ package com.example.caowj.newtask.module1.Api;
 
 
 import com.example.caowj.newtask.module1.converter.QipaiGsonConverterFactory;
-import com.example.caowj.newtask.utils.LogUtil;
+import com.kedacom.utils.LogUtil;
 
 import java.io.IOException;
 

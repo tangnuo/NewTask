@@ -1,4 +1,4 @@
-package com.example.caowj.newtask.utils;
+package com.kedacom.utils;
 
 import android.annotation.SuppressLint;
 import android.text.TextUtils;

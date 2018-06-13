@@ -3,7 +3,7 @@ package com.example.caowj.newtask.example.mDagger;
 import android.content.Context;
 import android.widget.Toast;
 
-import com.example.caowj.newtask.utils.LogUtil;
+import com.kedacom.utils.LogUtil;
 
 /**
  * package: com.example.caowj.newtask.example.mDagger

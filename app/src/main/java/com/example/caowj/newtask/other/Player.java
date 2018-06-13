@@ -16,7 +16,7 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.SeekBar;
 
-import com.example.caowj.newtask.utils.LogUtil;
+import com.kedacom.utils.LogUtil;
 
 import java.io.IOException;
 import java.util.Timer;

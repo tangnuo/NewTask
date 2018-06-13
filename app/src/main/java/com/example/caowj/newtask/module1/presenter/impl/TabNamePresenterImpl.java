@@ -14,9 +14,9 @@ import com.example.caowj.newtask.module1.model.impl.TabNameModelImpl;
 import com.example.caowj.newtask.module1.presenter.BasePresenter;
 import com.example.caowj.newtask.module1.presenter.BasePresenterImpl;
 import com.example.caowj.newtask.module1.view.BaseView;
-import com.example.caowj.newtask.utils.JudgmentDataUtil;
-import com.example.caowj.newtask.utils.LogUtil;
 import com.example.caowj.newtask.utils.business.MyAndroidUtils;
+import com.kedacom.utils.JudgmentDataUtil;
+import com.kedacom.utils.LogUtil;
 
 import java.util.ArrayList;
 import java.util.List;

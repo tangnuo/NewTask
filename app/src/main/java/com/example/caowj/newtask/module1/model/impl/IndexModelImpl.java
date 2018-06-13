@@ -10,7 +10,7 @@ import com.example.caowj.newtask.module1.entity.PaiPinInfoList;
 import com.example.caowj.newtask.module1.entity.SysPicInfoList;
 import com.example.caowj.newtask.module1.model.BaseModel;
 import com.example.caowj.newtask.module1.presenter.BaseDataBridge;
-import com.example.caowj.newtask.utils.LogUtil;
+import com.kedacom.utils.LogUtil;
 
 import java.util.ArrayList;
 import java.util.List;

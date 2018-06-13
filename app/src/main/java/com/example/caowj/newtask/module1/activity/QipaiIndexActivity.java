@@ -18,8 +18,8 @@ import com.example.caowj.newtask.module1.presenter.BasePresenter;
 import com.example.caowj.newtask.module1.presenter.impl.IndexPresenterImpl;
 import com.example.caowj.newtask.module1.view.BaseView;
 import com.example.caowj.newtask.other.OnLoadMoreListener;
-import com.example.caowj.newtask.utils.LogUtil;
 import com.example.caowj.newtask.utils.business.MyAndroidUtils;
+import com.kedacom.utils.LogUtil;
 
 import java.util.ArrayList;
 import java.util.List;

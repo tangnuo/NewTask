@@ -1,4 +1,4 @@
-package com.example.caowj.newtask.utils;
+package com.kedacom.utils;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;

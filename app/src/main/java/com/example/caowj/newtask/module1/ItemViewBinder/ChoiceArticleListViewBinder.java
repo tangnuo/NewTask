@@ -14,11 +14,11 @@ import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.example.bean.ArticleLabel;
 import com.example.caowj.newtask.example.bean.ChoiceArticle;
 import com.example.caowj.newtask.toutiao.util.GlideUtils;
-import com.example.caowj.newtask.utils.AlimmdnUtil;
-import com.example.caowj.newtask.utils.JudgmentDataUtil;
-import com.example.caowj.newtask.utils.LogUtil;
 import com.example.caowj.newtask.utils.business.MyAndroidUtils;
 import com.example.caowj.newtask.widget.LabelView;
+import com.kedacom.utils.AlimmdnUtil;
+import com.kedacom.utils.JudgmentDataUtil;
+import com.kedacom.utils.LogUtil;
 
 import java.util.List;
 

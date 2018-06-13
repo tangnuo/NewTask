@@ -18,7 +18,7 @@ import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.example.bean.PaiPinInfo;
 import com.example.caowj.newtask.toutiao.util.GlideUtils;
 import com.example.caowj.newtask.module1.entity.bean.AdBean;
-import com.example.caowj.newtask.utils.LogUtil;
+import com.kedacom.utils.LogUtil;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.example.adapter.MasterDetailShowAdapter;
-import com.example.caowj.newtask.utils.LogUtil;
+import com.kedacom.utils.LogUtil;
 
 import java.util.ArrayList;
 import java.util.List;

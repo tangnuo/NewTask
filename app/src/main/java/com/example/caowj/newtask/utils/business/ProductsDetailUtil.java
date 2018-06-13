@@ -11,7 +11,7 @@ import com.example.caowj.newtask.toutiao.util.GlideUtils;
 import com.example.caowj.newtask.module1.constants.Constants;
 import com.example.caowj.newtask.module1.entity.bean.PaiPinBean;
 import com.example.caowj.newtask.module1.viewHolder.FixedPriceProductVH;
-import com.example.caowj.newtask.utils.AlimmdnUtil;
+import com.kedacom.utils.AlimmdnUtil;
 
 import java.util.List;
 

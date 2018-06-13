@@ -16,8 +16,8 @@ import android.widget.ImageView;
 
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.utils.ImageLoader;
-import com.example.caowj.newtask.utils.LogUtil;
 import com.jakewharton.disklrucache.DiskLruCache;
+import com.kedacom.utils.LogUtil;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

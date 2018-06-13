@@ -3,7 +3,7 @@ package com.example.caowj.newtask.module1.entity.bean;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.example.caowj.newtask.utils.StringTool;
+import com.kedacom.utils.StringTool;
 
 /**
  * 导航栏信息

@@ -4,7 +4,7 @@ import android.os.Handler;
 import android.os.Message;
 
 
-import com.example.caowj.newtask.utils.LogUtil;
+import com.kedacom.utils.LogUtil;
 
 import java.lang.ref.WeakReference;
 

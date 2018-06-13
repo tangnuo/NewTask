@@ -9,9 +9,9 @@ import android.view.ViewGroup;
 
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.module1.entity.bean.ScrollNotification;
-import com.example.caowj.newtask.utils.JudgmentDataUtil;
-import com.example.caowj.newtask.utils.LogUtil;
 import com.example.caowj.newtask.widget.NotificationTextView;
+import com.kedacom.utils.JudgmentDataUtil;
+import com.kedacom.utils.LogUtil;
 
 import java.util.List;
 
