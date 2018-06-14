@@ -5,10 +5,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.example.caowj.newtask.R;
+import com.example.caowj.newtask.example.adapter.CommonAdapter3;
+import com.example.caowj.newtask.example.adapter.CommonAdapter4;
 import com.example.caowj.newtask.example.adapter.MultipleItemQuickAdapter2;
 import com.example.caowj.newtask.example.adapter.MultipleItemQuickAdapter3;
-import com.example.caowj.newtask.example.adapter.TestCommonAdapterAdapter2;
-import com.example.caowj.newtask.example.adapter.TestCommonAdapterAdapter3;
 import com.example.caowj.newtask.example.bean.Person;
 import com.example.caowj.newtask.example.bean.Person2;
 import com.kedacom.base.mvc.BaseActivity1;
@@ -75,8 +75,8 @@ public class TestCommonAdapterActivity2 extends BaseActivity1 {
      */
     private void singleType() {
 
-        TestCommonAdapterAdapter2 testCommonAdapterAdapter2 = new TestCommonAdapterAdapter2(R.layout.item_list, personList);
-        TestCommonAdapterAdapter3 testCommonAdapterAdapter3 = new TestCommonAdapterAdapter3(R.layout.item_list, personList);
+        CommonAdapter3 testCommonAdapterAdapter2 = new CommonAdapter3(R.layout.item_list, personList);
+        CommonAdapter4 testCommonAdapterAdapter3 = new CommonAdapter4(R.layout.item_list, personList);
         mRecyclerView.setAdapter(testCommonAdapterAdapter2);
     }
 

@@ -7,11 +7,11 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.caowj.newtask.R;
-import com.example.caowj.newtask.base.adapter.CommonAdapter;
-import com.example.caowj.newtask.base.adapter.CommonViewHolder;
-import com.example.caowj.newtask.base.adapter.MultiItemCommonAdapter;
-import com.example.caowj.newtask.base.adapter.MultiItemTypeSupport;
 import com.example.caowj.newtask.example.bean.Person;
+import com.kedacom.base.adapter.CommonAdapter;
+import com.kedacom.base.adapter.CommonViewHolder;
+import com.kedacom.base.adapter.MultiItemCommonAdapter;
+import com.kedacom.base.adapter.MultiItemTypeSupport;
 import com.kedacom.base.mvc.BaseActivity1;
 
 import java.util.ArrayList;

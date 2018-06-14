@@ -8,6 +8,9 @@ import android.view.ViewGroup;
 
 import com.example.caowj.newtask.R;
 
+/**
+ * @deprecated 仅适用于dagger2的情况 see{@link com.kedacom.base.mvc.BaseFragment1}
+ */
 public class BaseFragment2 extends Fragment {
 
     public BaseFragment2() {

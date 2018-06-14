@@ -2,6 +2,8 @@ package com.kedacom.base.mvc;
 
 
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -20,6 +22,7 @@ public abstract class BaseFragment1 extends Fragment {
     public String mTag = this.getClass().getSimpleName() + "~~";
     protected View rootView;
     public Activity mActivity;
+    private static ProgressDialog mProgressDialog;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,6 +53,36 @@ public abstract class BaseFragment1 extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
+    }
+
+    /**
+     * 显示ProgressDialog
+     *
+     * @param context    上下文
+     * @param message    消息
+     * @param cancelable 是否可以取消
+     */
+    public void loading(Context context, String message, boolean cancelable) {
+
+        if (mProgressDialog == null) {
+            mProgressDialog = new ProgressDialog(context);
+            mProgressDialog.setCancelable(cancelable);
+        }
+        if (mProgressDialog.isShowing()) {
+            mProgressDialog.cancel();
+            mProgressDialog.dismiss();
+        }
+        mProgressDialog.show();
+    }
+
+    /**
+     * 关闭ProgressDialog
+     */
+    public void closeLoading() {
+        if (mProgressDialog != null) {
+            mProgressDialog.dismiss();
+            mProgressDialog = null;
+        }
     }
 
     /*********************************************************/

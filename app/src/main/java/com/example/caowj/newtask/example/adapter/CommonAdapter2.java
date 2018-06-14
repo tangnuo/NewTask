@@ -7,6 +7,9 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.caowj.newtask.R;
 
 /**
+ * 基于BRVAH的通用Adapter
+ * @deprecated
+ * 常规的封装请参考{@link com.kedacom.base.adapter.CommonAdapter}
  * Created by sunger on 2017/10/15.
  */
 

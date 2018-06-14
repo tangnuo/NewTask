@@ -10,16 +10,18 @@ import com.example.caowj.newtask.example.bean.Person;
 import java.util.List;
 
 /**
+ * 基于BRVAH的通用Adapter
+ * @deprecated
  * package: com.example.caowj.newtask.example.adapter
  * author: Administrator
  * date: 2017/9/14 15:06
  */
-public class TestCommonAdapterAdapter2 extends BaseQuickAdapter<Person, BaseViewHolder> {
-    public TestCommonAdapterAdapter2(@Nullable List<Person> data) {
+public class CommonAdapter3 extends BaseQuickAdapter<Person, BaseViewHolder> {
+    public CommonAdapter3(@Nullable List<Person> data) {
         super(data);
     }
 
-    public TestCommonAdapterAdapter2(int item_list, List<Person> personList) {
+    public CommonAdapter3(int item_list, List<Person> personList) {
         super(item_list, personList);
     }
 

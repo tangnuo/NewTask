@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.example.adapter.MasterDetailShowAdapter;
+import com.kedacom.base.mvc.BaseFragment1;
 import com.kedacom.utils.LogUtil;
 
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ import butterknife.Unbinder;
 /**
  * 大师--介绍
  */
-public class MasterDetailShowFragment extends BaseFragment {
+public class MasterDetailShowFragment extends BaseFragment1 {
     @BindView(R.id.mRecyclerView)
     RecyclerView mRecyclerView;
     private Activity mActivity;
@@ -52,7 +53,8 @@ public class MasterDetailShowFragment extends BaseFragment {
         return rootView;
     }
 
-    private void initData() {
+    @Override
+    public void initData() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mActivity);
         mRecyclerView.setLayoutManager(linearLayoutManager);
         adapter = new MasterDetailShowAdapter(mActivity, contentList);
@@ -84,6 +86,11 @@ public class MasterDetailShowFragment extends BaseFragment {
         if (mActivity != null) {
             mActivity = null;
         }
+    }
+
+    @Override
+    protected int getContentView() {
+        return R.layout.fragment_master_show;
     }
 
     @Override

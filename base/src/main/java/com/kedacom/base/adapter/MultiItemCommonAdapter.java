@@ -1,4 +1,4 @@
-package com.example.caowj.newtask.base.adapter;
+package com.kedacom.base.adapter;
 
 import android.content.Context;
 import android.view.ViewGroup;

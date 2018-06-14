@@ -4,7 +4,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.example.bean.Person;
 import com.example.caowj.newtask.example.viewHolder.IBaseViewHolder;
@@ -12,17 +11,18 @@ import com.example.caowj.newtask.example.viewHolder.IBaseViewHolder;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
+ * 基于BRVAH的通用Adapter
+ * @deprecated
  * 使用ButterKnife自定义viewholder
  * package: com.example.caowj.newtask.example.adapter
  * author: Administrator
  * date: 2017/9/14 15:06
  */
-public class TestCommonAdapterAdapter3 extends BaseQuickAdapter<Person, TestCommonAdapterAdapter3.MyViewHolder> {
+public class CommonAdapter4 extends BaseQuickAdapter<Person, CommonAdapter4.MyViewHolder> {
 
-    public TestCommonAdapterAdapter3(int item_list, List<Person> personList) {
+    public CommonAdapter4(int item_list, List<Person> personList) {
         super(item_list, personList);
     }
 
