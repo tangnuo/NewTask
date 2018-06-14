@@ -163,5 +163,6 @@ dependencies {
     annotationProcessor "android.arch.persistence.room:compiler:1.1.0"
     // RxJava support for Room
     implementation 'android.arch.persistence.room:rxjava2:1.0.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
 }
