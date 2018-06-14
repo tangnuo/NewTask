@@ -11,18 +11,18 @@
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh"
-        app:refreshing="@{viewModel.refreshing}"
-        android:background="@color/grey300"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/grey300"
+        app:refreshing="@{viewModel.refreshing}">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="4dp"
             android:layout_marginEnd="4dp"
+            android:layout_marginStart="4dp"
             android:clipToPadding="false"
-            app:layoutManager="LinearLayoutManager" />
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
     </android.support.v4.widget.SwipeRefreshLayout>
 </layout>

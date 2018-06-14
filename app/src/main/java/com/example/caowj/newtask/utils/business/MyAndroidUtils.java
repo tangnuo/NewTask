@@ -827,7 +827,7 @@ public class MyAndroidUtils {
      */
     public static int getScreenWidth() {
         int width = 0;
-        WindowManager wm = (WindowManager) BaseApp.getInstance().getAppContext().getSystemService(Context.WINDOW_SERVICE);
+        WindowManager wm = (WindowManager) BaseApp.getContext().getSystemService(Context.WINDOW_SERVICE);
         Display display = wm.getDefaultDisplay();
         //        width = display.getWidth();//已过时
         DisplayMetrics displayMetrics = new DisplayMetrics();

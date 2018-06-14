@@ -27,7 +27,7 @@ public final class AwakerRepository implements IRemoteDataSource {
 
     private AwakerRepository() {
         remoteDataSource = new RemoteDataSourceImpl(AwakerClient.get());
-        appDatabase = AppDatabase.get(BaseApp.getInstance().getAppContext());
+        appDatabase = AppDatabase.get(BaseApp.getContext());
     }
 
     public static AwakerRepository get() {

@@ -27,8 +27,8 @@ public class NewsChannelDao {
     }
 
     public void addInitData() {
-        String categoryId[] = BaseApp.getInstance().getAppContext().getResources().getStringArray(R.array.mobile_news_id);
-        String categoryName[] = BaseApp.getInstance().getAppContext().getResources().getStringArray(R.array.mobile_news_name);
+        String categoryId[] = BaseApp.getContext().getResources().getStringArray(R.array.mobile_news_id);
+        String categoryName[] = BaseApp.getContext().getResources().getStringArray(R.array.mobile_news_name);
         for (int i = 0; i < 8; i++) {
             add(categoryId[i], categoryName[i], Constant.NEWS_CHANNEL_ENABLE, i);
         }

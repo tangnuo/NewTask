@@ -38,12 +38,12 @@ public class RetrofitFactory {
      */
     private static final Interceptor cacheControlInterceptor = chain -> {
         Request request = chain.request();
-        if (!NetWorkUtil.isNetworkConnected(BaseApp.getInstance().getAppContext())) {
+        if (!NetWorkUtil.isNetworkConnected(BaseApp.getContext())) {
             request = request.newBuilder().cacheControl(CacheControl.FORCE_CACHE).build();
         }
 
         Response originalResponse = chain.proceed(request);
-        if (NetWorkUtil.isNetworkConnected(BaseApp.getInstance().getAppContext())) {
+        if (NetWorkUtil.isNetworkConnected(BaseApp.getContext())) {
             // 有网络时 设置缓存为默认值
             String cacheControl = request.cacheControl().toString();
             return originalResponse.newBuilder()
@@ -67,12 +67,12 @@ public class RetrofitFactory {
             synchronized (RetrofitFactory.class) {
                 if (retrofit == null) {
                     // 指定缓存路径,缓存大小 50Mb
-                    Cache cache = new Cache(new File(BaseApp.getInstance().getAppContext().getCacheDir(), "HttpCache"),
+                    Cache cache = new Cache(new File(BaseApp.getContext().getCacheDir(), "HttpCache"),
                             1024 * 1024 * 50);
 
                     // Cookie 持久化
                     ClearableCookieJar cookieJar =
-                            new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(BaseApp.getInstance().getAppContext()));
+                            new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(BaseApp.getContext()));
 
                     OkHttpClient.Builder builder = new OkHttpClient.Builder()
                             .cookieJar(cookieJar)

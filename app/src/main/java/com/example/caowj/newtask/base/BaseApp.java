@@ -13,32 +13,19 @@ import com.example.caowj.newtask.example.mDagger.module.AppModule;
 public class BaseApp extends Application {
 
     AppComponent mAppComponent;
-    private static BaseApp instance;
-    private Context AppContext;
 
-    public Context getAppContext() {
-        return AppContext;
-    }
-
+    private static Context context;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        AppContext = getApplicationContext();
+        context = getApplicationContext();
         mAppComponent = DaggerAppComponent.builder().appModule(new AppModule(this)).build();
 
     }
 
-    public BaseApp() {
-    }
-
-
-    // 单例模式获取唯一的Application实例
-    public static BaseApp getInstance() {
-        if (null == instance) {
-            instance = new BaseApp();
-        }
-        return instance;
+    public static Context getContext() {
+        return context;
     }
 
     public AppComponent getAppComponent() {
