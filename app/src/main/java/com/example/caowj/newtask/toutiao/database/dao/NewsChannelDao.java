@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.base.BaseApp;
 import com.example.caowj.newtask.toutiao.Constant;
@@ -28,8 +27,8 @@ public class NewsChannelDao {
     }
 
     public void addInitData() {
-        String categoryId[] = BaseApp.AppContext.getResources().getStringArray(R.array.mobile_news_id);
-        String categoryName[] = BaseApp.AppContext.getResources().getStringArray(R.array.mobile_news_name);
+        String categoryId[] = BaseApp.getInstance().getAppContext().getResources().getStringArray(R.array.mobile_news_id);
+        String categoryName[] = BaseApp.getInstance().getAppContext().getResources().getStringArray(R.array.mobile_news_name);
         for (int i = 0; i < 8; i++) {
             add(categoryId[i], categoryName[i], Constant.NEWS_CHANNEL_ENABLE, i);
         }

@@ -84,12 +84,12 @@ public class VideoTabLayout extends BaseListFragment<FragVideoBinding>
 
     @Override
     public void onItemClick(View view, int position, Special bean) {
-        ToastUtil.showToast("详情页没有实现");
+        ToastUtil.showShortToast(getContext(), "详情页没有实现");
 //            SpecialListActivity.launch(getActivity(), bean.id, bean.title, bean.cover);
     }
 
 
     public void onDoubleClick() {
-        ToastUtil.showToast("暂时未处理双击刷新功能");
+        ToastUtil.showShortToast(getContext(), "暂时未处理双击刷新功能");
     }
 }

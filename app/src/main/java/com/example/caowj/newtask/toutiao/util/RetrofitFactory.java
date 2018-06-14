@@ -9,7 +9,6 @@ import com.franmontiel.persistentcookiejar.PersistentCookieJar;
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
 
-
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
@@ -39,12 +38,12 @@ public class RetrofitFactory {
      */
     private static final Interceptor cacheControlInterceptor = chain -> {
         Request request = chain.request();
-        if (!NetWorkUtil.isNetworkConnected(BaseApp.AppContext)) {
+        if (!NetWorkUtil.isNetworkConnected(BaseApp.getInstance().getAppContext())) {
             request = request.newBuilder().cacheControl(CacheControl.FORCE_CACHE).build();
         }
 
         Response originalResponse = chain.proceed(request);
-        if (NetWorkUtil.isNetworkConnected(BaseApp.AppContext)) {
+        if (NetWorkUtil.isNetworkConnected(BaseApp.getInstance().getAppContext())) {
             // 有网络时 设置缓存为默认值
             String cacheControl = request.cacheControl().toString();
             return originalResponse.newBuilder()
@@ -68,12 +67,12 @@ public class RetrofitFactory {
             synchronized (RetrofitFactory.class) {
                 if (retrofit == null) {
                     // 指定缓存路径,缓存大小 50Mb
-                    Cache cache = new Cache(new File(BaseApp.AppContext.getCacheDir(), "HttpCache"),
+                    Cache cache = new Cache(new File(BaseApp.getInstance().getAppContext().getCacheDir(), "HttpCache"),
                             1024 * 1024 * 50);
 
                     // Cookie 持久化
                     ClearableCookieJar cookieJar =
-                            new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(BaseApp.AppContext));
+                            new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(BaseApp.getInstance().getAppContext()));
 
                     OkHttpClient.Builder builder = new OkHttpClient.Builder()
                             .cookieJar(cookieJar)

@@ -13,7 +13,7 @@ import com.example.caowj.newtask.base.BaseApp;
 
 public class SettingUtil {
 
-    private SharedPreferences setting = PreferenceManager.getDefaultSharedPreferences(BaseApp.AppContext);
+    private SharedPreferences setting = PreferenceManager.getDefaultSharedPreferences(BaseApp.getInstance().getAppContext());
 
     public static SettingUtil getInstance() {
         return SettingsUtilInstance.instance;
@@ -23,14 +23,14 @@ public class SettingUtil {
      * 获取是否开启无图模式
      */
     public boolean getIsNoPhotoMode() {
-        return setting.getBoolean("switch_noPhotoMode", false) && NetWorkUtil.isMobileConnected(BaseApp.AppContext);
+        return setting.getBoolean("switch_noPhotoMode", false) && NetWorkUtil.isMobileConnected(BaseApp.getInstance().getAppContext());
     }
 
     /**
      * 获取主题颜色
      */
     public int getColor() {
-        int defaultColor = BaseApp.AppContext.getResources().getColor(R.color.colorAccent);
+        int defaultColor = BaseApp.getInstance().getAppContext().getResources().getColor(R.color.colorAccent);
         int color = setting.getInt("color", defaultColor);
         if ((color != 0) && Color.alpha(color) != 255) {
             return defaultColor;
@@ -139,7 +139,7 @@ public class SettingUtil {
      * 获取是否开启视频自动播放
      */
     public boolean getIsVideoAutoPlay() {
-        return setting.getBoolean("video_auto_play", false) && NetWorkUtil.isWifiConnected(BaseApp.AppContext);
+        return setting.getBoolean("video_auto_play", false) && NetWorkUtil.isWifiConnected(BaseApp.getInstance().getAppContext());
     }
 
     /**

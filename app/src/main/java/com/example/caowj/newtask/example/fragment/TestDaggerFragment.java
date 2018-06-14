@@ -19,8 +19,8 @@ public class TestDaggerFragment extends Fragment implements TestDaggerPresenter.
 
     @Inject
     TestDaggerPresenter mainPresenter;
-    @Inject
-    ToastUtil toastUtil;
+//    @Inject
+//    ToastUtil toastUtil;
 
 
     private TestDaggerFragmentComponent fragmentComponent;
@@ -59,7 +59,7 @@ public class TestDaggerFragment extends Fragment implements TestDaggerPresenter.
         view.findViewById(R.id.show_toast).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toastUtil.showToast("依赖注入获取到的toast");
+                ToastUtil.showShortToast(getContext(), "依赖注入获取到的toast");
             }
         });
 

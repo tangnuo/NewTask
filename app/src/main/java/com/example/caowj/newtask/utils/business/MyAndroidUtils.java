@@ -52,7 +52,7 @@ import java.util.List;
  * className: MyAndroidUtils
  *
  * @author caowj
- *         date：2016年1月18日 下午5:00:58
+ * date：2016年1月18日 下午5:00:58
  */
 public class MyAndroidUtils {
     public final static String SERVICE_ACTION = "com.baidu.android.pushservice.action.PUSH_SERVICE";
@@ -70,6 +70,7 @@ public class MyAndroidUtils {
             LogUtil.myD(myTag + "，code:" + code);
         }
     }
+
     /**
      * 获取TalkingData的渠道信息<br/>
      * 如果动态获取到的渠道信息为空，默认为官方
@@ -92,7 +93,7 @@ public class MyAndroidUtils {
     /**
      * 获取application中指定的meta-data
      *
-     * @return 如果没有获取成功(没有对应值，或者异常)，则返回值为空
+     * @return 如果没有获取成功(没有对应值 ， 或者异常)，则返回值为空
      */
     public static String getAppMetaData(Context ctx, String key) {
         if (ctx == null || TextUtils.isEmpty(key)) {
@@ -826,7 +827,7 @@ public class MyAndroidUtils {
      */
     public static int getScreenWidth() {
         int width = 0;
-        WindowManager wm = (WindowManager) BaseApp.getInstance().getSystemService(Context.WINDOW_SERVICE);
+        WindowManager wm = (WindowManager) BaseApp.getInstance().getAppContext().getSystemService(Context.WINDOW_SERVICE);
         Display display = wm.getDefaultDisplay();
         //        width = display.getWidth();//已过时
         DisplayMetrics displayMetrics = new DisplayMetrics();

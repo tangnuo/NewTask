@@ -14,7 +14,12 @@ public class BaseApp extends Application {
 
     AppComponent mAppComponent;
     private static BaseApp instance;
-    public static Context AppContext;
+    private Context AppContext;
+
+    public Context getAppContext() {
+        return AppContext;
+    }
+
 
     @Override
     public void onCreate() {
@@ -28,7 +33,7 @@ public class BaseApp extends Application {
     }
 
 
-    // 单例模式获取唯一的MyApplication实例
+    // 单例模式获取唯一的Application实例
     public static BaseApp getInstance() {
         if (null == instance) {
             instance = new BaseApp();
