@@ -1,4 +1,4 @@
-package com.example.caowj.newtask.toutiao.module.base;
+package com.kedacom.base.mvp;
 
 
 /**

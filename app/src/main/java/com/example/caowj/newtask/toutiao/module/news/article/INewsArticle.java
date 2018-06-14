@@ -1,8 +1,6 @@
 package com.example.caowj.newtask.toutiao.module.news.article;
 
 
-import com.example.caowj.newtask.toutiao.module.base.IBaseListView;
-import com.example.caowj.newtask.toutiao.module.base.IBasePresenter;
 import com.example.caowj.newtask.toutiao.bean.news.MultiNewsArticleDataBean;
 
 import java.util.List;

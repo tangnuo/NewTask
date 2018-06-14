@@ -43,7 +43,6 @@
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
-        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="详细数据见api完整路径和log日志"

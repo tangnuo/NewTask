@@ -5,7 +5,6 @@
     <color name="colorAccent">#FF4081</color>
     <color name="red">#FF0000</color>
     <color name="colorGray">#9b999a</color>
-    <color name="bg_title_bar">#3cb775</color>
 
     <color name="colorblack">#080808</color>
 
@@ -15,171 +14,52 @@
 
     <!--雅物-->
     <color name="collection_navigation_title">#686868</color>
-    <color name="find_item_30">#303030</color>
-    <color name="collection_special_auction_title">#ACACAC</color>
     <color name="tv_checked_bg">#a40000</color>
     <color name="white">#ffffff</color>
 
 
     <!-- 上传图片添加的颜色 -->
-    <color name="none_color">#00000000</color>
     <!--半透明-->
-    <color name="albumback">#E1E0DE</color>
     <color name="black">#000000</color>
     <color name="black_light">#010101</color>
-    <color name="white_5_alpha">#0cffffff</color>
-    <color name="img_bg">#f4f5f7</color>
-    <color name="img_mine">#f3f5f7</color>
-    <color name="reply_bg">#f5f5f5</color>
-    <color name="line_bg">#e5e7e9</color>
     <!-- 主画面模块文字颜色-今日拍品等 -->
-    <color name="tv_checked_nor">#222</color>
-    <color name="tv_checked_nor_two">#666</color>
-    <color name="tv_grey">#999</color>
-    <color name="btn_cancel_bg">#3d3d3d</color>
-    <color name="txt_my_money">#B3B3B3</color>
-    <color name="color_b60f13">#B60F13</color>
 
     <!-- 搜索栏 -->
-    <color name="index_bg">#202228</color>
     <color name="tv_grey_light">#B3B3B3</color>
-    <color name="tv_grey_type">#cecece</color>
-
-    <color name="friend_bg">#e6e6e6</color>
-    <color name="friend_title_bg">#4d4d4d</color>
-    <color name="auction_title_selected_bg">#2A292F</color>
-    <color name="auction_title_normal_bg">#C6C6C7</color>
-    <color name="friend_item_bg">#f8f8f8</color>
-    <color name="special_time">#c92524</color>
 
     <!--宝贝预展详情页 宝贝介绍  交易须知  评论 的颜色-->
     <color name="red_transparent_44">#44ff0000</color>
-    <color name="comment_title">#262626</color>
-    <color name="comment_time">#a5a5a5</color>
-    <color name="comment_content">#666666</color>
     <!--余额和保证金显示颜色-->
-    <color name="account_balance">#E21818</color>
     <!--转入 和 转出 选中与为选中的颜色-->
-    <color name="deposit_unchecked">#999999</color>
-    <color name="deposit_checked">#212121</color>
     <!--确认充值选中状态-->
-    <color name="transfer_ok">#A40000</color>
     <!--确认充值未选中状态-->
-    <color name="transfer_tv_no">#999999</color>
 
     <!--裁剪图片-->
-    <color name="viewfinder_mask">#B2000000</color>
     <!--保证金说明-->
-    <color name="bail_title_bg">#d4d4d4</color>
-    <color name="primary_light">#B2DFDB</color>
     <!--登录界面 获取验证码 和 忘记密码 字体颜色-->
-    <color name="login_get_info">#808080</color>
     <color name="elem_primary">#079ff1</color>
 
     <!--日期选择器 begin-->
 
     <color name="cutting_line">#dfdfdf</color>
-    <color name="color_ed">#EDEDED</color>
 
     <!--日期选择器 end-->
 
-    <color name="find_title_bg_color">#2a292f</color>
-    <color name="find_master_title2">#e5ffffff</color>
-    <color name="find_master_bg">#f2f5f7</color>
-    <color name="tab_bgcolor">#eeeeee</color>
-    <color name="friend_comment_bg">#f4f4f4</color>
-    <color name="time_bg">#d2d2d6</color>
-    <color name="time_bg_transparent">#7f101010</color>
-    <color name="master_bg">#242424</color>
-    <color name="master_title">#9c9c9c</color>
-    <color name="master_describe">#969696</color>
     <color name="find_item_bg">#262626</color>
     <color name="black_5_alpha">#f2262626</color>
-    <color name="find_title_grey">#c8c8c8</color>
     <!--精选功能使用的颜色-->
-    <color name="choice_today_auction_and_pre_sale_bg">#101010</color>
-    <color name="choice_auction_coverflow_title_bg">#99000000</color>
-    <color name="choice_auction_coverflow_price_bg">#272727</color>
-    <color name="find_item_17">#171717</color>
-    <color name="find_item_10">#101010</color>
-    <color name="find_item_01">#010101</color>
-    <color name="find_item_22">#222222</color>
-    <color name="find_item_16">#161616</color>
     <color name="find_item_6e6c6c">#6e6c6c</color>
-    <color name="find_choice_title">#565656</color>
-    <color name="find_item_40">#404040</color>
-    <color name="find_item_3a">#3a3a3a</color>
-    <color name="find_item_c3">#c3c3c3</color>
-    <color name="find_item_7e">#7e7e7e</color>
-    <color name="find_item_3b">#3b3b3b</color>
-    <color name="find_item_dc">#dcdcdc</color>
-    <color name="item_73">#737373</color>
 
     <!--商品详情 宝贝描述-->
-    <color name="products_detail_describe">#626262</color>
-    <color name="products_detail_line">#D3D3D3</color>
-    <color name="products_detail_flag">#A2A2A2</color>
-    <color name="products_detail_current_price">#E55050</color>
-    <color name="find_item_0a">#0a0a0a</color>
-    <color name="find_item_b5">#b5b5b5</color>
-    <color name="find_item_46">#464646</color>
-    <color name="find_item_1f">#1f1f1f</color>
-    <color name="find_item_4e">#4e4e4e</color>
-    <color name="item_b48b6b">#b48b6b</color>
     <color name="item_333">#333333</color>
-    <color name="find_item_8d">#8d8d8d</color>
     <color name="find_item_82">#828282</color>
-    <color name="item_be8b5c">#be8b5c</color>
-    <color name="item_5a">#5a5a5a</color>
     <color name="item_1c">#1c1c1c</color>
-    <color name="item_0d">#0d0d0d</color>
-    <color name="item_a0">#a0a0a0</color>
-    <color name="item_81">#818181</color>
     <color name="item_e5">#e5e5e5</color>
-    <color name="user_nick_name">#878787</color>
-    <color name="item_8f">#8f8f8f</color>
-    <color name="item_e86060">#e86060</color>
     <color name="item_c2">#c2c2c2</color>
-    <color name="proxy_raise_price">#878787</color>
-    <color name="proxy_raise_price_title">#F9BB62</color>
-    <color name="proxy_sec_kill_price_title">#B2B0B0</color>
-    <color name="order_title">#777777</color>
-    <color name="item_d8">#D8D8D8</color>
     <color name="item_85">#858585</color>
-    <color name="item_f9bb62">#f9bb62</color>
     <color name="item_71">#717171</color>
-    <color name="item_3f">#3f3f3f</color>
-    <color name="item_e55050">#e55050</color>
-    <color name="item_89">#898989</color>
-    <color name="item_fffefe">#FFFEFE</color>
-    <color name="item_ee4d4d">#EE4D4D</color>
-    <color name="item_d83030">#D83030</color>
-    <color name="item_c4">#3fc4c4c4</color>
-    <color name="item_68">#686868</color>
     <color name="item_df">#dfdfdf</color>
-    <color name="item_22">#222222</color>
-    <color name="item_6d">#6D6D6D</color>
     <color name="item_72">#72000000</color>
-    <color name="item_fe">#FEFEFE</color>
-    <color name="item_e96161">#E96161</color>
-    <color name="item_cc9361">#CC9361</color>
-    <color name="item_f6">#f6f6f6</color>
-    <color name="item_d90000">#d90000</color>
-    <color name="find_item_ccc">#cccccc</color>
-    <color name="find_item_18">#181818</color>
-    <color name="item_f05f5f">#f05f5f</color>
-    <color name="item_d0">#d0d0d0</color>
-    <color name="item_60">#606060</color>
-    <color name="item_52">#525252</color>
-    <color name="item_f0">#f0f0f0</color>
-    <color name="item_ed">#ededed</color>
-    <color name="item_d2">#d2d2d2</color>
-    <color name="item_414141">#414141</color>
-    <color name="item_9B9B9B">#9B9B9B</color>
-    <color name="master_unfollow">#d93a3a</color>
-    <color name="master_followed">#464646</color>
-    <color name="item_59">#595959</color>
-    <color name="item_91">#919191</color>
     <color name="item_b4282d">#b4282d</color>
     <color name="item_f7">#f7f7f7</color>
     <color name="Blue_Grey">#607d8b</color>
@@ -190,22 +70,11 @@
     <color name="hint_color">#42000000</color>
     <color name="success_color">#009688</color>
 
-    <color name="themePrimary">#FFFD7044</color>
-    <color name="themePrimaryDark">#FFFD5044</color>
-
-    <color name="text_white_87">#deFFFFFF</color>
-    <color name="text_white_50">#80FFFFFF</color>
-
     <color name="black12">#1F000000</color>
 
     <color name="grey300">#FFE0E0E0</color>
 
     <color name="f5">#FFF5F5F5</color>
-
-    <color name="image_mark">#FFE0E0E0</color>
-
-    <color name="blue_zan">#FF3BB9FF</color>
-    <color name="grey_zan">#FFB6B6B4</color>
 
     <color name="text_color">#EE383838</color>
 </resources>
