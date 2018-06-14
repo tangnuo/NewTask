@@ -5,7 +5,7 @@ import com.kedacom.imageloader.glide.GlideImpl;
 
 /**
  * Copyright ©2017 by ruzhan
- * @deprecated to see {@link  GlideUtil }
+ * @deprecated to see {@link  ImageUtil }
  */
 
 public final class ImageLoader {

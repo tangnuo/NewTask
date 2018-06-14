@@ -1,4 +1,4 @@
-package com.kedacom.imageloader.transformation;
+package com.kedacom.imageloader.glide.transformation;
 
 import android.content.Context;
 import android.graphics.Bitmap;

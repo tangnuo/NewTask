@@ -10,11 +10,11 @@ import com.kedacom.imageloader.glide.GlideImpl;
  * @Author : Caowj
  * @Date : 2018/6/13 12:39
  */
-public class GlideUtil {
+public class ImageUtil {
 
     private static IImageLoader imageLoader;
 
-    private GlideUtil() {
+    private ImageUtil() {
     }
 
     private static IImageLoader getInstance() {
@@ -22,6 +22,8 @@ public class GlideUtil {
             synchronized (ImageLoader.class) {
                 if (imageLoader == null) {
                     imageLoader = new GlideImpl();
+//                    imageLoader = new PicassoImpl();
+//                    imageLoader = new FrescoImpl();
                 }
             }
         }
