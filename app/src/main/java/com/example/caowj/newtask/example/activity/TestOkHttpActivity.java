@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.caowj.newtask.R;
-import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.example.bean.GankInfo;
 import com.example.caowj.newtask.utils.business.MyAndroidUtils;
 import com.google.gson.JsonElement;
@@ -18,6 +17,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
 import com.kedacom.base.common.BaseHandler;
+import com.kedacom.base.mvc.BaseActivity1;
 import com.kedacom.utils.GankUtil;
 import com.kedacom.utils.GsonUtil;
 import com.kedacom.utils.LogUtil;
@@ -46,7 +46,7 @@ import okhttp3.Response;
  * </p>
  * https://blog.csdn.net/fightingxia/article/details/70947701
  */
-public class TestOkHttpActivity extends BaseActivity {
+public class TestOkHttpActivity extends BaseActivity1 {
 
     @BindView(R.id.btn_test1)
     Button btnTest1;

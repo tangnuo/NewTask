@@ -6,9 +6,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 
 import com.example.caowj.newtask.R;
-import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.example.fragment.StickHeaderFragment;
 import com.kedacom.base.common.BasePagerAdapter;
+import com.kedacom.base.mvc.BaseActivity1;
 
 /**
  * 仿饿了么标题、条件栏悬浮；筛选条件。
@@ -17,7 +17,7 @@ import com.kedacom.base.common.BasePagerAdapter;
  * <p/>
  * 使用折叠控件：https://github.com/cachapa/ExpandableLayout
  */
-public class ElemTabActivity extends BaseActivity {
+public class ElemTabActivity extends BaseActivity1 {
     private Toolbar toolbar;
     private ViewPager viewPager;
     private BasePagerAdapter viewPagerAdapter;

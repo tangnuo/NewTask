@@ -7,8 +7,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.caowj.newtask.R;
-import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.example.adapter.TaoBaoDetailAdater;
+import com.kedacom.base.mvc.BaseActivity1;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,7 @@ import butterknife.OnClick;
  * 标题和列表联动（淘宝详情页）
  * 导航栏不适合使用TabLayout，因为设置标题样式的时候会触发点击事件，冲突了。
  */
-public class TestTaoBaoDetailActivity extends BaseActivity {
+public class TestTaoBaoDetailActivity extends BaseActivity1 {
     @BindView(R.id.mRecyclerView)
     RecyclerView mRecyclerView;
     @BindView(R.id.tv_title1)

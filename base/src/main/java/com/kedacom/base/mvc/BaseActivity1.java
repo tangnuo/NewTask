@@ -1,12 +1,11 @@
-package com.example.caowj.newtask.base;
+package com.kedacom.base.mvc;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.Toast;
-
-import com.kedacom.utils.LogUtil;
 
 import butterknife.ButterKnife;
 
@@ -15,7 +14,7 @@ import butterknife.ButterKnife;
  * author: Administrator
  * date: 2017/9/1 11:50
  */
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity1 extends AppCompatActivity {
     public String mTag = this.getClass().getSimpleName() + "~~";
     public Activity mActivity;
 
@@ -37,11 +36,11 @@ public abstract class BaseActivity extends AppCompatActivity {
 
 
         setContentView(getContentView());
-        LogUtil.myD("111111");
         ButterKnife.bind(this);
+        Log.d("caowj", "111111");
         initWidget();
         initData();
-        LogUtil.myD("33333");
+        Log.d("caowj", "333333");
     }
 
 
@@ -66,7 +65,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected abstract int getContentView();
 
     protected void initWidget() {
-        //使用了BindView代替了。
+        //使用了@BindView代替了。
     }
 
     protected void initData() {

@@ -19,7 +19,7 @@ import com.kedacom.base.mvvm.viewmodel.BaseViewModel;
  * Created by ruzhan on 2017/7/15.
  */
 
-public abstract class BaseActivity<VB extends ViewDataBinding>
+public abstract class BaseActivity3<VB extends ViewDataBinding>
         extends AppCompatActivity {
 
     protected VB binding;

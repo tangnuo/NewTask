@@ -5,8 +5,9 @@ import android.view.ViewTreeObserver;
 import android.widget.GridView;
 
 import com.example.caowj.newtask.R;
-import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.example.adapter.PhotoWallAdapter2;
+import com.kedacom.base.mvc.BaseActivity1;
+import com.kedacom.utils.DataList.DataList;
 
 /**
  * <p>
@@ -14,7 +15,7 @@ import com.example.caowj.newtask.example.adapter.PhotoWallAdapter2;
  * </p>
  * http://blog.csdn.net/guolin_blog/article/details/34093441
  */
-public class TestLruCacheActivity2 extends BaseActivity {
+public class TestLruCacheActivity2 extends BaseActivity1 {
 
     /**
      * 用于展示照片墙的GridView
@@ -41,7 +42,7 @@ public class TestLruCacheActivity2 extends BaseActivity {
         mImageThumbSize = 100;
         mImageThumbSpacing = 2;
         mPhotoWall = (GridView) findViewById(R.id.photo_wall);
-        mAdapter = new PhotoWallAdapter2(mActivity, 0, Images.imageThumbUrls,
+        mAdapter = new PhotoWallAdapter2(mActivity, 0, DataList.getImageArray(),
                 mPhotoWall);
         mPhotoWall.setAdapter(mAdapter);
         mPhotoWall.getViewTreeObserver().addOnGlobalLayoutListener(

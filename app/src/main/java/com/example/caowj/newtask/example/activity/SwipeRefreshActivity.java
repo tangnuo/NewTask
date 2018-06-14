@@ -11,10 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.caowj.newtask.R;
-import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.example.adapter.SwipeAdater;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
+import com.kedacom.base.mvc.BaseActivity1;
 
 import java.util.ArrayList;
 
@@ -25,7 +25,7 @@ import java.util.ArrayList;
  * 1、设置xRecyclerView不可下拉；<br/>
  * 2、在SwipeRefreshLayout外包裹一层FrameLayout。https://github.com/jianghejie/XRecyclerView/issues/163<br/>
  */
-public class SwipeRefreshActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {
+public class SwipeRefreshActivity extends BaseActivity1 implements SwipeRefreshLayout.OnRefreshListener {
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private XRecyclerView mRecyclerView;
     private SwipeAdater mAdapter;

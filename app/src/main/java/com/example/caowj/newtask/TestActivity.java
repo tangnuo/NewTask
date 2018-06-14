@@ -11,15 +11,15 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.example.activity.FunctionListActivity;
 import com.example.caowj.newtask.utils.business.MyAndroidUtils;
+import com.kedacom.base.mvc.BaseActivity1;
 import com.leon.channel.helper.ChannelReaderUtil;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class TestActivity extends BaseActivity {
+public class TestActivity extends BaseActivity1 {
 
     @BindView(R.id.tv_title)
     TextView tvTitle;

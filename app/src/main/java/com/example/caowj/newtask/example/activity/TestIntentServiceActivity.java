@@ -11,8 +11,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.caowj.newtask.R;
-import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.example.service.MyIntentService;
+import com.kedacom.base.mvc.BaseActivity1;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,7 +24,7 @@ import butterknife.OnClick;
  * LocalBroadcastManager发送局部广播
  * </p>
  */
-public class TestIntentServiceActivity extends BaseActivity {
+public class TestIntentServiceActivity extends BaseActivity1 {
 
     /**
      * 状态文字

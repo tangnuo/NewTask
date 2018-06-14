@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.utils.ImageLoader;
+import com.kedacom.utils.DataList.DataList;
 import com.kedacom.utils.LogUtil;
 
 import java.io.BufferedInputStream;
@@ -145,7 +146,7 @@ public class PhotoWallAdapter extends ArrayAdapter<String> implements AbsListVie
         }
         try {
             for (int i = firstVisibleItem; i < firstVisibleItem + visibleItemCount; i++) {
-                String imageUrl = Images.imageThumbUrls[i];
+                String imageUrl = DataList.getImageArray()[i];
                 Bitmap bitmap = imageLoader.getBitmapFromMemoryCache(imageUrl);
                 if (bitmap == null) {
                     BitmapWorkerTask task = new BitmapWorkerTask();

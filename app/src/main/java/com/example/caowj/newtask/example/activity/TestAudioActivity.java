@@ -6,13 +6,13 @@ import android.widget.Button;
 import android.widget.SeekBar;
 
 import com.example.caowj.newtask.R;
-import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.other.Player;
+import com.kedacom.base.mvc.BaseActivity1;
 
 /**
  * 音频播放一
  */
-public class TestAudioActivity extends BaseActivity {
+public class TestAudioActivity extends BaseActivity1 {
 
     private Button btnPause, btnPlayUrl, btnStop, btnOpen;
     private SeekBar skbProgress;

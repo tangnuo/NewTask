@@ -8,7 +8,7 @@ import com.example.caowj.newtask.databinding.FragVideoBinding;
 import com.example.caowj.newtask.mvvm.adapter.VideoListAdapter;
 import com.example.caowj.newtask.mvvm.data.Special;
 import com.example.caowj.newtask.mvvm.viewmodel.VideoViewModel;
-import com.kedacom.base.mvvm.BaseListFragment;
+import com.kedacom.base.mvvm.BaseListFragment3;
 import com.kedacom.base.mvvm.listener.OnItemClickListener;
 import com.kedacom.utils.LogUtil;
 import com.kedacom.utils.ToastUtil;
@@ -24,7 +24,7 @@ import com.kedacom.utils.ToastUtil;
  * @Author : caowj
  * @Date : 2018/4/23
  */
-public class VideoTabLayout extends BaseListFragment<FragVideoBinding>
+public class VideoTabLayout extends BaseListFragment3<FragVideoBinding>
         implements OnItemClickListener<Special> {
 
     private static VideoTabLayout instance = null;

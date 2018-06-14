@@ -4,18 +4,17 @@ import android.app.ActivityManager;
 import android.content.pm.ConfigurationInfo;
 import android.opengl.GLSurfaceView;
 import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.caowj.newtask.R;
-import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.other.GLRenderer;
+import com.kedacom.base.mvc.BaseActivity1;
 
 /**
  * https://www.jianshu.com/p/442682fda917
  */
-public class TestOpenGLActivity extends BaseActivity {
+public class TestOpenGLActivity extends BaseActivity1 {
 
     private boolean supportsEs2;
     private GLSurfaceView glSurfaceView;

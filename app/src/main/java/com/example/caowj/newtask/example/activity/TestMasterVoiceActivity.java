@@ -10,11 +10,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.caowj.newtask.R;
-import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.example.fragment.MasterDetailShowFragment;
 import com.example.caowj.newtask.widget.headerScrollView.HeaderScrollHelper;
 import com.example.caowj.newtask.widget.headerScrollView.HeaderScrollView;
 import com.kedacom.base.common.BasePagerAdapter;
+import com.kedacom.base.mvc.BaseActivity1;
 import com.kedacom.utils.LogUtil;
 
 import butterknife.BindView;
@@ -28,7 +28,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * 如果配合刷新控件，最好的解决办法就是将加载更多放入RecyclerView中；针对不同的Fragment，请求不同的数据，降低耦合度。
  * </p>
  */
-public class TestMasterVoiceActivity extends BaseActivity implements HeaderScrollHelper.ScrollableContainer {
+public class TestMasterVoiceActivity extends BaseActivity1 implements HeaderScrollHelper.ScrollableContainer {
     @BindView(R.id.tv_name)
     TextView tvName;
     @BindView(R.id.iv_photo)

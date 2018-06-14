@@ -7,12 +7,12 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.caowj.newtask.R;
-import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.base.adapter.CommonAdapter;
 import com.example.caowj.newtask.base.adapter.CommonViewHolder;
 import com.example.caowj.newtask.base.adapter.MultiItemCommonAdapter;
 import com.example.caowj.newtask.base.adapter.MultiItemTypeSupport;
 import com.example.caowj.newtask.example.bean.Person;
+import com.kedacom.base.mvc.BaseActivity1;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +27,7 @@ import butterknife.ButterKnife;
  * <p>
  * 升级版（头部、加载更多、停止维护了）：https://github.com/hongyangAndroid/base-adapter
  */
-public class TestCommonAdapterActivity1 extends BaseActivity {
+public class TestCommonAdapterActivity1 extends BaseActivity1 {
 
     @BindView(R.id.mRecyclerView)
     RecyclerView mRecyclerView;

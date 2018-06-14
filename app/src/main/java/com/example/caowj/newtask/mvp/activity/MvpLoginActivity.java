@@ -7,14 +7,14 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.caowj.newtask.R;
-import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.mvp.presenter.impl.UserPresenter;
 import com.example.caowj.newtask.mvp.view.IUserView;
+import com.kedacom.base.mvc.BaseActivity1;
 
 /**
  * MVP基础案例（登录功能）
  */
-public class MvpLoginActivity extends BaseActivity implements View.OnClickListener, IUserView {
+public class MvpLoginActivity extends BaseActivity1 implements View.OnClickListener, IUserView {
 
     private EditText name, password;
     private ProgressBar progress;

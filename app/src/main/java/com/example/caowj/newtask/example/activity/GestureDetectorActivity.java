@@ -9,7 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.caowj.newtask.R;
-import com.example.caowj.newtask.base.BaseActivity;
+import com.kedacom.base.mvc.BaseActivity1;
 
 /**
  * 手势监听GestureDetector<p/>
@@ -20,7 +20,7 @@ import com.example.caowj.newtask.base.BaseActivity;
  * <p>
  * http://blog.csdn.net/harvic880925/article/details/39520901<br/>
  */
-public class GestureDetectorActivity extends BaseActivity {
+public class GestureDetectorActivity extends BaseActivity1 {
 
     private TextView mTextView;
     private GestureDetector mGestureDetector;

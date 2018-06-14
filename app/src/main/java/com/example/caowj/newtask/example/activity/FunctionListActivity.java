@@ -1,6 +1,5 @@
 package com.example.caowj.newtask.example.activity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,23 +8,22 @@ import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;
 
 import com.example.caowj.newtask.R;
-import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.designPattern.TestDesignPatternActivity;
 import com.example.caowj.newtask.example.adapter.FunctionListAdapter;
 import com.example.caowj.newtask.mvp.activity.MvpLoginActivity;
 import com.example.caowj.newtask.mvp.activity.QipaiIndexActivity;
 import com.example.caowj.newtask.mvp.activity.QipaiNewActivity;
+import com.kedacom.base.mvc.BaseActivity1;
 import com.kedacom.utils.LogUtil;
 
 import butterknife.BindView;
 
-public class FunctionListActivity extends BaseActivity {
+public class FunctionListActivity extends BaseActivity1 {
 
     @BindView(R.id.mRecyclerView)
     RecyclerView mRecyclerView;
 
     private SparseArray<Class> sparseArray;
-    private Activity mActivity;
     private FunctionListAdapter functionListAdapter;
 
     public static void newInstance(Context context) {
@@ -57,9 +55,7 @@ public class FunctionListActivity extends BaseActivity {
     protected void initWidget() {
         super.initWidget();
         LogUtil.myD("222222");
-        mActivity = this;
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mActivity));
-
     }
 
     /**

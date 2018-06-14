@@ -7,7 +7,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.caowj.newtask.R;
-import com.example.caowj.newtask.base.BaseActivity;
+import com.kedacom.base.mvc.BaseActivity1;
 
 import butterknife.BindView;
 
@@ -17,7 +17,7 @@ import butterknife.BindView;
  * <br/>
  * 进阶：https://blog.csdn.net/xiaoyangsavvy/article/details/70213537
  */
-public class BottomNavigationActivity extends BaseActivity {
+public class BottomNavigationActivity extends BaseActivity1 {
 
     @BindView(R.id.nav_tv)
     TextView navTv;

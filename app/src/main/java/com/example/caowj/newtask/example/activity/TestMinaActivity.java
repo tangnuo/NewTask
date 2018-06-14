@@ -11,10 +11,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.caowj.newtask.R;
-import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.example.mina.ConnectionManager;
 import com.example.caowj.newtask.example.mina.MinaService;
 import com.example.caowj.newtask.example.mina.SessionManager;
+import com.kedacom.base.mvc.BaseActivity1;
 import com.kedacom.utils.LogUtil;
 
 /**
@@ -28,7 +28,7 @@ import com.kedacom.utils.LogUtil;
  *
  * @deprecated see { MinaDemo项目 }
  */
-public class TestMinaActivity extends BaseActivity implements View.OnClickListener {
+public class TestMinaActivity extends BaseActivity1 implements View.OnClickListener {
 
     private MessageBroadcastReceiver receiver = new MessageBroadcastReceiver();
     private Button btn1, btn2;

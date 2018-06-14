@@ -6,13 +6,13 @@ import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.example.caowj.newtask.R;
-import com.example.caowj.newtask.base.BaseActivity;
+import com.kedacom.base.mvc.BaseActivity1;
 
 /**
  * 仿饿了么搜索栏动画效果<br/>
  * 注意主题样式。
  */
-public class ElemSearchActivity extends BaseActivity {
+public class ElemSearchActivity extends BaseActivity1 {
     RelativeLayout tvSearchRlt;
 
     @Override

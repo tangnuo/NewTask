@@ -17,7 +17,7 @@ import com.kedacom.base.mvvm.viewmodel.BaseListViewModel;
  * Copyright ©2017 by ruzhan
  */
 
-public class BaseListFragment<VB extends ViewDataBinding> extends BaseFragment<VB>
+public class BaseListFragment3<VB extends ViewDataBinding> extends BaseFragment3<VB>
         implements SwipeRefreshLayout.OnRefreshListener {
 
     protected SwipeRefreshLayout swipeRefresh;

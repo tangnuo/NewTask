@@ -6,9 +6,9 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.caowj.newtask.R;
-import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.other.PausableThreadPoolExecutor;
 import com.example.caowj.newtask.other.PriorityRunnable;
+import com.kedacom.base.mvc.BaseActivity1;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -23,7 +23,7 @@ import butterknife.OnClick;
 /**
  * 线程池
  */
-public class TestThreadPoolActivity extends BaseActivity {
+public class TestThreadPoolActivity extends BaseActivity1 {
 
     @BindView(R.id.btn_thread1)
     Button btnThread1;

@@ -19,4 +19,7 @@ dependencies {
     implementation "com.android.support:support-v4:$glideVersion"
     implementation "com.android.support:appcompat-v7:$glideVersion"
     implementation "com.android.support:recyclerview-v7:$glideVersion"
+
+    api 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 }

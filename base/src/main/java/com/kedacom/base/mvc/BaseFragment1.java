@@ -1,4 +1,4 @@
-package com.example.caowj.newtask.base;
+package com.kedacom.base.mvc;
 
 
 import android.app.Activity;
@@ -16,7 +16,7 @@ import butterknife.ButterKnife;
  * author: Administrator
  * date: 2017/9/1 11:54
  */
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment1 extends Fragment {
     public String mTag = this.getClass().getSimpleName() + "~~";
     protected View rootView;
     public Activity mActivity;

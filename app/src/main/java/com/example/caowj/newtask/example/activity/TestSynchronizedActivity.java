@@ -6,10 +6,10 @@ import android.view.ViewStub;
 import android.widget.Button;
 
 import com.example.caowj.newtask.R;
-import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.other.thread.Counter;
 import com.example.caowj.newtask.other.thread.SyncThread;
 import com.example.caowj.newtask.other.thread.SyncThread2;
+import com.kedacom.base.mvc.BaseActivity1;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -18,7 +18,7 @@ import butterknife.OnClick;
  * synchronized的用法<br/>
  * https://blog.csdn.net/luoweifu/article/details/46613015
  */
-public class TestSynchronizedActivity extends BaseActivity {
+public class TestSynchronizedActivity extends BaseActivity1 {
 
     @BindView(R.id.btn_test1)
     Button btnTest1;

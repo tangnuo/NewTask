@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.caowj.newtask.R;
-import com.example.caowj.newtask.base.BaseActivity;
+import com.kedacom.base.mvc.BaseActivity1;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,7 @@ import butterknife.BindView;
  * NestedScrollView嵌套滚动
  * </p>
  */
-public class TestNestedScrollActivity extends BaseActivity {
+public class TestNestedScrollActivity extends BaseActivity1 {
     List<String> mData;
     @BindView(R.id.toolbar)
     Toolbar toolbar;

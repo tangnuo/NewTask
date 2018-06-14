@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.caowj.newtask.R;
-import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.example.mDagger.ApiService;
 import com.example.caowj.newtask.example.mDagger.UserManager;
 import com.example.caowj.newtask.example.mDagger.UserTools;
@@ -12,6 +11,7 @@ import com.example.caowj.newtask.example.mDagger.component.DaggerMultiModuleComp
 import com.example.caowj.newtask.example.mDagger.component.DaggerUserComponent;
 import com.example.caowj.newtask.example.mDagger.module.HttpModule;
 import com.example.caowj.newtask.example.mDagger.module.UserModule;
+import com.kedacom.base.mvc.BaseActivity1;
 import com.kedacom.utils.LogUtil;
 
 import javax.inject.Inject;
@@ -25,7 +25,7 @@ import butterknife.ButterKnife;
  * <p>
  * http://blog.csdn.net/chenrushui/article/details/71426097
  */
-public class TestDaggerActivity extends BaseActivity {
+public class TestDaggerActivity extends BaseActivity1 {
 
     @BindView(R.id.tv_hint)
     TextView tvHint;

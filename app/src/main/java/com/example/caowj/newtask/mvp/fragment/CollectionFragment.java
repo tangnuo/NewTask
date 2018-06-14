@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import com.example.caowj.newtask.R;
-import com.example.caowj.newtask.base.BaseFragment;
 import com.example.caowj.newtask.mvp.adapter.CollectionAdapter;
 import com.example.caowj.newtask.mvp.constants.TypeConstants;
 import com.example.caowj.newtask.mvp.entity.bean.NavigationBean;
@@ -22,6 +21,7 @@ import com.example.caowj.newtask.mvp.view.BaseView;
 import com.example.caowj.newtask.utils.business.CommonTools;
 import com.example.caowj.newtask.utils.business.MyAndroidUtils;
 import com.example.caowj.newtask.widget.SlideRecyclerView;
+import com.kedacom.base.mvc.BaseFragment1;
 import com.kedacom.utils.LogUtil;
 
 import java.util.ArrayList;
@@ -48,7 +48,7 @@ import butterknife.Unbinder;
  * http://admin.qipaiapp.com/QiPaiAPI/PaipinInfo.asmx?op=GetListYaWu 筛选条件
  */
 
-public class CollectionFragment extends BaseFragment implements TabLayout.OnTabSelectedListener, BaseView.TabNameView {
+public class CollectionFragment extends BaseFragment1 implements TabLayout.OnTabSelectedListener, BaseView.TabNameView {
     @BindView(R.id.tl_nav)
     TabLayout tlNav;
     @BindView(R.id.rv_list)

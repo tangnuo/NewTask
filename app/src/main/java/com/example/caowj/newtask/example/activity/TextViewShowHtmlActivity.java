@@ -9,7 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.caowj.newtask.R;
-import com.example.caowj.newtask.base.BaseActivity;
+import com.kedacom.base.mvc.BaseActivity1;
 import com.kedacom.utils.LogUtil;
 
 import java.net.URL;
@@ -19,7 +19,7 @@ import butterknife.BindView;
 /**
  * 三种方式实现文本框显示图片
  */
-public class TextViewShowHtmlActivity extends BaseActivity {
+public class TextViewShowHtmlActivity extends BaseActivity1 {
 
     @BindView(R.id.textView3)
     TextView tv;

@@ -5,17 +5,17 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 
 import com.example.caowj.newtask.R;
-import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.example.adapter.MyAdapter;
 import com.example.caowj.newtask.example.mDagger.component.DaggerAppComponent;
 import com.example.caowj.newtask.example.mDagger.module.AppModule;
+import com.kedacom.base.mvc.BaseActivity1;
 
 import javax.inject.Inject;
 
 /**
  * dagger2实现依赖注入
  */
-public class TestDaggerActivity2 extends BaseActivity {
+public class TestDaggerActivity2 extends BaseActivity1 {
     private ViewPager viewPager;
     private TabLayout tabLayout;
     @Inject

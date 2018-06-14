@@ -3,28 +3,25 @@ package com.example.caowj.newtask.example.activity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.TextView;
 
 import com.example.caowj.newtask.R;
-import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.example.adapter.MultipleItemQuickAdapter2;
 import com.example.caowj.newtask.example.adapter.MultipleItemQuickAdapter3;
 import com.example.caowj.newtask.example.adapter.TestCommonAdapterAdapter2;
 import com.example.caowj.newtask.example.adapter.TestCommonAdapterAdapter3;
 import com.example.caowj.newtask.example.bean.Person;
 import com.example.caowj.newtask.example.bean.Person2;
+import com.kedacom.base.mvc.BaseActivity1;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * 使用：https://github.com/CymChad/BaseRecyclerViewAdapterHelper
  */
-public class TestCommonAdapterActivity2 extends BaseActivity {
+public class TestCommonAdapterActivity2 extends BaseActivity1 {
 
     @BindView(R.id.mRecyclerView)
     RecyclerView mRecyclerView;
