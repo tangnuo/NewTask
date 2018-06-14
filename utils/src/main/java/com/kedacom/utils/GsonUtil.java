@@ -1,4 +1,4 @@
-package com.example.caowj.newtask.utils;
+package com.kedacom.utils;
 
 import android.text.TextUtils;
 
@@ -8,7 +8,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
-import com.kedacom.utils.LogUtil;
 
 import java.util.ArrayList;
 import java.util.List;

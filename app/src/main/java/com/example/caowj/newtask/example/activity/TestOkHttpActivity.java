@@ -13,13 +13,13 @@ import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.base.BaseHandler;
 import com.example.caowj.newtask.example.bean.GankInfo;
-import com.example.caowj.newtask.utils.GsonUtil;
 import com.example.caowj.newtask.utils.business.MyAndroidUtils;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
 import com.kedacom.utils.GankUtil;
+import com.kedacom.utils.GsonUtil;
 import com.kedacom.utils.LogUtil;
 
 import java.io.File;

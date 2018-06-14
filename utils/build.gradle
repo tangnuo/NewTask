@@ -3,3 +3,11 @@ apply plugin: 'com.android.library'
 android {
     compileSdkVersion 27
 }
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    api "com.google.code.gson:gson:2.8.4"
+}
+

@@ -1,7 +1,7 @@
 package com.example.caowj.newtask.mvp.converter;
 
-import com.example.caowj.newtask.utils.GsonUtil;
 import com.google.gson.Gson;
+import com.kedacom.utils.GsonUtil;
 
 import java.io.IOException;
 import java.lang.reflect.Type;

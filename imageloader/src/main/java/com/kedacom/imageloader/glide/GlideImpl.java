@@ -60,7 +60,7 @@ public class GlideImpl implements IImageLoader {
                 .centerCrop()
                 .placeholder(placeholderId)
                 .error(errorId)
-                .diskCacheStrategy(DiskCacheStrategy.NONE);
+                .diskCacheStrategy(DiskCacheStrategy.DATA);
 //                .override(200, 100);//指定图片大小;
 
 
