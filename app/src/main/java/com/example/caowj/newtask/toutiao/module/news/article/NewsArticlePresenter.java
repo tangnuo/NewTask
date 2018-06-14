@@ -6,8 +6,8 @@ import com.example.caowj.newtask.toutiao.ErrorAction;
 import com.example.caowj.newtask.toutiao.api.IMobileNewsApi;
 import com.example.caowj.newtask.toutiao.bean.news.MultiNewsArticleBean;
 import com.example.caowj.newtask.toutiao.bean.news.MultiNewsArticleDataBean;
-import com.example.caowj.newtask.toutiao.util.RetrofitFactory;
 import com.google.gson.Gson;
+import com.kedacom.network.retrofit.RetrofitFactory;
 import com.kedacom.utils.TimeUtil;
 
 import java.util.ArrayList;
@@ -172,15 +172,14 @@ public class NewsArticlePresenter implements INewsArticle.Presenter {
     }
 
     private Observable<MultiNewsArticleBean> getRandom() {
+        IMobileNewsApi newsApi = RetrofitFactory.getRetrofit(IMobileNewsApi.HOST).create(IMobileNewsApi.class);
 
         int i = random.nextInt(10);
         if (i % 2 == 0) {
-            Observable<MultiNewsArticleBean> ob1 = RetrofitFactory.getRetrofit().create(IMobileNewsApi.class)
-                    .getNewsArticle(this.category, this.time);
+            Observable<MultiNewsArticleBean> ob1 = newsApi.getNewsArticle(this.category, this.time);
             return ob1;
         } else {
-            Observable<MultiNewsArticleBean> ob2 = RetrofitFactory.getRetrofit().create(IMobileNewsApi.class)
-                    .getNewsArticle2(this.category, this.time);
+            Observable<MultiNewsArticleBean> ob2 = newsApi.getNewsArticle2(this.category, this.time);
             return ob2;
         }
     }

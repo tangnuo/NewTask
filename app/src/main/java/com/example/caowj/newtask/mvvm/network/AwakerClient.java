@@ -1,8 +1,8 @@
 package com.example.caowj.newtask.mvvm.network;
 
+import com.kedacom.network.retrofit.RetrofitFactory;
+
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Copyright ©2017 by ruzhan
@@ -21,11 +21,7 @@ public final class AwakerClient {
         if (api == null) {
             synchronized (AwakerClient.class) {
                 if (api == null) {
-                    Retrofit client = new Retrofit.Builder().baseUrl(HOST)
-                            .client(HttpClient.getHttpClient())
-                            .addConverterFactory(GsonConverterFactory.create())
-                            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                            .build();
+                    Retrofit client = RetrofitFactory.getRetrofit(HOST);
                     api = client.create(AwakerApi.class);
                 }
             }

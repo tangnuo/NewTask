@@ -1,4 +1,4 @@
-package com.example.caowj.newtask.mvp.converter;
+package com.kedacom.network.retrofit.converter;
 
 import com.google.gson.Gson;
 import com.kedacom.utils.GsonUtil;

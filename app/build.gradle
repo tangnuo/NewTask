@@ -153,9 +153,6 @@ dependencies {
     //多渠道打包
     api 'com.leon.channel:helper:1.1.7'
 
-    // 持久化 Cookie
-    implementation 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
-
     // MD dialog
     implementation 'com.afollestad.material-dialogs:commons:0.9.6.0'
 

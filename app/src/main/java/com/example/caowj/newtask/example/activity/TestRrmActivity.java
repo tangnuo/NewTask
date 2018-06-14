@@ -15,6 +15,7 @@ import com.example.caowj.newtask.mvp.constants.WSConstants;
 import com.example.caowj.newtask.mvp.entity.NewsInfo;
 import com.example.caowj.newtask.mvp.entity.bean.NewsBean2;
 import com.example.caowj.newtask.utils.business.MyAndroidUtils;
+import com.kedacom.network.retrofit.RetrofitFactory;
 import com.kedacom.utils.LogUtil;
 
 import org.reactivestreams.Subscriber;
@@ -40,8 +41,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 
 /**
@@ -102,15 +101,9 @@ public class TestRrmActivity extends BaseActivity {
      * .subscribe()
      */
     void test4() {
-
-        Retrofit Retrofit = new Retrofit.Builder()
-                .baseUrl(Api.BASE_API_TX)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .build();
-
+        Retrofit retrofit = RetrofitFactory.getRetrofit(Api.BASE_API_TX);
         //通过Retrofit实例，创建服务接口对象
-        TianService apiService = Retrofit.create(TianService.class);
+        TianService apiService = retrofit.create(TianService.class);
         //通过接口服务对象，调用接口中的方法，获取call对象
         Observable<NewsInfo> call = apiService.GetWxNews2(10, WSConstants.TIAN_XING_API_KEY);
 
@@ -138,14 +131,10 @@ public class TestRrmActivity extends BaseActivity {
      */
     void test3() {
         // 写法一：
-        Retrofit Retrofit = new Retrofit.Builder()
-                .baseUrl(Api.BASE_API_TX)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .build();
+        Retrofit retrofit = RetrofitFactory.getRetrofit(Api.BASE_API_TX);
 
         //通过Retrofit实例，创建服务接口对象
-        TianService apiService = Retrofit.create(TianService.class);
+        TianService apiService = retrofit.create(TianService.class);
 
 
         //写法二
@@ -186,13 +175,10 @@ public class TestRrmActivity extends BaseActivity {
      * Retrofit2访问api，返回json
      */
     void test2() {
-        Retrofit Retrofit = new Retrofit.Builder()
-                .baseUrl(Api.BASE_API_TX)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+        Retrofit retrofit = RetrofitFactory.getRetrofit(Api.BASE_API_TX);
 
         //通过Retrofit实例，创建服务接口对象
-        TianService apiService = Retrofit.create(TianService.class);
+        TianService apiService = retrofit.create(TianService.class);
         //通过接口服务对象，调用接口中的方法，获取call对象
         Call<NewsInfo> call = apiService.GetWxNews1(10, WSConstants.TIAN_XING_API_KEY);
         //通过call对象执行网络请求(同步请求execute，异步请求enqueue)
