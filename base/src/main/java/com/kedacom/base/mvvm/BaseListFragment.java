@@ -1,4 +1,4 @@
-package com.kedacom.base;
+package com.kedacom.base.mvvm;
 
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
@@ -8,10 +8,12 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.kedacom.base.helper.LoadMoreHelper;
-import com.kedacom.base.viewmodel.BaseListViewModel;
+import com.kedacom.base.R;
+import com.kedacom.base.mvvm.helper.LoadMoreHelper;
+import com.kedacom.base.mvvm.viewmodel.BaseListViewModel;
 
 /**
+ * https://github.com/ruzhan123/awaker/blob/master/app/src/main/java/com/future/awaker/base
  * Copyright ©2017 by ruzhan
  */
 

@@ -1,10 +1,8 @@
-package com.example.caowj.newtask.base;
+package com.kedacom.base.common;
 
 import android.os.Handler;
 import android.os.Message;
-
-
-import com.kedacom.utils.LogUtil;
+import android.util.Log;
 
 import java.lang.ref.WeakReference;
 
@@ -39,7 +37,7 @@ public abstract class BaseHandler<T> extends Handler {
             handleMessage2(msg, msg.what);
         } else {
             // 确认Activity是否不可用
-            LogUtil.myW(mTag + "Activity or Fragment is gone;isOver:" + isOver);
+            Log.w("caowj", "Activity or Fragment is gone;isOver:" + isOver);
         }
     }
 

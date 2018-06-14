@@ -1,4 +1,4 @@
-package com.kedacom.base.helper;
+package com.kedacom.base.mvvm.helper;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;

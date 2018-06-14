@@ -11,7 +11,7 @@
 
         <variable
             name="listener"
-            type="com.kedacom.base.listener.OnItemClickListener" />
+            type="com.kedacom.base.mvvm.listener.OnItemClickListener" />
 
         <variable
             name="holder"

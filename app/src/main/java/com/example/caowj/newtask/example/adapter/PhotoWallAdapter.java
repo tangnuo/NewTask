@@ -14,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.caowj.newtask.R;
-import com.example.caowj.newtask.example.data.Images;
 import com.example.caowj.newtask.utils.ImageLoader;
 import com.kedacom.utils.LogUtil;
 

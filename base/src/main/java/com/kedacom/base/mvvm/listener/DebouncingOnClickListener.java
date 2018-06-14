@@ -1,4 +1,4 @@
-package com.kedacom.base.listener;
+package com.kedacom.base.mvvm.listener;
 
 import android.view.View;
 

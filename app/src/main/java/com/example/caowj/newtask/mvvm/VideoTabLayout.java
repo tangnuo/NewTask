@@ -8,8 +8,8 @@ import com.example.caowj.newtask.databinding.FragVideoBinding;
 import com.example.caowj.newtask.mvvm.adapter.VideoListAdapter;
 import com.example.caowj.newtask.mvvm.data.Special;
 import com.example.caowj.newtask.mvvm.viewmodel.VideoViewModel;
-import com.kedacom.base.BaseListFragment;
-import com.kedacom.base.listener.OnItemClickListener;
+import com.kedacom.base.mvvm.BaseListFragment;
+import com.kedacom.base.mvvm.listener.OnItemClickListener;
 import com.kedacom.utils.LogUtil;
 import com.kedacom.utils.ToastUtil;
 

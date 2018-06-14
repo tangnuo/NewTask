@@ -11,10 +11,10 @@ import android.widget.TextView;
 
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.base.BaseActivity;
-import com.example.caowj.newtask.example.adapter.ViewPagerAdapter;
 import com.example.caowj.newtask.example.fragment.MasterDetailShowFragment;
 import com.example.caowj.newtask.widget.headerScrollView.HeaderScrollHelper;
 import com.example.caowj.newtask.widget.headerScrollView.HeaderScrollView;
+import com.kedacom.base.common.BasePagerAdapter;
 import com.kedacom.utils.LogUtil;
 
 import butterknife.BindView;
@@ -53,7 +53,7 @@ public class TestMasterVoiceActivity extends BaseActivity implements HeaderScrol
     MasterDetailShowFragment stickHeaderFragment3;
 
     RecyclerView mRecyclerView;
-    private ViewPagerAdapter viewPagerAdapter;
+    private BasePagerAdapter viewPagerAdapter;
     private int position = 0;
 
     @Override
@@ -66,7 +66,7 @@ public class TestMasterVoiceActivity extends BaseActivity implements HeaderScrol
         stickHeaderFragment2 = new MasterDetailShowFragment();
         stickHeaderFragment3 = new MasterDetailShowFragment();
 
-        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        viewPagerAdapter = new BasePagerAdapter(getSupportFragmentManager());
         viewPagerAdapter.addItem(stickHeaderFragment1, "Tab1");
         viewPagerAdapter.addItem(stickHeaderFragment2, "Tab2");
         viewPagerAdapter.addItem(stickHeaderFragment3, "Tab3");

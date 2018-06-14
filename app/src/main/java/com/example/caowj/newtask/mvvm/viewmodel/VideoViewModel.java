@@ -8,7 +8,7 @@ import com.example.caowj.newtask.mvvm.network.EmptyConsumer;
 import com.example.caowj.newtask.mvvm.network.ErrorConsumer;
 import com.example.caowj.newtask.mvvm.network.HttpResult;
 import com.example.caowj.newtask.mvvm.source.AwakerRepository;
-import com.kedacom.base.viewmodel.BaseListViewModel;
+import com.kedacom.base.mvvm.viewmodel.BaseListViewModel;
 import com.kedacom.utils.LogUtil;
 
 import java.util.ArrayList;

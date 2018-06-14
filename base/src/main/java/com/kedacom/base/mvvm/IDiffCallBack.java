@@ -1,4 +1,4 @@
-package com.kedacom.base;
+package com.kedacom.base.mvvm;
 
 import android.support.v7.util.DiffUtil;
 

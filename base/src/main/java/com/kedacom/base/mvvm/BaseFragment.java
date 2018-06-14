@@ -1,4 +1,4 @@
-package com.kedacom.base;
+package com.kedacom.base.mvvm;
 
 import android.app.ProgressDialog;
 import android.databinding.DataBindingUtil;
@@ -14,11 +14,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.kedacom.base.listener.DebouncingOnClickListener;
-import com.kedacom.base.viewmodel.BaseViewModel;
+import com.kedacom.base.R;
+import com.kedacom.base.mvvm.listener.DebouncingOnClickListener;
+import com.kedacom.base.mvvm.viewmodel.BaseViewModel;
 
 
 /**
+ * https://github.com/ruzhan123/awaker/blob/master/app/src/main/java/com/future/awaker/base
  * Copyright ©2017 by ruzhan
  */
 

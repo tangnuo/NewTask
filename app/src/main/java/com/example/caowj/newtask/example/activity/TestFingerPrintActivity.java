@@ -1,25 +1,21 @@
 package com.example.caowj.newtask.example.activity;
 
-import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.Message;
 import android.support.v4.hardware.fingerprint.FingerprintManagerCompat;
 import android.support.v4.os.CancellationSignal;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.base.BaseActivity;
-import com.example.caowj.newtask.base.BaseHandler;
 import com.example.caowj.newtask.example.helper.fingerPrint.CryptoObjectHelper;
 import com.example.caowj.newtask.example.helper.fingerPrint.MyAuthCallback;
+import com.kedacom.base.common.BaseHandler;
 
 /**
  * 指纹识别

@@ -1,4 +1,4 @@
-package com.example.caowj.newtask.example.adapter;
+package com.kedacom.base.common;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,13 +12,13 @@ import java.util.List;
  * Created by sunger on 2017/10/15.
  */
 
-public class ViewPagerAdapter extends FragmentPagerAdapter {
+public class BasePagerAdapter extends FragmentPagerAdapter {
 
     private List<Fragment> fragments = new ArrayList<>();
     private List<String> titles = new ArrayList<>();
     private FragmentManager fm;
 
-    public ViewPagerAdapter(FragmentManager fm) {
+    public BasePagerAdapter(FragmentManager fm) {
         super(fm);
         this.fm = fm;
     }

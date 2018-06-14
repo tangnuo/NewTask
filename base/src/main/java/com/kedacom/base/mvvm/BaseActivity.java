@@ -1,4 +1,4 @@
-package com.kedacom.base;
+package com.kedacom.base.mvvm;
 
 import android.databinding.DataBindingUtil;
 import android.databinding.Observable;
@@ -10,11 +10,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import com.kedacom.base.listener.DebouncingOnClickListener;
-import com.kedacom.base.viewmodel.BaseViewModel;
+import com.kedacom.base.mvvm.listener.DebouncingOnClickListener;
+import com.kedacom.base.mvvm.viewmodel.BaseViewModel;
 
 
 /**
+ * https://github.com/ruzhan123/awaker/blob/master/app/src/main/java/com/future/awaker/base/BaseActivity.java
  * Created by ruzhan on 2017/7/15.
  */
 

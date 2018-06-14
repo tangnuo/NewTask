@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.caowj.newtask.R;
-import com.example.caowj.newtask.example.adapter.BasePagerAdapter;
 import com.example.caowj.newtask.toutiao.Constant;
 import com.example.caowj.newtask.toutiao.bean.news.NewsChannelBean;
 import com.example.caowj.newtask.toutiao.database.dao.NewsChannelDao;
@@ -22,6 +21,7 @@ import com.example.caowj.newtask.toutiao.module.news.article.NewsArticleView;
 import com.example.caowj.newtask.toutiao.module.news.channel.NewsChannelActivity;
 import com.example.caowj.newtask.toutiao.util.RxBus;
 import com.example.caowj.newtask.toutiao.util.SettingUtil;
+import com.kedacom.base.common.BaseStatePagerAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -40,7 +40,7 @@ public class NewsTabLayout extends Fragment {
     public static final String TAG = "NewsTabLayout";
     private static NewsTabLayout instance = null;
     private ViewPager viewPager;
-    private BasePagerAdapter adapter;
+    private BaseStatePagerAdapter adapter;
     private LinearLayout linearLayout;
     private NewsChannelDao dao = new NewsChannelDao();
     private List<Fragment> fragmentList;
@@ -87,7 +87,7 @@ public class NewsTabLayout extends Fragment {
 
     private void initData() {
         initTabs();
-        adapter = new BasePagerAdapter(getChildFragmentManager(), fragmentList, titleList);
+        adapter = new BaseStatePagerAdapter(getChildFragmentManager(), fragmentList, titleList);
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(15);
 

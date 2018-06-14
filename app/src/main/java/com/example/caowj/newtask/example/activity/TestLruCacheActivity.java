@@ -6,7 +6,6 @@ import android.widget.GridView;
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.base.BaseActivity;
 import com.example.caowj.newtask.example.adapter.PhotoWallAdapter;
-import com.example.caowj.newtask.example.data.Images;
 
 import butterknife.BindView;
 
