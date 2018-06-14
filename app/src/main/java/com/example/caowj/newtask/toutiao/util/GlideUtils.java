@@ -7,6 +7,7 @@ import com.bumptech.glide.annotation.GlideModule;
 import com.bumptech.glide.module.AppGlideModule;
 import com.bumptech.glide.request.RequestListener;
 import com.kedacom.imageloader.ImageLoader;
+import com.kedacom.utils.NetWorkUtil;
 
 /**
  * Created by Meiji on 2017/5/31.

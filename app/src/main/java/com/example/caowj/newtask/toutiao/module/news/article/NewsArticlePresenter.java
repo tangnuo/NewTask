@@ -7,8 +7,8 @@ import com.example.caowj.newtask.toutiao.api.IMobileNewsApi;
 import com.example.caowj.newtask.toutiao.bean.news.MultiNewsArticleBean;
 import com.example.caowj.newtask.toutiao.bean.news.MultiNewsArticleDataBean;
 import com.example.caowj.newtask.toutiao.util.RetrofitFactory;
-import com.example.caowj.newtask.toutiao.util.TimeUtil;
 import com.google.gson.Gson;
+import com.kedacom.utils.TimeUtil;
 
 import java.util.ArrayList;
 import java.util.List;

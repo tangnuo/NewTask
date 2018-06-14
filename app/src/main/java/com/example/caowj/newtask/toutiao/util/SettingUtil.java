@@ -6,6 +6,7 @@ import android.preference.PreferenceManager;
 
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.base.BaseApp;
+import com.kedacom.utils.NetWorkUtil;
 
 /**
  * Created by Meiji on 2017/2/20.

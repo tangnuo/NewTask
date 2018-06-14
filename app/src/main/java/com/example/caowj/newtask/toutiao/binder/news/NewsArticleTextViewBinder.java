@@ -18,10 +18,10 @@ import com.example.caowj.newtask.toutiao.IntentAction;
 import com.example.caowj.newtask.toutiao.bean.news.MultiNewsArticleDataBean;
 import com.example.caowj.newtask.toutiao.util.GlideUtils;
 import com.example.caowj.newtask.toutiao.util.SettingUtil;
-import com.example.caowj.newtask.toutiao.util.TimeUtil;
 import com.example.caowj.newtask.utils.business.MyAndroidUtils;
 import com.example.caowj.newtask.widget.imageView.CircleImageView;
 import com.jakewharton.rxbinding2.view.RxView;
+import com.kedacom.utils.TimeUtil;
 
 import java.util.concurrent.TimeUnit;
 

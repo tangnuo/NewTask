@@ -1,5 +1,6 @@
-package com.example.caowj.newtask.toutiao.util;
+package com.kedacom.utils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -7,7 +8,7 @@ import android.net.NetworkInfo;
 /**
  * Created by Meiji on 2017/5/2.
  */
-
+@SuppressLint("MissingPermission")
 public class NetWorkUtil {
 
     /**
