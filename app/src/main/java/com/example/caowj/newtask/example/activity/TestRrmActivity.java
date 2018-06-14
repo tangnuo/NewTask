@@ -41,6 +41,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 
 /**
@@ -175,7 +176,10 @@ public class TestRrmActivity extends BaseActivity {
      * Retrofit2访问api，返回json
      */
     void test2() {
-        Retrofit retrofit = RetrofitFactory.getRetrofit(Api.BASE_API_TX);
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Api.BASE_API_TX)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
 
         //通过Retrofit实例，创建服务接口对象
         TianService apiService = retrofit.create(TianService.class);
