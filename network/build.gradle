@@ -1,7 +1,9 @@
 apply plugin: 'com.android.library'
 
+def ext = rootProject.ext
+
 android {
-    compileSdkVersion 27
+    compileSdkVersion ext.compileSdkVersion
 
 //    compileOptions {
 //        targetCompatibility 1.8

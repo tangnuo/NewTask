@@ -1,7 +1,9 @@
 apply plugin: 'com.android.library'
 
+def ext = rootProject.ext
+
 android {
-    compileSdkVersion 27
+    compileSdkVersion ext.compileSdkVersion
 
     dataBinding {
         enabled = true
@@ -13,12 +15,12 @@ android {
 }
 
 dependencies {
-    def glideVersion = '27.1.1'
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation "com.android.support:support-v4:$glideVersion"
-    implementation "com.android.support:appcompat-v7:$glideVersion"
-    implementation "com.android.support:recyclerview-v7:$glideVersion"
+    implementation "com.android.support:support-v4:$ext.supportLibraryVersion"
+    implementation "com.android.support:appcompat-v7:$ext.supportLibraryVersion"
+    implementation "com.android.support:recyclerview-v7:$ext.supportLibraryVersion"
 
     api 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
