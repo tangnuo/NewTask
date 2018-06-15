@@ -8,18 +8,19 @@ import android.os.Parcelable;
 
 /**
  * 滚动通知
- *@author Dick.Pan
- *@Date 2017/10/9$
+ *
+ * @author Dick.Pan
+ * @Date 2017/10/9$
  */
 public class ScrollNotification implements Parcelable {
-    private int id;
+    private Integer id;
     private String title;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

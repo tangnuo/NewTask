@@ -14,7 +14,7 @@ import org.greenrobot.greendao.annotation.Transient;
 @Entity
 public class User {
     @Id
-    private long id;
+    private Long id;
     @Property(nameInDb = "cName")
     private String name;
 
@@ -28,18 +28,18 @@ public class User {
     }
 
     @Generated(hash = 794445241)
-    public User(long id, String name, String stuName, String stuSex) {
+    public User(Long id, String name, String stuName, String stuSex) {
         this.id = id;
         this.name = name;
         this.stuName = stuName;
         this.stuSex = stuSex;
     }
 
-    public long getId() {
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
