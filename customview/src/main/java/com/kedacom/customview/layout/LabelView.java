@@ -1,4 +1,4 @@
-package com.example.caowj.newtask.widget;
+package com.kedacom.customview.layout;
 
 
 import android.content.Context;
@@ -14,10 +14,11 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.caowj.newtask.R;
+import com.kedacom.customview.R;
 
 
 /**
+ * 标签视图（图片方向）
  * Created by Pan S.Q
  * on 2017/4/28.
  */
@@ -155,7 +156,7 @@ public class LabelView extends LinearLayout {
         this.setGravity(Gravity.CENTER_VERTICAL);
 
         mCoordinate = new ImageView(context);
-        LinearLayout.LayoutParams param = new LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX, 62f, context.getResources().getDisplayMetrics()),
+        LayoutParams param = new LayoutParams((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX, 62f, context.getResources().getDisplayMetrics()),
                 (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX, 62f, context.getResources().getDisplayMetrics()));
         mCoordinate.setLayoutParams(param);
         mCoordinate.setScaleType(ImageView.ScaleType.CENTER_CROP);
