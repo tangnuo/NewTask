@@ -45,19 +45,14 @@ public class LogUtil {
     }
 
     /*********************************************/
-    public static void d(String tag, String desc) {
-        if (DEBUG_LOG)
-            Log.d(tag, desc);
-    }
-
-    public static void d(String tag, String desc, Throwable tr) {
-        if (DEBUG_LOG)
-            Log.d(tag, desc, tr);
-    }
-
+    /**
+     * v
+     *
+     * @param tag
+     * @param desc
+     */
     public static void v(String tag, String desc) {
-        if (DEBUG_LOG)
-            Log.v(tag, desc);
+        showLogWithLineNum(1, tag, desc);
     }
 
     public static void v(String tag, String desc, Throwable tr) {
@@ -65,9 +60,44 @@ public class LogUtil {
             Log.v(tag, desc);
     }
 
-    public static void w(String tag, String desc) {
+    /**
+     * d
+     *
+     * @param tag
+     * @param desc
+     */
+    public static void d(String tag, String desc) {
+        showLogWithLineNum(2, tag, desc);
+    }
+
+    public static void d(String tag, String desc, Throwable tr) {
         if (DEBUG_LOG)
-            Log.w(tag, desc);
+            Log.d(tag, desc, tr);
+    }
+
+    /**
+     * i
+     *
+     * @param tag
+     * @param desc
+     */
+    public static void i(String tag, String desc) {
+        showLogWithLineNum(3, tag, desc);
+    }
+
+    public static void i(String tag, String desc, Throwable tr) {
+        if (DEBUG_LOG)
+            Log.i(tag, desc, tr);
+    }
+
+    /**
+     * w
+     *
+     * @param tag
+     * @param desc
+     */
+    public static void w(String tag, String desc) {
+        showLogWithLineNum(4, tag, desc);
     }
 
     public static void w(String tag, Throwable ioe) {
@@ -80,23 +110,88 @@ public class LogUtil {
             Log.w(tag, desc, e);
     }
 
-    public static void i(String tag, String desc) {
-        if (DEBUG_LOG)
-            Log.i(tag, desc);
-    }
-
-    public static void i(String tag, String desc, Throwable tr) {
-        if (DEBUG_LOG)
-            Log.i(tag, desc, tr);
-    }
-
+    /**
+     * e
+     *
+     * @param tag
+     * @param desc
+     */
     public static void e(String tag, String desc) {
-        if (DEBUG_LOG)
-            Log.e(tag, desc);
+        showLogWithLineNum(5, tag, desc);
     }
 
     public static void e(String tag, String desc, Throwable tr) {
         if (DEBUG_LOG)
             Log.e(tag, desc, tr);
+    }
+
+
+    /**
+     * 显示Log信息（带行号）
+     *
+     * @param logLevel 1 v ; 2 d ; 3 i ; 4 w ; 5 e .
+     * @param info     显示的log信息
+     */
+    public static void showLogWithLineNum(int logLevel, String logTag, String info) {
+        info = getMsgFormat(info);
+        switch (logLevel) {
+            case 1:
+                if (DEBUG_LOG)
+                    Log.v(logTag, info);
+                break;
+            case 2:
+                if (DEBUG_LOG)
+                    Log.d(logTag, info);
+                break;
+            case 3:
+                if (DEBUG_LOG)
+                    Log.i(logTag, info);
+                break;
+            case 4:
+                if (DEBUG_LOG)
+                    Log.w(logTag, info);
+                break;
+            case 5:
+                if (DEBUG_LOG)
+                    Log.e(logTag, info);
+                break;
+        }
+    }
+
+
+    /**
+     * 获取相关数据:类名,方法名,行号等.用来定位行<br>
+     * at cn.utils.MainActivity.onCreate(MainActivity.java:17) 就是用來定位行的代碼<br>
+     *
+     * @return [ Thread:main, at
+     * cn.utils.MainActivity.onCreate(MainActivity.java:17)]
+     */
+    private static String getFunctionName() {
+        StackTraceElement[] sts = Thread.currentThread().getStackTrace();
+        if (sts != null) {
+            for (StackTraceElement st : sts) {
+                if (st.isNativeMethod()) {
+                    continue;
+                }
+                if (st.getClassName().equals(Thread.class.getName())) {
+                    continue;
+                }
+                if (st.getClassName().equals(LogUtil.class.getName())) {
+                    continue;
+                }
+                return "[ Thread:" + Thread.currentThread().getName() + ", at "
+                        + st.getClassName() + "." + st.getMethodName()
+                        + "(" + st.getFileName() + ":" + st.getLineNumber() + ")" + " ]";
+            }
+        }
+        return null;
+    }
+
+
+    /**
+     * 输出格式定义
+     */
+    private static String getMsgFormat(String msg) {
+        return msg + "具体位置：" + getFunctionName();
     }
 }

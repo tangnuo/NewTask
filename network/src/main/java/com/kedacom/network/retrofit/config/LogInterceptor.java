@@ -17,7 +17,7 @@ public class LogInterceptor implements Interceptor {
     @Override
     public okhttp3.Response intercept(Interceptor.Chain chain) throws IOException {
         Request request = chain.request();
-        LogUtil.myD("request:" + request.toString());
+        LogUtil.myD("LogInterceptor_request:" + request.toString());
         okhttp3.Response response = chain.proceed(chain.request());
         okhttp3.MediaType mediaType = response.body().contentType();
         String content = response.body().string();
