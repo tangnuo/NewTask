@@ -5,7 +5,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.caowj.newtask.base.BaseApp;
+import com.example.caowj.newtask.BaseApp;
 import com.example.caowj.newtask.toutiao.database.table.NewsChannelTable;
 
 

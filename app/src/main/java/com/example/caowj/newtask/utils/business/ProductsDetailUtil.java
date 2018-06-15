@@ -7,10 +7,10 @@ import android.support.v7.widget.GridLayoutManager;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.caowj.newtask.toutiao.util.GlideUtils;
 import com.example.caowj.newtask.mvp.constants.Constants;
 import com.example.caowj.newtask.mvp.entity.bean.PaiPinBean;
 import com.example.caowj.newtask.mvp.viewHolder.FixedPriceProductVH;
+import com.example.caowj.newtask.utils.GlideUtils;
 import com.kedacom.utils.AlimmdnUtil;
 
 import java.util.List;

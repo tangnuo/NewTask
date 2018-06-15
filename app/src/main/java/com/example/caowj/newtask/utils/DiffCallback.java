@@ -1,4 +1,4 @@
-package com.example.caowj.newtask.toutiao.util;
+package com.example.caowj.newtask.utils;
 
 import android.support.annotation.NonNull;
 import android.support.v7.util.DiffUtil;

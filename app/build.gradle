@@ -108,6 +108,7 @@ dependencies {
     implementation project(':utils')
     implementation project(':base')
     implementation project(':network')
+    implementation project(path: ':customview')
 
 
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -164,5 +165,4 @@ dependencies {
     // RxJava support for Room
     implementation 'android.arch.persistence.room:rxjava2:1.0.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-
 }

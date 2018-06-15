@@ -16,7 +16,7 @@ import android.view.MenuItem;
 import com.afollestad.materialdialogs.color.CircleView;
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.toutiao.Constant;
-import com.example.caowj.newtask.toutiao.util.SettingUtil;
+import com.example.caowj.newtask.utils.SettingUtil;
 import com.kedacom.base.common.BaseActivity;
 
 

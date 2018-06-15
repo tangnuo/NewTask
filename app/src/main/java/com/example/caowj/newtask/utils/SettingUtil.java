@@ -1,11 +1,11 @@
-package com.example.caowj.newtask.toutiao.util;
+package com.example.caowj.newtask.utils;
 
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.preference.PreferenceManager;
 
+import com.example.caowj.newtask.BaseApp;
 import com.example.caowj.newtask.R;
-import com.example.caowj.newtask.base.BaseApp;
 import com.kedacom.utils.NetWorkUtil;
 
 /**

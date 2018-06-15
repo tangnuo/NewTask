@@ -38,7 +38,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.example.caowj.newtask.base.BaseApp;
+import com.example.caowj.newtask.BaseApp;
 import com.example.caowj.newtask.mvp.constants.WSConstants;
 import com.example.caowj.newtask.mvp.listener.BroadcastCallback;
 import com.kedacom.utils.DensityUtil;

@@ -1,7 +1,7 @@
 package com.example.caowj.newtask.mvvm.source;
 
 
-import com.example.caowj.newtask.base.BaseApp;
+import com.example.caowj.newtask.BaseApp;
 import com.example.caowj.newtask.mvvm.data.Special;
 import com.example.caowj.newtask.mvvm.db.AppDatabase;
 import com.example.caowj.newtask.mvvm.db.entity.SpecialListEntity;

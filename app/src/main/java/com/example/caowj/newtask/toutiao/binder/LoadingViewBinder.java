@@ -13,7 +13,7 @@ import android.widget.ProgressBar;
 
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.toutiao.bean.LoadingBean;
-import com.example.caowj.newtask.toutiao.util.SettingUtil;
+import com.example.caowj.newtask.utils.SettingUtil;
 
 import me.drakeet.multitype.ItemViewBinder;
 

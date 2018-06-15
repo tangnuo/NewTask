@@ -13,10 +13,10 @@ import com.example.caowj.newtask.toutiao.ErrorAction;
 import com.example.caowj.newtask.toutiao.adapter.NewsChannelAdapter;
 import com.example.caowj.newtask.toutiao.bean.news.NewsChannelBean;
 import com.example.caowj.newtask.toutiao.database.dao.NewsChannelDao;
+import com.example.caowj.newtask.toutiao.module.ItemDragHelperCallback;
 import com.example.caowj.newtask.toutiao.module.base.BaseToolbarActivity;
 import com.example.caowj.newtask.toutiao.module.news.NewsTabLayout;
-import com.example.caowj.newtask.toutiao.util.RxBus;
-import com.example.caowj.newtask.toutiao.widget.ItemDragHelperCallback;
+import com.example.caowj.newtask.utils.RxBus;
 
 import java.util.List;
 

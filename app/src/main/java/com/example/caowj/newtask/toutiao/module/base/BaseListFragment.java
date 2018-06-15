@@ -8,8 +8,8 @@ import android.widget.Toast;
 
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.toutiao.bean.LoadingEndBean;
-import com.example.caowj.newtask.toutiao.util.RxBus;
-import com.example.caowj.newtask.toutiao.util.SettingUtil;
+import com.example.caowj.newtask.utils.RxBus;
+import com.example.caowj.newtask.utils.SettingUtil;
 import com.kedacom.base.mvp.IBaseListView;
 import com.kedacom.base.mvp.IBasePresenter;
 import com.kedacom.base.mvp.LazyLoadFragment;

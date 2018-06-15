@@ -1,4 +1,4 @@
-package com.example.caowj.newtask.toutiao.widget;
+package com.example.caowj.newtask.toutiao.module;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;

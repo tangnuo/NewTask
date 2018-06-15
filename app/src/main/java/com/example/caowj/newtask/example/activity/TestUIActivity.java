@@ -4,6 +4,7 @@ import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -14,9 +15,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.caowj.newtask.R;
+import com.example.caowj.newtask.utils.GlideUtils;
 import com.example.caowj.newtask.utils.business.MyAndroidUtils;
-import com.example.caowj.newtask.widget.imageView.MultiImageView;
 import com.kedacom.base.mvc.BaseButterKnifeActivity;
+import com.kedacom.customview.imageView.MultiImageView;
 import com.kedacom.utils.CodeUtils;
 import com.kedacom.utils.DataList.DataList;
 
@@ -46,7 +48,12 @@ public class TestUIActivity extends BaseButterKnifeActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        imgMulti.setList(DataList.getImageUrlListByCount(5));
+        imgMulti.setList(DataList.getImageUrlListByCount(5), new MultiImageView.OnLoadImageListerner() {
+            @Override
+            public void onLoadImage(Context context, String url, ImageView imageView) {
+                GlideUtils.loadNormal(context, url, imageView);
+            }
+        });
         imgMulti.setOnItemClickListener(new MultiImageView.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {

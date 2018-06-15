@@ -3,7 +3,7 @@ package com.example.caowj.newtask.example.activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.example.caowj.newtask.base.BaseApp;
+import com.example.caowj.newtask.BaseApp;
 import com.example.caowj.newtask.example.mDagger.component.AppComponent;
 
 /**

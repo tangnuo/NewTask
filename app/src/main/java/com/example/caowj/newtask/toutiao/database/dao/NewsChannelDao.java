@@ -4,8 +4,8 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.caowj.newtask.BaseApp;
 import com.example.caowj.newtask.R;
-import com.example.caowj.newtask.base.BaseApp;
 import com.example.caowj.newtask.toutiao.Constant;
 import com.example.caowj.newtask.toutiao.bean.news.NewsChannelBean;
 import com.example.caowj.newtask.toutiao.database.DatabaseHelper;

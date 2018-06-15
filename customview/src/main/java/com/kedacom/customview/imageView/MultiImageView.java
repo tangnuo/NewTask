@@ -1,14 +1,12 @@
-package com.example.caowj.newtask.widget.imageView;
+package com.kedacom.customview.imageView;
 
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-
-import com.example.caowj.newtask.toutiao.util.GlideUtils;
-import com.kedacom.utils.LogUtil;
 
 import java.util.List;
 
@@ -43,6 +41,7 @@ public class MultiImageView extends LinearLayout {
     private LayoutParams rowPara;//行布局参数
 
     private OnItemClickListener mOnItemClickListener;//图片点击监听
+    private OnLoadImageListerner onLoadImageListerner;//图片加载监听器
 
     private Context context;
 
@@ -60,7 +59,13 @@ public class MultiImageView extends LinearLayout {
         this.context = context;
     }
 
-    public void setList(List<String> lists) throws IllegalArgumentException {
+    public void setList(List<String> lists, OnLoadImageListerner onLoadImageListerner) throws IllegalArgumentException {
+        setList(lists);
+        this.onLoadImageListerner = onLoadImageListerner;
+    }
+
+
+    private void setList(List<String> lists) throws IllegalArgumentException {
         if (lists == null) {
             throw new IllegalArgumentException("imageList is null...");
         }
@@ -76,7 +81,6 @@ public class MultiImageView extends LinearLayout {
 //            }
 //            pxOneMaxWandH = MAX_WIDTH * 2 / 3;  // 一张图的时候，图片宽度
             pxOneMaxWandH = MAX_WIDTH * 2 / 3;  // 一张图的时候，图片宽度
-            LogUtil.myD("-------------MAX_WIDTH = " + MAX_WIDTH + "\tpxOneMaxWandH = " + pxOneMaxWandH);
             initImageLayoutParams();
         }
 
@@ -214,7 +218,12 @@ public class MultiImageView extends LinearLayout {
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             imageView.setLayoutParams(position % MAX_PER_ROW_COUNT == 0 ? moreParaColumnFirst : morePara);
             //设置网络图片
-            GlideUtils.loadNormal(context, url, imageView);
+            if (onLoadImageListerner != null) {
+                onLoadImageListerner.onLoadImage(context, url, imageView);
+            } else {
+                Log.w("MultiImageView", "MultiImageView 图片加载器出问题了");
+            }
+//            GlideUtils.loadNormal(context, url, imageView);
 //            GlideUtils.loadStringRes(imageView, AlimmdnUtil.modifyImagePath(url), null, null);
         } else {
             //单张图
@@ -224,7 +233,11 @@ public class MultiImageView extends LinearLayout {
 //            imageView.setMaxHeight(pxOneMaxWandH);
 //            imageView.setLayoutParams(onePicPara);
 //            imageView.setLayoutParams(new ViewGroup.LayoutParams(pxOneMaxWandH,pxOneMaxWandH));
-            GlideUtils.loadNormal(context, url, imageView);
+            if (onLoadImageListerner != null) {
+                onLoadImageListerner.onLoadImage(context, url, imageView);
+            } else {
+                Log.w("MultiImageView", "MultiImageView 图片加载器出问题了");
+            }
 
 //            GlideUtils.loadDetailImageBitmap(context, AlimmdnUtil.modifyImagePath(url), new BitmapLoadingListener() {
 //                @Override
@@ -258,5 +271,12 @@ public class MultiImageView extends LinearLayout {
 
     public interface OnItemClickListener {
         void onItemClick(View view, int position);
+    }
+
+    /**
+     * 自定义加载图片
+     */
+    public interface OnLoadImageListerner {
+        void onLoadImage(Context context, String url, ImageView imageView);
     }
 }

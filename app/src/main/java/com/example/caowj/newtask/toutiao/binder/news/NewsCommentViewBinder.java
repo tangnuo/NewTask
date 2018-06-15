@@ -17,7 +17,7 @@ import com.example.caowj.newtask.toutiao.ErrorAction;
 import com.example.caowj.newtask.toutiao.IntentAction;
 import com.example.caowj.newtask.toutiao.bean.news.NewsCommentBean;
 import com.example.caowj.newtask.toutiao.module.base.BaseToolbarActivity;
-import com.example.caowj.newtask.toutiao.util.GlideUtils;
+import com.example.caowj.newtask.utils.GlideUtils;
 import com.example.caowj.newtask.widget.BottomSheetDialogFixed;
 
 import me.drakeet.multitype.ItemViewBinder;

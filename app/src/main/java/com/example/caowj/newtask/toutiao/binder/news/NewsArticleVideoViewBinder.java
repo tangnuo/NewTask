@@ -16,11 +16,11 @@ import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.toutiao.ErrorAction;
 import com.example.caowj.newtask.toutiao.IntentAction;
 import com.example.caowj.newtask.toutiao.bean.news.MultiNewsArticleDataBean;
-import com.example.caowj.newtask.toutiao.util.GlideUtils;
-import com.example.caowj.newtask.toutiao.util.SettingUtil;
-import com.example.caowj.newtask.widget.imageView.CircleImageView;
+import com.example.caowj.newtask.utils.GlideUtils;
+import com.example.caowj.newtask.utils.SettingUtil;
 import com.kedacom.utils.TimeUtil;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import me.drakeet.multitype.ItemViewBinder;
 
 /**

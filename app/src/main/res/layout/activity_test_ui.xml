@@ -14,7 +14,7 @@
 
     <include layout="@layout/common_layout_merge" />
 
-    <com.example.caowj.newtask.widget.imageView.MultiImageView
+    <com.kedacom.customview.imageView.MultiImageView
         android:id="@+id/img_multi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

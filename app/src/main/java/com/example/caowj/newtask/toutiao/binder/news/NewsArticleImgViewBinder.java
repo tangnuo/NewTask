@@ -16,16 +16,16 @@ import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.toutiao.ErrorAction;
 import com.example.caowj.newtask.toutiao.IntentAction;
 import com.example.caowj.newtask.toutiao.bean.news.MultiNewsArticleDataBean;
-import com.example.caowj.newtask.toutiao.util.GlideUtils;
-import com.example.caowj.newtask.toutiao.util.SettingUtil;
+import com.example.caowj.newtask.utils.GlideUtils;
+import com.example.caowj.newtask.utils.SettingUtil;
 import com.example.caowj.newtask.utils.business.MyAndroidUtils;
-import com.example.caowj.newtask.widget.imageView.CircleImageView;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.kedacom.utils.TimeUtil;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import me.drakeet.multitype.ItemViewBinder;
 
 /**

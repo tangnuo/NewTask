@@ -3,12 +3,11 @@ package com.example.caowj.newtask.toutiao.module.news.article;
 import android.os.Bundle;
 import android.view.View;
 
-
-import com.example.caowj.newtask.toutiao.Register;
-import com.example.caowj.newtask.toutiao.module.base.BaseListFragment;
-import com.example.caowj.newtask.toutiao.bean.LoadingBean;
-import com.example.caowj.newtask.toutiao.util.DiffCallback;
 import com.example.caowj.newtask.other.OnLoadMoreListener;
+import com.example.caowj.newtask.toutiao.Register;
+import com.example.caowj.newtask.toutiao.bean.LoadingBean;
+import com.example.caowj.newtask.toutiao.module.base.BaseListFragment;
+import com.example.caowj.newtask.utils.DiffCallback;
 
 import java.util.List;
 

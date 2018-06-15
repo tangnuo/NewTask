@@ -1,4 +1,4 @@
-package com.example.caowj.newtask.widget.imageView;
+package com.kedacom.customview.imageView;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -20,9 +20,8 @@ import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
-import android.widget.ImageView;
 
-import com.example.caowj.newtask.R;
+import com.kedacom.customview.R;
 
 
 /**
@@ -31,7 +30,7 @@ import com.example.caowj.newtask.R;
 
 public class CircleImageView extends AppCompatImageView {
 
-    private static final ImageView.ScaleType SCALE_TYPE = ImageView.ScaleType.CENTER_CROP;
+    private static final ScaleType SCALE_TYPE = ScaleType.CENTER_CROP;
 
     private static final Bitmap.Config BITMAP_CONFIG = Bitmap.Config.ARGB_8888;
     private static final int COLORDRAWABLE_DIMENSION = 2;
@@ -104,12 +103,12 @@ public class CircleImageView extends AppCompatImageView {
     }
 
     @Override
-    public ImageView.ScaleType getScaleType() {
+    public ScaleType getScaleType() {
         return SCALE_TYPE;
     }
 
     @Override
-    public void setScaleType(ImageView.ScaleType scaleType) {
+    public void setScaleType(ScaleType scaleType) {
         if (scaleType != SCALE_TYPE) {
             throw new IllegalArgumentException(String.format("ScaleType %s not supported.", scaleType));
         }

@@ -19,8 +19,8 @@ import com.example.caowj.newtask.toutiao.database.dao.NewsChannelDao;
 import com.example.caowj.newtask.toutiao.module.base.BaseListFragment;
 import com.example.caowj.newtask.toutiao.module.news.article.NewsArticleView;
 import com.example.caowj.newtask.toutiao.module.news.channel.NewsChannelActivity;
-import com.example.caowj.newtask.toutiao.util.RxBus;
-import com.example.caowj.newtask.toutiao.util.SettingUtil;
+import com.example.caowj.newtask.utils.RxBus;
+import com.example.caowj.newtask.utils.SettingUtil;
 import com.kedacom.base.common.BaseStatePagerAdapter;
 
 import java.util.ArrayList;

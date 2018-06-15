@@ -16,8 +16,8 @@ import android.widget.LinearLayout;
 
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.example.bean.PaiPinInfo;
-import com.example.caowj.newtask.toutiao.util.GlideUtils;
 import com.example.caowj.newtask.mvp.entity.bean.AdBean;
+import com.example.caowj.newtask.utils.GlideUtils;
 import com.kedacom.utils.LogUtil;
 
 import java.util.ArrayList;
