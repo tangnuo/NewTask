@@ -1,4 +1,4 @@
-package com.example.caowj.newtask.widget.headerScrollView;
+package com.kedacom.customview.headerScrollView;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -12,7 +12,7 @@ import android.view.ViewConfiguration;
 import android.widget.LinearLayout;
 import android.widget.Scroller;
 
-import com.example.caowj.newtask.R;
+import com.kedacom.customview.R;
 
 
 /**

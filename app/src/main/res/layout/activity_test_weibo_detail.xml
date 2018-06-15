@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.example.caowj.newtask.widget.headerScrollView.HeaderScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.kedacom.customview.headerScrollView.HeaderScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/view_hover"
     android:layout_width="match_parent"
@@ -57,4 +57,4 @@
 
     </android.support.v7.widget.RecyclerView>
 
-</com.example.caowj.newtask.widget.headerScrollView.HeaderScrollView>
+</com.kedacom.customview.headerScrollView.HeaderScrollView>

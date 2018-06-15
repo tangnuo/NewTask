@@ -1,4 +1,4 @@
-package com.example.caowj.newtask.widget.headerScrollView;
+package com.kedacom.customview.headerScrollView;
 
 import android.annotation.SuppressLint;
 import android.os.Build;
@@ -93,7 +93,7 @@ public class HeaderScrollHelper {
 
 
     private boolean canChildScrollDown(View view) {
-        if (android.os.Build.VERSION.SDK_INT < 14) {
+        if (Build.VERSION.SDK_INT < 14) {
             if (view instanceof AbsListView) {
                 final AbsListView absListView = (AbsListView) view;
                 return absListView.getChildCount() > 0

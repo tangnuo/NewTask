@@ -11,10 +11,10 @@ import android.widget.TextView;
 
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.example.fragment.MasterDetailShowFragment;
-import com.example.caowj.newtask.widget.headerScrollView.HeaderScrollHelper;
-import com.example.caowj.newtask.widget.headerScrollView.HeaderScrollView;
 import com.kedacom.base.common.BasePagerAdapter;
 import com.kedacom.base.mvc.BaseButterKnifeActivity;
+import com.kedacom.customview.headerScrollView.HeaderScrollHelper;
+import com.kedacom.customview.headerScrollView.HeaderScrollView;
 import com.kedacom.utils.LogUtil;
 
 import butterknife.BindView;

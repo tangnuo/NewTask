@@ -15,8 +15,5 @@
     </declare-styleable>
 
 
-    <declare-styleable name="CTTourHeaderScrollView">
-        <attr name="top_offset" format="dimension" />
-    </declare-styleable>
 
 </resources>

@@ -23,7 +23,7 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <com.kedacom.customview.imageView.CircleImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/iv_media"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
