@@ -77,4 +77,5 @@
     <color name="f5">#FFF5F5F5</color>
 
     <color name="text_color">#EE383838</color>
+    <color name="alpha_gray">#CC646464</color>
 </resources>

@@ -15,7 +15,7 @@ import com.example.caowj.newtask.example.bean.ArticleLabel;
 import com.example.caowj.newtask.example.bean.ChoiceArticle;
 import com.example.caowj.newtask.utils.GlideUtils;
 import com.example.caowj.newtask.utils.business.MyAndroidUtils;
-import com.kedacom.customview.layout.LabelView;
+import com.kedacom.customview.view.LabelView;
 import com.kedacom.utils.AlimmdnUtil;
 import com.kedacom.utils.JudgmentDataUtil;
 import com.kedacom.utils.LogUtil;

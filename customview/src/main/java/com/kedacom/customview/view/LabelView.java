@@ -1,4 +1,4 @@
-package com.kedacom.customview.layout;
+package com.kedacom.customview.view;
 
 
 import android.content.Context;

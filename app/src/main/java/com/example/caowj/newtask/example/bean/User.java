@@ -23,17 +23,19 @@ public class User {
     @Transient
     private String stuScore;    // 成绩
 
-    @Generated(hash = 586692638)
-    public User() {
-    }
 
-    @Generated(hash = 794445241)
+    @Generated(hash = 768864439)
     public User(Long id, String name, String stuName, String stuSex) {
         this.id = id;
         this.name = name;
         this.stuName = stuName;
         this.stuSex = stuSex;
     }
+
+    @Generated(hash = 586692638)
+    public User() {
+    }
+    
 
     public Long getId() {
         return this.id;
