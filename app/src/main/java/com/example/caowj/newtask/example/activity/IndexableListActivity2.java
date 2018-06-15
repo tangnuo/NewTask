@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.example.adapter.LinkAdapter;
 import com.example.caowj.newtask.example.bean.Person;
-import com.example.caowj.newtask.widget.WordsNavigation;
+import com.kedacom.customview.layout.WordsNavigation;
 import com.kedacom.utils.LogUtil;
 
 import java.util.ArrayList;

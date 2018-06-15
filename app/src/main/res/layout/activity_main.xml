@@ -27,7 +27,7 @@
             app:elevation="16dp"
             app:itemIconTint="@drawable/nav_item_color_state"
             app:itemTextColor="@drawable/nav_item_color_state"
-            app:layout_behavior="com.example.caowj.newtask.widget.behavior.BottomNavigationBehavior"
+            app:layout_behavior="com.kedacom.customview.behavior.BottomNavigationBehavior"
             app:menu="@menu/bottom_navigation_main" />
 
     </android.support.design.widget.CoordinatorLayout>

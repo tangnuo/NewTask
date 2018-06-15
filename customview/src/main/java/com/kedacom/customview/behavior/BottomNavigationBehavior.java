@@ -1,4 +1,4 @@
-package com.example.caowj.newtask.widget.behavior;
+package com.kedacom.customview.behavior;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
@@ -8,6 +8,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 /**
+ * 自定义Behavior
  * Created by Meiji on 2016/12/12.
  */
 

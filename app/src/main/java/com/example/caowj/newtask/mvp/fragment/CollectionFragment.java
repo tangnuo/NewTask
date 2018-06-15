@@ -20,8 +20,8 @@ import com.example.caowj.newtask.mvp.presenter.impl.TabNamePresenterImpl;
 import com.example.caowj.newtask.mvp.view.BaseView;
 import com.example.caowj.newtask.utils.business.CommonTools;
 import com.example.caowj.newtask.utils.business.MyAndroidUtils;
-import com.example.caowj.newtask.widget.SlideRecyclerView;
 import com.kedacom.base.mvc.BaseButterKnifeFragment;
+import com.kedacom.customview.layout.SlideRecyclerView;
 import com.kedacom.utils.LogUtil;
 
 import java.util.ArrayList;

@@ -11,6 +11,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.example.caowj.newtask.R;
+import com.kedacom.customview.layout.WordsNavigation;
 import com.kedacom.utils.LogUtil;
 
 

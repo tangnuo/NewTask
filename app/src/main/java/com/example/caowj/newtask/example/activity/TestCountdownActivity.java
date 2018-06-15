@@ -8,8 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.caowj.newtask.R;
-import com.example.caowj.newtask.widget.TimeTextView;
 import com.kedacom.base.mvc.BaseButterKnifeActivity;
+import com.kedacom.customview.textView.TimeTextView;
 
 import java.util.ArrayList;
 import java.util.List;

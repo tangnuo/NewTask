@@ -7,7 +7,7 @@
     app:cardCornerRadius="5dp"
     app:cardUseCompatPadding="true">
 
-    <com.example.caowj.newtask.widget.TimeTextView
+    <com.kedacom.customview.textView.TimeTextView
         android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

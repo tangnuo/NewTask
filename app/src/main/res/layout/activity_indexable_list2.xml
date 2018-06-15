@@ -20,7 +20,7 @@
         android:textColor="@color/colorAccent"
         android:textSize="20sp" />
 
-    <com.example.caowj.newtask.widget.WordsNavigation
+    <com.kedacom.customview.layout.WordsNavigation
         android:id="@+id/iw_main"
         android:layout_width="30dp"
         android:layout_height="match_parent"

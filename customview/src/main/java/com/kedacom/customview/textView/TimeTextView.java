@@ -1,4 +1,4 @@
-package com.example.caowj.newtask.widget;
+package com.kedacom.customview.textView;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -7,9 +7,6 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.AttributeSet;
 import android.view.View;
-
-import com.kedacom.utils.LogUtil;
-import com.kedacom.utils.TimeUtil;
 
 import java.util.Date;
 
@@ -43,9 +40,9 @@ public class TimeTextView extends android.support.v7.widget.AppCompatTextView {
                 case 0:
                     if (run) {
                         long mTime = Time;
-                        LogUtil.myD("倒计时时间差（秒）：" + Time);
+//                        LogUtil.myD("倒计时时间差（秒）：" + Time);
                         if (mTime > 0) {
-                            TimeTextView.this.setText("倒计时    还有" + TimeUtil.dateDiffDToSecond(Time));
+                            TimeTextView.this.setText("倒计时    还有" + dateDiffDToSecond(Time, ","));
 //                            Time = Time - 1000;
                             Time = Time - 1;//单位必须保持一致，秒级别的运算
                             //1秒后再次发送
@@ -86,7 +83,7 @@ public class TimeTextView extends android.support.v7.widget.AppCompatTextView {
         Time = mT - t2;
         date = null;
 
-        LogUtil.myD("时间差：" + Time + run + "，当前时间：" + t2);
+//        LogUtil.myD("时间差：" + Time + run + "，当前时间：" + t2);
         if (Time > 0) {
             handler.removeMessages(0);
             handler.sendEmptyMessage(0);
@@ -97,5 +94,42 @@ public class TimeTextView extends android.support.v7.widget.AppCompatTextView {
 
     public void stop() {
         run = false;
+    }
+
+
+    public static String dateDiffDToSecond(long diff, String splitFlag) {
+        String result = "";
+        long nd = 24 * 60 * 60;// 一天的秒数
+        long nh = 60 * 60;// 一小时的秒数
+        long nm = 60;// 一分钟的秒数
+        long day = 0;
+        long hour = 0;
+        long min = 0;
+        long sec = 0;
+        day = diff / nd;// 计算差多少天
+        hour = diff % nd / nh;// 计算差多少小时
+        min = diff % nd % nh / nm;// 计算差多少分钟
+        // hour = diff % nd / nh + day * 24;// 计算差多少小时
+        // min = diff % nd % nh / nm + day * 24 * 60;// 计算差多少分钟
+        sec = diff % nd % nh % nm;// 计算差多少秒
+        // 输出结果
+        /*
+         * System.out.println("时间相差：" + day + "天" + (hour - day * 24) + "小时" +
+         * (min - day * 24 * 60) + "分钟" + sec + "秒。");
+         */
+//        result = day + splitFlag + hour + splitFlag + min + splitFlag + sec;
+        result = day + splitFlag + formatChar(hour) + splitFlag + formatChar(min) + splitFlag + formatChar(sec);//TODO 2.5.1时间显示需要2位数显示
+
+        return result;
+    }
+
+    /**
+     * 时间显示2位不足补0
+     *
+     * @param num
+     * @return
+     */
+    public static String formatChar(long num) {
+        return String.valueOf(num).length() == 1 ? "0" + String.valueOf(num) : String.valueOf(num);
     }
 }

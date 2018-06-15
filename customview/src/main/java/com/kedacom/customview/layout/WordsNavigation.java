@@ -1,4 +1,4 @@
-package com.example.caowj.newtask.widget;
+package com.kedacom.customview.layout;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -10,9 +10,10 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.example.caowj.newtask.R;
+import com.kedacom.customview.R;
 
 /**
+ * 联系人列表字母索引
  * http://blog.csdn.net/a_zhon/article/details/53214849
  * package: com.example.caowj.newtask.widget
  * author: Administrator
