@@ -1,4 +1,4 @@
-package com.example.caowj.newtask.widget;/**
+package com.kedacom.customview.textView;/**
  * @author Dick.Pan
  * @date 2017/10/9
  */
@@ -18,7 +18,7 @@ import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
-import com.example.caowj.newtask.mvp.entity.bean.ScrollNotification;
+import com.kedacom.customview.bean.ScrollNotification;
 
 import java.util.List;
 

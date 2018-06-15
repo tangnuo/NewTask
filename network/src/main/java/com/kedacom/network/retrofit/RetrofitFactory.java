@@ -1,6 +1,7 @@
 package com.kedacom.network.retrofit;
 
 import com.kedacom.network.retrofit.config.HttpClient;
+import com.kedacom.utils.LogUtil;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -12,7 +13,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitFactory {
 
-    //    private static Context mContext;
     private volatile static Retrofit retrofit;
 
 
@@ -23,25 +23,41 @@ public class RetrofitFactory {
      * @return
      */
     public static Retrofit getRetrofit(String baseUrl) {
-//        mContext = context;
-        if (retrofit == null) {
-            synchronized (RetrofitFactory.class) {
-                if (retrofit == null) {
-
-                    retrofit = new Retrofit.Builder()
-                            .baseUrl(baseUrl)
-//                            .client(builder.build())
-                            .client(HttpClient.getHttpClient())
-                            .addConverterFactory(GsonConverterFactory.create())
-//                            .addConverterFactory(QipaiGsonConverterFactory.create())//自定义转换器
-                            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                            .build();
+        synchronized (RetrofitFactory.class) {
+            if (retrofit == null) {
+                retrofit = newRetrofit(baseUrl);
+            } else {
+                String oldBaseUrl = retrofit.baseUrl().toString().toLowerCase();
+                if (!baseUrl.toLowerCase().equals(oldBaseUrl)) {
+                    retrofit = newRetrofit(baseUrl);
+                } else {
+                    LogUtil.myW("retrofit已经存在。oldBaseUrl：" + oldBaseUrl + "\nbaseUrl:" + baseUrl);
                 }
             }
         }
+
         return retrofit;
     }
 
+
+    /**
+     * 实例化Retrofit
+     *
+     * @param baseUrl
+     * @return
+     */
+    private static Retrofit newRetrofit(String baseUrl) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(baseUrl)
+//                            .client(builder.build())
+                .client(HttpClient.getHttpClient())
+                .addConverterFactory(GsonConverterFactory.create())
+//                            .addConverterFactory(QipaiGsonConverterFactory.create())//自定义转换器
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build();
+
+        return retrofit;
+    }
 
     /*************************功能扩展 begin**************************/
 

@@ -1,4 +1,4 @@
-package com.example.caowj.newtask.mvp.entity.bean;/**
+package com.kedacom.customview.bean;/**
  * @author Dick.Pan
  * @date 2017/10/9
  */
@@ -50,7 +50,7 @@ public class ScrollNotification implements Parcelable {
         this.title = in.readString();
     }
 
-    public static final Parcelable.Creator<ScrollNotification> CREATOR = new Parcelable.Creator<ScrollNotification>() {
+    public static final Creator<ScrollNotification> CREATOR = new Creator<ScrollNotification>() {
         @Override
         public ScrollNotification createFromParcel(Parcel source) {
             return new ScrollNotification(source);

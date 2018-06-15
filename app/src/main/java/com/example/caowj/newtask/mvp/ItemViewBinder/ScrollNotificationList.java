@@ -1,7 +1,7 @@
 package com.example.caowj.newtask.mvp.ItemViewBinder;
 
 import com.example.caowj.newtask.mvp.entity.CommonBean;
-import com.example.caowj.newtask.mvp.entity.bean.ScrollNotification;
+import com.kedacom.customview.bean.ScrollNotification;
 
 import java.util.List;
 

@@ -8,8 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.caowj.newtask.R;
-import com.example.caowj.newtask.mvp.entity.bean.ScrollNotification;
-import com.example.caowj.newtask.widget.NotificationTextView;
+import com.kedacom.customview.bean.ScrollNotification;
+import com.kedacom.customview.textView.NotificationTextView;
 import com.kedacom.utils.JudgmentDataUtil;
 import com.kedacom.utils.LogUtil;
 

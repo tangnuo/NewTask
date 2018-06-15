@@ -16,7 +16,7 @@
         android:scaleType="centerCrop"
         android:src="@drawable/icon_notification" />
 
-    <com.example.caowj.newtask.widget.NotificationTextView
+    <com.kedacom.customview.textView.NotificationTextView
         android:id="@+id/notificationTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
