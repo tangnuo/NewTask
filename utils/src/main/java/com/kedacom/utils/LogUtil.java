@@ -179,7 +179,11 @@ public class LogUtil {
                 if (st.getClassName().equals(LogUtil.class.getName())) {
                     continue;
                 }
-                return "[ Thread:" + Thread.currentThread().getName() + ", at "
+//                return "[ Thread:" + Thread.currentThread().getName() + ", at "
+//                        + st.getClassName() + "." + st.getMethodName()
+//                        + "(" + st.getFileName() + ":" + st.getLineNumber() + ")" + " ]";
+
+                return "[ at "
                         + st.getClassName() + "." + st.getMethodName()
                         + "(" + st.getFileName() + ":" + st.getLineNumber() + ")" + " ]";
             }
