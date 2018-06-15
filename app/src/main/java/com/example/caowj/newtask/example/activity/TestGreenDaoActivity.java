@@ -11,7 +11,7 @@ import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.example.bean.User;
 import com.example.caowj.newtask.example.bean.UserDao;
 import com.example.caowj.newtask.example.data.GreenDaoUtils;
-import com.kedacom.base.mvc.BaseActivity1;
+import com.kedacom.base.mvc.BaseButterKnifeActivity;
 
 import org.greenrobot.greendao.query.QueryBuilder;
 
@@ -27,7 +27,7 @@ import butterknife.OnClick;
  * <p>
  * http://www.jianshu.com/p/00d93c2d511f
  */
-public class TestGreenDaoActivity extends BaseActivity1 {
+public class TestGreenDaoActivity extends BaseButterKnifeActivity {
 
     @BindView(R.id.etId)
     EditText etId;

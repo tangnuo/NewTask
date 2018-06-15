@@ -24,7 +24,7 @@ import com.kedacom.base.mvvm.viewmodel.BaseViewModel;
  * Copyright ©2017 by ruzhan
  */
 
-public abstract class BaseFragment3<VB extends ViewDataBinding> extends Fragment {
+public abstract class BaseMvvmFragment<VB extends ViewDataBinding> extends Fragment {
 
     protected ProgressDialog progressDialog;
 

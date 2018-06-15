@@ -7,7 +7,7 @@ import android.widget.ListView;
 import android.widget.SearchView;
 
 import com.example.caowj.newtask.R;
-import com.kedacom.base.mvc.BaseActivity1;
+import com.kedacom.base.mvc.BaseButterKnifeActivity;
 
 /**
  * 搜索框<br/>
@@ -16,7 +16,7 @@ import com.kedacom.base.mvc.BaseActivity1;
  * <p>
  * 属性说明：http://www.cnblogs.com/tianzhijiexian/p/4226675.html
  */
-public class SearchViewActivity extends BaseActivity1 {
+public class SearchViewActivity extends BaseButterKnifeActivity {
     private String[] mStrs = {"aaa", "bbb", "ccc", "airsaid"};
     private SearchView mSearchView;
     private ListView mListView;

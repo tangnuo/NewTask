@@ -5,7 +5,7 @@ import android.widget.GridView;
 
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.example.adapter.PhotoWallAdapter;
-import com.kedacom.base.mvc.BaseActivity1;
+import com.kedacom.base.mvc.BaseButterKnifeActivity;
 import com.kedacom.utils.DataList.DataList;
 
 import butterknife.BindView;
@@ -18,7 +18,7 @@ import butterknife.BindView;
  * 缺点：这个程序中没有使用本地缓存
  * </p>
  */
-public class TestLruCacheActivity extends BaseActivity1 {
+public class TestLruCacheActivity extends BaseButterKnifeActivity {
 
     @BindView(R.id.photo_wall)
     GridView photoWall;

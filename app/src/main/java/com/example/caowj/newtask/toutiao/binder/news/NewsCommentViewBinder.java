@@ -12,12 +12,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.toutiao.ErrorAction;
 import com.example.caowj.newtask.toutiao.IntentAction;
-import com.example.caowj.newtask.toutiao.module.base.BaseActivity;
 import com.example.caowj.newtask.toutiao.bean.news.NewsCommentBean;
+import com.example.caowj.newtask.toutiao.module.base.BaseToolbarActivity;
 import com.example.caowj.newtask.toutiao.util.GlideUtils;
 import com.example.caowj.newtask.widget.BottomSheetDialogFixed;
 
@@ -54,8 +53,8 @@ public class NewsCommentViewBinder extends ItemViewBinder<NewsCommentBean.DataBe
             holder.itemView.setOnClickListener(v -> {
                 final String content = item.getText();
                 final BottomSheetDialogFixed dialog = new BottomSheetDialogFixed(context);
-                dialog.setOwnerActivity((BaseActivity) context);
-                View view = ((BaseActivity) context).getLayoutInflater().inflate(R.layout.item_comment_action_sheet, null);
+                dialog.setOwnerActivity((BaseToolbarActivity) context);
+                View view = ((BaseToolbarActivity) context).getLayoutInflater().inflate(R.layout.item_comment_action_sheet, null);
                 view.findViewById(R.id.layout_copy_text).setOnClickListener(view12 -> {
                     ClipboardManager copy = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
                     ClipData clipData = ClipData.newPlainText("text", content);

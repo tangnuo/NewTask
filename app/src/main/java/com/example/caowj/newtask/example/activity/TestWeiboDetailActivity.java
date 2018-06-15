@@ -10,7 +10,7 @@ import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.example.adapter.HoveringAdapter;
 import com.example.caowj.newtask.widget.headerScrollView.HeaderScrollHelper;
 import com.example.caowj.newtask.widget.headerScrollView.HeaderScrollView;
-import com.kedacom.base.mvc.BaseActivity1;
+import com.kedacom.base.mvc.BaseButterKnifeActivity;
 import com.kedacom.utils.DensityUtil;
 
 /**
@@ -20,7 +20,7 @@ import com.kedacom.utils.DensityUtil;
  * <br/>
  * 源码：https://github.com/colinNaive/RecyclerViewScrollView
  */
-public class TestWeiboDetailActivity extends BaseActivity1 implements HeaderScrollHelper.ScrollableContainer {
+public class TestWeiboDetailActivity extends BaseButterKnifeActivity implements HeaderScrollHelper.ScrollableContainer {
 
     private RecyclerView recyclerView;
     private HeaderScrollView scrollView;

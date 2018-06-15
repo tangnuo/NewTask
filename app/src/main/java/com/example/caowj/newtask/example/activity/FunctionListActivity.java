@@ -13,12 +13,12 @@ import com.example.caowj.newtask.example.adapter.FunctionListAdapter;
 import com.example.caowj.newtask.mvp.activity.MvpLoginActivity;
 import com.example.caowj.newtask.mvp.activity.QipaiIndexActivity;
 import com.example.caowj.newtask.mvp.activity.QipaiNewActivity;
-import com.kedacom.base.mvc.BaseActivity1;
+import com.kedacom.base.mvc.BaseButterKnifeActivity;
 import com.kedacom.utils.LogUtil;
 
 import butterknife.BindView;
 
-public class FunctionListActivity extends BaseActivity1 {
+public class FunctionListActivity extends BaseButterKnifeActivity {
 
     @BindView(R.id.mRecyclerView)
     RecyclerView mRecyclerView;

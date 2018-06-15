@@ -6,11 +6,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Toast;
 
-
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.toutiao.bean.LoadingEndBean;
 import com.example.caowj.newtask.toutiao.util.RxBus;
 import com.example.caowj.newtask.toutiao.util.SettingUtil;
+import com.kedacom.base.mvp.IBaseListView;
+import com.kedacom.base.mvp.IBasePresenter;
+import com.kedacom.base.mvp.LazyLoadFragment;
 
 import io.reactivex.Observable;
 import me.drakeet.multitype.Items;

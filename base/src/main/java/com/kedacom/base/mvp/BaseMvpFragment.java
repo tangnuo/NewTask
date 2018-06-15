@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,7 @@ import android.view.ViewGroup;
  * Created by Meiji on 2017/5/11.
  */
 
-public abstract class BaseFragment<T extends IBasePresenter> extends Fragment implements IBaseView<T> {
+public abstract class BaseMvpFragment<T extends IBasePresenter> extends Fragment implements IBaseView<T> {
 
     protected T presenter;
     @NonNull
@@ -38,12 +37,12 @@ public abstract class BaseFragment<T extends IBasePresenter> extends Fragment im
      */
     protected abstract void initData() throws NullPointerException;
 
-    /**
-     * 初始化 Toolbar
-     */
-    protected void initToolBar(Toolbar toolbar, boolean homeAsUpEnabled, String title) {
-        ((BaseActivity) getActivity()).initToolBar(toolbar, homeAsUpEnabled, title);
-    }
+//    /**
+//     * 初始化 Toolbar
+//     */
+//    protected void initToolBar(Toolbar toolbar, boolean homeAsUpEnabled, String title) {
+//        ((BaseActivity) getActivity()).initToolBar(toolbar, homeAsUpEnabled, title);
+//    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

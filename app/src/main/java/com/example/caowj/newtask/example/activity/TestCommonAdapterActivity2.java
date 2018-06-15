@@ -11,7 +11,7 @@ import com.example.caowj.newtask.example.adapter.MultipleItemQuickAdapter2;
 import com.example.caowj.newtask.example.adapter.MultipleItemQuickAdapter3;
 import com.example.caowj.newtask.example.bean.Person;
 import com.example.caowj.newtask.example.bean.Person2;
-import com.kedacom.base.mvc.BaseActivity1;
+import com.kedacom.base.mvc.BaseButterKnifeActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ import butterknife.BindView;
 /**
  * 使用：https://github.com/CymChad/BaseRecyclerViewAdapterHelper
  */
-public class TestCommonAdapterActivity2 extends BaseActivity1 {
+public class TestCommonAdapterActivity2 extends BaseButterKnifeActivity {
 
     @BindView(R.id.mRecyclerView)
     RecyclerView mRecyclerView;

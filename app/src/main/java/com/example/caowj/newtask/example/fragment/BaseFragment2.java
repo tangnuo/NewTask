@@ -7,9 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.caowj.newtask.R;
+import com.kedacom.base.mvc.BaseButterKnifeFragment;
 
 /**
- * @deprecated 仅适用于dagger2的情况 see{@link com.kedacom.base.mvc.BaseFragment1}
+ * @deprecated 仅适用于dagger2的情况 see{@link BaseButterKnifeFragment}
  */
 public class BaseFragment2 extends Fragment {
 

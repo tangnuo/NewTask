@@ -6,7 +6,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.example.caowj.newtask.R;
-import com.kedacom.base.mvc.BaseActivity1;
+import com.kedacom.base.mvc.BaseButterKnifeActivity;
 import com.kedacom.utils.StatusBarCompat;
 
 import butterknife.BindView;
@@ -15,7 +15,7 @@ import butterknife.BindView;
  * 沉浸式状态栏<br/>
  * http://blog.csdn.net/fan7983377/article/details/51604657
  */
-public class TranslucentSystemBarActivity extends BaseActivity1 {
+public class TranslucentSystemBarActivity extends BaseButterKnifeActivity {
 
     @BindView(R.id.mWebView)
     WebView mWebView;

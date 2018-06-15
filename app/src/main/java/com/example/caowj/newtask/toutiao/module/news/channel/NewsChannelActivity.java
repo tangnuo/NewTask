@@ -7,14 +7,13 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.widget.Toast;
 
-
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.toutiao.Constant;
 import com.example.caowj.newtask.toutiao.ErrorAction;
 import com.example.caowj.newtask.toutiao.adapter.NewsChannelAdapter;
 import com.example.caowj.newtask.toutiao.bean.news.NewsChannelBean;
 import com.example.caowj.newtask.toutiao.database.dao.NewsChannelDao;
-import com.example.caowj.newtask.toutiao.module.base.BaseActivity;
+import com.example.caowj.newtask.toutiao.module.base.BaseToolbarActivity;
 import com.example.caowj.newtask.toutiao.module.news.NewsTabLayout;
 import com.example.caowj.newtask.toutiao.util.RxBus;
 import com.example.caowj.newtask.toutiao.widget.ItemDragHelperCallback;
@@ -31,7 +30,7 @@ import io.reactivex.schedulers.Schedulers;
  * Created by Meiji on 2017/3/10.
  */
 
-public class NewsChannelActivity extends BaseActivity {
+public class NewsChannelActivity extends BaseToolbarActivity {
 
     private RecyclerView recyclerView;
     private NewsChannelAdapter adapter;

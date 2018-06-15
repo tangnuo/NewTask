@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.example.service.MyIntentService;
-import com.kedacom.base.mvc.BaseActivity1;
+import com.kedacom.base.mvc.BaseButterKnifeActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,7 +24,7 @@ import butterknife.OnClick;
  * LocalBroadcastManager发送局部广播
  * </p>
  */
-public class TestIntentServiceActivity extends BaseActivity1 {
+public class TestIntentServiceActivity extends BaseButterKnifeActivity {
 
     /**
      * 状态文字

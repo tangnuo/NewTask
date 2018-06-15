@@ -16,12 +16,12 @@ import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import com.example.caowj.newtask.R;
-import com.kedacom.base.mvc.BaseActivity1;
+import com.kedacom.base.mvc.BaseButterKnifeActivity;
 
 /**
  * 消息提醒，上下滚动（TextSwitcher）
  */
-public class TextSwitcherActivity extends BaseActivity1 {
+public class TextSwitcherActivity extends BaseButterKnifeActivity {
 
     private TextSwitcher textSwitcher;
     private String[] news = {"双11回馈活动产品利率增长0.005%", "国家大数据发展纲要，我爸是李刚", "郑重公告", "某某网站会员须知", "网站维护公告"};

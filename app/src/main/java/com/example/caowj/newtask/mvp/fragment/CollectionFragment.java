@@ -21,7 +21,7 @@ import com.example.caowj.newtask.mvp.view.BaseView;
 import com.example.caowj.newtask.utils.business.CommonTools;
 import com.example.caowj.newtask.utils.business.MyAndroidUtils;
 import com.example.caowj.newtask.widget.SlideRecyclerView;
-import com.kedacom.base.mvc.BaseFragment1;
+import com.kedacom.base.mvc.BaseButterKnifeFragment;
 import com.kedacom.utils.LogUtil;
 
 import java.util.ArrayList;
@@ -48,7 +48,7 @@ import butterknife.Unbinder;
  * http://admin.qipaiapp.com/QiPaiAPI/PaipinInfo.asmx?op=GetListYaWu 筛选条件
  */
 
-public class CollectionFragment extends BaseFragment1 implements TabLayout.OnTabSelectedListener, BaseView.TabNameView {
+public class CollectionFragment extends BaseButterKnifeFragment implements TabLayout.OnTabSelectedListener, BaseView.TabNameView {
     @BindView(R.id.tl_nav)
     TabLayout tlNav;
     @BindView(R.id.rv_list)

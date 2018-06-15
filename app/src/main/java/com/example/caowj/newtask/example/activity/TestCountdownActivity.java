@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.widget.TimeTextView;
-import com.kedacom.base.mvc.BaseActivity1;
+import com.kedacom.base.mvc.BaseButterKnifeActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
 /**
  * 倒计时控件
  */
-public class TestCountdownActivity extends BaseActivity1 {
+public class TestCountdownActivity extends BaseButterKnifeActivity {
 
     @BindView(R.id.mRecyclerView)
     RecyclerView mRecyclerView;

@@ -2,6 +2,8 @@ package com.example.caowj.newtask.toutiao.module.news.article;
 
 
 import com.example.caowj.newtask.toutiao.bean.news.MultiNewsArticleDataBean;
+import com.kedacom.base.mvp.IBaseListView;
+import com.kedacom.base.mvp.IBasePresenter;
 
 import java.util.List;
 

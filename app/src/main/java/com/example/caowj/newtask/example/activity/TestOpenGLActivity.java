@@ -9,12 +9,12 @@ import android.widget.Toast;
 
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.other.GLRenderer;
-import com.kedacom.base.mvc.BaseActivity1;
+import com.kedacom.base.mvc.BaseButterKnifeActivity;
 
 /**
  * https://www.jianshu.com/p/442682fda917
  */
-public class TestOpenGLActivity extends BaseActivity1 {
+public class TestOpenGLActivity extends BaseButterKnifeActivity {
 
     private boolean supportsEs2;
     private GLSurfaceView glSurfaceView;

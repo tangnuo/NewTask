@@ -11,7 +11,7 @@ import com.example.caowj.newtask.example.mDagger.component.DaggerMultiModuleComp
 import com.example.caowj.newtask.example.mDagger.component.DaggerUserComponent;
 import com.example.caowj.newtask.example.mDagger.module.HttpModule;
 import com.example.caowj.newtask.example.mDagger.module.UserModule;
-import com.kedacom.base.mvc.BaseActivity1;
+import com.kedacom.base.mvc.BaseButterKnifeActivity;
 import com.kedacom.utils.LogUtil;
 
 import javax.inject.Inject;
@@ -25,7 +25,7 @@ import butterknife.ButterKnife;
  * <p>
  * http://blog.csdn.net/chenrushui/article/details/71426097
  */
-public class TestDaggerActivity extends BaseActivity1 {
+public class TestDaggerActivity extends BaseButterKnifeActivity {
 
     @BindView(R.id.tv_hint)
     TextView tvHint;

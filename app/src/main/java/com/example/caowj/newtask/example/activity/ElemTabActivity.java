@@ -8,7 +8,7 @@ import android.support.v7.widget.Toolbar;
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.example.fragment.StickHeaderFragment;
 import com.kedacom.base.common.BasePagerAdapter;
-import com.kedacom.base.mvc.BaseActivity1;
+import com.kedacom.base.mvc.BaseButterKnifeActivity;
 
 /**
  * 仿饿了么标题、条件栏悬浮；筛选条件。
@@ -17,7 +17,7 @@ import com.kedacom.base.mvc.BaseActivity1;
  * <p/>
  * 使用折叠控件：https://github.com/cachapa/ExpandableLayout
  */
-public class ElemTabActivity extends BaseActivity1 {
+public class ElemTabActivity extends BaseButterKnifeActivity {
     private Toolbar toolbar;
     private ViewPager viewPager;
     private BasePagerAdapter viewPagerAdapter;

@@ -12,7 +12,7 @@ import com.kedacom.base.adapter.CommonAdapter;
 import com.kedacom.base.adapter.CommonViewHolder;
 import com.kedacom.base.adapter.MultiItemCommonAdapter;
 import com.kedacom.base.adapter.MultiItemTypeSupport;
-import com.kedacom.base.mvc.BaseActivity1;
+import com.kedacom.base.mvc.BaseButterKnifeActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +27,7 @@ import butterknife.ButterKnife;
  * <p>
  * 升级版（头部、加载更多、停止维护了）：https://github.com/hongyangAndroid/base-adapter
  */
-public class TestCommonAdapterActivity1 extends BaseActivity1 {
+public class TestCommonAdapterActivity1 extends BaseButterKnifeActivity {
 
     @BindView(R.id.mRecyclerView)
     RecyclerView mRecyclerView;

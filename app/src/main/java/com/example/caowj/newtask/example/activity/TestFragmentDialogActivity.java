@@ -7,7 +7,7 @@ import android.widget.Button;
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.widget.MyDialogFragment1;
 import com.example.caowj.newtask.widget.MyDialogFragment2;
-import com.kedacom.base.mvc.BaseActivity1;
+import com.kedacom.base.mvc.BaseButterKnifeActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -15,7 +15,7 @@ import butterknife.OnClick;
 /**
  * FragmentDialog替代AlertDialog
  */
-public class TestFragmentDialogActivity extends BaseActivity1 {
+public class TestFragmentDialogActivity extends BaseButterKnifeActivity {
 
     @BindView(R.id.btn_test)
     Button btnTest;

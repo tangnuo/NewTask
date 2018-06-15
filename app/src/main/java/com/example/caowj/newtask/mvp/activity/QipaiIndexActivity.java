@@ -18,7 +18,7 @@ import com.example.caowj.newtask.mvp.presenter.impl.IndexPresenterImpl;
 import com.example.caowj.newtask.mvp.view.BaseView;
 import com.example.caowj.newtask.other.OnLoadMoreListener;
 import com.example.caowj.newtask.utils.business.MyAndroidUtils;
-import com.kedacom.base.mvc.BaseActivity1;
+import com.kedacom.base.mvc.BaseButterKnifeActivity;
 import com.kedacom.utils.LogUtil;
 
 import java.util.ArrayList;
@@ -37,7 +37,7 @@ import me.drakeet.multitype.MultiTypeAdapter;
  * 4、Retrofit2+Rxjava2实现网络请求和数据重构<br/>
  * </p>
  */
-public class QipaiIndexActivity extends BaseActivity1 implements SwipeRefreshLayout.OnRefreshListener, BaseView.IndexView {
+public class QipaiIndexActivity extends BaseButterKnifeActivity implements SwipeRefreshLayout.OnRefreshListener, BaseView.IndexView {
 
     @BindView(R.id.recyclerview)
     RecyclerView mRecyclerView;

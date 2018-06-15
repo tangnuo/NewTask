@@ -15,13 +15,13 @@ import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.example.helper.fingerPrint.CryptoObjectHelper;
 import com.example.caowj.newtask.example.helper.fingerPrint.MyAuthCallback;
 import com.kedacom.base.common.BaseHandler;
-import com.kedacom.base.mvc.BaseActivity1;
+import com.kedacom.base.mvc.BaseButterKnifeActivity;
 
 /**
  * 指纹识别
  * https://blog.csdn.net/createchance/article/details/51991764
  */
-public class TestFingerPrintActivity extends BaseActivity1 {
+public class TestFingerPrintActivity extends BaseButterKnifeActivity {
 
 
     private TextView mResultInfo = null;

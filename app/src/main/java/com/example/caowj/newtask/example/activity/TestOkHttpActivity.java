@@ -17,7 +17,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
 import com.kedacom.base.common.BaseHandler;
-import com.kedacom.base.mvc.BaseActivity1;
+import com.kedacom.base.mvc.BaseButterKnifeActivity;
 import com.kedacom.utils.GankUtil;
 import com.kedacom.utils.GsonUtil;
 import com.kedacom.utils.LogUtil;
@@ -46,7 +46,7 @@ import okhttp3.Response;
  * </p>
  * https://blog.csdn.net/fightingxia/article/details/70947701
  */
-public class TestOkHttpActivity extends BaseActivity1 {
+public class TestOkHttpActivity extends BaseButterKnifeActivity {
 
     @BindView(R.id.btn_test1)
     Button btnTest1;

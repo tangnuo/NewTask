@@ -10,7 +10,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
@@ -18,13 +17,14 @@ import com.afollestad.materialdialogs.color.CircleView;
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.toutiao.Constant;
 import com.example.caowj.newtask.toutiao.util.SettingUtil;
+import com.kedacom.base.common.BaseActivity;
 
 
 /**
  * Created by Meiji on 2016/12/12.
  */
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseToolbarActivity extends BaseActivity {
 
     private static final String TAG = "BaseActivity";
     //    protected SlidrInterface slidrInterface;
@@ -112,14 +112,14 @@ public abstract class BaseActivity extends AppCompatActivity {
                 String act = ".SplashActivity_";
 
                 for (String s : Constant.ICONS_TYPE) {
-                    getPackageManager().setComponentEnabledSetting(new ComponentName(BaseActivity.this, getPackageName() + act + s),
+                    getPackageManager().setComponentEnabledSetting(new ComponentName(BaseToolbarActivity.this, getPackageName() + act + s),
                             PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
                             PackageManager.DONT_KILL_APP);
                 }
 
                 act += Constant.ICONS_TYPE[SettingUtil.getInstance().getCustomIconValue()];
 
-                getPackageManager().setComponentEnabledSetting(new ComponentName(BaseActivity.this, getPackageName() + act),
+                getPackageManager().setComponentEnabledSetting(new ComponentName(BaseToolbarActivity.this, getPackageName() + act),
                         PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
                         PackageManager.DONT_KILL_APP);
             }).start();

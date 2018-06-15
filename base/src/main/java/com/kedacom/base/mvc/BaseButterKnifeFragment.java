@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
  * author: Administrator
  * date: 2017/9/1 11:54
  */
-public abstract class BaseFragment1 extends Fragment {
+public abstract class BaseButterKnifeFragment extends Fragment {
     public String mTag = this.getClass().getSimpleName() + "~~";
     protected View rootView;
     public Activity mActivity;

@@ -3,9 +3,10 @@ package com.kedacom.base.mvc;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.kedacom.base.common.BaseActivity;
 
 import butterknife.ButterKnife;
 
@@ -14,7 +15,7 @@ import butterknife.ButterKnife;
  * author: Administrator
  * date: 2017/9/1 11:50
  */
-public abstract class BaseActivity1 extends AppCompatActivity {
+public abstract class BaseButterKnifeActivity extends BaseActivity {
     public String mTag = this.getClass().getSimpleName() + "~~";
     public Activity mActivity;
 

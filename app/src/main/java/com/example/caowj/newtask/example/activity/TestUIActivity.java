@@ -16,7 +16,7 @@ import android.widget.TextView;
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.utils.business.MyAndroidUtils;
 import com.example.caowj.newtask.widget.imageView.MultiImageView;
-import com.kedacom.base.mvc.BaseActivity1;
+import com.kedacom.base.mvc.BaseButterKnifeActivity;
 import com.kedacom.utils.CodeUtils;
 import com.kedacom.utils.DataList.DataList;
 
@@ -28,7 +28,7 @@ import butterknife.OnClick;
 /**
  * 使用include、merge、viewStub优化UI页面
  */
-public class TestUIActivity extends BaseActivity1 {
+public class TestUIActivity extends BaseButterKnifeActivity {
 
     @BindView(R.id.btn_test1)
     Button btnTest1;

@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.example.adapter.MasterDetailShowAdapter;
-import com.kedacom.base.mvc.BaseFragment1;
+import com.kedacom.base.mvc.BaseButterKnifeFragment;
 import com.kedacom.utils.LogUtil;
 
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ import butterknife.Unbinder;
 /**
  * 大师--介绍
  */
-public class MasterDetailShowFragment extends BaseFragment1 {
+public class MasterDetailShowFragment extends BaseButterKnifeFragment {
     @BindView(R.id.mRecyclerView)
     RecyclerView mRecyclerView;
     private Activity mActivity;

@@ -6,10 +6,10 @@ import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.kedacom.base.common.BaseActivity;
 import com.kedacom.base.mvvm.listener.DebouncingOnClickListener;
 import com.kedacom.base.mvvm.viewmodel.BaseViewModel;
 
@@ -19,8 +19,8 @@ import com.kedacom.base.mvvm.viewmodel.BaseViewModel;
  * Created by ruzhan on 2017/7/15.
  */
 
-public abstract class BaseActivity3<VB extends ViewDataBinding>
-        extends AppCompatActivity {
+public abstract class BaseMvvmActivity<VB extends ViewDataBinding>
+        extends BaseActivity {
 
     protected VB binding;
     protected BaseViewModel viewModel;

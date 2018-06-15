@@ -7,7 +7,7 @@ import android.view.Surface;
 import android.view.TextureView;
 
 import com.example.caowj.newtask.R;
-import com.kedacom.base.mvc.BaseActivity1;
+import com.kedacom.base.mvc.BaseButterKnifeActivity;
 
 import java.io.IOException;
 
@@ -19,7 +19,7 @@ import butterknife.ButterKnife;
  *
  * http://blog.csdn.net/HardWorkingAnt/article/details/72784044
  */
-public class TestTextureViewActivity extends BaseActivity1 implements TextureView.SurfaceTextureListener, MediaPlayer.OnPreparedListener {
+public class TestTextureViewActivity extends BaseButterKnifeActivity implements TextureView.SurfaceTextureListener, MediaPlayer.OnPreparedListener {
 
     @BindView(R.id.textureView1)
     TextureView myTexture;

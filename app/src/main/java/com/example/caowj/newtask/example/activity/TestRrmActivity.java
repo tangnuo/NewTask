@@ -14,7 +14,7 @@ import com.example.caowj.newtask.mvp.constants.WSConstants;
 import com.example.caowj.newtask.mvp.entity.NewsInfo;
 import com.example.caowj.newtask.mvp.entity.bean.NewsBean2;
 import com.example.caowj.newtask.utils.business.MyAndroidUtils;
-import com.kedacom.base.mvc.BaseActivity1;
+import com.kedacom.base.mvc.BaseButterKnifeActivity;
 import com.kedacom.network.retrofit.RetrofitFactory;
 import com.kedacom.utils.LogUtil;
 
@@ -51,7 +51,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * <p>
  * http://api.tianapi.com/wxnew/?key=145170256f0d5a708fef46f45977122b&num=10
  */
-public class TestRrmActivity extends BaseActivity1 {
+public class TestRrmActivity extends BaseButterKnifeActivity {
 
     @BindView(R.id.button)
     Button button;

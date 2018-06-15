@@ -9,7 +9,7 @@ import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.other.thread.Counter;
 import com.example.caowj.newtask.other.thread.SyncThread;
 import com.example.caowj.newtask.other.thread.SyncThread2;
-import com.kedacom.base.mvc.BaseActivity1;
+import com.kedacom.base.mvc.BaseButterKnifeActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -18,7 +18,7 @@ import butterknife.OnClick;
  * synchronized的用法<br/>
  * https://blog.csdn.net/luoweifu/article/details/46613015
  */
-public class TestSynchronizedActivity extends BaseActivity1 {
+public class TestSynchronizedActivity extends BaseButterKnifeActivity {
 
     @BindView(R.id.btn_test1)
     Button btnTest1;

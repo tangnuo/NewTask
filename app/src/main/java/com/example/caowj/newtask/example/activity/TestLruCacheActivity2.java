@@ -6,7 +6,7 @@ import android.widget.GridView;
 
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.example.adapter.PhotoWallAdapter2;
-import com.kedacom.base.mvc.BaseActivity1;
+import com.kedacom.base.mvc.BaseButterKnifeActivity;
 import com.kedacom.utils.DataList.DataList;
 
 /**
@@ -15,7 +15,7 @@ import com.kedacom.utils.DataList.DataList;
  * </p>
  * http://blog.csdn.net/guolin_blog/article/details/34093441
  */
-public class TestLruCacheActivity2 extends BaseActivity1 {
+public class TestLruCacheActivity2 extends BaseButterKnifeActivity {
 
     /**
      * 用于展示照片墙的GridView

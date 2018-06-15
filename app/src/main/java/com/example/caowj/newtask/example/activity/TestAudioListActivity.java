@@ -10,7 +10,7 @@ import android.widget.Button;
 
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.other.Player;
-import com.kedacom.base.mvc.BaseActivity1;
+import com.kedacom.base.mvc.BaseButterKnifeActivity;
 import com.kedacom.utils.DataList.DataList;
 import com.kedacom.utils.LogUtil;
 
@@ -26,7 +26,7 @@ import butterknife.ButterKnife;
 /**
  * 音频列表播放（参考启拍V2.6.6 听游功能）
  */
-public class TestAudioListActivity extends BaseActivity1 {
+public class TestAudioListActivity extends BaseButterKnifeActivity {
 
     @BindView(R.id.mRecyclerView)
     RecyclerView mRecyclerView;
