@@ -4,6 +4,9 @@ def ext = rootProject.ext
 
 android {
     compileSdkVersion ext.compileSdkVersion
+    defaultConfig {
+        minSdkVersion ext.minSdkVersion
+    }
 }
 
 dependencies {

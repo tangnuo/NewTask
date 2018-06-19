@@ -1,7 +1,11 @@
 package com.kedacom.network.retrofit;
 
 import com.kedacom.network.retrofit.config.HttpClient;
+import com.kedacom.utils.Check;
 import com.kedacom.utils.LogUtil;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -13,7 +17,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitFactory {
 
-    private volatile static Retrofit retrofit;
+    private volatile static Retrofit mRetrofit;
+    private Map<String,  Object> serviceByType = new HashMap<>();
 
 
     /**
@@ -24,19 +29,19 @@ public class RetrofitFactory {
      */
     public static Retrofit getRetrofit(String baseUrl) {
         synchronized (RetrofitFactory.class) {
-            if (retrofit == null) {
-                retrofit = newRetrofit(baseUrl);
+            if (mRetrofit == null) {
+                mRetrofit = newRetrofit(baseUrl);
             } else {
-                String oldBaseUrl = retrofit.baseUrl().toString().toLowerCase();
+                String oldBaseUrl = mRetrofit.baseUrl().toString().toLowerCase();
                 if (!baseUrl.toLowerCase().equals(oldBaseUrl)) {
-                    retrofit = newRetrofit(baseUrl);
+                    mRetrofit = newRetrofit(baseUrl);
                 } else {
                     LogUtil.myW("retrofit已经存在。oldBaseUrl：" + oldBaseUrl + "\nbaseUrl:" + baseUrl);
                 }
             }
         }
 
-        return retrofit;
+        return mRetrofit;
     }
 
 
@@ -57,6 +62,24 @@ public class RetrofitFactory {
                 .build();
 
         return retrofit;
+    }
+
+
+    /**
+     * 获取service实例
+     * @param apiInterface
+     * @param <T>
+     * @return
+     */
+    public synchronized <T> T getService(Class<T> apiInterface) {
+        String serviceName = apiInterface.getName();
+        if (Check.isNull(serviceByType.get(serviceName))) {
+            T service = mRetrofit.create(apiInterface);
+            serviceByType.put(serviceName, service);
+            return service;
+        } else {
+            return (T) serviceByType.get(serviceName);
+        }
     }
 
     /*************************功能扩展 begin**************************/
