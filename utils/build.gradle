@@ -9,7 +9,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
+    implementation "com.android.support:design:$rootProject.supportLibraryVersion"
     api "com.google.code.gson:gson:2.8.4"
 }
 
