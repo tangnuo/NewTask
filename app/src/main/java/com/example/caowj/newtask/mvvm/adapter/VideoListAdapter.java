@@ -12,8 +12,8 @@ import com.example.caowj.newtask.databinding.ItemVideoListBinding;
 import com.example.caowj.newtask.mvvm.data.Special;
 import com.example.caowj.newtask.mvvm.viewmodel.VideoViewModel;
 import com.kedacom.base.mvvm.EmptyHolder;
-import com.kedacom.base.mvvm.IDiffCallBack;
 import com.kedacom.base.mvvm.listener.OnItemClickListener;
+import com.kedacom.utils.IDiffCallBack;
 
 import java.util.ArrayList;
 import java.util.List;
