@@ -43,9 +43,9 @@ public class MinaService extends Service {
      * 负责调用ConnectionManager
      */
     class ConnectionHandlerThread extends HandlerThread {
-        private Context context;
         boolean isConnection;
         ConnectionManager mManager;
+        private Context context;
 
         public ConnectionHandlerThread(String name, Context context) {
             super(name);

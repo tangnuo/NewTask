@@ -27,12 +27,10 @@ public class GlideImpl implements IImageLoader {
 
     private static final float SIZE_MULTIPLIER = 0.3f;
     private static final int TIMEOUT_MS = 16000;
-
-    private DrawableTransitionOptions normalTransitionOptions = new DrawableTransitionOptions()
-            .crossFade();
-
     private static Option<Integer> TIMEOUT_OPTION =
             Option.memory(KEY_MEMORY, TIMEOUT_MS);
+    private DrawableTransitionOptions normalTransitionOptions = new DrawableTransitionOptions()
+            .crossFade();
 
     @Override
     public void load(ImageView imageView, String url) {

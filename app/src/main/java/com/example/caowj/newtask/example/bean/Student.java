@@ -13,16 +13,12 @@ public class Student {
     char sex;
     private String phoneNum;
 
-    public static void main(String[] args) {
-        System.out.println("main方法执行了。。。");
-    }
-
-
     /**********构造方法 begin**********/
     //（默认的构造方法）
     Student(String str) {
         System.out.println("(默认)的构造方法 s = " + str);
     }
+
 
     //无参构造方法
     public Student() {
@@ -47,6 +43,10 @@ public class Student {
     //私有构造方法
     private Student(int age) {
         System.out.println("私有的构造方法   年龄：" + age);
+    }
+
+    public static void main(String[] args) {
+        System.out.println("main方法执行了。。。");
     }
 
     @Override

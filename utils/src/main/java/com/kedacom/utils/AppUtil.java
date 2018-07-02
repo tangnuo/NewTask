@@ -20,21 +20,16 @@ import java.security.NoSuchAlgorithmException;
  */
 public class AppUtil {
     /**
-     * 程序包名
-     */
-    public static String packageName = "";
-
-    /**
      * 程序名称
      */
     public static final String WORK_SPACE = "kd";
-
-    private static final String NOMEDIA_FILENAME = ".nomedia";
-
     public static final String DIR_SYS = "sys";
-
     public static final String SYSTEM_DIRECTORY_DATA = "data";
-
+    private static final String NOMEDIA_FILENAME = ".nomedia";
+    /**
+     * 程序包名
+     */
+    public static String packageName = "";
 
     public static String getUploadLogZipPath(Context context) {
         File file = new File(AppUtil.getFileRootPath(context) + "/log/upload");
@@ -47,6 +42,7 @@ public class AppUtil {
 
     /**
      * 获取崩溃日志路径
+     *
      * @param context
      * @return
      */

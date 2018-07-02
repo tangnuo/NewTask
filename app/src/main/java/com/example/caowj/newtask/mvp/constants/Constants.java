@@ -217,7 +217,7 @@ public class Constants {
     public static boolean FIRST_OPEN_FIXEDPRICE = true;
     /**针对于分享专场数据使用*/
     /*public static final int SPECIAL_NUMBER=123456;
-	*//**掌柜推荐的解析数据标示*//*
+     *//**掌柜推荐的解析数据标示*//*
 	public static final int ISRECOMMEND=1;
 	*//**非掌柜推荐的解析数据标示*//*
 	public static final int ISOTHER=0;*/

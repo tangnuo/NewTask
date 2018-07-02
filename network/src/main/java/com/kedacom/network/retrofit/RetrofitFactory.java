@@ -18,7 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitFactory {
 
     private volatile static Retrofit mRetrofit;
-    private Map<String,  Object> serviceByType = new HashMap<>();
+    private Map<String, Object> serviceByType = new HashMap<>();
 
 
     /**
@@ -67,6 +67,7 @@ public class RetrofitFactory {
 
     /**
      * 获取service实例
+     *
      * @param apiInterface
      * @param <T>
      * @return

@@ -9,10 +9,10 @@ import com.kedacom.utils.LogUtil;
 
 /**
  * IntentService:
- *<p>
- *     1、处理耗时操作，不需要开启新线程；
- *     2、完成所有任务后自动关闭服务；
- *</p>
+ * <p>
+ * 1、处理耗时操作，不需要开启新线程；
+ * 2、完成所有任务后自动关闭服务；
+ * </p>
  * package: com.example.caowj.newtask.example.service
  * author: Administrator
  * date: 2018/3/6 09:23

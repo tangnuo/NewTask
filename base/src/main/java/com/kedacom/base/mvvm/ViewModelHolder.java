@@ -15,23 +15,23 @@ public class ViewModelHolder<VM> extends Fragment {
     public ViewModelHolder() {
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setRetainInstance(true);
-    }
-
     public static <M> ViewModelHolder createContainer(M viewModel) {
         ViewModelHolder<M> viewModelContainer = new ViewModelHolder<>();
         viewModelContainer.setViewModel(viewModel);
         return viewModelContainer;
     }
 
-    public void setViewModel(VM viewModel) {
-        this.viewModel = viewModel;
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setRetainInstance(true);
     }
 
     public VM getViewModel() {
         return viewModel;
+    }
+
+    public void setViewModel(VM viewModel) {
+        this.viewModel = viewModel;
     }
 }

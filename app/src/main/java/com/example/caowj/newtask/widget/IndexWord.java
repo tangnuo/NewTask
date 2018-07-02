@@ -18,6 +18,7 @@ import com.kedacom.utils.LogUtil;
 /**
  * Created by ruedy on 2017/3/13.
  * 问题：触摸不太灵敏，需要用力按下或滑动才有效果。
+ *
  * @deprecated see {@link WordsNavigation}
  */
 

@@ -13,10 +13,9 @@ public abstract class BaseListViewModel extends BaseViewModel {
 
     protected static final int NORMAL_PAGE = 1;
     protected static final int PAGE_SIZE = 10;
-
+    public ObservableBoolean refreshing = new ObservableBoolean(false); // 提供给下拉刷新
     protected int page;
     protected boolean isRefresh;
-    public ObservableBoolean refreshing = new ObservableBoolean(false); // 提供给下拉刷新
 
     public abstract void refreshData(boolean refresh);
 

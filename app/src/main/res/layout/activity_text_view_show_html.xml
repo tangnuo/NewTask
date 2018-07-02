@@ -11,8 +11,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="三种方式实现文本框显示图片\n"
         android:layout_marginBottom="50dp"
+        android:text="三种方式实现文本框显示图片\n"
         tools:layout_editor_absoluteX="28dp"
         tools:layout_editor_absoluteY="14dp" />
 

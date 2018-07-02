@@ -12,11 +12,22 @@ import android.os.Parcelable;
  * Description: 拍品基本信息
  *
  * @author caowj
- *         date：2015年8月27日 下午4:31:26
+ * date：2015年8月27日 下午4:31:26
  */
 @SuppressLint("SimpleDateFormat")
 public class PaiPinInfo implements Parcelable {
 
+    public static final Creator<PaiPinInfo> CREATOR = new Creator<PaiPinInfo>() {
+        @Override
+        public PaiPinInfo createFromParcel(Parcel source) {
+            return new PaiPinInfo(source);
+        }
+
+        @Override
+        public PaiPinInfo[] newArray(int size) {
+            return new PaiPinInfo[size];
+        }
+    };
     private int Id;
     /**
      * 宝贝名称
@@ -109,10 +120,6 @@ public class PaiPinInfo implements Parcelable {
      * 是否进入过一口价专区
      */
     private int flat8;
-    /**
-     * 进入今日拍品时间 （只有进入明日返回的商品才有商家时间）
-     */
-    private String RegTim2;
 
 
     /*******************************************************************************************/
@@ -168,6 +175,10 @@ public class PaiPinInfo implements Parcelable {
 
     /*****************************新版本－－新增字段***********************/
     /**
+     * 进入今日拍品时间 （只有进入明日返回的商品才有商家时间）
+     */
+    private String RegTim2;
+    /**
      * 类别图片串码
      */
     private String Img;
@@ -183,12 +194,12 @@ public class PaiPinInfo implements Parcelable {
      * 未通过审核原因 --NEW 新加字段
      */
     private String ReasonDesc;
+
+    /**＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊新版本－－重新命名的字段＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊*/
     /**
      * 是否留拍
      */
     private int IsSurplus;
-
-    /**＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊新版本－－重新命名的字段＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊*/
     /**
      * 留拍时间
      */
@@ -253,11 +264,11 @@ public class PaiPinInfo implements Parcelable {
      * 宝贝详情图串码
      */
     private String PicDetails;//remark1;
+    //之前的字段isshenhe 拆分成3个字段 分别对应审核状态 宝贝区域 和宝贝状态
     /**
      * 快递费用
      */
     private double Freight;//kuaidiMoney;
-    //之前的字段isshenhe 拆分成3个字段 分别对应审核状态 宝贝区域 和宝贝状态
     /**
      * 运费险
      */
@@ -320,6 +331,86 @@ public class PaiPinInfo implements Parcelable {
      */
     private String Introduction;
 
+    /***************************
+     * 分割线
+
+     *******************************/
+    public PaiPinInfo() {
+        super();
+    }
+
+    protected PaiPinInfo(Parcel in) {
+        this.Id = in.readInt();
+        this.paipinName = in.readString();
+        this.paipinNum = in.readString();
+        this.paipinCate = in.readInt();
+        this.pinzhong = in.readString();
+        this.size = in.readString();
+        this.weights = in.readString();
+        this.describle = in.readString();
+        this.y_price = in.readLong();
+        this.Retain_price = in.readLong();
+        this.ActualEndTim = in.readLong();
+        this.visitCount = in.readInt();
+        this.loveCount = in.readInt();
+        this.video = in.readString();
+        this.kuaidiName = in.readString();
+        this.kuaidiNum = in.readString();
+        this.Prefecture = in.readInt();
+        this.userTel = in.readString();
+        this.shopTel = in.readString();
+        this.shopName = in.readString();
+        this.remark3 = in.readString();
+        this.flat1 = in.readInt();
+        this.remark5 = in.readString();
+        this.remark6 = in.readString();
+        this.flat8 = in.readInt();
+        this.RegTim2 = in.readString();
+        this.Img = in.readString();
+        this.cateName = in.readString();
+        this.IsRetain_price = in.readInt();
+        this.ReasonDesc = in.readString();
+        this.IsSurplus = in.readInt();
+        this.TimeSurplus = in.readInt();
+        this.UserID = in.readInt();
+        this.Brand = in.readString();
+        this.Pieces = in.readString();
+        this.Material = in.readString();
+        this.Number = in.readInt();
+        this.Production = in.readString();
+        this.PicFixedPrice = in.readString();
+        this.S_price = in.readLong();
+        this.M_price = in.readLong();
+        this.Markup = in.readLong();
+        this.TimeS = in.readLong();
+        this.TimeE = in.readLong();
+        this.PicMainTomorrow = in.readString();
+        this.PicCarousel = in.readString();
+        this.PicDetails = in.readString();
+        this.Freight = in.readDouble();
+        this.InsurancePremium = in.readDouble();
+        this.IsExamine = in.readInt();
+        this.Position = in.readInt();
+        this.State = in.readInt();
+        this.TimeExamine = in.readLong();
+        this.IsStock = in.readInt();
+        this.Sort = in.readInt();
+        this.RetainState = in.readInt();
+        this.RoleUse = in.readInt();
+        this.TimeAdd = in.readString();
+        this.TimeYKJ = in.readString();
+        this.MaxPrice = in.readLong();
+        this.IsDel = in.readInt();
+        this.MarketPrice = in.readLong();
+        this.ActivePrice = in.readLong();
+        this.MerchantAvatar = in.readString();
+        this.Introduction = in.readString();
+    }
+
+    public static Creator<PaiPinInfo> getCREATOR() {
+        return CREATOR;
+    }
+
     public String getIntroduction() {
         return Introduction;
     }
@@ -342,18 +433,6 @@ public class PaiPinInfo implements Parcelable {
 
     public void setMarketPrice(long marketPrice) {
         MarketPrice = marketPrice;
-    }
-
-    /***************************
-     * 分割线
-
-     *******************************/
-    public PaiPinInfo() {
-        super();
-    }
-
-    public static Creator<PaiPinInfo> getCREATOR() {
-        return CREATOR;
     }
 
     public long getMaxPrice() {
@@ -925,86 +1004,6 @@ public class PaiPinInfo implements Parcelable {
         dest.writeString(this.MerchantAvatar);
         dest.writeString(this.Introduction);
     }
-
-    protected PaiPinInfo(Parcel in) {
-        this.Id = in.readInt();
-        this.paipinName = in.readString();
-        this.paipinNum = in.readString();
-        this.paipinCate = in.readInt();
-        this.pinzhong = in.readString();
-        this.size = in.readString();
-        this.weights = in.readString();
-        this.describle = in.readString();
-        this.y_price = in.readLong();
-        this.Retain_price = in.readLong();
-        this.ActualEndTim = in.readLong();
-        this.visitCount = in.readInt();
-        this.loveCount = in.readInt();
-        this.video = in.readString();
-        this.kuaidiName = in.readString();
-        this.kuaidiNum = in.readString();
-        this.Prefecture = in.readInt();
-        this.userTel = in.readString();
-        this.shopTel = in.readString();
-        this.shopName = in.readString();
-        this.remark3 = in.readString();
-        this.flat1 = in.readInt();
-        this.remark5 = in.readString();
-        this.remark6 = in.readString();
-        this.flat8 = in.readInt();
-        this.RegTim2 = in.readString();
-        this.Img = in.readString();
-        this.cateName = in.readString();
-        this.IsRetain_price = in.readInt();
-        this.ReasonDesc = in.readString();
-        this.IsSurplus = in.readInt();
-        this.TimeSurplus = in.readInt();
-        this.UserID = in.readInt();
-        this.Brand = in.readString();
-        this.Pieces = in.readString();
-        this.Material = in.readString();
-        this.Number = in.readInt();
-        this.Production = in.readString();
-        this.PicFixedPrice = in.readString();
-        this.S_price = in.readLong();
-        this.M_price = in.readLong();
-        this.Markup = in.readLong();
-        this.TimeS = in.readLong();
-        this.TimeE = in.readLong();
-        this.PicMainTomorrow = in.readString();
-        this.PicCarousel = in.readString();
-        this.PicDetails = in.readString();
-        this.Freight = in.readDouble();
-        this.InsurancePremium = in.readDouble();
-        this.IsExamine = in.readInt();
-        this.Position = in.readInt();
-        this.State = in.readInt();
-        this.TimeExamine = in.readLong();
-        this.IsStock = in.readInt();
-        this.Sort = in.readInt();
-        this.RetainState = in.readInt();
-        this.RoleUse = in.readInt();
-        this.TimeAdd = in.readString();
-        this.TimeYKJ = in.readString();
-        this.MaxPrice = in.readLong();
-        this.IsDel = in.readInt();
-        this.MarketPrice = in.readLong();
-        this.ActivePrice = in.readLong();
-        this.MerchantAvatar = in.readString();
-        this.Introduction = in.readString();
-    }
-
-    public static final Creator<PaiPinInfo> CREATOR = new Creator<PaiPinInfo>() {
-        @Override
-        public PaiPinInfo createFromParcel(Parcel source) {
-            return new PaiPinInfo(source);
-        }
-
-        @Override
-        public PaiPinInfo[] newArray(int size) {
-            return new PaiPinInfo[size];
-        }
-    };
 
     @Override
     public String toString() {

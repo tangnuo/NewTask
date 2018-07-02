@@ -5,12 +5,12 @@
         android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:textStyle="bold"
         android:gravity="center"
+        android:padding="5dp"
         android:text="@string/test_hint"
+        android:textColor="@color/red_transparent_44"
         android:textSize="18sp"
-        android:textColor="@color/red_transparent_44" />
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/btn_test1"

@@ -1,4 +1,3 @@
-
 package com.kedacom.utils;
 
 import android.content.Context;
@@ -21,6 +20,7 @@ import java.io.InputStreamReader;
 public class FileHelper {
 
     private static String mAppName;
+
     public static void init(String appName) {
         mAppName = appName;
     }
@@ -35,7 +35,7 @@ public class FileHelper {
     public static String getAppFolder() {
         // Create the application workspace
         File cacheDir = new File(sdcardRoot() + File.separator + mAppName + File.separator);
-        if(!cacheDir.exists()) {
+        if (!cacheDir.exists()) {
             makeDir(cacheDir);
         }
         return cacheDir.getPath();
@@ -43,8 +43,8 @@ public class FileHelper {
 
     public static String getLogTrace() {
 
-        File logDir = new File(sdcardRoot() + File.separator + mAppName + File.separator+"log");
-        if(!logDir.exists()) {
+        File logDir = new File(sdcardRoot() + File.separator + mAppName + File.separator + "log");
+        if (!logDir.exists()) {
             makeDir(logDir);
         }
         return logDir.getPath();
@@ -64,18 +64,17 @@ public class FileHelper {
      * @return A valid file.
      */
     public static File buildFile(String fileId) {
-        File file = new File(getAppFolder(),fileId);
+        File file = new File(getAppFolder(), fileId);
 
-        if(!file.exists()) {
+        if (!file.exists()) {
             try {
-                 file.createNewFile();
+                file.createNewFile();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
         return file;
     }
-
 
 
     /**
@@ -100,7 +99,6 @@ public class FileHelper {
         }
         return fileContentBuilder.toString();
     }
-
 
 
     public static boolean isCached(String fileId) {

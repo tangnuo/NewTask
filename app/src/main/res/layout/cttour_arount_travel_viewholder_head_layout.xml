@@ -8,8 +8,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#111111"
-        android:textSize="16sp"
         android:gravity="center_horizontal"
-        android:text="周边跟团" />
+        android:text="周边跟团"
+        android:textColor="#111111"
+        android:textSize="16sp" />
 </LinearLayout>

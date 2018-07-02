@@ -34,8 +34,8 @@
             <View
                 android:layout_width="0.5dp"
                 android:layout_height="match_parent"
-                android:background="@color/item_df"
-                android:layout_alignParentRight="true" />
+                android:layout_alignParentRight="true"
+                android:background="@color/item_df" />
         </RelativeLayout>
     </RelativeLayout>
     <!--价格-->
@@ -43,60 +43,60 @@
         android:id="@+id/tv_price"
         android:layout_width="match_parent"
         android:layout_height="28dp"
-        android:textSize="18sp"
-        android:background="@color/item_72"
-        android:textColor="@android:color/white"
-        android:gravity="center_vertical"
+        android:layout_below="@id/rl_container"
         android:layout_marginLeft="0.5dp"
         android:layout_marginRight="0.5dp"
+        android:layout_marginTop="-28dp"
+        android:background="@color/item_72"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:lines="1"
         android:paddingLeft="5dp"
         android:paddingRight="10dp"
-        android:lines="1"
-        android:ellipsize="end"
         android:text="￥*"
-        android:layout_below="@id/rl_container"
-        android:layout_marginTop="-28dp" />
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="53dp"
+        android:layout_below="@id/rl_container"
         android:background="@color/item_df"
-        android:paddingLeft="0.5dp"
-        android:paddingRight="0.5dp"
         android:orientation="vertical"
-        android:layout_below="@id/rl_container">
+        android:paddingLeft="0.5dp"
+        android:paddingRight="0.5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
             android:background="@color/white"
+            android:orientation="vertical"
             android:paddingTop="8dp">
             <!--商家名称-->
             <TextView
                 android:id="@+id/tv_store_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/find_item_82"
+                android:ellipsize="end"
+                android:lines="1"
                 android:paddingLeft="2dp"
                 android:paddingRight="10dp"
-                android:textSize="13sp"
-                android:lines="1"
-                android:ellipsize="end"
-                android:text="*" />
+                android:text="*"
+                android:textColor="@color/find_item_82"
+                android:textSize="13sp" />
             <!--商品名称-->
             <TextView
                 android:id="@+id/tv_products_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:layout_marginTop="5dp"
+                android:ellipsize="end"
+                android:lines="1"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:lines="1"
-                android:ellipsize="end"
-                android:textSize="13sp"
-                android:layout_marginTop="5dp"
-                android:text="*" />
+                android:text="*"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

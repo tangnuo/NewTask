@@ -22,14 +22,6 @@ import java.util.Date;
 
 public class TimeTextView extends android.support.v7.widget.AppCompatTextView {
 
-    @Override
-    protected void onDetachedFromWindow() {
-        super.onDetachedFromWindow();
-        // 在控件被销毁时移除消息
-        handler.removeMessages(0);
-    }
-
-
     long Time;//时间差
     private boolean run = true; // 是否启动了
     @SuppressLint("NewApi")
@@ -55,47 +47,20 @@ public class TimeTextView extends android.support.v7.widget.AppCompatTextView {
             }
         }
     };
-
-
     public TimeTextView(Context context) {
         super(context);
     }
 
-    ;
 
     public TimeTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
+    ;
+
     public TimeTextView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
-
-    @SuppressLint("NewApi")
-    /**
-     * 需要传入秒
-     */
-    public void setTimes(long mT) {
-        // 标示已经启动
-        Date date = new Date();
-        //TODO 必要的时候需要从服务端获取时间
-        long t2 = date.getTime() / 1000;
-        Time = mT - t2;
-        date = null;
-
-//        LogUtil.myD("时间差：" + Time + run + "，当前时间：" + t2);
-        if (Time > 0) {
-            handler.removeMessages(0);
-            handler.sendEmptyMessage(0);
-        } else {
-            TimeTextView.this.setVisibility(View.GONE);
-        }
-    }
-
-    public void stop() {
-        run = false;
-    }
-
 
     public static String dateDiffDToSecond(long diff, String splitFlag) {
         String result = "";
@@ -131,5 +96,37 @@ public class TimeTextView extends android.support.v7.widget.AppCompatTextView {
      */
     public static String formatChar(long num) {
         return String.valueOf(num).length() == 1 ? "0" + String.valueOf(num) : String.valueOf(num);
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        // 在控件被销毁时移除消息
+        handler.removeMessages(0);
+    }
+
+    @SuppressLint("NewApi")
+    /**
+     * 需要传入秒
+     */
+    public void setTimes(long mT) {
+        // 标示已经启动
+        Date date = new Date();
+        //TODO 必要的时候需要从服务端获取时间
+        long t2 = date.getTime() / 1000;
+        Time = mT - t2;
+        date = null;
+
+//        LogUtil.myD("时间差：" + Time + run + "，当前时间：" + t2);
+        if (Time > 0) {
+            handler.removeMessages(0);
+            handler.sendEmptyMessage(0);
+        } else {
+            TimeTextView.this.setVisibility(View.GONE);
+        }
+    }
+
+    public void stop() {
+        run = false;
     }
 }

@@ -25,8 +25,7 @@ public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase INSTANCE;
 
 //    public abstract NewsDao newsDao();
-
-    public abstract SpecialListDao specialListDao();
+private final MutableLiveData<Boolean> isDatabaseCreated = new MutableLiveData<>();
 
 //    public abstract BannerDao bannerDao();
 //
@@ -40,9 +39,6 @@ public abstract class AppDatabase extends RoomDatabase {
 //
 //    public abstract UserInfoDao userInfoDao();
 
-    private final MutableLiveData<Boolean> isDatabaseCreated = new MutableLiveData<>();
-
-
     public static AppDatabase get(Context context) {
         if (INSTANCE == null) {
             synchronized (AppDatabase.class) {
@@ -55,6 +51,8 @@ public abstract class AppDatabase extends RoomDatabase {
         }
         return INSTANCE;
     }
+
+    public abstract SpecialListDao specialListDao();
 
     private void updateDatabaseCreated(Context context) {
         if (context.getDatabasePath(DATABASE_NAME).exists()) {

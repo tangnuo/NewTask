@@ -26,10 +26,10 @@ import butterknife.Unbinder;
 public class MasterDetailShowFragment extends BaseButterKnifeFragment {
     @BindView(R.id.mRecyclerView)
     RecyclerView mRecyclerView;
+    Unbinder unbinder;
     private Activity mActivity;
     private MasterDetailShowAdapter adapter;
     private List<String> contentList = new ArrayList<>();
-    Unbinder unbinder;
 
     public RecyclerView getmRecyclerView() {
         if (mRecyclerView == null) {

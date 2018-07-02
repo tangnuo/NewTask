@@ -16,10 +16,10 @@ import javax.inject.Inject;
  * dagger2实现依赖注入
  */
 public class TestDaggerActivity2 extends BaseButterKnifeActivity {
-    private ViewPager viewPager;
-    private TabLayout tabLayout;
     @Inject
     MyAdapter adapter;
+    private ViewPager viewPager;
+    private TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

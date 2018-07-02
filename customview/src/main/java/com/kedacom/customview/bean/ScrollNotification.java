@@ -13,8 +13,27 @@ import android.os.Parcelable;
  * @Date 2017/10/9$
  */
 public class ScrollNotification implements Parcelable {
+    public static final Creator<ScrollNotification> CREATOR = new Creator<ScrollNotification>() {
+        @Override
+        public ScrollNotification createFromParcel(Parcel source) {
+            return new ScrollNotification(source);
+        }
+
+        @Override
+        public ScrollNotification[] newArray(int size) {
+            return new ScrollNotification[size];
+        }
+    };
     private Integer id;
     private String title;
+
+    public ScrollNotification() {
+    }
+
+    protected ScrollNotification(Parcel in) {
+        this.id = in.readInt();
+        this.title = in.readString();
+    }
 
     public Integer getId() {
         return id;
@@ -42,24 +61,4 @@ public class ScrollNotification implements Parcelable {
         dest.writeInt(this.id);
         dest.writeString(this.title);
     }
-
-    public ScrollNotification() {
-    }
-
-    protected ScrollNotification(Parcel in) {
-        this.id = in.readInt();
-        this.title = in.readString();
-    }
-
-    public static final Creator<ScrollNotification> CREATOR = new Creator<ScrollNotification>() {
-        @Override
-        public ScrollNotification createFromParcel(Parcel source) {
-            return new ScrollNotification(source);
-        }
-
-        @Override
-        public ScrollNotification[] newArray(int size) {
-            return new ScrollNotification[size];
-        }
-    };
 }

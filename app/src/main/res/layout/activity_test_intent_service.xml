@@ -18,18 +18,18 @@
         android:id="@+id/tv_status"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:gravity="center"
-        android:textColor="@color/item_1c"
+        android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp" />
+        android:gravity="center"
+        android:textColor="@color/item_1c" />
 
     <ProgressBar
         android:id="@+id/progressbar"
+        style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        style="?android:attr/progressBarStyleHorizontal" />
+        android:layout_marginTop="10dp" />
 
     <TextView
         android:id="@+id/tv_progress"

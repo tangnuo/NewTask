@@ -16,12 +16,6 @@ public class RefreshListModel<T> {
     public int refreshType;
     public List<T> list;
 
-    @IntDef({REFRESH, UPDATE})
-    @Retention(RetentionPolicy.SOURCE)
-    public @interface RefreshType {
-
-    }
-
     public RefreshListModel() {
 
     }
@@ -34,16 +28,6 @@ public class RefreshListModel<T> {
         refreshType = UPDATE;
     }
 
-    public void setRefreshType(List<T> list) {
-        refreshType = REFRESH;
-        this.list = list;
-    }
-
-    public void setUpdateType(List<T> list) {
-        refreshType = UPDATE;
-        this.list = list;
-    }
-
     public void setList(List<T> list) {
         this.list = list;
     }
@@ -52,7 +36,23 @@ public class RefreshListModel<T> {
         return REFRESH == refreshType;
     }
 
+    public void setRefreshType(List<T> list) {
+        refreshType = REFRESH;
+        this.list = list;
+    }
+
     public boolean isUpdateType() {
         return UPDATE == refreshType;
+    }
+
+    public void setUpdateType(List<T> list) {
+        refreshType = UPDATE;
+        this.list = list;
+    }
+
+    @IntDef({REFRESH, UPDATE})
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface RefreshType {
+
     }
 }

@@ -12,13 +12,12 @@ import com.example.caowj.newtask.example.bean.DaoSession;
  * date: 2017/11/7 16:26
  */
 public class GreenDaoUtils {
+    private static Context mContext;
+    private static GreenDaoUtils greenDaoUtils;
     private DaoMaster.DevOpenHelper mHelper;
     private SQLiteDatabase db;
     private DaoMaster mDaoMaster;
     private DaoSession mDaoSession;
-    private static Context mContext;
-
-    private static GreenDaoUtils greenDaoUtils;
 
     private GreenDaoUtils() {
     }

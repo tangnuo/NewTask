@@ -16,12 +16,11 @@ import com.example.caowj.newtask.R;
  */
 
 public class HoveringAdapter extends RecyclerView.Adapter {
-    private Context context;
-    private String[] data;
-
     private static final int TYPE_HEADER = 1;
     private static final int TYPE_CONTENT = 2;
     private static final int TYPE_FOOTER = 3;
+    private Context context;
+    private String[] data;
 
     public HoveringAdapter(Context context, String[] data) {
         this.context = context;

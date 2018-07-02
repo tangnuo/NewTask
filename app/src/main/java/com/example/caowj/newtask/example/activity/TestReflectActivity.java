@@ -31,6 +31,7 @@ import butterknife.OnClick;
  */
 public class TestReflectActivity extends AppCompatActivity {
 
+    private final String STUDENT_URL = "com.example.caowj.newtask.example.bean.Student";
     @BindView(R.id.btn1)
     Button btn1;
     @BindView(R.id.btn2)
@@ -51,8 +52,6 @@ public class TestReflectActivity extends AppCompatActivity {
     Button btn9;
     @BindView(R.id.btn10)
     Button btn10;
-
-    private final String STUDENT_URL = "com.example.caowj.newtask.example.bean.Student";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

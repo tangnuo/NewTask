@@ -7,12 +7,12 @@
     tools:context="com.example.caowj.newtask.example.activity.TranslucentSystemBarActivity">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:gravity="center"
-        android:text="标题栏"
         android:background="@color/colorAccent"
-        android:id="@+id/textView" />
+        android:gravity="center"
+        android:text="标题栏" />
 
     <WebView
         android:id="@+id/mWebView"

@@ -41,6 +41,7 @@ public class AppIconManager {
         disableComponent(componentName2);
         disableComponent(componentName3);
     }
+
     /**
      * 启动组件
      *

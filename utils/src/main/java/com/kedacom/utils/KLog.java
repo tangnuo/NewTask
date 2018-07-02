@@ -23,12 +23,9 @@ import org.json.JSONObject;
 ///////////////////////////////////////////////////////////////////////////
 public class KLog {
 
-    private static boolean IS_SHOW_LOG = false;
-
     private static final String DEFAULT_MESSAGE = "execute";
     private static final String LINE_SEPARATOR = System.getProperty("line.separator");
     private static final int JSON_INDENT = 4;
-
     private static final int V = 0x1;
     private static final int D = 0x2;
     private static final int I = 0x3;
@@ -36,6 +33,7 @@ public class KLog {
     private static final int E = 0x5;
     private static final int A = 0x6;
     private static final int JSON = 0x7;
+    private static boolean IS_SHOW_LOG = false;
 
     public static void init(boolean isShowLog) {
         IS_SHOW_LOG = isShowLog;

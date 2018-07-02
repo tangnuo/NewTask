@@ -18,14 +18,15 @@ import com.kedacom.customview.R;
 /**
  * 博客：https://blog.csdn.net/colinandroid/article/details/72770863
  * <p>用于携程旅游中</p>
- *
+ * <p>
  * 分析：
  * <p>
- *     控件内部职能包含两部分：头部（任意布局）+列表部分（RecyclerView等）
+ * 控件内部职能包含两部分：头部（任意布局）+列表部分（RecyclerView等）
  * </p>
  * <p>
- *     源码来源：见有道云。
+ * 源码来源：见有道云。
  * </p>
+ *
  * @author Zhenhua on 2018/03/19
  * @email zhshan@ctrip.com ^.^
  */
@@ -58,14 +59,6 @@ public class HeaderScrollView extends LinearLayout {
     private float mLastY;  //最后一次移动的Y坐标
     private boolean verticalScrollFlag = false;   //是否允许垂直滚动
 
-    public interface OnScrollListener {
-        void onScroll(int currentY, int maxY);
-    }
-
-    public void setOnScrollListener(OnScrollListener onScrollListener) {
-        this.onScrollListener = onScrollListener;
-    }
-
     public HeaderScrollView(Context context) {
         this(context, null);
     }
@@ -88,6 +81,10 @@ public class HeaderScrollView extends LinearLayout {
         mMinimumVelocity = configuration.getScaledMinimumFlingVelocity(); //允许执行一个fling手势动作的最小速度值
         mMaximumVelocity = configuration.getScaledMaximumFlingVelocity(); //允许执行一个fling手势动作的最大速度值
         sysVersion = Build.VERSION.SDK_INT;
+    }
+
+    public void setOnScrollListener(OnScrollListener onScrollListener) {
+        this.onScrollListener = onScrollListener;
     }
 
     @Override
@@ -311,7 +308,6 @@ public class HeaderScrollView extends LinearLayout {
         scrollHelper.setCurrentScrollableContainer(scrollableContainer);
     }
 
-
     public int getMaxY() {
         return maxY;
     }
@@ -338,6 +334,10 @@ public class HeaderScrollView extends LinearLayout {
 
     public void setTopOffset(int topOffset) {
         this.topOffset = topOffset;
+    }
+
+    public interface OnScrollListener {
+        void onScroll(int currentY, int maxY);
     }
 
 }

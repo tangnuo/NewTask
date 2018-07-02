@@ -9,7 +9,7 @@ import android.os.Parcelable;
  * className: SysPicInfo
  *
  * @author caowj
- *         date：2015年10月12日 下午5:48:18
+ * date：2015年10月12日 下午5:48:18
  */
 public class SysPicInfo implements Parcelable {
 

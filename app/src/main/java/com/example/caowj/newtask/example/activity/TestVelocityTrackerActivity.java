@@ -17,12 +17,12 @@ import android.widget.TextView;
  */
 public class TestVelocityTrackerActivity extends AppCompatActivity {
 
+    private static final String sFormatStr = "以触摸点为起始点，向上或向左都是负值；反之。\n velocityX=%f\n velocityY=%f";
     private TextView mTextView;
     /**
      * 滑动速度跟踪类
      */
     private VelocityTracker mVelocityTracker;
-
     /**
      * 最大速度
      */
@@ -51,6 +51,8 @@ public class TestVelocityTrackerActivity extends AppCompatActivity {
         mTextView.setTextColor(Color.RED);
         setContentView(mTextView);
     }
+
+    //释放VelocityTracker
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -90,8 +92,6 @@ public class TestVelocityTrackerActivity extends AppCompatActivity {
         return super.onTouchEvent(event);
     }
 
-    //释放VelocityTracker
-
     private void releaseVelocityTracker() {
         if (null != mVelocityTracker) {
             mVelocityTracker.clear();
@@ -99,8 +99,6 @@ public class TestVelocityTrackerActivity extends AppCompatActivity {
             mVelocityTracker = null;
         }
     }
-
-    private static final String sFormatStr = "以触摸点为起始点，向上或向左都是负值；反之。\n velocityX=%f\n velocityY=%f";
 
     /**
      * 记录当前速度

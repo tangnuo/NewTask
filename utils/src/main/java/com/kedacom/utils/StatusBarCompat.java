@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 /**
  * <p>
- *     参考：SprintNBA
+ * 参考：SprintNBA
  * </p>
  * https://github.com/smuyyh/SprintNBA/blob/master/app/src/main/java/com/yuyh/sprintnba/utils/StatusBarCompat.java
  * package: com.example.caowj.newtask.utils

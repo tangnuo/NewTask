@@ -45,11 +45,15 @@ public class RetrofitFactory2 {
 
     }
 
-
-    private Cache cache() {
-        final File cacheDir = FileHelper.buildFile("HttpResponseCache");
-        return (new Cache(cacheDir, HTTP_RESPONSE_DISK_CACHE_MAX_SIZE));
-
+    public static RetrofitFactory2 getInstance() {
+        if (sAppHttpClient == null) {
+            synchronized (RetrofitFactory2.class) {
+                if (sAppHttpClient == null) {
+                    sAppHttpClient = new RetrofitFactory2();
+                }
+            }
+        }
+        return sAppHttpClient;
     }
 
 //    /**
@@ -79,15 +83,10 @@ public class RetrofitFactory2 {
 //        };
 //    }
 
-    public static RetrofitFactory2 getInstance() {
-        if (sAppHttpClient == null) {
-            synchronized (RetrofitFactory2.class) {
-                if (sAppHttpClient == null) {
-                    sAppHttpClient = new RetrofitFactory2();
-                }
-            }
-        }
-        return sAppHttpClient;
+    private Cache cache() {
+        final File cacheDir = FileHelper.buildFile("HttpResponseCache");
+        return (new Cache(cacheDir, HTTP_RESPONSE_DISK_CACHE_MAX_SIZE));
+
     }
 
     public synchronized <T> T getService(Class<T> apiInterface) {

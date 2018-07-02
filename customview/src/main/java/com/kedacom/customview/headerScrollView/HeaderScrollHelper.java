@@ -23,17 +23,6 @@ public class HeaderScrollHelper {
         sysVersion = Build.VERSION.SDK_INT;
     }
 
-    /**
-     * 包含有 ScrollView ListView RecyclerView 的组件
-     */
-    public interface ScrollableContainer {
-
-        /**
-         * @return ScrollView ListView RecyclerView 或者其他的布局的实例
-         */
-        View getScrollableView();
-    }
-
     public void setCurrentScrollableContainer(ScrollableContainer scrollableContainer) {
         this.mCurrentScrollableContainer = scrollableContainer;
     }
@@ -68,7 +57,6 @@ public class HeaderScrollHelper {
         throw new IllegalStateException("scrollableView must be a instance of AdapterView|ScrollView|RecyclerView");
     }
 
-
     public boolean isBottom() {
         View scrollableView = getScrollableView();
         if (scrollableView == null) {
@@ -90,7 +78,6 @@ public class HeaderScrollHelper {
         }
         return false;
     }
-
 
     private boolean canChildScrollDown(View view) {
         if (Build.VERSION.SDK_INT < 14) {
@@ -166,5 +153,16 @@ public class HeaderScrollHelper {
         } else if (scrollableView instanceof WebView) {
             ((WebView) scrollableView).flingScroll(0, velocityY);
         }
+    }
+
+    /**
+     * 包含有 ScrollView ListView RecyclerView 的组件
+     */
+    public interface ScrollableContainer {
+
+        /**
+         * @return ScrollView ListView RecyclerView 或者其他的布局的实例
+         */
+        View getScrollableView();
     }
 }

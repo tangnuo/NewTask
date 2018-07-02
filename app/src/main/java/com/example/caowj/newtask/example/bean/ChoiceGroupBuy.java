@@ -10,6 +10,17 @@ import android.os.Parcelable;
  */
 
 public class ChoiceGroupBuy implements Parcelable {
+    public static final Parcelable.Creator<ChoiceGroupBuy> CREATOR = new Parcelable.Creator<ChoiceGroupBuy>() {
+        @Override
+        public ChoiceGroupBuy createFromParcel(Parcel source) {
+            return new ChoiceGroupBuy(source);
+        }
+
+        @Override
+        public ChoiceGroupBuy[] newArray(int size) {
+            return new ChoiceGroupBuy[size];
+        }
+    };
     //团购商品Id
     private int id;
     //团购商品名称
@@ -18,6 +29,16 @@ public class ChoiceGroupBuy implements Parcelable {
     private String picmain;
     //团购商品网页跳转地址
     private String url;
+
+    public ChoiceGroupBuy() {
+    }
+
+    protected ChoiceGroupBuy(Parcel in) {
+        this.id = in.readInt();
+        this.title = in.readString();
+        this.picmain = in.readString();
+        this.url = in.readString();
+    }
 
     public int getId() {
         return id;
@@ -63,26 +84,4 @@ public class ChoiceGroupBuy implements Parcelable {
         dest.writeString(this.picmain);
         dest.writeString(this.url);
     }
-
-    public ChoiceGroupBuy() {
-    }
-
-    protected ChoiceGroupBuy(Parcel in) {
-        this.id = in.readInt();
-        this.title = in.readString();
-        this.picmain = in.readString();
-        this.url = in.readString();
-    }
-
-    public static final Parcelable.Creator<ChoiceGroupBuy> CREATOR = new Parcelable.Creator<ChoiceGroupBuy>() {
-        @Override
-        public ChoiceGroupBuy createFromParcel(Parcel source) {
-            return new ChoiceGroupBuy(source);
-        }
-
-        @Override
-        public ChoiceGroupBuy[] newArray(int size) {
-            return new ChoiceGroupBuy[size];
-        }
-    };
 }

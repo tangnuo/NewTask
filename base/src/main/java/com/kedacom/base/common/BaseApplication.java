@@ -12,18 +12,6 @@ import com.kedacom.base.crash.CrashHandler;
  * @Date : 2018/6/20 14:31
  */
 public class BaseApplication extends Application {
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        //采集崩溃信息
-        CrashHandler crashHandler = CrashHandler.getInstance();
-        crashHandler.init(getApplicationContext());
-
-        //注册监听每个activity的生命周期,便于堆栈式管理
-        registerActivityLifecycleCallbacks(mCallbacks);
-    }
-
-
     private ActivityLifecycleCallbacks mCallbacks = new ActivityLifecycleCallbacks() {
 
         @Override
@@ -56,4 +44,15 @@ public class BaseApplication extends Application {
             AppManager.getAppManager().removeActivity(activity);
         }
     };
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        //采集崩溃信息
+        CrashHandler crashHandler = CrashHandler.getInstance();
+        crashHandler.init(getApplicationContext());
+
+        //注册监听每个activity的生命周期,便于堆栈式管理
+        registerActivityLifecycleCallbacks(mCallbacks);
+    }
 }

@@ -11,17 +11,18 @@ import java.util.Set;
  * Created by SilenceDut on 16/10/28.
  */
 
-public  class PreferencesHelper {
+public class PreferencesHelper {
     private static Context mContext;
     private static String mPreferencesName;
 
-    public static void init(Context context , String appName) {
+    public static void init(Context context, String appName) {
         mContext = context;
         mPreferencesName = appName;
     }
 
     /**
      * 设置对用户的preference
+     *
      * @param uid 用户uid
      */
     public static void setUid(long uid) {
@@ -30,9 +31,10 @@ public  class PreferencesHelper {
 
     /**
      * 根据应用设置缓存地址
+     *
      * @return 缓存文件夹名称
      */
-    private static String getPreferencesName(){
+    private static String getPreferencesName() {
         return mPreferencesName;
     }
 
@@ -71,7 +73,7 @@ public  class PreferencesHelper {
         return getPreferences(name).getBoolean(key, defValue);
     }
 
-    public  static int get(String name, String key, int defValue) {
+    public static int get(String name, String key, int defValue) {
         return getPreferences(name).getInt(key, defValue);
     }
 

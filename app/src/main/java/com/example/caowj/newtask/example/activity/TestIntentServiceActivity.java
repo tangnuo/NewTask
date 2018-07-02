@@ -26,28 +26,24 @@ import butterknife.OnClick;
  */
 public class TestIntentServiceActivity extends BaseButterKnifeActivity {
 
+    public final static String ACTION_TYPE_THREAD = "action.type.thread";
     /**
      * 状态文字
      */
     @BindView(R.id.tv_status)
     TextView tv_status;
-
     /**
      * 进度文字
      */
     @BindView(R.id.tv_progress)
     TextView tv_progress;
-
     /**
      * 进度条
      */
     @BindView(R.id.progressbar)
     ProgressBar progressbar;
-
     private LocalBroadcastManager mLocalBroadcastManager;
     private MyBroadcastReceiver mBroadcastReceiver;
-    public final static String ACTION_TYPE_THREAD = "action.type.thread";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,25 +74,6 @@ public class TestIntentServiceActivity extends BaseButterKnifeActivity {
         mLocalBroadcastManager.unregisterReceiver(mBroadcastReceiver);
     }
 
-    public class MyBroadcastReceiver extends BroadcastReceiver {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            switch (intent.getAction()) {
-
-                case ACTION_TYPE_THREAD:
-                    //更改UI
-                    int progress = intent.getIntExtra("progress", 0);
-                    tv_status.setText("线程状态：" + intent.getStringExtra("status"));
-                    progressbar.setProgress(progress);
-                    tv_progress.setText(progress + "%");
-                    if (progress >= 100) {
-                        tv_status.setText("线程结束");
-                    }
-                    break;
-            }
-        }
-    }
-
     @OnClick({R.id.btn_start})
     public void onClick(View view) {
         switch (view.getId()) {
@@ -115,5 +92,24 @@ public class TestIntentServiceActivity extends BaseButterKnifeActivity {
     @Override
     protected void memoryRecovery() {
 
+    }
+
+    public class MyBroadcastReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            switch (intent.getAction()) {
+
+                case ACTION_TYPE_THREAD:
+                    //更改UI
+                    int progress = intent.getIntExtra("progress", 0);
+                    tv_status.setText("线程状态：" + intent.getStringExtra("status"));
+                    progressbar.setProgress(progress);
+                    tv_progress.setText(progress + "%");
+                    if (progress >= 100) {
+                        tv_status.setText("线程结束");
+                    }
+                    break;
+            }
+        }
     }
 }

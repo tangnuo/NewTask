@@ -10,10 +10,10 @@
         android:id="@+id/tv_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inAnimation="@anim/push_up_in"
-        android:outAnimation="@anim/push_up_out"
+        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true">
+        android:inAnimation="@anim/push_up_in"
+        android:outAnimation="@anim/push_up_out">
 
     </TextSwitcher>
 

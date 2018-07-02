@@ -15,17 +15,6 @@ public class HttpClient {
 
     private OkHttpClient okHttpClient;
 
-    public static HttpClient getInstance() {
-        if (httpClient == null) {
-            synchronized (HttpClient.class) {
-                if (httpClient == null) {
-                    httpClient = new HttpClient();
-                }
-            }
-        }
-        return httpClient;
-    }
-
     private HttpClient() {
 
 //                    // 指定缓存路径,缓存大小 50Mb
@@ -53,6 +42,17 @@ public class HttpClient {
 
 
         okHttpClient = builder.build();
+    }
+
+    public static HttpClient getInstance() {
+        if (httpClient == null) {
+            synchronized (HttpClient.class) {
+                if (httpClient == null) {
+                    httpClient = new HttpClient();
+                }
+            }
+        }
+        return httpClient;
     }
 
     public static OkHttpClient getHttpClient() {

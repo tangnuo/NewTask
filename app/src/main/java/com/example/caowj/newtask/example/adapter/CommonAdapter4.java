@@ -14,8 +14,8 @@ import butterknife.BindView;
 
 /**
  * 基于BRVAH的通用Adapter
- * @deprecated
- * 使用ButterKnife自定义viewholder
+ *
+ * @deprecated 使用ButterKnife自定义viewholder
  * package: com.example.caowj.newtask.example.adapter
  * author: Administrator
  * date: 2017/9/14 15:06

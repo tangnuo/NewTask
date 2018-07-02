@@ -24,19 +24,17 @@ import com.kedacom.base.mvc.BaseButterKnifeActivity;
 public class TestFingerPrintActivity extends BaseButterKnifeActivity {
 
 
-    private TextView mResultInfo = null;
-    private Button mCancelBtn = null;
-    private Button mStartBtn = null;
-
-    private FingerprintManagerCompat fingerprintManager = null;
-    private MyAuthCallback myAuthCallback = null;
-    private CancellationSignal cancellationSignal = null;//用来在指纹识别器扫描用户指纹的时候取消当前的扫描操作,如果不取消的话，那么指纹扫描器会移植扫描直到超时（一般为30s，取决于具体的厂商实现）.
-
-    private MyHandler handler = new MyHandler(this);
     public static final int MSG_AUTH_SUCCESS = 100;
     public static final int MSG_AUTH_FAILED = 101;
     public static final int MSG_AUTH_ERROR = 102;
     public static final int MSG_AUTH_HELP = 103;
+    private TextView mResultInfo = null;
+    private Button mCancelBtn = null;
+    private Button mStartBtn = null;
+    private FingerprintManagerCompat fingerprintManager = null;
+    private MyAuthCallback myAuthCallback = null;
+    private CancellationSignal cancellationSignal = null;//用来在指纹识别器扫描用户指纹的时候取消当前的扫描操作,如果不取消的话，那么指纹扫描器会移植扫描直到超时（一般为30s，取决于具体的厂商实现）.
+    private MyHandler handler = new MyHandler(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,43 +115,6 @@ public class TestFingerPrintActivity extends BaseButterKnifeActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
-    }
-
-
-    private static class MyHandler extends BaseHandler<TestFingerPrintActivity> {
-
-
-        public MyHandler(TestFingerPrintActivity referencedObject) {
-            super(referencedObject);
-        }
-
-        @Override
-        public void handleMessage2(Message msg, int what) {
-            TestFingerPrintActivity reference = getWeakReference();
-            Log.d("caowj", "msg: " + msg.what + " ,arg1: " + msg.arg1);
-            String jsonStr = (String) msg.obj;
-            switch (msg.what) {
-                case MSG_AUTH_SUCCESS:
-                    reference.setResultInfo(R.string.fingerprint_success);
-                    reference.mCancelBtn.setEnabled(false);
-                    reference.mStartBtn.setEnabled(true);
-                    reference.cancellationSignal = null;
-                    break;
-                case MSG_AUTH_FAILED:
-                    reference.setResultInfo(R.string.fingerprint_not_recognized);
-                    reference.mCancelBtn.setEnabled(false);
-                    reference.mStartBtn.setEnabled(true);
-                    reference.cancellationSignal = null;
-                    break;
-                case MSG_AUTH_ERROR:
-                    reference.handleErrorCode(msg.arg1);
-                    break;
-                case MSG_AUTH_HELP:
-                    reference.handleHelpCode(msg.arg1);
-                    break;
-            }
-
         }
     }
 
@@ -240,6 +201,42 @@ public class TestFingerPrintActivity extends BaseButterKnifeActivity {
                 mResultInfo.setTextColor(getResources().getColor(R.color.warning_color));
             }
             mResultInfo.setText(stringId);
+        }
+    }
+
+    private static class MyHandler extends BaseHandler<TestFingerPrintActivity> {
+
+
+        public MyHandler(TestFingerPrintActivity referencedObject) {
+            super(referencedObject);
+        }
+
+        @Override
+        public void handleMessage2(Message msg, int what) {
+            TestFingerPrintActivity reference = getWeakReference();
+            Log.d("caowj", "msg: " + msg.what + " ,arg1: " + msg.arg1);
+            String jsonStr = (String) msg.obj;
+            switch (msg.what) {
+                case MSG_AUTH_SUCCESS:
+                    reference.setResultInfo(R.string.fingerprint_success);
+                    reference.mCancelBtn.setEnabled(false);
+                    reference.mStartBtn.setEnabled(true);
+                    reference.cancellationSignal = null;
+                    break;
+                case MSG_AUTH_FAILED:
+                    reference.setResultInfo(R.string.fingerprint_not_recognized);
+                    reference.mCancelBtn.setEnabled(false);
+                    reference.mStartBtn.setEnabled(true);
+                    reference.cancellationSignal = null;
+                    break;
+                case MSG_AUTH_ERROR:
+                    reference.handleErrorCode(msg.arg1);
+                    break;
+                case MSG_AUTH_HELP:
+                    reference.handleHelpCode(msg.arg1);
+                    break;
+            }
+
         }
     }
 }

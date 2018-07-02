@@ -20,7 +20,7 @@ import com.kedacom.utils.LogUtil;
 /**
  * http://blog.csdn.net/zxc123e/article/details/54692437<p/>
  * http://blog.csdn.net/chenzheng8975/article/details/53558387?locationNum=13&fps=1
- *
+ * <p>
  * 执行步骤：
  * 1、启动服务端测试类：TestMinaServer.java
  * 2、启动服务连接服务端
@@ -79,14 +79,6 @@ public class TestMinaActivity extends BaseButterKnifeActivity implements View.On
         }
     }
 
-    private class MessageBroadcastReceiver extends BroadcastReceiver {
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            message.setText(intent.getStringExtra(ConnectionManager.MESSAGE));
-        }
-    }
-
     @Override
     protected int getContentView() {
         return R.layout.activity_test_mina;
@@ -95,6 +87,14 @@ public class TestMinaActivity extends BaseButterKnifeActivity implements View.On
     @Override
     protected void memoryRecovery() {
 
+    }
+
+    private class MessageBroadcastReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            message.setText(intent.getStringExtra(ConnectionManager.MESSAGE));
+        }
     }
 
     /**************************************************/

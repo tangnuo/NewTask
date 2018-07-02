@@ -26,7 +26,13 @@ import com.kedacom.customview.R;
 public class LabelView extends LinearLayout {
 
     private final String TAG = getClass().getSimpleName();
-
+    public Direction direction;
+    int textBgWidth = 126;//文字背景图的宽度126px
+    int textBgHeight = 41;//背景图的高度值41px
+    int effectiveWidth = 100;//文字有效默认最小宽度100px
+    int effectiveHeight = 31;//文字有效默认最小高度31px
+    int pointWidth = 62;//圆形图形宽度值
+    int textHeight; //文字的高度
     //坐标点
     private ImageView mCoordinate;
     //标签内容
@@ -40,27 +46,11 @@ public class LabelView extends LinearLayout {
             R.drawable.icon_label_left,
             R.drawable.icon_label_right
     };
-
-    //方向
-    public enum Direction {
-        LEFT,
-        RIGHT
-    }
-
-    public Direction direction;
-
-    int textBgWidth = 126;//文字背景图的宽度126px
-    int textBgHeight = 41;//背景图的高度值41px
-    int effectiveWidth = 100;//文字有效默认最小宽度100px
-    int effectiveHeight = 31;//文字有效默认最小高度31px
-    int pointWidth = 62;//圆形图形宽度值
-    int textHeight; //文字的高度
-
-
     public LabelView(Context context) {
         super(context);
         initData(context);
     }
+
 
     public LabelView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -70,6 +60,18 @@ public class LabelView extends LinearLayout {
     public LabelView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initData(context);
+    }
+
+    /**
+     * sp转px
+     *
+     * @param context
+     * @param spValue
+     * @return
+     */
+    public static int sp2px(Context context, float spValue) {
+        final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
+        return (int) (spValue * fontScale + 0.5f);
     }
 
     /**
@@ -175,18 +177,6 @@ public class LabelView extends LinearLayout {
     }
 
     /**
-     * sp转px
-     *
-     * @param context
-     * @param spValue
-     * @return
-     */
-    public static int sp2px(Context context, float spValue) {
-        final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
-        return (int) (spValue * fontScale + 0.5f);
-    }
-
-    /**
      * 内存回收
      */
     public void onDestory() {
@@ -207,5 +197,11 @@ public class LabelView extends LinearLayout {
             this.removeView(mLabelContent);
             mLabelContent = null;
         }
+    }
+
+    //方向
+    public enum Direction {
+        LEFT,
+        RIGHT
     }
 }

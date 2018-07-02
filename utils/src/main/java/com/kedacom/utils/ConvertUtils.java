@@ -27,11 +27,11 @@ import java.io.UnsupportedEncodingException;
  */
 public final class ConvertUtils {
 
+    private static final char hexDigits[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+
     private ConvertUtils() {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
-
-    private static final char hexDigits[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
 
     /**
      * byteArr转hexString
@@ -319,17 +319,6 @@ public final class ConvertUtils {
     }
 
     /**
-     * outputStream转inputStream
-     *
-     * @param out 输出流
-     * @return inputStream子类
-     */
-    public ByteArrayInputStream output2InputStream(final OutputStream out) {
-        if (out == null) return null;
-        return new ByteArrayInputStream(((ByteArrayOutputStream) out).toByteArray());
-    }
-
-    /**
      * inputStream转byteArr
      *
      * @param is 输入流
@@ -502,7 +491,6 @@ public final class ConvertUtils {
         return bitmap;
     }
 
-
     /**
      * drawable转byteArr
      *
@@ -513,7 +501,6 @@ public final class ConvertUtils {
     public static byte[] drawable2Bytes(final Drawable drawable, final Bitmap.CompressFormat format) {
         return drawable == null ? null : bitmap2Bytes(drawable2Bitmap(drawable), format);
     }
-
 
     /**
      * view转Bitmap
@@ -549,5 +536,16 @@ public final class ConvertUtils {
             }
         }
         return true;
+    }
+
+    /**
+     * outputStream转inputStream
+     *
+     * @param out 输出流
+     * @return inputStream子类
+     */
+    public ByteArrayInputStream output2InputStream(final OutputStream out) {
+        if (out == null) return null;
+        return new ByteArrayInputStream(((ByteArrayOutputStream) out).toByteArray());
     }
 }

@@ -28,6 +28,7 @@ public class VideoTabLayout extends BaseListFragment3<FragVideoBinding>
         implements OnItemClickListener<Special> {
 
     private static VideoTabLayout instance = null;
+    private VideoViewModel videoViewModel;
 
     public static VideoTabLayout getInstance() {
         if (instance == null) {
@@ -35,8 +36,6 @@ public class VideoTabLayout extends BaseListFragment3<FragVideoBinding>
         }
         return instance;
     }
-
-    private VideoViewModel videoViewModel;
 
     @Override
     protected int getLayout() {

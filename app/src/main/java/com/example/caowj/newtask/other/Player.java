@@ -26,6 +26,36 @@ public class Player implements OnBufferingUpdateListener,
         OnCompletionListener, MediaPlayer.OnPreparedListener {
     public MediaPlayer mediaPlayer;
     private SeekBar skbProgress;
+    Handler handleProgress = new Handler() {
+        public void handleMessage(Message msg) {
+
+            int position = mediaPlayer.getCurrentPosition();
+            int duration = mediaPlayer.getDuration();
+
+            if (duration > 0) {
+                long pos = skbProgress.getMax() * position / duration;
+                skbProgress.setProgress((int) pos);
+            }
+
+            LogUtil.myD("position:" + position + ",,duration:" + duration);
+//            if (position)
+        }
+
+        ;
+    };
+    /*******************************************************
+     * 通过定时器和Handler来更新进度条
+     ******************************************************/
+    TimerTask mTimerTask = new TimerTask() {
+        @Override
+        public void run() {
+            if (mediaPlayer == null)
+                return;
+            if (mediaPlayer.isPlaying() && skbProgress.isPressed() == false) {
+                handleProgress.sendEmptyMessage(0);
+            }
+        }
+    };
     private boolean isPause = false;//是否暂停
     private Timer mTimer = new Timer();
 
@@ -57,40 +87,7 @@ public class Player implements OnBufferingUpdateListener,
             Log.e("mediaPlayer", "error", e);
         }
     }
-
-    /*******************************************************
-     * 通过定时器和Handler来更新进度条
-     ******************************************************/
-    TimerTask mTimerTask = new TimerTask() {
-        @Override
-        public void run() {
-            if (mediaPlayer == null)
-                return;
-            if (mediaPlayer.isPlaying() && skbProgress.isPressed() == false) {
-                handleProgress.sendEmptyMessage(0);
-            }
-        }
-    };
-
-    Handler handleProgress = new Handler() {
-        public void handleMessage(Message msg) {
-
-            int position = mediaPlayer.getCurrentPosition();
-            int duration = mediaPlayer.getDuration();
-
-            if (duration > 0) {
-                long pos = skbProgress.getMax() * position / duration;
-                skbProgress.setProgress((int) pos);
-            }
-
-            LogUtil.myD("position:" + position + ",,duration:" + duration);
-//            if (position)
-        }
-
-        ;
-    };
     //*****************************************************
-
 
     public void playUrl(String videoUrl) {
         try {

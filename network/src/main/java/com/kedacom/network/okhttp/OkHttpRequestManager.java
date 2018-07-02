@@ -25,16 +25,6 @@ public class OkHttpRequestManager implements IRequestManager {
     private OkHttpClient okHttpClient;
     private Handler handler;
 
-    public static OkHttpRequestManager getInstance() {
-        return SingletonHolder.INSTANCE;
-    }
-
-
-    private static class SingletonHolder {
-        private static final OkHttpRequestManager INSTANCE = new OkHttpRequestManager();
-    }
-
-
     public OkHttpRequestManager() {
         okHttpClient = new OkHttpClient.Builder()
                 .connectTimeout(10, TimeUnit.SECONDS)
@@ -42,6 +32,10 @@ public class OkHttpRequestManager implements IRequestManager {
                 .build();
         //在哪个线程创建该对象，则最后的请求结果将在该线程回调
         handler = new Handler();
+    }
+
+    public static OkHttpRequestManager getInstance() {
+        return SingletonHolder.INSTANCE;
     }
 
     @Override
@@ -117,5 +111,9 @@ public class OkHttpRequestManager implements IRequestManager {
                 }
             }
         });
+    }
+
+    private static class SingletonHolder {
+        private static final OkHttpRequestManager INSTANCE = new OkHttpRequestManager();
     }
 }

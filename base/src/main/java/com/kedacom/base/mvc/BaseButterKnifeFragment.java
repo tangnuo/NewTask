@@ -19,10 +19,10 @@ import butterknife.ButterKnife;
  * date: 2017/9/1 11:54
  */
 public abstract class BaseButterKnifeFragment extends Fragment {
-    public String mTag = this.getClass().getSimpleName() + "~~";
-    protected View rootView;
-    public Activity mActivity;
     private static ProgressDialog mProgressDialog;
+    public String mTag = this.getClass().getSimpleName() + "~~";
+    public Activity mActivity;
+    protected View rootView;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

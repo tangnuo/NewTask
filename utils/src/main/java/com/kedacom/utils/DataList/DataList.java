@@ -223,10 +223,11 @@ public class DataList {
 
     /**
      * 获取图片数组
+     *
      * @return
      */
-    public static String[] getImageArray(){
-         String[] imageThumbUrls = new String[]{
+    public static String[] getImageArray() {
+        String[] imageThumbUrls = new String[]{
                 "https://farm3.staticflickr.com/2891/33833709921_bec1f88a9b_k.jpg",
                 "https://farm4.staticflickr.com/3928/33939620626_44365c6e2b_k.jpg",
                 "http://img.my.csdn.net/uploads/201309/01/1378037235_3453.jpg",

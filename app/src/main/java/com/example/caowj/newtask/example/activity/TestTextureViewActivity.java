@@ -16,19 +16,18 @@ import butterknife.ButterKnife;
 
 /**
  * TextureView使用<br/>
- *
+ * <p>
  * http://blog.csdn.net/HardWorkingAnt/article/details/72784044
  */
 public class TestTextureViewActivity extends BaseButterKnifeActivity implements TextureView.SurfaceTextureListener, MediaPlayer.OnPreparedListener {
 
-    @BindView(R.id.textureView1)
-    TextureView myTexture;
     /**
      * 本地视频的路径
      */
 //    public String videoPath = Environment.getExternalStorageDirectory().getPath() + "/ht.mp4";
     public String videoPath = "http://jzvd.nathen.cn/c494b340ff704015bb6682ffde3cd302/64929c369124497593205a4190d7d128-5287d2089db37e62345123a1be272f8b.mp4";
-
+    @BindView(R.id.textureView1)
+    TextureView myTexture;
     private MediaPlayer mediaPlayer;
     private SurfaceTexture mTexture;
     private Surface surface;

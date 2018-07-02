@@ -39,6 +39,20 @@ public class AppManager {
         return fragmentStack;
     }
 
+    /**
+     * 获取指定的Activity
+     *
+     * @author kymjs
+     */
+    public static Activity getActivity(Class<?> cls) {
+        if (activityStack != null)
+            for (Activity activity : activityStack) {
+                if (activity.getClass().equals(cls)) {
+                    return activity;
+                }
+            }
+        return null;
+    }
 
     /**
      * 添加Activity到堆栈
@@ -80,7 +94,6 @@ public class AppManager {
             }
         }
     }
-
 
     /**
      * 是否有activity
@@ -142,22 +155,6 @@ public class AppManager {
         }
         activityStack.clear();
     }
-
-    /**
-     * 获取指定的Activity
-     *
-     * @author kymjs
-     */
-    public static Activity getActivity(Class<?> cls) {
-        if (activityStack != null)
-            for (Activity activity : activityStack) {
-                if (activity.getClass().equals(cls)) {
-                    return activity;
-                }
-            }
-        return null;
-    }
-
 
     /**
      * 添加Fragment到堆栈

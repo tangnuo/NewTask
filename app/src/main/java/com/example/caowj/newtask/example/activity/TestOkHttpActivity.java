@@ -48,6 +48,8 @@ import okhttp3.Response;
  */
 public class TestOkHttpActivity extends BaseButterKnifeActivity {
 
+    public static final String TYPE = "application/octet-stream";
+    private static final String POST_URL = "http://zhushou.72g.com/app/gift/gift_list/";
     @BindView(R.id.btn_test1)
     Button btnTest1;
     @BindView(R.id.btn_test2)
@@ -56,10 +58,7 @@ public class TestOkHttpActivity extends BaseButterKnifeActivity {
     ViewStub stub;
     @BindView(R.id.tv_title)
     TextView tvTitle;
-
     private OkHttpClient client;
-    private static final String POST_URL = "http://zhushou.72g.com/app/gift/gift_list/";
-    public static final String TYPE = "application/octet-stream";
     private MyHandler myHandler = new MyHandler(this);
 
     @Override
@@ -313,28 +312,6 @@ public class TestOkHttpActivity extends BaseButterKnifeActivity {
         }
     }
 
-
-    private static class MyHandler extends BaseHandler<TestOkHttpActivity> {
-
-
-        public MyHandler(TestOkHttpActivity referencedObject) {
-            super(referencedObject);
-        }
-
-        @Override
-        public void handleMessage2(Message msg, int what) {
-            TestOkHttpActivity testOkHttpActivity = getWeakReference();
-
-            String jsonStr = (String) msg.obj;
-            switch (msg.what) {
-                case 100:
-                    testOkHttpActivity.getDataFromJson(jsonStr);
-                    break;
-            }
-
-        }
-    }
-
     /**
      * 使用handler发送消息
      *
@@ -365,6 +342,27 @@ public class TestOkHttpActivity extends BaseButterKnifeActivity {
         List<GankInfo> tempList = GsonUtil.parserArrayStrToBeans(jsonElement2.toString(), GankInfo.class);
 
         LogUtil.myD(mTag + "error:" + error + ",,size:" + tempList.size());
+    }
+
+    private static class MyHandler extends BaseHandler<TestOkHttpActivity> {
+
+
+        public MyHandler(TestOkHttpActivity referencedObject) {
+            super(referencedObject);
+        }
+
+        @Override
+        public void handleMessage2(Message msg, int what) {
+            TestOkHttpActivity testOkHttpActivity = getWeakReference();
+
+            String jsonStr = (String) msg.obj;
+            switch (msg.what) {
+                case 100:
+                    testOkHttpActivity.getDataFromJson(jsonStr);
+                    break;
+            }
+
+        }
     }
 
 }

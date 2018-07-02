@@ -49,18 +49,13 @@ import java.util.Locale;
  */
 public class ImageUtil {
 
-    private static final float MAX_SIZE = 200;//接受的最大图片尺寸为200k，200k以上的图片压缩到200k一下
-
     public final static String SDCARD_MNT = "/mnt/sdcard";
     public final static String SDCARD = "/sdcard";
-
     /**
      * 请求相册
      */
     public static final int REQUEST_CODE_GETIMAGE_BYSDCARD = 0;
-
     public static final int REQUEST_CODE_GETIMAGE_BYSDCARD_info = 4;
-
     /**
      * 请求相机
      */
@@ -73,6 +68,8 @@ public class ImageUtil {
      * 从图片浏览界面发送动弹
      */
     public static final int REQUEST_CODE_GETIMAGE_IMAGEPAVER = 3;
+    private static final float MAX_SIZE = 200;//接受的最大图片尺寸为200k，200k以上的图片压缩到200k一下
+    static Bitmap bitmap = null;
 
     /**
      * 写图片文件 在Android系统中，文件保存在 /data/data/PACKAGE_NAME/files 目录下
@@ -719,8 +716,6 @@ public class ImageUtil {
 
         return uri.toString();
     }
-
-    static Bitmap bitmap = null;
 
     public static Bitmap loadPicasaImageFromGalley(final Uri uri,
                                                    final Activity context) {

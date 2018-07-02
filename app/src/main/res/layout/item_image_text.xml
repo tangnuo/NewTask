@@ -8,20 +8,20 @@
         android:id="@+id/iv_item_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scaleType="centerCrop"
-        android:layout_marginTop="3dp"
         android:layout_marginBottom="2dp"
+        android:layout_marginTop="3dp"
+        android:scaleType="centerCrop"
         android:src="@drawable/img_loading" />
 
     <TextView
         android:id="@+id/tv_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="11dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:paddingRight="11dp"
         android:lineSpacingExtra="6dp"
+        android:paddingBottom="8dp"
+        android:paddingLeft="11dp"
+        android:paddingRight="11dp"
+        android:paddingTop="8dp"
         android:text="@string/test1"
         android:textColor="@color/find_item_6e6c6c"
         android:textSize="13sp" />

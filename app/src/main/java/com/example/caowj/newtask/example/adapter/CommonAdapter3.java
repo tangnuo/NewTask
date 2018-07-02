@@ -11,8 +11,8 @@ import java.util.List;
 
 /**
  * 基于BRVAH的通用Adapter
- * @deprecated
- * package: com.example.caowj.newtask.example.adapter
+ *
+ * @deprecated package: com.example.caowj.newtask.example.adapter
  * author: Administrator
  * date: 2017/9/14 15:06
  */

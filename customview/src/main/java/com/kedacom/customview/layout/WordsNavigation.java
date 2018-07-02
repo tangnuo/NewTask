@@ -123,13 +123,13 @@ public class WordsNavigation extends View {
         }
     }
 
-    /*手指按下了哪个字母的回调接口*/
-    public interface onWordsChangeListener {
-        void wordsChange(String words);
-    }
-
     /*设置手指按下字母改变监听*/
     public void setOnWordsChangeListener(onWordsChangeListener listener) {
         this.listener = listener;
+    }
+
+    /*手指按下了哪个字母的回调接口*/
+    public interface onWordsChangeListener {
+        void wordsChange(String words);
     }
 }

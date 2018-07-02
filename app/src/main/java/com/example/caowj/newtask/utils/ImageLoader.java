@@ -47,28 +47,6 @@ public class ImageLoader {
         return mImageLoader;
     }
 
-    /**
-     * 将一张图片存储到LruCache中。
-     *
-     * @param key    LruCache的键，这里传入图片的URL地址。
-     * @param bitmap LruCache的键，这里传入从网络上下载的Bitmap对象。
-     */
-    public void addBitmapToMemoryCache(String key, Bitmap bitmap) {
-        if (getBitmapFromMemoryCache(key) == null) {
-            mMemoryCache.put(key, bitmap);
-        }
-    }
-
-    /**
-     * 从LruCache中获取一张图片，如果不存在就返回null。
-     *
-     * @param key LruCache的键，这里传入图片的URL地址。
-     * @return 对应传入键的Bitmap对象，或者null。
-     */
-    public Bitmap getBitmapFromMemoryCache(String key) {
-        return mMemoryCache.get(key);
-    }
-
     public static int calculateInSampleSize(BitmapFactory.Options options,
                                             int reqWidth) {
         // 源图片的宽度
@@ -93,5 +71,27 @@ public class ImageLoader {
         // 使用获取到的inSampleSize值再次解析图片
         options.inJustDecodeBounds = false;
         return BitmapFactory.decodeFile(pathName, options);
+    }
+
+    /**
+     * 将一张图片存储到LruCache中。
+     *
+     * @param key    LruCache的键，这里传入图片的URL地址。
+     * @param bitmap LruCache的键，这里传入从网络上下载的Bitmap对象。
+     */
+    public void addBitmapToMemoryCache(String key, Bitmap bitmap) {
+        if (getBitmapFromMemoryCache(key) == null) {
+            mMemoryCache.put(key, bitmap);
+        }
+    }
+
+    /**
+     * 从LruCache中获取一张图片，如果不存在就返回null。
+     *
+     * @param key LruCache的键，这里传入图片的URL地址。
+     * @return 对应传入键的Bitmap对象，或者null。
+     */
+    public Bitmap getBitmapFromMemoryCache(String key) {
+        return mMemoryCache.get(key);
     }
 }

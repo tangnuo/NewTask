@@ -12,14 +12,11 @@ import com.chad.library.adapter.base.entity.MultiItemEntity;
  */
 public class Person2 implements MultiItemEntity {
 
-    private String name;
-
-    private String pinyin;
-
-    private int itemType;
-
     public static final int TEXT = 1;
     public static final int IMG = 2;
+    private String name;
+    private String pinyin;
+    private int itemType;
 
     public Person2(int itemType, String name) {
         this.name = name;

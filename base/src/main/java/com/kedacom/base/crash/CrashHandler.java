@@ -34,11 +34,10 @@ import java.util.Map;
 public class CrashHandler implements UncaughtExceptionHandler {
 
     public static final String TAG = "CrashHandler";
-
-    // 系统默认的UncaughtException处理类
-    private UncaughtExceptionHandler mDefaultHandler;
     // CrashHandler实例
     private static CrashHandler INSTANCE = null;
+    // 系统默认的UncaughtException处理类
+    private UncaughtExceptionHandler mDefaultHandler;
     // 程序的Context对象
     private Context mContext;
     // 用来存储设备信息和异常信息
@@ -62,6 +61,19 @@ public class CrashHandler implements UncaughtExceptionHandler {
         }
 
         return INSTANCE;
+    }
+
+    public static void exitProgram(Context context) {
+        if (context != null && context instanceof Activity) {
+            Activity act = (Activity) context;
+
+            act.finish();
+        }
+        android.app.ActivityManager activityManager = (android.app.ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+
+        activityManager.restartPackage(context.getPackageName());
+
+        System.exit(0);
     }
 
     /**
@@ -111,19 +123,6 @@ public class CrashHandler implements UncaughtExceptionHandler {
         } finally {
             System.exit(0);
         }
-    }
-
-    public static void exitProgram(Context context) {
-        if (context != null && context instanceof Activity) {
-            Activity act = (Activity) context;
-
-            act.finish();
-        }
-        android.app.ActivityManager activityManager = (android.app.ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
-
-        activityManager.restartPackage(context.getPackageName());
-
-        System.exit(0);
     }
 
     /**

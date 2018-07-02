@@ -21,5 +21,5 @@
         app:itemBackground="@color/colorPrimary"
         app:itemIconTint="#FFFFFF"
         app:itemTextColor="#FFFFFF"
-        app:menu="@menu/menu_bottom_nav"/>
+        app:menu="@menu/menu_bottom_nav" />
 </RelativeLayout>

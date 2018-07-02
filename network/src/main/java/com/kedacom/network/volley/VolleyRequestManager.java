@@ -13,10 +13,6 @@ public class VolleyRequestManager implements IRequestManager {
         return SingletonHolder.sInstance;
     }
 
-    private static class SingletonHolder {
-        private static final VolleyRequestManager sInstance = new VolleyRequestManager();
-    }
-
     @Override
     public void get(String url, final IRequestCallback requestCallback) {
 //        StringRequest request = new StringRequest(Request.Method.GET, url,
@@ -80,5 +76,9 @@ public class VolleyRequestManager implements IRequestManager {
 //                    }
 //                });
 //        HttpRequestExampleApp.mQueue.add(request);
+    }
+
+    private static class SingletonHolder {
+        private static final VolleyRequestManager sInstance = new VolleyRequestManager();
     }
 }

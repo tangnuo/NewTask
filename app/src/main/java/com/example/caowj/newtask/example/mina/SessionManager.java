@@ -14,6 +14,9 @@ public class SessionManager {
 
     private IoSession mSession;
 
+    private SessionManager() {
+    }
+
     public static SessionManager getInstance() {
         if (mInstance == null) {
             synchronized (SessionManager.class) {
@@ -23,9 +26,6 @@ public class SessionManager {
             }
         }
         return mInstance;
-    }
-
-    private SessionManager() {
     }
 
     public void setSeesion(IoSession session) {

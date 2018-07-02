@@ -21,20 +21,20 @@
         android:id="@+id/buttonPanel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal">
 
         <Button
             android:id="@+id/cancel_button"
-            android:text="@string/cancel_btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="@string/cancel_btn" />
 
         <Button
             android:id="@+id/start_button"
-            android:text="@string/start_btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="@string/start_btn" />
     </LinearLayout>
 
 </RelativeLayout>

@@ -40,6 +40,16 @@ public class TestAudioActivity extends BaseButterKnifeActivity {
         player = new Player(skbProgress);
     }
 
+    @Override
+    protected int getContentView() {
+        return R.layout.activity_test_audio;
+    }
+
+    @Override
+    protected void memoryRecovery() {
+
+    }
+
     class ClickEvent implements View.OnClickListener {
 
         @Override
@@ -80,15 +90,5 @@ public class TestAudioActivity extends BaseButterKnifeActivity {
             // seekTo()的参数是相对与影片时间的数字，而不是与seekBar.getMax()相对的数字
             player.mediaPlayer.seekTo(progress);
         }
-    }
-
-    @Override
-    protected int getContentView() {
-        return R.layout.activity_test_audio;
-    }
-
-    @Override
-    protected void memoryRecovery() {
-
     }
 }

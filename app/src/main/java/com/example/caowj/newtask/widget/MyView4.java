@@ -22,11 +22,11 @@ import com.kedacom.utils.LogUtil;
  * date: 2017/9/6 10:31
  */
 public class MyView4 extends View {
-    //定义画笔和初始位置
-    Paint p = new Paint();
     public float currentX = 50;
     public float currentY = 50;
     public int textColor;
+    //定义画笔和初始位置
+    Paint p = new Paint();
     int textSize;
     String aString = "";
 
@@ -112,7 +112,7 @@ public class MyView4 extends View {
             //在使用完typedArray之后，要调用recycle方法回收资源
             typedArray.recycle();
         }
-            
+
 
     }
 

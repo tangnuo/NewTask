@@ -40,10 +40,10 @@ import butterknife.Unbinder;
  * 2、使用Retrofit2请求服务端数据；
  * 3、官方刷新控件；
  * </p>
- *
  * <p>
- *     缺点：RxJava2的操作符没有使用。<br/>
- *     参考：https://github.com/nanchen2251/RxJava2Examples
+ * <p>
+ * 缺点：RxJava2的操作符没有使用。<br/>
+ * 参考：https://github.com/nanchen2251/RxJava2Examples
  * </p>
  * http://admin.qipaiapp.com/QiPaiAPI/PaipinInfo.asmx?op=GetListYaWu 筛选条件
  */
@@ -58,8 +58,7 @@ public class CollectionFragment extends BaseButterKnifeFragment implements TabLa
     ProgressBar loadingProgress;
     @BindView(R.id.swipe_refresh_layout)
     SwipeRefreshLayout swipeRefreshLayout;
-
-
+    BasePresenter.TabNamePresenter tabNamePresenter;
     //分类下标的Id 默认选择全部0
     private int typeId;
     //选中下标位置
@@ -69,8 +68,6 @@ public class CollectionFragment extends BaseButterKnifeFragment implements TabLa
     private List<NavigationBean> navigationInfoList = new ArrayList<>();
     //获取标题内容
     private List<String> titles = new ArrayList<>();
-    BasePresenter.TabNamePresenter tabNamePresenter;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

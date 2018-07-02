@@ -11,7 +11,7 @@ import java.util.List;
  * className: AdBean
  *
  * @author caowj
- *         date：2015年10月12日 下午2:18:58
+ * date：2015年10月12日 下午2:18:58
  */
 public class ADInfoList extends CommonBean {
 

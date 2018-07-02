@@ -20,10 +20,8 @@ import java.util.List;
 
 public class MultiImageView extends LinearLayout {
 
-    private final String TAG = "MultiImageView";
-
     public static int MAX_WIDTH = 0;//控件最大宽度
-
+    private final String TAG = "MultiImageView";
     // 照片的Url列表
     private List<String> imagesList;
 
@@ -45,10 +43,6 @@ public class MultiImageView extends LinearLayout {
 
     private Context context;
 
-    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
-        mOnItemClickListener = onItemClickListener;
-    }
-
     public MultiImageView(Context context) {
         super(context);
         this.context = context;
@@ -57,6 +51,10 @@ public class MultiImageView extends LinearLayout {
     public MultiImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        mOnItemClickListener = onItemClickListener;
     }
 
     public void setList(List<String> lists, OnLoadImageListerner onLoadImageListerner) throws IllegalArgumentException {

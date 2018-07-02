@@ -17,6 +17,12 @@ import java.util.Locale;
  */
 
 public class TimeUtil {
+    public static final long DAY_OF_YEAR = 365;
+    public static final long DAY_OF_MONTH = 30;
+    public static final long HOUR_OF_DAY = 24;
+    public static final long MIN_OF_HOUR = 60;
+    public static final long SEC_OF_MIN = 60;
+    public static final long MILLIS_OF_SEC = 1000;
     private static long limitDateTime = 10000000000l;
     private static long milliseFormat = 1l;//毫秒转换单位；如果有毫秒，此处是1000.
     private static final long ONE_MINUTE = 60L * milliseFormat;
@@ -30,17 +36,10 @@ public class TimeUtil {
     private static SimpleDateFormat HOUR_MINUTE = new SimpleDateFormat("HH:mm");
     private static SimpleDateFormat HOUR = new SimpleDateFormat("HH");
     private static SimpleDateFormat WEEK = new SimpleDateFormat("EEEE");
-
     private static String AM_TIP = "";
     private static String PM_TIP = "";
     private static String YESTERDAY = "昨天";
     private static String BEFORE_YESTERDAY = "前天";
-    public static final long DAY_OF_YEAR = 365;
-    public static final long DAY_OF_MONTH = 30;
-    public static final long HOUR_OF_DAY = 24;
-    public static final long MIN_OF_HOUR = 60;
-    public static final long SEC_OF_MIN = 60;
-    public static final long MILLIS_OF_SEC = 1000;
 
     /**
      * 新时间戳显示

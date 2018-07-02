@@ -21,6 +21,7 @@ import com.kedacom.utils.LogUtil;
  */
 
 public class CustomLayoutManager extends RecyclerView.LayoutManager {
+    public int totalHeight = 0;
     /**
      * 用于保存item的位置信息
      */
@@ -29,8 +30,6 @@ public class CustomLayoutManager extends RecyclerView.LayoutManager {
      * 用于保存item是否处于可见状态的信息
      */
     private SparseBooleanArray itemStates = new SparseBooleanArray();
-
-    public int totalHeight = 0;
     private int verticalScrollOffset;
 
     @Override
@@ -46,7 +45,7 @@ public class CustomLayoutManager extends RecyclerView.LayoutManager {
         }
         super.onLayoutChildren(recycler, state);
         detachAndScrapAttachedViews(recycler);
-    /* 这个方法主要用于计算并保存每个ItemView的位置 */
+        /* 这个方法主要用于计算并保存每个ItemView的位置 */
         calculateChildrenSite(recycler);
         recycleAndFillView(recycler, state);
     }

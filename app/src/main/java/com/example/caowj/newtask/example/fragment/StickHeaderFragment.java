@@ -24,7 +24,7 @@ import java.util.List;
 /**
  * 通过ExpandableLayout控制头部折叠，实现标题栏悬浮。
  * <p>
- *
+ * <p>
  * 缺点：布局过于复杂，使用了2个筛选标题（一个隐藏，一个显示）
  * Created by sunger on 2017/10/15.
  */
@@ -47,14 +47,13 @@ public class StickHeaderFragment extends Fragment {
     private CommonAdapter2 commonAdapter;
     private LinearLayoutManager linearLayoutManager;
     private int top = -1;
-
+    private int mScrollY = 0;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_stickheader, container, false);
     }
-
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -124,7 +123,6 @@ public class StickHeaderFragment extends Fragment {
 
     }
 
-
     /**
      * 利用OnGlobalLayoutListener来获得一个视图的真实高度。
      *
@@ -150,6 +148,7 @@ public class StickHeaderFragment extends Fragment {
 
     /**
      * 点击时，滚动并显示过滤条件
+     *
      * @param view
      */
     private void addHeaderFilterClickListener(final View view) {
@@ -161,7 +160,6 @@ public class StickHeaderFragment extends Fragment {
             }
         });
     }
-
 
     /**
      * 显示过滤条件
@@ -177,9 +175,6 @@ public class StickHeaderFragment extends Fragment {
 
 
     }
-
-    private int mScrollY = 0;
-
 
     private void addScrollListener() {
 

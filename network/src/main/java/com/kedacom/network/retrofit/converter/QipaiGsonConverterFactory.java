@@ -18,19 +18,19 @@ import retrofit2.Retrofit;
  * date: 2017/10/16 11:45
  */
 public class QipaiGsonConverterFactory<T> extends Converter.Factory {
+    private final Gson gson;
+
+    private QipaiGsonConverterFactory(Gson gson) {
+        if (gson == null) throw new NullPointerException("gson == null");
+        this.gson = gson;
+    }
+
     public static QipaiGsonConverterFactory create() {
         return create(new Gson());
     }
 
     public static QipaiGsonConverterFactory create(Gson gson) {
         return new QipaiGsonConverterFactory(gson);
-    }
-
-    private final Gson gson;
-
-    private QipaiGsonConverterFactory(Gson gson) {
-        if (gson == null) throw new NullPointerException("gson == null");
-        this.gson = gson;
     }
 
     @Override

@@ -11,7 +11,7 @@ import java.lang.reflect.Field;
  * className: DensityUtil
  *
  * @author caowj
- *         date：2015年9月17日 下午6:33:14
+ * date：2015年9月17日 下午6:33:14
  */
 public class DensityUtil {
 

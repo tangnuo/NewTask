@@ -16,9 +16,12 @@ import com.kedacom.base.common.BaseApplication;
  */
 public class BaseApp extends BaseApplication {
 
+    private static Context context;
     AppComponent mAppComponent;
 
-    private static Context context;
+    public static Context getContext() {
+        return context;
+    }
 
     @Override
     public void onCreate() {
@@ -26,10 +29,6 @@ public class BaseApp extends BaseApplication {
         context = getApplicationContext();
         mAppComponent = DaggerAppComponent.builder().appModule(new AppModule(this)).build();
 
-    }
-
-    public static Context getContext() {
-        return context;
     }
 
     public AppComponent getAppComponent() {

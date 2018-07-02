@@ -55,6 +55,39 @@ public class NotificationTextView extends TextSwitcher implements ViewSwitcher.V
     private Handler handler;
 
     private OnItemClickListener onItemClickListener;//跳转到通知详情监听
+    private Runnable runnable = new Runnable() {
+
+        @Override
+        public void run() {
+            try {
+                //获取滚动通知信息
+                ScrollNotification scrollNotification = scrollDataList.get(index);
+                //设置滚动通知信息
+                setText(scrollNotification.getTitle());
+                //当前下标位置
+                position = index;
+                //当前通知ID
+                currentNotificationID = scrollNotification.getId();
+                // handler自带方法实现定时器
+                if (size > 1) {
+                    if (isScrollingUp) {
+                        next();
+                    } else {
+                        previous();
+                    }
+
+                    index++;
+                    if (index >= size || index < 0) {
+                        index = 0;
+                    }
+                    handler.postDelayed(this, 3000);
+                }
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+    };
 
     public NotificationTextView(Context context) {
         this(context, null);
@@ -97,7 +130,6 @@ public class NotificationTextView extends TextSwitcher implements ViewSwitcher.V
         rotation.setInterpolator(new AccelerateInterpolator());
         return rotation;
     }
-
 
     //这里返回的TextView，就是我们看到的View
     @Override
@@ -146,14 +178,6 @@ public class NotificationTextView extends TextSwitcher implements ViewSwitcher.V
     }
 
     /**
-     * 监听跳转详情
-     */
-    public interface OnItemClickListener {
-        //当前显示位置，当前通知ID
-        void onItemClick(int position, int notificationID);
-    }
-
-    /**
      * 内存回收
      */
     public void onDestroy() {
@@ -173,41 +197,6 @@ public class NotificationTextView extends TextSwitcher implements ViewSwitcher.V
             mContext = null;
         }
     }
-
-
-    private Runnable runnable = new Runnable() {
-
-        @Override
-        public void run() {
-            try {
-                //获取滚动通知信息
-                ScrollNotification scrollNotification = scrollDataList.get(index);
-                //设置滚动通知信息
-                setText(scrollNotification.getTitle());
-                //当前下标位置
-                position = index;
-                //当前通知ID
-                currentNotificationID = scrollNotification.getId();
-                // handler自带方法实现定时器
-                if (size > 1) {
-                    if (isScrollingUp) {
-                        next();
-                    } else {
-                        previous();
-                    }
-
-                    index++;
-                    if (index >= size || index < 0) {
-                        index = 0;
-                    }
-                    handler.postDelayed(this, 3000);
-                }
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        }
-    };
 
     //定义动作，向下滚动翻页
     public void previous() {
@@ -229,13 +218,21 @@ public class NotificationTextView extends TextSwitcher implements ViewSwitcher.V
         }
     }
 
+    /**
+     * 监听跳转详情
+     */
+    public interface OnItemClickListener {
+        //当前显示位置，当前通知ID
+        void onItemClick(int position, int notificationID);
+    }
+
     private class Rotate3dAnimation extends Animation {
         private final float mFromDegrees;
         private final float mToDegrees;
-        private float mCenterX;
-        private float mCenterY;
         private final boolean mTurnIn;
         private final boolean mTurnUp;
+        private float mCenterX;
+        private float mCenterY;
         private Camera mCamera;
 
         public Rotate3dAnimation(float fromDegrees, float toDegrees, boolean turnIn, boolean turnUp) {

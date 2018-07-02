@@ -87,51 +87,6 @@ public class ZoomImageView extends android.support.v7.widget.AppCompatImageView 
     }
 
     /**
-     * 用线程来实现图片缓慢变大和缩小
-     */
-    public class AutoScaleRunnable implements Runnable {
-        private float clickX;
-        private float clickY;
-        private float targetScale;
-        private float scaleTo;
-        private float scaleBig = 1.07f;
-        private float scaleSmall = 0.93f;
-
-        /**
-         * 传入目标缩放值，根据目标值与当前值，判断应该放大还是缩小
-         *
-         * @param targetScale
-         */
-        public AutoScaleRunnable(float clickX, float clickY, float targetScale) {
-            this.clickX = clickX;
-            this.clickY = clickY;
-            this.targetScale = targetScale;
-            if (getScale() < targetScale) {
-                scaleTo = scaleBig;
-            }
-            if (getScale() > targetScale) {
-                scaleTo = scaleSmall;
-            }
-        }
-
-        @Override
-        public void run() {
-            mScaleMatrix.postScale(scaleTo, scaleTo, clickX, clickY);
-            setImageMatrix(mScaleMatrix);
-            checkBorderWhenScale();
-
-            float currentScale = getScale();
-            if ((currentScale < targetScale && scaleTo > 1.0f) || (currentScale > targetScale && scaleTo < 1.0f)) {
-                postDelayed(this, 16);
-            } else {
-                mScaleMatrix.postScale(targetScale / currentScale, targetScale / currentScale, clickX, clickY);
-                setImageMatrix(mScaleMatrix);
-                checkBorderWhenScale();
-            }
-        }
-    }
-
-    /**
      * 注册 GlobalLayoutListener监听事件
      */
     @Override
@@ -309,7 +264,6 @@ public class ZoomImageView extends android.support.v7.widget.AppCompatImageView 
         setImageMatrix(mScaleMatrix);
     }
 
-
     @Override
     public boolean onScaleBegin(ScaleGestureDetector detector) {
         return true;//why
@@ -443,5 +397,50 @@ public class ZoomImageView extends android.support.v7.widget.AppCompatImageView 
     private boolean isMoveAction(float dx, float dy) {
 
         return Math.sqrt(dx * dx + dy * dy) > onTouchSlop;
+    }
+
+    /**
+     * 用线程来实现图片缓慢变大和缩小
+     */
+    public class AutoScaleRunnable implements Runnable {
+        private float clickX;
+        private float clickY;
+        private float targetScale;
+        private float scaleTo;
+        private float scaleBig = 1.07f;
+        private float scaleSmall = 0.93f;
+
+        /**
+         * 传入目标缩放值，根据目标值与当前值，判断应该放大还是缩小
+         *
+         * @param targetScale
+         */
+        public AutoScaleRunnable(float clickX, float clickY, float targetScale) {
+            this.clickX = clickX;
+            this.clickY = clickY;
+            this.targetScale = targetScale;
+            if (getScale() < targetScale) {
+                scaleTo = scaleBig;
+            }
+            if (getScale() > targetScale) {
+                scaleTo = scaleSmall;
+            }
+        }
+
+        @Override
+        public void run() {
+            mScaleMatrix.postScale(scaleTo, scaleTo, clickX, clickY);
+            setImageMatrix(mScaleMatrix);
+            checkBorderWhenScale();
+
+            float currentScale = getScale();
+            if ((currentScale < targetScale && scaleTo > 1.0f) || (currentScale > targetScale && scaleTo < 1.0f)) {
+                postDelayed(this, 16);
+            } else {
+                mScaleMatrix.postScale(targetScale / currentScale, targetScale / currentScale, clickX, clickY);
+                setImageMatrix(mScaleMatrix);
+                checkBorderWhenScale();
+            }
+        }
     }
 }

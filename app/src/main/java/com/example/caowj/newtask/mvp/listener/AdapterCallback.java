@@ -6,7 +6,7 @@ package com.example.caowj.newtask.mvp.listener;
  * className: AdapterCallback
  *
  * @author caowj
- *         date：2015年9月25日 下午2:47:45
+ * date：2015年9月25日 下午2:47:45
  */
 public interface AdapterCallback {
     /**

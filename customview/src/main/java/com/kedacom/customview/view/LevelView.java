@@ -19,11 +19,11 @@ import java.util.List;
 
 /**
  * 质量指数进度条（不同的指数，不同的颜色，不同的进度）<br/>
- *
- * https://github.com/SilenceDut/KnowWeather
- *
  * <p>
- *     使用范例：
+ * https://github.com/SilenceDut/KnowWeather
+ * <p>
+ * <p>
+ * 使用范例：
  * levelView.setCurrentValue(value);
  * valueText.setText(String.valueOf(value));
  * valueText.setTextColor(levelView.getSectionColor());
@@ -178,16 +178,6 @@ public class LevelView extends View {
 
     }
 
-    public static class LevelColorPair {
-        int levelNumber;
-        int color;
-
-        public LevelColorPair(int levelNumber, int color) {
-            this.levelNumber = levelNumber;
-            this.color = color;
-        }
-    }
-
     /****************Utils******************/
 
     int dipToPx(Context context, float dpValue) {
@@ -205,5 +195,15 @@ public class LevelView extends View {
 
     boolean isNull(Object o) {
         return o == null;
+    }
+
+    public static class LevelColorPair {
+        int levelNumber;
+        int color;
+
+        public LevelColorPair(int levelNumber, int color) {
+            this.levelNumber = levelNumber;
+            this.color = color;
+        }
     }
 }

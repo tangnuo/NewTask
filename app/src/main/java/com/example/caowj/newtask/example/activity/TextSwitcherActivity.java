@@ -23,11 +23,10 @@ import com.kedacom.base.mvc.BaseButterKnifeActivity;
  */
 public class TextSwitcherActivity extends BaseButterKnifeActivity {
 
+    private static final int NEWS_MESSAGE_TEXTVIEW = 100;//通知公告信息
     private TextSwitcher textSwitcher;
     private String[] news = {"双11回馈活动产品利率增长0.005%", "国家大数据发展纲要，我爸是李刚", "郑重公告", "某某网站会员须知", "网站维护公告"};
     private int index = 0;//textview上下滚动下标
-    private static final int NEWS_MESSAGE_TEXTVIEW = 100;//通知公告信息
-
     Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
