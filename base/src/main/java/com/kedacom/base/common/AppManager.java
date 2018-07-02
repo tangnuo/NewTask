@@ -2,6 +2,7 @@ package com.kedacom.base.common;
 
 import android.app.Activity;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 
 import java.util.Stack;
 
@@ -46,6 +47,11 @@ public class AppManager {
         if (activityStack == null) {
             activityStack = new Stack<Activity>();
         }
+//        //去重操作
+//        Activity oldActivity = getActivity(activity.getClass());
+//        if (oldActivity != null) {
+//            activityStack.remove(oldActivity);
+//        }
         activityStack.add(activity);
     }
 
@@ -54,7 +60,24 @@ public class AppManager {
      */
     public void removeActivity(Activity activity) {
         if (activity != null) {
+            activity.finish();
             activityStack.remove(activity);
+        }
+    }
+
+    /**
+     * 退出栈中所有Activity
+     */
+    public void removeAllActivity() {
+        while (true) {
+            Activity activity = currentActivity();
+            if (activity != null)
+                Log.d("ActivityManager", "Activity :" + activity.getClass().getName());
+
+            removeActivity(activity);
+            if (activityStack == null || activityStack.isEmpty()) {
+                break;
+            }
         }
     }
 

@@ -1,9 +1,12 @@
 package com.kedacom.utils;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.telephony.TelephonyManager;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -210,8 +213,8 @@ public class TimeUtil {
             // 输出结果
             /*
              * System.out.println("时间相差：" + day + "天" + (hour - day * 24) + "小时"
-			 * + (min - day * 24 * 60) + "分钟" + sec + "秒。");
-			 */
+             * + (min - day * 24 * 60) + "分钟" + sec + "秒。");
+             */
             result = hour + "," + min + "," + sec;
         }
 
@@ -243,8 +246,8 @@ public class TimeUtil {
         // 输出结果
         /*
          * System.out.println("时间相差：" + day + "天" + (hour - day * 24) + "小时" +
-		 * (min - day * 24 * 60) + "分钟" + sec + "秒。");
-		 */
+         * (min - day * 24 * 60) + "分钟" + sec + "秒。");
+         */
         result = day + "," + hour + "," + min + "," + sec;
 
         return result;
@@ -329,8 +332,8 @@ public class TimeUtil {
         // 输出结果
         /*
          * System.out.println("时间相差：" + day + "天" + (hour - day * 24) + "小时" +
-		 * (min - day * 24 * 60) + "分钟" + sec + "秒。");
-		 */
+         * (min - day * 24 * 60) + "分钟" + sec + "秒。");
+         */
 //        result = day + splitFlag + hour + splitFlag + min + splitFlag + sec;
         result = day + splitFlag + formatChar(hour) + splitFlag + formatChar(min) + splitFlag + formatChar(sec);//TODO 2.5.1时间显示需要2位数显示
 
@@ -360,8 +363,8 @@ public class TimeUtil {
         // 输出结果
         /*
          * System.out.println("时间相差：" + day + "天" + (hour - day * 24) + "小时" +
-		 * (min - day * 24 * 60) + "分钟" + sec + "秒。");
-		 */
+         * (min - day * 24 * 60) + "分钟" + sec + "秒。");
+         */
 //        result = day + splitFlag + hour + splitFlag + min + splitFlag + sec;
         result = formatChar(hour) + splitFlag + formatChar(min) + splitFlag + formatChar(sec);//TODO 2.5.1时间显示需要2位数显示
 
@@ -534,4 +537,28 @@ public class TimeUtil {
             return true;
         }
     }
+
+    public static final String getYesterdayString() {
+        Calendar day = Calendar.getInstance();
+        day.setTime(new Date());
+        day.add(Calendar.DATE, -1);
+        Date time = day.getTime();
+
+        return formatDate(time, "yyyy-MM-dd");
+    }
+
+    /**
+     * 格式化指定日期
+     *
+     * @return
+     */
+    public static String formatDate(Date time, String format) {
+        if (null == time) {
+            return "";
+        }
+
+        SimpleDateFormat sdf = new SimpleDateFormat(format);
+        return sdf.format(time);
+    }
+
 }

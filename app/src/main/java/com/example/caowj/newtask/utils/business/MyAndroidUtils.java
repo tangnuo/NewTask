@@ -176,41 +176,6 @@ public class MyAndroidUtils {
 
 
     /**
-     * 获取已安装apk的版本号
-     *
-     * @param context
-     * @return
-     */
-    public static int getVersionCode(Context context) {
-        if (context == null) {
-            return 0;
-        }
-        try {
-            PackageInfo pi = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
-            return pi.versionCode;
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-            return 0;
-        }
-    }
-
-    /**
-     * 获取已安装apk的版本名称
-     *
-     * @param context
-     * @return
-     */
-    public static String getVersionName(Context context) {
-        try {
-            PackageInfo pi = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
-            return pi.versionName;
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    /**
      * 动态设置图片ListView的高度<br/>
      * 要求DetailCommentAdapter使用LinearLayout布局，否则获取不到listItem
      * 但是这个方法有个两个细节需要注意：

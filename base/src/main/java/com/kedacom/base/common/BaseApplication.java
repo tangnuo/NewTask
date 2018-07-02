@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
 
+import com.kedacom.base.crash.CrashHandler;
+
 /**
  * @Dec ：
  * @Author : Caowj
@@ -13,6 +15,10 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        //采集崩溃信息
+        CrashHandler crashHandler = CrashHandler.getInstance();
+        crashHandler.init(getApplicationContext());
+
         //注册监听每个activity的生命周期,便于堆栈式管理
         registerActivityLifecycleCallbacks(mCallbacks);
     }

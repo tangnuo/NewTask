@@ -27,4 +27,5 @@ dependencies {
     implementation "com.android.support:recyclerview-v7:$ext.supportLibraryVersion"
 
     api 'com.jakewharton:butterknife:8.8.1'
+    implementation project(path: ':utils')
 }
