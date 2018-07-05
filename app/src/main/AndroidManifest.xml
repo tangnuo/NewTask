@@ -46,10 +46,10 @@
         </activity>
 
         <activity-alias
-            android:name=".SplashActivity2"
+            android:name=".SplashActivity3"
             android:enabled="false"
-            android:icon="@drawable/home"
-            android:label="工程2"
+            android:icon="@drawable/location"
+            android:label="工程3"
             android:targetActivity=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -58,10 +58,10 @@
             </intent-filter>
         </activity-alias>
         <activity-alias
-            android:name=".SplashActivity3"
+            android:name=".SplashActivity2"
             android:enabled="false"
-            android:icon="@drawable/location"
-            android:label="工程3"
+            android:icon="@drawable/home"
+            android:label="工程2"
             android:targetActivity=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -168,7 +168,11 @@
         <activity android:name=".example.activity.TestFingerPrintActivity" />
         <activity android:name=".example.activity.TestPremissionActivity" />
         <activity android:name=".designPattern.TestDesignPatternActivity" />
-        <activity android:name=".example.activity.TestSideLetterActivity"></activity>
+        <activity android:name=".example.activity.TestSideLetterActivity" />
+        <activity
+            android:name=".example.activity.ConstraintLayoutTestActivity"
+            android:label="@string/title_activity_constraint_layout_test"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

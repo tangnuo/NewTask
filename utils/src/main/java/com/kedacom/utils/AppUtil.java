@@ -67,7 +67,7 @@ public class AppUtil {
         String projectName = WORK_SPACE;
 
         if (context != null) {
-            projectName = context.getString(AppUtil.getResourcesIdentifier(context, "R.string.projectname"));
+            projectName = context.getString(AppUtil.getResourcesIdentifier(context, "R.string.app_name"));
         }
         return projectName;
     }

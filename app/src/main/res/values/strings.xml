@@ -81,4 +81,5 @@
     <!--FingerPrint end-->
     <string name="loaded_desc">没有更多了</string>
     <string name="loading_desc">正在加载</string>
+    <string name="title_activity_constraint_layout_test">ConstraintLayoutTestActivity</string>
 </resources>
