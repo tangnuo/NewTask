@@ -45,12 +45,13 @@ public class AppManager {
      * @author kymjs
      */
     public static Activity getActivity(Class<?> cls) {
-        if (activityStack != null)
+        if (activityStack != null) {
             for (Activity activity : activityStack) {
                 if (activity.getClass().equals(cls)) {
                     return activity;
                 }
             }
+        }
         return null;
     }
 
@@ -85,8 +86,9 @@ public class AppManager {
     public void removeAllActivity() {
         while (true) {
             Activity activity = currentActivity();
-            if (activity != null)
+            if (activity != null) {
                 Log.d("ActivityManager", "Activity :" + activity.getClass().getName());
+            }
 
             removeActivity(activity);
             if (activityStack == null || activityStack.isEmpty()) {

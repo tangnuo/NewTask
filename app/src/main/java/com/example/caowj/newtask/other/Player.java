@@ -27,6 +27,7 @@ public class Player implements OnBufferingUpdateListener,
     public MediaPlayer mediaPlayer;
     private SeekBar skbProgress;
     Handler handleProgress = new Handler() {
+        @Override
         public void handleMessage(Message msg) {
 
             int position = mediaPlayer.getCurrentPosition();
@@ -49,8 +50,9 @@ public class Player implements OnBufferingUpdateListener,
     TimerTask mTimerTask = new TimerTask() {
         @Override
         public void run() {
-            if (mediaPlayer == null)
+            if (mediaPlayer == null) {
                 return;
+            }
             if (mediaPlayer.isPlaying() && skbProgress.isPressed() == false) {
                 handleProgress.sendEmptyMessage(0);
             }

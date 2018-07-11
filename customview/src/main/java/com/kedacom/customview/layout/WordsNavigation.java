@@ -93,8 +93,9 @@ public class WordsNavigation extends View {
                 float y = event.getY();
                 //关键点===获得我们按下的是那个索引(字母)
                 int index = (int) (y / itemHeight);
-                if (index != touchIndex)
+                if (index != touchIndex) {
                     touchIndex = index;
+                }
                 //防止数组越界
                 if (listener != null && 0 <= touchIndex && touchIndex <= words.length - 1) {
                     //回调按下的字母

@@ -395,10 +395,11 @@ public class StringTool {
     static public String getFileName(String value) {
         int slashpos = value.lastIndexOf("/");
         int lastpos = value.length() - 1;
-        if (slashpos < 0)
+        if (slashpos < 0) {
             slashpos = 0;
-        else
+        } else {
             slashpos += 1;
+        }
 
         String name = value.substring(slashpos, lastpos + 1);
 
@@ -415,10 +416,11 @@ public class StringTool {
          * 总结起来就是第一位必定为1，第二位必定为3或5或8，其他位置的可以为0-9
          */
         String telRegex = "[1][34578]\\d{9}";// "[1]"代表第1位为数字1，"[358]"代表第二位可以为3、5、8中的一个，"\\d{9}"代表后面是可以是0～9的数字，有9位。
-        if (TextUtils.isEmpty(mobiles))
+        if (TextUtils.isEmpty(mobiles)) {
             return false;
-        else
+        } else {
             return mobiles.matches(telRegex);
+        }
     }
 
     /**
@@ -431,10 +433,11 @@ public class StringTool {
          * 总结起来就是第一位必定为1，第二位必定为3或5或8，其他位置的可以为0-9
          */
         String telRegex = "\\d{6}";// "[1]"代表第1位为数字1，"[358]"代表第二位可以为3、5、8中的一个，"\\d{9}"代表后面是可以是0～9的数字，有9位。
-        if (TextUtils.isEmpty(mobiles))
+        if (TextUtils.isEmpty(mobiles)) {
             return false;
-        else
+        } else {
             return mobiles.matches(telRegex);
+        }
     }
 
     /**
@@ -495,9 +498,10 @@ public class StringTool {
      */
     public static boolean validatePwd(String password) {
         String telRegex = "[A-Za-z0-9]{6,30}";
-        if (TextUtils.isEmpty(password))
+        if (TextUtils.isEmpty(password)) {
             return false;
-        else
+        } else {
             return password.matches(telRegex);
+        }
     }
 }

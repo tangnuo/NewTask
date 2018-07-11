@@ -123,7 +123,9 @@ public class ZoomImageView extends android.support.v7.widget.AppCompatImageView 
 
             //得到图片，以及图片的宽高
             Drawable drawable = getDrawable();
-            if (drawable == null) return;
+            if (drawable == null) {
+                return;
+            }
             int draWith = drawable.getIntrinsicWidth();
             int draHeight = drawable.getIntrinsicHeight();
 
@@ -179,8 +181,9 @@ public class ZoomImageView extends android.support.v7.widget.AppCompatImageView 
      */
     private RectF getMatrixRectF() {
         Drawable drawable = getDrawable();
-        if (drawable == null)
+        if (drawable == null) {
             return null;
+        }
         int draWith = drawable.getIntrinsicWidth();
         int draHeight = drawable.getIntrinsicHeight();
         RectF rectF = new RectF();
@@ -202,7 +205,9 @@ public class ZoomImageView extends android.support.v7.widget.AppCompatImageView 
 
         //当前捕获的缩放值（大于1表示想放大，小于1表示想缩小）。
         float scaleFactor = detector.getScaleFactor();
-        if (getDrawable() == null) return true;
+        if (getDrawable() == null) {
+            return true;
+        }
         if ((scale < mMaxScale && scaleFactor > 1.0f) || (scale > initScale && scaleFactor < 1.0f)) {
             if (scale * scaleFactor > mMaxScale) {
                 scaleFactor = mMaxScale / scale;
@@ -227,7 +232,9 @@ public class ZoomImageView extends android.support.v7.widget.AppCompatImageView 
      */
     private void checkBorderWhenScale() {
         RectF draRectF = getMatrixRectF();
-        if (draRectF == null) return;
+        if (draRectF == null) {
+            return;
+        }
         int with = getWidth();
         int height = getHeight();
         float dx = 0;
@@ -288,7 +295,9 @@ public class ZoomImageView extends android.support.v7.widget.AppCompatImageView 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         if (gestureDetector.onTouchEvent(event))//传入touch事件给GestureDetector
+        {
             return true;
+        }
         scaleGestureDetector.onTouchEvent(event);//传入touch事件给scaleGestureDetector
         // 拿到触摸点的个数
         int touchPointCount = event.getPointerCount();
@@ -369,7 +378,9 @@ public class ZoomImageView extends android.support.v7.widget.AppCompatImageView 
         RectF rectF2 = getMatrixRectF();
         float dx = 0;
         float dy = 0;
-        if (rectF2 == null) return;
+        if (rectF2 == null) {
+            return;
+        }
         if (rectF2.right < getWidth() && isNeedCheckLeftAndRight) {
             dx = getWidth() - rectF2.right;
         }

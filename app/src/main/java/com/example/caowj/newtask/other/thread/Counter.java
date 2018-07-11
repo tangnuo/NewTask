@@ -37,6 +37,7 @@ public class Counter implements Runnable {
         }
     }
 
+    @Override
     public void run() {
         String threadName = Thread.currentThread().getName();
         if (threadName.equals("A")) {

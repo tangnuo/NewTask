@@ -64,6 +64,7 @@ public class MoveGestureDetector extends BaseGestureDetector {
 
     }
 
+    @Override
     protected void updateStateByEvent(MotionEvent event) {
         final MotionEvent prev = mPreMotionEvent;
 

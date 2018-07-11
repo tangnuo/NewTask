@@ -16,6 +16,7 @@ public class SyncThread implements Runnable {
 
 
     //    同步代码块
+    @Override
     public void run() {
         synchronized (this) {
             for (int i = 0; i < 5; i++) {

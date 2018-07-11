@@ -183,10 +183,14 @@ public class StickHeaderFragment extends Fragment {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                if (dy == 0) return;
+                if (dy == 0) {
+                    return;
+                }
                 mScrollY += dy;
                 int translationY = top - mScrollY;
-                if (translationY < 0) translationY = 0;
+                if (translationY < 0) {
+                    translationY = 0;
+                }
                 layoutStickHeader.setTranslationY(translationY);
             }
 

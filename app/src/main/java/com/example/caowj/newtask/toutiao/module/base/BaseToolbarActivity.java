@@ -66,8 +66,9 @@ public abstract class BaseToolbarActivity extends BaseActivity {
         super.onResume();
         int color = SettingUtil.getInstance().getColor();
         int drawable = Constant.ICONS_DRAWABLES[SettingUtil.getInstance().getCustomIconValue()];
-        if (getSupportActionBar() != null)
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setBackgroundDrawable(new ColorDrawable(color));
+        }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(CircleView.shiftColorDown(color));
             // 最近任务栏上色

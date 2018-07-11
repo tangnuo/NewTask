@@ -120,6 +120,7 @@ dependencies {
     implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
     implementation "com.android.support:design:$rootProject.supportLibraryVersion"
     implementation "com.android.support:support-v4:$rootProject.supportLibraryVersion"
+//    implementation "com.android.support:recyclerview-v7：$rootProject.supportLibraryVersion"
 
     implementation files('libs/mina-core-2.0.16.jar')
     implementation files('libs/slf4j-api-1.7.21.jar')
@@ -165,4 +166,6 @@ dependencies {
     // RxJava support for Room
     implementation 'android.arch.persistence.room:rxjava2:1.0.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
+    implementation 'android.arch.paging:runtime:1.0.1'
 }

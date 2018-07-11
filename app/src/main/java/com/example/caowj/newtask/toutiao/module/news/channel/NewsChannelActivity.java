@@ -107,13 +107,15 @@ public class NewsChannelActivity extends BaseToolbarActivity {
     }
 
     public synchronized <T extends Comparable<T>> boolean compare(List<T> a, List<T> b) {
-        if (a.size() != b.size())
+        if (a.size() != b.size()) {
             return false;
+        }
 //        Collections.sort(a);
 //        Collections.sort(b);
         for (int i = 0; i < a.size(); i++) {
-            if (!a.get(i).equals(b.get(i)))
+            if (!a.get(i).equals(b.get(i))) {
                 return false;
+            }
         }
         return true;
     }

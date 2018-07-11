@@ -96,7 +96,7 @@ public class TestUIActivity extends BaseButterKnifeActivity {
      * 发送通知（使用PendingIntent跳转到一个activity组件）
      */
     private void sendNotification() {
-        NotificationManager mNotificationManager = (NotificationManager) getSystemService(mActivity.NOTIFICATION_SERVICE);
+        NotificationManager mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         Notification.Builder builder1 = new Notification.Builder(mActivity);
         builder1.setSmallIcon(android.R.drawable.stat_notify_chat); //设置图标
         builder1.setTicker("显示第二个通知caowj");

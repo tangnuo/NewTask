@@ -37,8 +37,9 @@ public abstract class AbstractCoder {
     public String encodeHex(byte[] content) {
         StringBuffer buffer = new StringBuffer();
         for (int i = 0; i < content.length; i++) {
-            if (((int) content[i] & 0xff) < 0x10)
+            if (((int) content[i] & 0xff) < 0x10) {
                 buffer.append("0");
+            }
             buffer.append(Long.toString((int) content[i] & 0xff, 16));
         }
         return buffer.toString();

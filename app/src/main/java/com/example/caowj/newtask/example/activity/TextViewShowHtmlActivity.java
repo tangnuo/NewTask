@@ -41,6 +41,7 @@ public class TextViewShowHtmlActivity extends BaseButterKnifeActivity {
      */
     private void showHtmlImage() {
         Html.ImageGetter imgGetter = new Html.ImageGetter() {
+            @Override
             public Drawable getDrawable(String source) {
                 Drawable drawable = null;
                 URL url;
@@ -74,6 +75,7 @@ public class TextViewShowHtmlActivity extends BaseButterKnifeActivity {
 
         final Html.ImageGetter imageGetter = new Html.ImageGetter() {
 
+            @Override
             public Drawable getDrawable(String source) {
                 LogUtil.myD(mTag + ",,," + source);
                 Drawable drawable = null;

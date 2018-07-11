@@ -396,8 +396,9 @@ public class StringUtils {
         } else if (size >= kb) {
             float f = (float) size / kb;
             return String.format(f > 100 ? "%.0f K" : "%.1f K", f);
-        } else
+        } else {
             return String.format("%d B", size);
+        }
     }
 
     public static String convertStorageNoB(long size) {
@@ -413,8 +414,9 @@ public class StringUtils {
         } else if (size >= kb) {
             float f = (float) size / kb;
             return String.format(f > 100 ? "%.0fKB" : "%.1fKB", f);
-        } else
+        } else {
             return String.format("%dB", size);
+        }
     }
 
     /**

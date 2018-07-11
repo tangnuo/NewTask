@@ -134,7 +134,9 @@ public class HeaderScrollView extends LinearLayout {
                 mScroller.abortAnimation();
                 break;
             case MotionEvent.ACTION_MOVE:
-                if (mDisallowIntercept) break;
+                if (mDisallowIntercept) {
+                    break;
+                }
                 deltaY = mLastY - currentY; //连续两次进入move的偏移量
                 mLastY = currentY;
                 if (shiftX > mTouchSlop && shiftX > shiftY) {

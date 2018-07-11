@@ -151,7 +151,9 @@ public final class RegexUtils {
      * @return 正则匹配的部分
      */
     public static List<String> getMatches(final String regex, final CharSequence input) {
-        if (input == null) return null;
+        if (input == null) {
+            return null;
+        }
         List<String> matches = new ArrayList<>();
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(input);
@@ -169,7 +171,9 @@ public final class RegexUtils {
      * @return 正则匹配分组
      */
     public static String[] getSplits(final String input, final String regex) {
-        if (input == null) return null;
+        if (input == null) {
+            return null;
+        }
         return input.split(regex);
     }
 
@@ -182,7 +186,9 @@ public final class RegexUtils {
      * @return 替换正则匹配的第一部分
      */
     public static String getReplaceFirst(final String input, final String regex, final String replacement) {
-        if (input == null) return null;
+        if (input == null) {
+            return null;
+        }
         return Pattern.compile(regex).matcher(input).replaceFirst(replacement);
     }
 
@@ -195,7 +201,9 @@ public final class RegexUtils {
      * @return 替换所有正则匹配的部分
      */
     public static String getReplaceAll(final String input, final String regex, final String replacement) {
-        if (input == null) return null;
+        if (input == null) {
+            return null;
+        }
         return Pattern.compile(regex).matcher(input).replaceAll(replacement);
     }
 }

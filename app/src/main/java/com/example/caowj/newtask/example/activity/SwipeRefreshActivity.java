@@ -75,6 +75,7 @@ public class SwipeRefreshActivity extends BaseButterKnifeActivity implements Swi
             public void onLoadMore() {
                 if (times < 2) {
                     new Handler().postDelayed(new Runnable() {
+                        @Override
                         public void run() {
                             for (int i = 0; i < 15; i++) {
                                 listData.add("item" + (1 + listData.size()));
@@ -85,6 +86,7 @@ public class SwipeRefreshActivity extends BaseButterKnifeActivity implements Swi
                     }, 1000);
                 } else {
                     new Handler().postDelayed(new Runnable() {
+                        @Override
                         public void run() {
                             for (int i = 0; i < 9; i++) {
                                 listData.add("item" + (1 + listData.size()));
@@ -108,6 +110,7 @@ public class SwipeRefreshActivity extends BaseButterKnifeActivity implements Swi
         refreshTime++;
         times = 0;
         new Handler().postDelayed(new Runnable() {
+            @Override
             public void run() {
                 listData.clear();
                 for (int i = 0; i < 10; i++) {

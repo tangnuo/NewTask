@@ -25,6 +25,7 @@ public class SyncThread2 implements Runnable {
         }
     }
 
+    @Override
     public synchronized void run() {
         method();
     }

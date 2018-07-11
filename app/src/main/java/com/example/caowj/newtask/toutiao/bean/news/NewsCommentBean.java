@@ -245,15 +245,18 @@ public class NewsCommentBean {
 
             @Override
             public boolean equals(Object o) {
-                if (this == o)
+                if (this == o) {
                     return true;
-                if (o == null || getClass() != o.getClass())
+                }
+                if (o == null || getClass() != o.getClass()) {
                     return false;
+                }
 
                 CommentBean that = (CommentBean) o;
 
-                if (create_time != that.create_time)
+                if (create_time != that.create_time) {
                     return false;
+                }
                 return text.equals(that.text);
             }
 

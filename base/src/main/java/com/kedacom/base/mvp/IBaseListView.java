@@ -11,21 +11,25 @@ public interface IBaseListView<T> extends IBaseView<T> {
     /**
      * 显示加载动画
      */
+    @Override
     void onShowLoading();
 
     /**
      * 隐藏加载
      */
+    @Override
     void onHideLoading();
 
     /**
      * 显示网络错误
      */
+    @Override
     void onShowNetError();
 
     /**
      * 设置 presenter
      */
+    @Override
     void setPresenter(T presenter);
 
     /**

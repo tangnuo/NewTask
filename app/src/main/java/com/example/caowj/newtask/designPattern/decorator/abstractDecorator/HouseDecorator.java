@@ -14,6 +14,7 @@ public abstract class HouseDecorator extends House {
      *
      * @return
      */
+    @Override
     public abstract String getDescription();
 
 }

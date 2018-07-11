@@ -244,15 +244,18 @@ public class MultiNewsArticleDataBean implements Parcelable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o)
+        if (this == o) {
             return true;
-        if (o == null || getClass() != o.getClass())
+        }
+        if (o == null || getClass() != o.getClass()) {
             return false;
+        }
 
         MultiNewsArticleDataBean that = (MultiNewsArticleDataBean) o;
 
-        if (item_id != that.item_id)
+        if (item_id != that.item_id) {
             return false;
+        }
         return title.equals(that.title);
     }
 

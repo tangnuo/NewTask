@@ -9,8 +9,9 @@ public abstract class PriorityRunnable implements Runnable, Comparable<PriorityR
     private int priority;
 
     public PriorityRunnable(int priority) {
-        if (priority < 0)
+        if (priority < 0) {
             throw new IllegalArgumentException();
+        }
         this.priority = priority;
     }
 

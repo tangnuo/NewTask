@@ -36,8 +36,9 @@ public class NetWorkUtil {
             // 获取NetworkInfo对象
             NetworkInfo networkInfo = manager.getActiveNetworkInfo();
             //判断NetworkInfo对象是否为空 并且类型是否为WIFI
-            if (null != networkInfo && networkInfo.getType() == ConnectivityManager.TYPE_WIFI)
+            if (null != networkInfo && networkInfo.getType() == ConnectivityManager.TYPE_WIFI) {
                 return networkInfo.isAvailable();
+            }
         }
         return false;
     }
@@ -52,8 +53,9 @@ public class NetWorkUtil {
             //获取NetworkInfo对象
             NetworkInfo networkInfo = manager.getActiveNetworkInfo();
             //判断NetworkInfo对象是否为空 并且类型是否为MOBILE
-            if (null != networkInfo && networkInfo.getType() == ConnectivityManager.TYPE_MOBILE)
+            if (null != networkInfo && networkInfo.getType() == ConnectivityManager.TYPE_MOBILE) {
                 return networkInfo.isAvailable();
+            }
         }
         return false;
     }

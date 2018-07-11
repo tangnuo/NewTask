@@ -104,7 +104,9 @@ public class PinYinUtils {
         //由于不能直接对多个汉字转换，只能对单个汉字转换
         char[] arr = hanzi.toCharArray();
         for (int i = 0; i < arr.length; i++) {
-            if (Character.isWhitespace(arr[i])) continue;//如果是空格，则不处理，进行下次遍历
+            if (Character.isWhitespace(arr[i])) {
+                continue;//如果是空格，则不处理，进行下次遍历
+            }
 
             //汉字是2个字节存储，肯定大于127，所以大于127就可以当为汉字转换
             if (arr[i] > 127) {

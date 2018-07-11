@@ -27,6 +27,8 @@ import java.util.Date;
  * <p>
  * CrashHandler2 crashHandler = CrashHandler2.getInstance();
  * crashHandler.init(getApplicationContext());
+ *
+ * @deprecated 存在问题
  */
 public class CrashHandler2 implements UncaughtExceptionHandler {
 

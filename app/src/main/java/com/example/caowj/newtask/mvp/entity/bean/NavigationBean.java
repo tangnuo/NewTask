@@ -13,10 +13,12 @@ import com.kedacom.utils.StringTool;
 public class NavigationBean implements Parcelable {
 
     public static final Parcelable.Creator<NavigationBean> CREATOR = new Parcelable.Creator<NavigationBean>() {
+        @Override
         public NavigationBean createFromParcel(Parcel in) {
             return new NavigationBean(in);
         }
 
+        @Override
         public NavigationBean[] newArray(int size) {
             return new NavigationBean[size];
         }

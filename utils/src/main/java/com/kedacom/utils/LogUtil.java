@@ -56,8 +56,9 @@ public class LogUtil {
     }
 
     public static void v(String tag, String desc, Throwable tr) {
-        if (DEBUG_LOG)
+        if (DEBUG_LOG) {
             Log.v(tag, desc);
+        }
     }
 
     /**
@@ -71,8 +72,9 @@ public class LogUtil {
     }
 
     public static void d(String tag, String desc, Throwable tr) {
-        if (DEBUG_LOG)
+        if (DEBUG_LOG) {
             Log.d(tag, desc, tr);
+        }
     }
 
     /**
@@ -86,8 +88,9 @@ public class LogUtil {
     }
 
     public static void i(String tag, String desc, Throwable tr) {
-        if (DEBUG_LOG)
+        if (DEBUG_LOG) {
             Log.i(tag, desc, tr);
+        }
     }
 
     /**
@@ -101,13 +104,15 @@ public class LogUtil {
     }
 
     public static void w(String tag, Throwable ioe) {
-        if (DEBUG_LOG)
+        if (DEBUG_LOG) {
             Log.w(tag, ioe);
+        }
     }
 
     public static void w(String tag, String desc, Throwable e) {
-        if (DEBUG_LOG)
+        if (DEBUG_LOG) {
             Log.w(tag, desc, e);
+        }
     }
 
     /**
@@ -121,8 +126,9 @@ public class LogUtil {
     }
 
     public static void e(String tag, String desc, Throwable tr) {
-        if (DEBUG_LOG)
+        if (DEBUG_LOG) {
             Log.e(tag, desc, tr);
+        }
     }
 
 
@@ -136,24 +142,29 @@ public class LogUtil {
         info = getMsgFormat(info);
         switch (logLevel) {
             case 1:
-                if (DEBUG_LOG)
+                if (DEBUG_LOG) {
                     Log.v(logTag, info);
+                }
                 break;
             case 2:
-                if (DEBUG_LOG)
+                if (DEBUG_LOG) {
                     Log.d(logTag, info);
+                }
                 break;
             case 3:
-                if (DEBUG_LOG)
+                if (DEBUG_LOG) {
                     Log.i(logTag, info);
+                }
                 break;
             case 4:
-                if (DEBUG_LOG)
+                if (DEBUG_LOG) {
                     Log.w(logTag, info);
+                }
                 break;
             case 5:
-                if (DEBUG_LOG)
+                if (DEBUG_LOG) {
                     Log.e(logTag, info);
+                }
                 break;
         }
     }

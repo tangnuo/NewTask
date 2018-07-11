@@ -23,8 +23,8 @@ public class TimeUtil {
     public static final long MIN_OF_HOUR = 60;
     public static final long SEC_OF_MIN = 60;
     public static final long MILLIS_OF_SEC = 1000;
-    private static long limitDateTime = 10000000000l;
-    private static long milliseFormat = 1l;//毫秒转换单位；如果有毫秒，此处是1000.
+    private static long limitDateTime = 10000000000L;
+    private static long milliseFormat = 1L;//毫秒转换单位；如果有毫秒，此处是1000.
     private static final long ONE_MINUTE = 60L * milliseFormat;
     private static final long ONE_HOUR = 3600L * milliseFormat;
     private static final long ONE_DAY = 86400L * milliseFormat;

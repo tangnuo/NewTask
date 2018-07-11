@@ -11,10 +11,12 @@ import android.util.Log;
 
 import com.kedacom.base.common.AppManager;
 import com.kedacom.utils.AppUtil;
+import com.kedacom.utils.LogUtil;
 import com.kedacom.utils.TimeUtil;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.io.Writer;
@@ -213,11 +215,16 @@ public class CrashHandler implements UncaughtExceptionHandler {
                 String path = AppUtil.getCrashPath(mContext);
                 File dir = new File(path);
                 if (!dir.exists()) {
-                    dir.mkdirs();
+
+                    boolean flat = dir.mkdirs();
+                    if (flat) {
+                        save2File(sb, fileName, path);
+                    } else {
+                        LogUtil.myW("新建文件夹失败，可能缺少文件读写权限。");
+                    }
+                } else {
+                    save2File(sb, fileName, path);
                 }
-                FileOutputStream fos = new FileOutputStream(path + fileName);
-                fos.write(sb.toString().getBytes());
-                fos.close();
             }
             return fileName;
         } catch (Exception e) {
@@ -225,6 +232,21 @@ public class CrashHandler implements UncaughtExceptionHandler {
         }
         return null;
     }
+
+    /**
+     * 保存日志文件到本地
+     *
+     * @param sb       日志信息
+     * @param fileName 文件名称
+     * @param path     文件路径
+     * @throws IOException
+     */
+    private void save2File(StringBuffer sb, String fileName, String path) throws IOException {
+        FileOutputStream fos = new FileOutputStream(path + fileName);
+        fos.write(sb.toString().getBytes());
+        fos.close();
+    }
+
 
     private void checkAndDelLog() {
         File logDir = new File(AppUtil.getCrashPath(mContext));

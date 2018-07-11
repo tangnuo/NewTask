@@ -28,7 +28,9 @@ public class HeaderScrollHelper {
     }
 
     private View getScrollableView() {
-        if (mCurrentScrollableContainer == null) return null;
+        if (mCurrentScrollableContainer == null) {
+            return null;
+        }
         return mCurrentScrollableContainer.getScrollableView();
     }
 

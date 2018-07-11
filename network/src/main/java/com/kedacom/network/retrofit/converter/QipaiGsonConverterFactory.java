@@ -21,7 +21,9 @@ public class QipaiGsonConverterFactory<T> extends Converter.Factory {
     private final Gson gson;
 
     private QipaiGsonConverterFactory(Gson gson) {
-        if (gson == null) throw new NullPointerException("gson == null");
+        if (gson == null) {
+            throw new NullPointerException("gson == null");
+        }
         this.gson = gson;
     }
 

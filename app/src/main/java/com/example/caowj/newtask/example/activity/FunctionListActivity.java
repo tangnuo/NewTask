@@ -122,6 +122,7 @@ public class FunctionListActivity extends BaseButterKnifeActivity {
         sparseArray.put(46, TestDesignPatternActivity.class);
         sparseArray.put(47, TestSideLetterActivity.class);
         sparseArray.put(48, ConstraintLayoutTestActivity.class);
+        sparseArray.put(49, PagingActivity.class);
 
 
         functionListAdapter = new FunctionListAdapter(mActivity, sparseArray);

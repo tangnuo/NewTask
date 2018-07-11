@@ -84,6 +84,7 @@ public class GestureDetectorActivity extends BaseButterKnifeActivity {
      */
     class MySimpleOnGestureListener extends GestureDetector.SimpleOnGestureListener {
         /*****OnGestureListener的函数*****/
+        @Override
         public boolean onDown(MotionEvent e) {
             Log.i("MyGesture", "onDown");
             Toast.makeText(mActivity, "onDown", Toast.LENGTH_SHORT)
@@ -91,12 +92,14 @@ public class GestureDetectorActivity extends BaseButterKnifeActivity {
             return false;
         }
 
+        @Override
         public void onShowPress(MotionEvent e) {
             Log.i("MyGesture", "onShowPress");
             Toast.makeText(mActivity, "onShowPress", Toast.LENGTH_SHORT)
                     .show();
         }
 
+        @Override
         public boolean onSingleTapUp(MotionEvent e) {
             Log.i("MyGesture", "onSingleTapUp");
             Toast.makeText(mActivity, "onSingleTapUp",
@@ -104,6 +107,7 @@ public class GestureDetectorActivity extends BaseButterKnifeActivity {
             return true;
         }
 
+        @Override
         public boolean onScroll(MotionEvent e1, MotionEvent e2,
                                 float distanceX, float distanceY) {
             Log.i("MyGesture", "onScroll:" + (e2.getX() - e1.getX()) + "   "
@@ -114,12 +118,14 @@ public class GestureDetectorActivity extends BaseButterKnifeActivity {
             return true;
         }
 
+        @Override
         public void onLongPress(MotionEvent e) {
             Log.i("MyGesture", "onLongPress");
             Toast.makeText(mActivity, "onLongPress", Toast.LENGTH_LONG)
                     .show();
         }
 
+        @Override
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
                                float velocityY) {
             Log.i("MyGesture", "onFling");
@@ -129,6 +135,7 @@ public class GestureDetectorActivity extends BaseButterKnifeActivity {
         }
 
         /*****OnDoubleTapListener的函数*****/
+        @Override
         public boolean onSingleTapConfirmed(MotionEvent e) {
             Log.i("MyGesture", "onSingleTapConfirmed");
             Toast.makeText(mActivity, "onSingleTapConfirmed",
@@ -136,6 +143,7 @@ public class GestureDetectorActivity extends BaseButterKnifeActivity {
             return true;
         }
 
+        @Override
         public boolean onDoubleTap(MotionEvent e) {
             Log.i("MyGesture", "onDoubleTap");
             Toast.makeText(mActivity, "onDoubleTap", Toast.LENGTH_LONG)
@@ -143,6 +151,7 @@ public class GestureDetectorActivity extends BaseButterKnifeActivity {
             return true;
         }
 
+        @Override
         public boolean onDoubleTapEvent(MotionEvent e) {
             Log.i("MyGesture", "onDoubleTapEvent");
             Toast.makeText(mActivity, "onDoubleTapEvent",
@@ -159,6 +168,7 @@ public class GestureDetectorActivity extends BaseButterKnifeActivity {
         final int FLING_MIN_DISTANCE = 100, FLING_MIN_VELOCITY = 200;
 
         // 用户轻触触摸屏，由1个MotionEvent ACTION_DOWN触发
+        @Override
         public boolean onDown(MotionEvent e) {
             Log.i("MyGesture", "onDown");
             Toast.makeText(mActivity, "onDown", Toast.LENGTH_SHORT).show();
@@ -174,6 +184,7 @@ public class GestureDetectorActivity extends BaseButterKnifeActivity {
          * 如果在按下的瞬间没有松开或者是拖动的时候onShowPress就会执行，如果是按下的时间超过瞬间
          * （这块我也不太清楚瞬间的时间差是多少，一般情况下都会执行onShowPress），拖动了，就不执行onShowPress。
          */
+        @Override
         public void onShowPress(MotionEvent e) {
             Log.i("MyGesture", "onShowPress");
             Toast.makeText(mActivity, "onShowPress", Toast.LENGTH_SHORT).show();
@@ -182,6 +193,7 @@ public class GestureDetectorActivity extends BaseButterKnifeActivity {
         // 用户（轻触触摸屏后）松开，由一个1个MotionEvent ACTION_UP触发
         ///轻击一下屏幕，立刻抬起来，才会有这个触发
         //从名子也可以看出,一次单独的轻击抬起操作,当然,如果除了Down以外还有其它操作,那就不再算是Single操作了,所以这个事件 就不再响应
+        @Override
         public boolean onSingleTapUp(MotionEvent e) {
             Log.i("MyGesture", "onSingleTapUp");
             Toast.makeText(mActivity, "onSingleTapUp", Toast.LENGTH_SHORT).show();
@@ -189,6 +201,7 @@ public class GestureDetectorActivity extends BaseButterKnifeActivity {
         }
 
         // 用户按下触摸屏，并拖动，由1个MotionEvent ACTION_DOWN, 多个ACTION_MOVE触发
+        @Override
         public boolean onScroll(MotionEvent e1, MotionEvent e2,
                                 float distanceX, float distanceY) {
             Log.i("MyGesture22", "onScroll:" + (e2.getX() - e1.getX()) + "   " + distanceX);
@@ -198,6 +211,7 @@ public class GestureDetectorActivity extends BaseButterKnifeActivity {
         }
 
         // 用户长按触摸屏，由多个MotionEvent ACTION_DOWN触发
+        @Override
         public void onLongPress(MotionEvent e) {
             Log.i("MyGesture", "onLongPress");
             Toast.makeText(mActivity, "onLongPress", Toast.LENGTH_LONG).show();
@@ -213,6 +227,7 @@ public class GestureDetectorActivity extends BaseButterKnifeActivity {
         // velocityX：X轴上的移动速度，像素/秒
         // velocityY：Y轴上的移动速度，像素/秒
         // 用户按下触摸屏、快速移动后松开，由1个MotionEvent ACTION_DOWN, 多个ACTION_MOVE, 1个ACTION_UP触发
+        @Override
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
                                float velocityY) {
 //            Log.i("MyGesture", "onFling");
@@ -237,18 +252,21 @@ public class GestureDetectorActivity extends BaseButterKnifeActivity {
      */
     private class DoubleTapListener implements GestureDetector.OnDoubleTapListener {
 
+        @Override
         public boolean onSingleTapConfirmed(MotionEvent e) {
             Log.i("MyGesture", "onSingleTapConfirmed");
             Toast.makeText(mActivity, "onSingleTapConfirmed", Toast.LENGTH_LONG).show();
             return true;
         }
 
+        @Override
         public boolean onDoubleTap(MotionEvent e) {
             Log.i("MyGesture", "onDoubleTap");
             Toast.makeText(mActivity, "onDoubleTap", Toast.LENGTH_LONG).show();
             return true;
         }
 
+        @Override
         public boolean onDoubleTapEvent(MotionEvent e) {
             Log.i("MyGesture", "onDoubleTapEvent");
             Toast.makeText(mActivity, "onDoubleTapEvent", Toast.LENGTH_LONG).show();

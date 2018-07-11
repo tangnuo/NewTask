@@ -47,19 +47,24 @@ public class NewsChannelBean implements Comparable<NewsChannelBean> {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o)
+        if (this == o) {
             return true;
-        if (o == null || getClass() != o.getClass())
+        }
+        if (o == null || getClass() != o.getClass()) {
             return false;
+        }
 
         NewsChannelBean bean = (NewsChannelBean) o;
 
-        if (isEnable != bean.isEnable)
+        if (isEnable != bean.isEnable) {
             return false;
-        if (position != bean.position)
+        }
+        if (position != bean.position) {
             return false;
-        if (channelId != null ? !channelId.equals(bean.channelId) : bean.channelId != null)
+        }
+        if (channelId != null ? !channelId.equals(bean.channelId) : bean.channelId != null) {
             return false;
+        }
         return channelName != null ? channelName.equals(bean.channelName) : bean.channelName == null;
 
     }

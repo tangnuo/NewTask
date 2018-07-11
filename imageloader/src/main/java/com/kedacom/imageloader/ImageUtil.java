@@ -83,8 +83,9 @@ public class ImageUtil {
 
     public static void saveImage(Context context, String fileName,
                                  Bitmap bitmap, int quality) throws IOException {
-        if (bitmap == null || fileName == null || context == null)
+        if (bitmap == null || fileName == null || context == null) {
             return;
+        }
 
         FileOutputStream fos = context.openFileOutput(fileName,
                 Context.MODE_PRIVATE);
@@ -375,8 +376,9 @@ public class ImageUtil {
      * @return
      */
     public static int[] scaleImageSize(int[] img_size, int square_size) {
-        if (img_size[0] <= square_size && img_size[1] <= square_size)
+        if (img_size[0] <= square_size && img_size[1] <= square_size) {
             return img_size;
+        }
         double ratio = square_size
                 / (double) Math.max(img_size[0], img_size[1]);
         return new int[]{(int) (img_size[0] * ratio),
@@ -401,8 +403,9 @@ public class ImageUtil {
         // 原始图片bitmap
         Bitmap cur_bitmap = getBitmapByPath(largeImagePath, opts);
 
-        if (cur_bitmap == null)
+        if (cur_bitmap == null) {
             return;
+        }
 
         // 原始图片的高宽
         int[] cur_img_size = new int[]{cur_bitmap.getWidth(),
@@ -482,10 +485,11 @@ public class ImageUtil {
         float zoomScale;
 
         /** 方式3 **/
-        if (width >= rWidth)
+        if (width >= rWidth) {
             zoomScale = ((float) rWidth) / width;
-        else
+        } else {
             zoomScale = 1.0f;
+        }
         // 创建操作图片用的matrix对象
         Matrix matrix = new Matrix();
         // 缩放图片动作
@@ -747,8 +751,9 @@ public class ImageUtil {
             }
             cursor.close();
             return bitmap;
-        } else
+        } else {
             return null;
+        }
     }
 
     /******************************************************************/
@@ -854,9 +859,13 @@ public class ImageUtil {
         //以时间戳生成一个临时文件名称
         cacheDir = createFile(cacheDir, prefix, ".jpg");
         boolean created = false;//是否创建成功,默认没有创建
-        if (!cacheDir.exists()) created = cacheDir.createNewFile();
+        if (!cacheDir.exists()) {
+            created = cacheDir.createNewFile();
+        }
         if (created)//将图片写入目标file,100表示不压缩,Note:png是默认忽略这个参数的
+        {
             bitmap.compress(CompressFormat.PNG, 100, new FileOutputStream(cacheDir));
+        }
         return cacheDir;
     }
 
@@ -874,9 +883,9 @@ public class ImageUtil {
             file.mkdirs();//创建目录
         }
 
-        if (file != null && file.exists())
+        if (file != null && file.exists()) {
             return file;//文件已经被成功创建
-        else {
+        } else {
             return null;//即时经过以上检查，文件还是没有被准确的创建
         }
     }
@@ -885,7 +894,9 @@ public class ImageUtil {
      * 根据系统时间、前缀、后缀产生一个文件
      */
     public static File createFile(File folder, String prefix, String suffix) {
-        if (!folder.exists() || !folder.isDirectory()) folder.mkdirs();
+        if (!folder.exists() || !folder.isDirectory()) {
+            folder.mkdirs();
+        }
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmssSSS", Locale.CHINA);
         String filename = prefix + dateFormat.format(new Date(System.currentTimeMillis())) + suffix;
         return new File(folder, filename);

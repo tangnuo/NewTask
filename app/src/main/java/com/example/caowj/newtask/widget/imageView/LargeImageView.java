@@ -66,7 +66,9 @@ public class LargeImageView extends View {
             e.printStackTrace();
         } finally {
             try {
-                if (is != null) is.close();
+                if (is != null) {
+                    is.close();
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
