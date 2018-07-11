@@ -3,7 +3,9 @@ package com.example.caowj.newtask.example.activity;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.paging.DataSource;
+import android.arch.paging.ItemKeyedDataSource;
 import android.arch.paging.LivePagedListBuilder;
+import android.arch.paging.PageKeyedDataSource;
 import android.arch.paging.PagedList;
 import android.arch.paging.PagedListAdapter;
 import android.arch.paging.PositionalDataSource;
@@ -71,7 +73,7 @@ public class PagingActivity extends AppCompatActivity {
     private void makePageList() {
         // Configure paging
         PagedList.Config mPagedListConfig = new PagedList.Config.Builder()
-                .setPageSize(11) //分页数据的数量。在后面的DataSource之loadRange中，count即为每次加载的这个设定值。
+                .setPageSize(11) //分页数据的数量。在后面的DataSource之loadRange中，count即为每次加载的这个设定值。适用于PositionalDataSource
                 .setPrefetchDistance(3)   //距底部还有几条数据时，加载下一页数据
                 .setEnablePlaceholders(false)//是否启用占位符，若为true，则视为固定数量的item
                 .setInitialLoadSizeHint(20)//第一次加载多少数据
@@ -80,11 +82,12 @@ public class PagingActivity extends AppCompatActivity {
         mPagedList = new LivePagedListBuilder<>(mFactory, mPagedListConfig)
 //                .setNotifyExecutor(new MainThreadExecutor())
                 .setFetchExecutor(new MainThreadExecutor())
-                .setInitialLoadKey(40)
+                .setInitialLoadKey(40)//表示从40开始，适用于ItemKeyedDataSource
                 .build();
 
 
         //todo 未完全理解，删除了就不能自动加载下一页了
+//        给它设置一个观察，当数据变动时调用adapter.submitList刷新数据
         mPagedList.observe(this, new Observer<PagedList<DataBean>>() {
             @Override
             public void onChanged(@Nullable PagedList<DataBean> dataBeans) {
@@ -109,34 +112,88 @@ public class PagingActivity extends AppCompatActivity {
 
         @Override
         public DataSource<Integer, DataBean> create() {
-            return new PositionalDataSource<DataBean>() {
+
+//            参考：https://www.loongwind.com/archives/367.html
+//            return new ItemKeyedDataSource<Integer, DataBean>() {
+//                @Override
+//                public void loadInitial(@NonNull LoadInitialParams<Integer> params, @NonNull LoadInitialCallback<DataBean> callback) {
+//                    LogUtil.myD("loadInitial1..." + params.requestedInitialKey + ",," + params.requestedLoadSize);
+//                }
+//
+//                @Override
+//                public void loadAfter(@NonNull LoadParams<Integer> params, @NonNull LoadCallback<DataBean> callback) {
+//                    LogUtil.myD("loadAfter1..." + params.key + ",," + params.requestedLoadSize);
+//                }
+//
+//                @Override
+//                public void loadBefore(@NonNull LoadParams<Integer> params, @NonNull LoadCallback<DataBean> callback) {
+//
+//                }
+//
+//                @NonNull
+//                @Override
+//                public Integer getKey(@NonNull DataBean item) {
+//                    return item.id;
+//                }
+//            };
+
+
+//            参考：https://github.com/SaurabhSandav/PagingDemo
+            return new PageKeyedDataSource<Integer, DataBean>() {
                 @Override
-                public void loadInitial(@NonNull LoadInitialParams params, @NonNull LoadInitialCallback<DataBean> callback) {
-                    LogUtil.myD("loadInitial1..." + params.pageSize + ",," + params.requestedLoadSize + ",," + params.requestedStartPosition);
-                    List<DataBean> dataBeanList = loadDataByPosition(params.requestedStartPosition, params.requestedLoadSize);
-                    if (params.placeholdersEnabled) {
-                        callback.onResult(dataBeanList, params.requestedStartPosition, dataBeanList.size());
-                    } else {
-                        callback.onResult(dataBeanList, params.requestedStartPosition);
-                    }
+                public void loadInitial(@NonNull LoadInitialParams<Integer> params, @NonNull LoadInitialCallback<Integer, DataBean> callback) {
+                    LogUtil.myD("loadInitial2..." + params.requestedLoadSize);
+                    int pageIndex = 1;
+                    List<DataBean> dataBeanList = loadDataByIndex(pageIndex, params.requestedLoadSize);
+
+                    callback.onResult(dataBeanList, null, pageIndex + 1);
                 }
 
                 @Override
-                public void loadRange(@NonNull LoadRangeParams params, @NonNull LoadRangeCallback<DataBean> callback) {
-                    LogUtil.myD("loadRange1..." + params.loadSize + ",," + params.startPosition);
-                    List<DataBean> dataBeanList = loadDataByPosition(params.startPosition, params.loadSize);
+                public void loadBefore(@NonNull LoadParams<Integer> params, @NonNull LoadCallback<Integer, DataBean> callback) {
+                    LogUtil.myD("loadBefore2..." + params.requestedLoadSize + ",," + params.key);
+                }
 
-                    callback.onResult(dataBeanList);
+                @Override
+                public void loadAfter(@NonNull LoadParams<Integer> params, @NonNull LoadCallback<Integer, DataBean> callback) {
+                    LogUtil.myD("loadAfter2..." + params.requestedLoadSize + ",," + params.key);
+
+                    int pageIndex = params.key;
+
+                    List<DataBean> dataBeanList = loadDataByIndex(pageIndex, params.requestedLoadSize);
+                    callback.onResult(dataBeanList, pageIndex + 1);
                 }
             };
+
+
+//            return new PositionalDataSource<DataBean>() {
+//                @Override
+//                public void loadInitial(@NonNull LoadInitialParams params, @NonNull LoadInitialCallback<DataBean> callback) {
+//                    LogUtil.myD("loadInitial3..." + params.pageSize + ",," + params.requestedLoadSize + ",," + params.requestedStartPosition);
+//                    List<DataBean> dataBeanList = loadDataByPosition(params.requestedStartPosition, params.requestedLoadSize);
+//                    if (params.placeholdersEnabled) {
+//                        callback.onResult(dataBeanList, params.requestedStartPosition, dataBeanList.size());
+//                    } else {
+//                        callback.onResult(dataBeanList, params.requestedStartPosition);
+//                    }
+//                }
+//
+//                @Override
+//                public void loadRange(@NonNull LoadRangeParams params, @NonNull LoadRangeCallback<DataBean> callback) {
+//                    LogUtil.myD("loadRange3..." + params.loadSize + ",," + params.startPosition);
+//                    List<DataBean> dataBeanList = loadDataByPosition(params.startPosition, params.loadSize);
+//
+//                    callback.onResult(dataBeanList);
+//                }
+//            };
         }
     }
 
     /**
      * 通过position请求
      *
-     * @param startPosition
-     * @param count
+     * @param startPosition 起始位置
+     * @param count         数量
      * @return
      */
     private List<DataBean> loadDataByPosition(int startPosition, int count) {
@@ -146,6 +203,26 @@ public class PagingActivity extends AppCompatActivity {
             DataBean data = new DataBean();
             data.id = startPosition + i;
             data.content = "重点在这里" + data.id;
+            list.add(data);
+        }
+
+        return list;
+    }
+
+    /**
+     * 分页加载数据
+     *
+     * @param pageIndex
+     * @param pageSize
+     * @return
+     */
+    private List<DataBean> loadDataByIndex(int pageIndex, int pageSize) {
+        List<DataBean> list = new ArrayList();
+
+        for (int i = 0; i < pageSize; i++) {
+            DataBean data = new DataBean();
+            data.id = pageIndex + i;
+            data.content = "这是第 " + pageIndex + " 页的数据：：" + data.id;
             list.add(data);
         }
 
