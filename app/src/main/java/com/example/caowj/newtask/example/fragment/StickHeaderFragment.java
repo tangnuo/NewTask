@@ -67,7 +67,7 @@ public class StickHeaderFragment extends Fragment {
         linearLayoutManager = new LinearLayoutManager(getContext());
         filterRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         contentRecyclerView.setLayoutManager(linearLayoutManager);
-        commonAdapter = new CommonAdapter2(R.layout.item_common_text);
+        commonAdapter = new CommonAdapter2(R.layout.common_item_text);
         List<String> data = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
             data.add("item" + i);

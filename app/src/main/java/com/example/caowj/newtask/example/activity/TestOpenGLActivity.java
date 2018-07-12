@@ -30,7 +30,7 @@ public class TestOpenGLActivity extends BaseButterKnifeActivity {
             glSurfaceView.setRenderer(new GLRenderer());
             setContentView(glSurfaceView);
         } else {
-            setContentView(R.layout.activity_test_open_gl);
+            setContentView(R.layout.activity_test_design_pattern);
             Toast.makeText(this, "当前设备不支持OpenGL ES 2.0!", Toast.LENGTH_SHORT).show();
         }
 
@@ -38,7 +38,7 @@ public class TestOpenGLActivity extends BaseButterKnifeActivity {
 
     @Override
     protected int getContentView() {
-        return R.layout.activity_test_open_gl;
+        return R.layout.activity_test_design_pattern;
     }
 
     @Override

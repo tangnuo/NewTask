@@ -61,7 +61,7 @@ public class TestCommonAdapterActivity1 extends BaseButterKnifeActivity {
 
     @Override
     protected int getContentView() {
-        return R.layout.activity_test_common_adapter1;
+        return R.layout.common_layout_recyclerview;
     }
 
     @Override

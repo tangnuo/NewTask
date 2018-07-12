@@ -55,7 +55,7 @@ public class TestPagingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_paging);
+        setContentView(R.layout.common_layout_recyclerview);
         mFactory = new MyFactory();
 
         makePageList();

@@ -39,8 +39,8 @@ public abstract class BaseButterKnifeActivity extends BaseActivity {
         setContentView(getContentView());
         ButterKnife.bind(this);
         Log.d("caowj", "111111");
-        initWidget();
         initData();
+        initWidget();
         Log.d("caowj", "333333");
     }
 

@@ -39,7 +39,7 @@ public class TestAudioListActivity extends BaseButterKnifeActivity {
 
     @Override
     protected int getContentView() {
-        return R.layout.activity_test_audio_list;
+        return R.layout.common_layout_recyclerview;
     }
 
     @Override

@@ -48,7 +48,7 @@ public class FunctionListActivity extends BaseButterKnifeActivity {
 
     @Override
     protected int getContentView() {
-        return R.layout.activity_function_list;
+        return R.layout.common_layout_recyclerview;
     }
 
     @Override
@@ -123,6 +123,7 @@ public class FunctionListActivity extends BaseButterKnifeActivity {
         sparseArray.put(47, TestSideLetterActivity.class);
         sparseArray.put(48, ConstraintLayoutTestActivity.class);
         sparseArray.put(49, TestPagingActivity.class);
+        sparseArray.put(50, TestDownloadManagerActivity.class);
 
 
         functionListAdapter = new FunctionListAdapter(mActivity, sparseArray);

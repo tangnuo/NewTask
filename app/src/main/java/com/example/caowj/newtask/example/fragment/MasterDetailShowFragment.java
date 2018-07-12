@@ -47,7 +47,7 @@ public class MasterDetailShowFragment extends BaseButterKnifeFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_master_show, container, false);
+        View rootView = inflater.inflate(R.layout.common_layout_recyclerview, container, false);
         unbinder = ButterKnife.bind(this, rootView);
         initData();
         return rootView;
@@ -90,7 +90,7 @@ public class MasterDetailShowFragment extends BaseButterKnifeFragment {
 
     @Override
     protected int getContentView() {
-        return R.layout.fragment_master_show;
+        return R.layout.common_layout_recyclerview;
     }
 
     @Override
