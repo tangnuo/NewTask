@@ -45,7 +45,7 @@ import java.util.concurrent.Executor;
  * <p>
  * 注意：1.0.0和1.0.1方法有变动。
  */
-public class PagingActivity extends AppCompatActivity {
+public class TestPagingActivity extends AppCompatActivity {
 
     private LiveData<PagedList<DataBean>> mPagedList;
     private DataSource.Factory mFactory;
@@ -82,12 +82,11 @@ public class PagingActivity extends AppCompatActivity {
         mPagedList = new LivePagedListBuilder<>(mFactory, mPagedListConfig)
 //                .setNotifyExecutor(new MainThreadExecutor())
                 .setFetchExecutor(new MainThreadExecutor())
-                .setInitialLoadKey(40)//表示从40开始，适用于ItemKeyedDataSource
+                .setInitialLoadKey(7)//表示从7开始，适用于ItemKeyedDataSource
                 .build();
 
 
-        //todo 未完全理解，删除了就不能自动加载下一页了
-//        给它设置一个观察，当数据变动时调用adapter.submitList刷新数据
+//        给它设置一个观察，当数据变动时调用adapter.submitList刷新数据，在submitList内部会调用获取下一页的数据的方法。
         mPagedList.observe(this, new Observer<PagedList<DataBean>>() {
             @Override
             public void onChanged(@Nullable PagedList<DataBean> dataBeans) {
@@ -113,16 +112,23 @@ public class PagingActivity extends AppCompatActivity {
         @Override
         public DataSource<Integer, DataBean> create() {
 
-//            参考：https://www.loongwind.com/archives/367.html
+//            // 参考：https://www.loongwind.com/archives/367.html
 //            return new ItemKeyedDataSource<Integer, DataBean>() {
 //                @Override
 //                public void loadInitial(@NonNull LoadInitialParams<Integer> params, @NonNull LoadInitialCallback<DataBean> callback) {
 //                    LogUtil.myD("loadInitial1..." + params.requestedInitialKey + ",," + params.requestedLoadSize);
+//                    List<DataBean> dataBeanList = loadDataByKey(params.requestedInitialKey, params.requestedLoadSize);
+////
+//                    callback.onResult(dataBeanList, params.requestedInitialKey, 100);
 //                }
 //
 //                @Override
 //                public void loadAfter(@NonNull LoadParams<Integer> params, @NonNull LoadCallback<DataBean> callback) {
+////                  //params.key等于item.id
 //                    LogUtil.myD("loadAfter1..." + params.key + ",," + params.requestedLoadSize);
+//                    List<DataBean> dataBeanList = loadDataByKey(params.key, params.requestedLoadSize);
+////
+//                    callback.onResult(dataBeanList);
 //                }
 //
 //                @Override
@@ -133,12 +139,13 @@ public class PagingActivity extends AppCompatActivity {
 //                @NonNull
 //                @Override
 //                public Integer getKey(@NonNull DataBean item) {
+//                    LogUtil.myD("getKey..." + item.id);
 //                    return item.id;
 //                }
 //            };
 
 
-//            参考：https://github.com/SaurabhSandav/PagingDemo
+            // 参考：https://github.com/SaurabhSandav/PagingDemo
             return new PageKeyedDataSource<Integer, DataBean>() {
                 @Override
                 public void loadInitial(@NonNull LoadInitialParams<Integer> params, @NonNull LoadInitialCallback<Integer, DataBean> callback) {
@@ -217,6 +224,19 @@ public class PagingActivity extends AppCompatActivity {
      * @return
      */
     private List<DataBean> loadDataByIndex(int pageIndex, int pageSize) {
+        List<DataBean> list = new ArrayList();
+
+        for (int i = 0; i < pageSize; i++) {
+            DataBean data = new DataBean();
+            data.id = pageIndex + i;
+            data.content = "这是第 " + pageIndex + " 页的数据：：" + data.id;
+            list.add(data);
+        }
+
+        return list;
+    }
+
+    private List<DataBean> loadDataByKey(int pageIndex, int pageSize) {
         List<DataBean> list = new ArrayList();
 
         for (int i = 0; i < pageSize; i++) {

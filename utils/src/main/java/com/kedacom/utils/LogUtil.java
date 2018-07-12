@@ -194,8 +194,7 @@ public class LogUtil {
 //                        + st.getClassName() + "." + st.getMethodName()
 //                        + "(" + st.getFileName() + ":" + st.getLineNumber() + ")" + " ]";
 
-                return "[ at "
-                        + st.getClassName() + "." + st.getMethodName()
+                return "[ " + st.getClassName() + "." + st.getMethodName()
                         + "(" + st.getFileName() + ":" + st.getLineNumber() + ")" + " ]";
             }
         }
@@ -207,6 +206,7 @@ public class LogUtil {
      * 输出格式定义
      */
     private static String getMsgFormat(String msg) {
-        return msg + "；【log position at】：" + getFunctionName();
+//        return msg + "；【log position at】：" + getFunctionName();
+        return msg;
     }
 }

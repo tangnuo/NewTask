@@ -177,7 +177,7 @@
             android:name=".example.activity.ConstraintLayoutTestActivity"
             android:label="@string/title_activity_constraint_layout_test"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".example.activity.PagingActivity"></activity>
+        <activity android:name=".example.activity.TestPagingActivity"></activity>
     </application>
 
 </manifest>
