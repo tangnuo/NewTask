@@ -2,6 +2,7 @@ package com.kedacom.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.IInterface;
 import android.util.Base64;
 
 import java.io.ByteArrayInputStream;
@@ -23,7 +24,7 @@ public class SharedPreferenceUtil {
 
     private SharedPreferenceUtil(Context context) {
         this.context = context;
-        sp = context.getSharedPreferences("my_sp", Context.MODE_PRIVATE);
+        sp = context.getSharedPreferences("caowj_sp", Context.MODE_PRIVATE);
         editor = sp.edit();
     }
 
@@ -76,6 +77,17 @@ public class SharedPreferenceUtil {
      */
     public void saveBoolean(String key, boolean value) {
         editor.putBoolean(key, value);
+        editor.commit();
+    }
+
+    /**
+     * 存 long
+     *
+     * @param key
+     * @param value
+     */
+    public void saveLong(String key, long value) {
+        editor.putLong(key, value);
         editor.commit();
     }
 
@@ -148,6 +160,17 @@ public class SharedPreferenceUtil {
      */
     public boolean getBoolean(String key) {
         return sp.getBoolean(key, false);
+    }
+
+    /**
+     * 取 Long
+     *
+     * @param key
+     * @param defValue
+     * @return
+     */
+    public Long getLong(String key, long defValue) {
+        return sp.getLong(key, defValue);
     }
 
 

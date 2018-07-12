@@ -17,16 +17,22 @@ import com.example.caowj.newtask.utils.business.MyAndroidUtils;
  * Android 6.0 动态权限申请
  * <br/>
  * https://blog.csdn.net/xietansheng/article/details/54315674
+ *
+ * 危险权限列表：https://developer.android.google.cn/guide/topics/permissions/overview#permission-groups
  */
 public class TestPremissionActivity extends AppCompatActivity {
 
     /**
      * 需要android6.0(23)以上处理的权限
      */
+//    private String[] PERMISSIONS = {
+//            Manifest.permission.ACCESS_COARSE_LOCATION,
+//            Manifest.permission.ACCESS_FINE_LOCATION,
+//            Manifest.permission.READ_PHONE_STATE};
+
     private String[] PERMISSIONS = {
-            Manifest.permission.ACCESS_COARSE_LOCATION,
-            Manifest.permission.ACCESS_FINE_LOCATION,
-            Manifest.permission.READ_PHONE_STATE};
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -29,6 +29,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
     <application
         android:name=".BaseApp"
@@ -112,7 +113,7 @@
         <activity android:name=".example.activity.TestCommonAdapterActivity2" />
         <activity android:name=".example.activity.TestMinaActivity" />
 
-        <service android:name=".example.mina.MinaService" />
+
 
         <activity android:name=".example.activity.TestDaggerActivity" />
         <activity android:name=".example.activity.TestDaggerActivity2" />
@@ -146,8 +147,6 @@
 
         <activity android:name=".example.activity.TestIntentServiceActivity" />
 
-        <service android:name=".example.service.MyIntentService" />
-
         <activity android:name=".example.activity.TestFragmentDialogActivity" />
         <activity android:name=".example.activity.TestUIActivity" />
         <activity
@@ -179,6 +178,27 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".example.activity.TestPagingActivity" />
         <activity android:name=".example.activity.TestDownloadManagerActivity"></activity>
+
+        <service android:name=".example.mina.MinaService" />
+        <service android:name=".example.service.MyIntentService" />
+        <service android:name=".example.service.DownApkService" />
+
+        <receiver android:name=".example.receiver.DownApkReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.DOWNLOAD_COMPLETE" />
+                <action android:name="android.intent.action.DOWNLOAD_NOTIFICATION_CLICKED" />
+            </intent-filter>
+        </receiver>
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.example.caowj.newtask.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>
