@@ -102,12 +102,24 @@ public class TestDownloadManagerActivity extends BaseActivity implements View.On
             public void run() {
                 Cursor cursor = downloadManager.query(query.setFilterById(id));
                 if (cursor != null && cursor.moveToFirst()) {
-                    if (cursor.getInt(
-                            cursor.getColumnIndex(DownloadManager.COLUMN_STATUS)) == DownloadManager.STATUS_SUCCESSFUL) {
-                        pb_update.setProgress(100);
-                        install(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/app-release.apk");
-                        task.cancel();
+
+                    int status = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_STATUS));
+                    switch (status) {
+                        case DownloadManager.STATUS_PENDING:
+                            break;
+                        case DownloadManager.STATUS_PAUSED:
+                            break;
+                        case DownloadManager.STATUS_RUNNING:
+                            break;
+                        case DownloadManager.STATUS_SUCCESSFUL:
+                            pb_update.setProgress(100);
+                            install(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/app-release.apk");
+                            task.cancel();
+                            break;
+                        case DownloadManager.STATUS_FAILED:
+                            break;
                     }
+
                     String title = cursor.getString(cursor.getColumnIndex(DownloadManager.COLUMN_TITLE));
                     String address = cursor.getString(cursor.getColumnIndex(DownloadManager.COLUMN_LOCAL_URI));
                     int bytes_downloaded = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_BYTES_DOWNLOADED_SO_FAR));
