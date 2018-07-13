@@ -183,6 +183,7 @@
         <service android:name=".example.service.MyIntentService" />
         <service android:name=".example.service.DownApkService" />
 
+        <!--放在activity中手动注册了-->
         <receiver android:name=".example.receiver.DownApkReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.DOWNLOAD_COMPLETE" />

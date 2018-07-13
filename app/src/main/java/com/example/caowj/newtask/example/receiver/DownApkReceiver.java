@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 
+import com.example.caowj.newtask.example.activity.TestDownloadManagerActivity;
 import com.kedacom.utils.LogUtil;
 import com.kedacom.utils.SharedPreferenceUtil;
 import com.kedacom.utils.ToastUtil;
@@ -18,6 +19,8 @@ import static android.content.Context.DOWNLOAD_SERVICE;
  * 如果手动监听了下载进度，可以不使用这个广播接收器。
  * @Author : Caowj
  * @Date : 2018/7/12 14:24
+ * @deprecated 广播中不适合activity跳转和显示dialog，所以一到activity中手动注册。
+ * seen{@link TestDownloadManagerActivity#downloadSuccessReceiver } 和 {@link TestDownloadManagerActivity#clickNotifacationReceiver}
  */
 public class DownApkReceiver extends BroadcastReceiver {
     SharedPreferenceUtil mSharedP;
@@ -77,7 +80,8 @@ public class DownApkReceiver extends BroadcastReceiver {
                     break;
                 case DownloadManager.STATUS_SUCCESSFUL:
                     // TODO: 2018/7/12  在activity中安装apk
-//                    installProcess();
+//                    Receiver 中不适合activity跳转和现实dialog弹窗。
+//                    com.example.caowj.newtask.example.activity.TestDownloadManagerActivity.installProcess();
                     ToastUtil.showShortToast(ctx, "安装存在问题，需要优化。");
                     break;
                 case DownloadManager.STATUS_FAILED:
