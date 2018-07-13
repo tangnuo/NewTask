@@ -24,6 +24,7 @@ import android.widget.TextView;
 
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.example.service.DownApkService;
+import com.example.caowj.newtask.utils.DownloadFileUtil;
 import com.kedacom.base.common.BaseActivity;
 import com.kedacom.utils.LogUtil;
 import com.kedacom.utils.SharedPreferenceUtil;
@@ -118,8 +119,6 @@ public class TestDownloadManagerActivity extends BaseActivity implements View.On
             Intent downloadApkIntent = new Intent(mActivity, DownApkService.class);
             Bundle bundle = new Bundle();
             bundle.putString("downloadUrl", downloadUrl);
-            //文件名不可以使用汉字，否则出现：“解析软件包时出现问题”
-            bundle.putString("title", "apkName_caowj");
             downloadApkIntent.putExtra("download", bundle);
             mActivity.startService(downloadApkIntent);
 //            可以使用bind广播的形式代替SharedPreference获取id
@@ -253,32 +252,29 @@ public class TestDownloadManagerActivity extends BaseActivity implements View.On
      * 安装应用
      */
     private void installApk() {
-        String apkName = mSharedP.getString("apkName");
-        if (apkName != null) {
-            LogUtil.d("DownApkReceiver", "存放路径：" + Environment.DIRECTORY_DOWNLOADS + "，apkName：" + apkName);
-            File apkFile = mActivity.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS + "/" + apkName);
 
-            if (apkFile != null) {
-                LogUtil.myD("完整路径1：" + apkFile.getAbsolutePath());
-                Intent intent = new Intent(Intent.ACTION_VIEW);
+//            File apkFile = mActivity.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS + "/" + apkName);
+        File apkFile = DownloadFileUtil.getDownloadFilePath(mActivity);
 
-                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
-                    intent.setDataAndType(Uri.fromFile(apkFile), "application/vnd.android.package-archive");
-                } else {
-                    //Android7.0之后获取uri要用contentProvider
-                    Uri uri = FileProvider.getUriForFile(mActivity, "com.example.caowj.newtask.fileprovider", apkFile);
-                    intent.setDataAndType(uri, "application/vnd.android.package-archive");
-                    intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                }
+        if (apkFile != null) {
+            LogUtil.myD("完整路径1：" + apkFile.getAbsolutePath());
+            Intent intent = new Intent(Intent.ACTION_VIEW);
 
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                mActivity.startActivity(intent);
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+                intent.setDataAndType(Uri.fromFile(apkFile), "application/vnd.android.package-archive");
             } else {
-                LogUtil.d("DownApkReceiver", "下载失败，或者文件不存在");
+                //Android7.0之后获取uri要用contentProvider
+                Uri uri = FileProvider.getUriForFile(mActivity, "com.example.caowj.newtask.fileprovider", apkFile);
+                intent.setDataAndType(uri, "application/vnd.android.package-archive");
+                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             }
+
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            mActivity.startActivity(intent);
         } else {
-            LogUtil.d("DownApkReceiver", "apkName 为 null");
+            LogUtil.d("DownApkReceiver", "下载失败，或者文件不存在");
         }
+
     }
 }
 

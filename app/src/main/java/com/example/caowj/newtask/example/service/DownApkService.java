@@ -11,6 +11,7 @@ import android.os.Environment;
 import android.os.IBinder;
 import android.text.TextUtils;
 
+import com.example.caowj.newtask.utils.DownloadFileUtil;
 import com.kedacom.utils.LogUtil;
 import com.kedacom.utils.SharedPreferenceUtil;
 
@@ -50,10 +51,9 @@ public class DownApkService extends Service {
         Bundle downloadBundle = intent.getBundleExtra("download");
         if (downloadBundle != null) {
             String downloadUrl = downloadBundle.getString("downloadUrl");
-            String title = downloadBundle.getString("title");
             if (!TextUtils.isEmpty(downloadUrl)) {
                 mSp = SharedPreferenceUtil.getInstance(context);
-                long downloadId = downloadApk(downloadUrl, title);
+                long downloadId = downloadApk(downloadUrl);
                 id = downloadId;
 
                 mSp.saveLong("downloadId", downloadId);
@@ -76,20 +76,18 @@ public class DownApkService extends Service {
      * https://blog.csdn.net/u012209506/article/details/56012744
      *
      * @param url   网络路径
-     * @param title apk名称（不包含后缀）
      * @return
      */
-    private long downloadApk(String url, String title) {
+    private long downloadApk(String url) {
 
-        String apkName = title + ".apk";
-        File file = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS + "/" + apkName);
+//        File file = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS + "/" + apkName);
+        File file = DownloadFileUtil.getDownloadFilePath(context);
         if (file != null && file.exists()) {
             boolean delFlag = file.delete();
             LogUtil.myD("完整路径2：" + file.getAbsolutePath() + "，删除状态：" + delFlag);
         } else {
             LogUtil.myW("文件不存在");
         }
-        mSp.saveString("apkName", apkName);
 
         DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
 
@@ -106,13 +104,14 @@ public class DownApkService extends Service {
         //通知栏描述信息
         request.setDescription("描述45678");
 
-        String filePath = Environment.DIRECTORY_DOWNLOADS;
-
-        //方法一：使用应用内路径（相对路径，内部自动拼接） /android/data/packages ,所以兼容7.0（Android -> data -> com.app -> files -> Download -> dxtj.apk）
-        //取路径的时候，使用Context#getExternalFilesDir(String)
-        request.setDestinationInExternalFilesDir(this, filePath, apkName);
-
+//        String filePath = Environment.DIRECTORY_DOWNLOADS;
+//
+//        //方法一：使用应用内路径（相对路径，内部自动拼接） /android/data/packages ,所以兼容7.0（Android -> data -> com.app -> files -> Download -> dxtj.apk）
+//        //取路径的时候，使用Context#getExternalFilesDir(String)
+//        request.setDestinationInExternalFilesDir(this, filePath, apkName);
+//
 //        //方法二：自定义文件路径（必须是完整路径）
+//        filePath = Environment.getExternalStorageDirectory() + "/NewTask/download/";
 //        request.setDestinationUri(Uri.parse(filePath));
 //
 //        //方法三：使用系统默认下载路径（（相对路径，内部自动拼接）），不同厂家，不同room，存在问题。设置文件存放路径( SD卡--> Download文件夹)
@@ -120,6 +119,8 @@ public class DownApkService extends Service {
 //        Environment.getExternalStoragePublicDirectory(filePath).mkdir();
 //        //取路径的时候，使用Environment#getExternalStoragePublicDirectory(String)
 //        request.setDestinationInExternalPublicDir(filePath, apkName);
+
+        request = DownloadFileUtil.setDestinationByState(context, request);
 
         DownloadManager mDownloadManager = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
         return mDownloadManager.enqueue(request);
