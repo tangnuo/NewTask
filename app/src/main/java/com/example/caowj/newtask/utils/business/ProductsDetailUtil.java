@@ -12,6 +12,7 @@ import com.example.caowj.newtask.mvp.entity.bean.PaiPinBean;
 import com.example.caowj.newtask.mvp.viewHolder.FixedPriceProductVH;
 import com.example.caowj.newtask.utils.GlideUtils;
 import com.kedacom.utils.AlimmdnUtil;
+import com.kedacom.utils.AppUtil;
 
 import java.util.List;
 
@@ -47,7 +48,7 @@ public class ProductsDetailUtil {
         holder.tvStoreName.setText("【" + shopName + "】");
         //商品售价
         holder.tvPrice.setText(Constants.RMBTag + (isActivePrice ? paiPinInfo.getActivePrice() : paiPinInfo.getY_price()));
-        int width = MyAndroidUtils.getScreenWidth(context) / 2;
+        int width = AppUtil.getScreenWidth(context) / 2;
         GridLayoutManager.LayoutParams parentParams = (GridLayoutManager.LayoutParams) holder.itemView.getLayoutParams();
         parentParams.width = width;
         holder.itemView.setLayoutParams(parentParams);

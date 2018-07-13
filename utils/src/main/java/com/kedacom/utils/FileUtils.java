@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.ContentUris;
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -589,17 +590,6 @@ public class FileUtils {
         return new File[0];
     }
 
-    public static String getPath(Context context, Uri uri) {
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {//4.4以后
-            return getRealPathPath(context, uri);
-
-        } else {//4.4以下下系统调用方法
-            return getRealPathFromURI(context, uri);
-
-        }
-
-    }
-
     public static String getRealPathFromURI(Context context, Uri uri) {
         String res = null;
         String[] proj = {MediaStore.Images.Media.DATA};
@@ -673,38 +663,34 @@ public class FileUtils {
         return null;
     }
 
+
     /**
-     * Get the value of the data column for this Uri. This is useful for
-     * MediaStore Uris, and other file-based ContentProviders.
-     *
-     * @param context       The context.
-     * @param uri           The Uri to query.
-     * @param selection     (Optional) Filter used in the query.
-     * @param selectionArgs (Optional) Selection arguments used in the query.
-     * @return The value of the _data column, which is typically a file path.
+     * 显示存储空间路径
+     * <br/>
      */
-    public static String getDataColumn(Context context, Uri uri, String selection,
-                                       String[] selectionArgs) {
+    private static void showStorageUrl(Context mContext) {
+        LogUtil.myW("getCacheDir():" + mContext.getCacheDir().getAbsolutePath());
+        LogUtil.myW("getFilesDir:" + mContext.getFilesDir().getAbsolutePath());
+        LogUtil.myW("getExternalCacheDir():" + mContext.getExternalCacheDir().getAbsolutePath());
+        LogUtil.myW("getExternalFilesDir(null):" + mContext.getExternalFilesDir(null).getAbsolutePath());
+        LogUtil.myW("getObbDir:" + mContext.getObbDir().getAbsolutePath());
+        LogUtil.myW("Environment.getDataDirectory():" + Environment.getDataDirectory());
+        LogUtil.myW("Environment.getDownloadCacheDirectory():" + Environment.getDownloadCacheDirectory());
+        LogUtil.myW("Environment.getRootDirectory():" + Environment.getRootDirectory());
+        LogUtil.myW("Environment.getExternalStorageDirectory():" + Environment.getExternalStorageDirectory());
+        LogUtil.myW("Environment.getExternalStorageState():" + Environment.getExternalStorageState());
 
-        Cursor cursor = null;
-        final String column = "_data";
-        final String[] projection = {column};
-
-        try {
-            cursor = context.getContentResolver().query(uri, projection, selection, selectionArgs,
-                    null);
-            if (cursor != null && cursor.moveToFirst()) {
-                final int column_index = cursor.getColumnIndexOrThrow(column);
-                return cursor.getString(column_index);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (cursor != null) {
-                cursor.close();
-            }
-        }
-        return null;
+//        日志显示：
+//        W/caowj: getCacheDir():/data/data/com.jsfengling.qipai/cache
+//        W/caowj: getFilesDir:/data/data/com.jsfengling.qipai/files
+//        W/caowj: getExternalCacheDir():/storage/emulated/0/Android/data/com.jsfengling.qipai/cache
+//        W/caowj: getExternalFilesDir(null):/storage/emulated/0/Android/data/com.jsfengling.qipai/files
+//        W/caowj: getObbDir:/storage/emulated/0/Android/obb/com.jsfengling.qipai
+//        W/caowj: Environment.getDataDirectory():/data
+//        W/caowj: Environment.getDownloadCacheDirectory():/cache
+//        W/caowj: Environment.getRootDirectory():/system
+//        W/caowj: Environment.getExternalStorageDirectory():/storage/emulated/0
+//        W/caowj: Environment.getExternalStorageState():mounted
     }
 
     /**
@@ -731,4 +717,335 @@ public class FileUtils {
         return "com.android.providers.media.documents".equals(uri.getAuthority());
     }
 
+    /**
+     * @param uri The Uri to check.
+     * @return Whether the Uri authority is Google Photos.
+     */
+    public static boolean isGooglePhotosUri(Uri uri) {
+        return "com.google.android.apps.photos.content".equals(uri.getAuthority());
+    }
+
+    /**
+     * Get the value of the data column for this Uri. This is useful for
+     * MediaStore Uris, and other file-based ContentProviders.
+     *
+     * @param context       The context.
+     * @param uri           The Uri to query.
+     * @param selection     (Optional) Filter used in the query.
+     * @param selectionArgs (Optional) Selection arguments used in the query.
+     * @return The value of the _data column, which is typically a file path.
+     */
+    public static String getDataColumn(Context context, Uri uri, String selection,
+                                       String[] selectionArgs) {
+
+        Cursor cursor = null;
+        final String column = "_data";
+        final String[] projection = {
+                column
+        };
+
+        try {
+            cursor = context.getContentResolver().query(uri, projection, selection, selectionArgs,
+                    null);
+            if (cursor != null && cursor.moveToFirst()) {
+                final int column_index = cursor.getColumnIndexOrThrow(column);
+                return cursor.getString(column_index);
+            }
+        } finally {
+            if (cursor != null)
+                cursor.close();
+        }
+        return null;
+    }
+
+    /**
+     * Get a file path from a Uri. This will get the the path for Storage Access
+     * Framework Documents, as well as the _data field for the MediaStore and
+     * other file-based ContentProviders.
+     *
+     * @param context The context.
+     * @param uri     The Uri to query.
+     * @author paulburke
+     */
+    @SuppressLint("NewApi")
+    public static String getPath(final Context context, final Uri uri) {
+
+        final boolean isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
+
+        // DocumentProvider
+        if (isKitKat && DocumentsContract.isDocumentUri(context, uri)) {
+            // ExternalStorageProvider
+            if (isExternalStorageDocument(uri)) {
+                final String docId = DocumentsContract.getDocumentId(uri);
+                final String[] split = docId.split(":");
+                final String type = split[0];
+
+                if ("primary".equalsIgnoreCase(type)) {
+                    return Environment.getExternalStorageDirectory() + "/" + split[1];
+                }
+            }
+            // DownloadsProvider
+            else if (isDownloadsDocument(uri)) {
+
+                final String id = DocumentsContract.getDocumentId(uri);
+                final Uri contentUri = ContentUris.withAppendedId(
+                        Uri.parse("content://downloads/public_downloads"), Long.valueOf(id));
+
+                return getDataColumn(context, contentUri, null, null);
+            }
+            // MediaProvider
+            else if (isMediaDocument(uri)) {
+                final String docId = DocumentsContract.getDocumentId(uri);
+                final String[] split = docId.split(":");
+                final String type = split[0];
+
+                Uri contentUri = null;
+                if ("image".equals(type)) {
+                    contentUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+                } else if ("video".equals(type)) {
+                    contentUri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
+                } else if ("audio".equals(type)) {
+                    contentUri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
+                }
+
+                final String selection = "_id=?";
+                final String[] selectionArgs = new String[]{
+                        split[1]
+                };
+
+                return getDataColumn(context, contentUri, selection, selectionArgs);
+            }
+        }
+        // MediaStore (and general)
+        else if ("content".equalsIgnoreCase(uri.getScheme())) {
+            return getDataColumn(context, uri, null, null);
+        }
+        // File
+        else if ("file".equalsIgnoreCase(uri.getScheme())) {
+            return uri.getPath();
+        }
+
+        return null;
+    }
+
+
+    //	public static String SDPATH = Environment.getExternalStorageDirectory()+ "/Photo_LJ/";
+//	private static String SDPATH = Constants.APP_FILE_URL+"photos"+File.separator;
+
+    /**
+     * @param fileDir 文件目录
+     * @return 特定目录下的所有后缀名为fileType的文件列表
+     */
+    public static List<String> getFiles(File fileDir) throws Exception {
+        List<String> lfile = new ArrayList<String>();
+        File[] fs = fileDir.listFiles();
+        if (fs != null) {
+            for (File f : fs) {
+                if (f.isFile()) {
+                    //文件后缀名
+                    String fileSuffix = f.getName().substring(
+                            f.getName().lastIndexOf(".") + 1,
+                            f.getName().length());
+                    if ("apatch".equalsIgnoreCase(fileSuffix))
+                        lfile.add(f.getName());
+                }
+            }
+        }
+
+        return lfile;
+    }
+
+    /**
+     * 获取文件夹下最新补丁文件编号
+     *
+     * @param fileDir
+     * @param versionCode
+     * @return
+     * @throws Exception
+     */
+    public static String getLoadPatchName(File fileDir, String versionCode) throws Exception {
+        List<String> files = getFiles(fileDir);
+        int maxPatchVersion = 0;
+        for (String name : files) {
+            if (name != null && name.startsWith(versionCode + "_")) {
+                int patchVersion = Integer.valueOf(name.substring(name.indexOf("_") + 1, name.indexOf(".")));
+                maxPatchVersion = Math.max(maxPatchVersion, patchVersion);
+            } else {
+                LogUtil.myD("不符合规则的不定文件，name:" + name);
+            }
+        }
+
+        LogUtil.myD("最新的补丁文件序号：" + maxPatchVersion);
+        return String.valueOf(maxPatchVersion);
+    }
+
+
+    /**
+     * 返回SD卡存储路径
+     *
+     * @param state   1：picture 2:video 3:voice 4:file 5:photos 其他是cache
+     * @param appName 文件夹名称（一般用项目名称）
+     * @return
+     */
+    public static String getFileAddress(int state, String appName, Context mContext) {
+
+        String Address = "";
+
+        if (GetSDState()) {
+//            Address = APP_FILE_URL;
+        } else {
+            Address = mContext.getCacheDir().getAbsolutePath() + File.separator + appName + File.separator;
+        }
+        switch (state) {
+            case 1:
+                Address = Address + appName + "_picture" + File.separator;
+                break;
+            case 2:
+                Address = Address + appName + "_video" + File.separator;
+                break;
+            case 3:
+                Address = Address + appName + "_voice" + File.separator;
+                break;
+            case 4:
+                Address = Address + appName + "_file" + File.separator;
+                break;
+            case 5:
+                Address = Address + appName + "_photos" + File.separator;
+                break;
+            default:
+                Address = Address + appName + "_cache" + File.separator;
+                break;
+        }
+        LogUtil.myD("获取的文件路径：" + Address);
+        File baseFile = new File(Address);
+        if (!baseFile.exists()) {
+            baseFile.mkdirs();
+        }
+        return Address;
+    }
+
+    /**
+     * 判断内置SD卡是否挂载
+     *
+     * @return
+     */
+    public static boolean GetSDState() {
+        if (Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED)) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 保存图片
+     *
+     * @param bm       图片bitmap
+     * @param filePath 文件夹路径
+     * @param picName  文件名称
+     */
+    public static void saveBitmap(Bitmap bm, String filePath, String picName) {
+        try {
+            if (!isFileExist(filePath, "")) {
+                createSDDir(filePath, "");
+            }
+            File f = new File(getFileName(filePath, picName));
+            if (f.exists()) {
+                f.delete();
+            }
+            FileOutputStream out = new FileOutputStream(f);
+            bm.compress(Bitmap.CompressFormat.JPEG, 90, out);
+            out.flush();
+            out.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 指定文件路径为 外部存储 即sdcard。 文件夹名字为 项目包名。
+     *
+     * @param context
+     * @return
+     */
+    private File getTempFile(Context context) {
+        final File path = new File(Environment.getExternalStorageDirectory(), context.getPackageName());
+        if (!path.exists()) {
+            path.mkdir();
+        }
+        return new File(path, "MyCameraImage");
+    }
+
+    /**
+     * 获取本地图片的路径
+     *
+     * @param filePath
+     * @param picName
+     * @return
+     */
+    public static String getFileName(String filePath, String picName) {
+
+        return filePath + picName + ".JPEG";
+    }
+
+    public static File createSDDir(String filePath, String dirName) throws IOException {
+        File dir = new File(filePath + dirName);
+        if (Environment.getExternalStorageState().equals(
+                Environment.MEDIA_MOUNTED)) {
+
+            System.out.println("createSDDir:" + dir.getAbsolutePath());
+            System.out.println("createSDDir:" + dir.mkdir());
+        }
+        return dir;
+    }
+
+    public static boolean isFileExist(String filePath, String fileName) {
+        File file = new File(filePath + fileName);
+        file.isFile();
+        return file.exists();
+    }
+
+    public static void delFile(String filePath, String fileName) {
+        File file = new File(filePath + fileName);
+        if (file.isFile()) {
+            file.delete();
+        }
+        file.exists();
+    }
+
+    public static void deleteDir(String filePath) {
+        File dir = new File(filePath);
+        if (dir == null || !dir.exists() || !dir.isDirectory())
+            return;
+
+        for (File file : dir.listFiles()) {
+            if (file.isFile())
+                file.delete();
+            else if (file.isDirectory())
+                deleteDir(filePath);
+        }
+        dir.delete();
+    }
+
+    public static boolean fileIsExists(String path) {
+        File f = new File(path);
+        if (!f.exists()) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * 确保文件夹目录存在（是文件夹）
+     */
+    public static void sureDirectoryExist(String folderUrl) {
+        if (!fileIsExists(folderUrl)) {
+            File file2 = new File(folderUrl);
+            file2.mkdirs();
+            LogUtil.myD("新建目录：" + folderUrl);
+        } else {
+            LogUtil.myD("目录已经存在了：" + folderUrl);
+        }
+    }
 }

@@ -26,6 +26,7 @@ import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.example.service.DownApkService;
 import com.example.caowj.newtask.utils.DownloadFileUtil;
 import com.kedacom.base.common.BaseActivity;
+import com.kedacom.utils.AlertDialogUtil;
 import com.kedacom.utils.LogUtil;
 import com.kedacom.utils.SharedPreferenceUtil;
 import com.kedacom.utils.ToastUtil;
@@ -225,13 +226,9 @@ public class TestDownloadManagerActivity extends BaseActivity implements View.On
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             //先获取是否有安装未知来源应用的权限
             haveInstallPermission = mActivity.getPackageManager().canRequestPackageInstalls();
-            if (!haveInstallPermission) {//没有权限
-                // 创建构建器
-                AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
-                // 设置参数
-                builder.setTitle("重要提示").setIcon(R.drawable.ic_launcher)
-                        .setMessage("安装应用需要打开未知来源权限，请去设置中开启权限")
-                        .setPositiveButton("开启", new DialogInterface.OnClickListener() {
+            if (!haveInstallPermission) {
+                AlertDialogUtil.showDialog(mActivity, false, "提示", "安装应用需要打开未知来源权限，请去设置中开启权限",
+                        null, "开启", null, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 //注意这个是8.0新API
@@ -239,7 +236,6 @@ public class TestDownloadManagerActivity extends BaseActivity implements View.On
                                 mActivity.startActivityForResult(intent, 10086);
                             }
                         });
-                builder.create().show();
             } else {
                 //有权限，开始安装应用程序
                 installApk();

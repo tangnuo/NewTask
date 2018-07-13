@@ -17,6 +17,7 @@ import com.example.caowj.newtask.utils.GlideUtils;
 import com.example.caowj.newtask.utils.business.MyAndroidUtils;
 import com.kedacom.customview.view.LabelView;
 import com.kedacom.utils.AlimmdnUtil;
+import com.kedacom.utils.AppUtil;
 import com.kedacom.utils.JudgmentDataUtil;
 import com.kedacom.utils.LogUtil;
 
@@ -81,7 +82,7 @@ public class ChoiceArticleListViewBinder extends ItemViewBinder<ChoiceArticle, C
                 labelView.setLabelContent(text);
                 //设置显示位置
 //                LogUtil.d("caowj", "内容：" + text + "\t方向：" + articleLabel.getPosition() + "\t" + (articleLabel.getPosition() == 0 ? "右" : "左") + "\tx:" + articleLabel.getX() + "\ty:" + articleLabel.getY());
-                labelView.setDisplayPosition(holder.rl_label, MyAndroidUtils.getScreenWidth(mActivity), height, articleLabel.getX(), articleLabel.getY());
+                labelView.setDisplayPosition(holder.rl_label, AppUtil.getScreenWidth(mActivity), height, articleLabel.getX(), articleLabel.getY());
                 //标签监听点击
                 labelView.setOnClickListener(new View.OnClickListener() {
                     @Override

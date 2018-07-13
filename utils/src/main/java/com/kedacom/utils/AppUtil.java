@@ -1,12 +1,17 @@
 package com.kedacom.utils;
 
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.WindowManager;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -325,6 +330,123 @@ public class AppUtil {
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
             return "0.0.0";
+        }
+    }
+
+    /**
+     * 返回Uri方法的详细信息
+     * <p>
+     * 例如（自定义的协议）：
+     * <a href="qipai://www.qipaiapp.com/weblink?Game/index.html?data=123">打开webb</a>
+     * 输出：
+     * uri:qipai://www.qipaiapp.com/weblink?Game/index.html?data=123
+     * Authority:www.qipaiapp.com
+     * Fragment:null
+     * Host:www.qipaiapp.com
+     * LastPathSegment:weblink
+     * Path:/weblink
+     * Port:-1
+     * Query:Game/index.html?data=123
+     * Scheme:qipai
+     * SchemeSpecificPart://www.qipaiapp.com/weblink?Game/index.html?data=123
+     * UserInfo:null
+     *
+     * @return
+     */
+    public static String getUriDetail(Uri uri) {
+        String uriStr = "uri:" + uri;
+        if (uri != null) {
+            uriStr += "\n Authority:" + uri.getAuthority();
+            uriStr += "\n Fragment:" + uri.getFragment();
+            uriStr += "\n Host:" + uri.getHost();
+            uriStr += "\n LastPathSegment:" + uri.getLastPathSegment();
+            uriStr += "\n Path:" + uri.getPath();
+            uriStr += "\n Port:" + uri.getPort();
+            uriStr += "\n Query:" + uri.getQuery();
+            uriStr += "\n Scheme:" + uri.getScheme();
+            uriStr += "\n SchemeSpecificPart:" + uri.getSchemeSpecificPart();
+            uriStr += "\n UserInfo:" + uri.getUserInfo();
+        }
+        return uriStr;
+    }
+
+    /**
+     * 获取设备信息
+     *
+     * @return
+     */
+    public static String getDeviceInfo() {
+        String phoneInfo = "Product（手机制造商）: " + android.os.Build.PRODUCT;
+        phoneInfo += ",\n BOARD（主板）: " + android.os.Build.BOARD;
+        phoneInfo += ",\n BRAND（android系统定制商）: " + android.os.Build.BRAND;
+        phoneInfo += ",\n BOOTLOADER（系统启动程序版本号：） " + android.os.Build.BOOTLOADER;
+        phoneInfo += ",\n CPU_ABI（cpu指令集）: " + android.os.Build.CPU_ABI;
+        phoneInfo += ",\n CPU_ABI2（cpu指令集2）: " + android.os.Build.CPU_ABI2;
+        phoneInfo += ",\n DEVICE（设备参数）: " + android.os.Build.DEVICE;
+        phoneInfo += ",\n DISPLAY（显示参数）: " + android.os.Build.DISPLAY;
+//        phoneInfo += ",\n （无线电固件版本）: " + android.os.Build.getRadioVersion();
+        phoneInfo += ",\n FINGERPRINT（硬件识别码 ）:" + android.os.Build.FINGERPRINT;
+        phoneInfo += ",\n HARDWARE（硬件名称 ）: " + android.os.Build.HARDWARE;
+        phoneInfo += ",\n ID（修订版本列表）: " + android.os.Build.ID;
+        phoneInfo += ",\n MANUFACTURER（硬件制造商 ）: " + android.os.Build.MANUFACTURER;
+        phoneInfo += ",\n MODEL（版本）: " + android.os.Build.MODEL;
+        phoneInfo += ",\n SERIAL（硬件序列号）: " + android.os.Build.SERIAL;
+        phoneInfo += ",\n TAGS（描述build的标签）: " + android.os.Build.TAGS;
+        phoneInfo += ",\n VERSION_CODES.BASE: " + android.os.Build.VERSION_CODES.BASE;
+        phoneInfo += ",\n SDK: " + android.os.Build.VERSION.SDK;
+        phoneInfo += ",\n VERSION.RELEASE: " + android.os.Build.VERSION.RELEASE;
+        phoneInfo += ",\n USER: " + android.os.Build.USER;
+        LogUtil.myD(phoneInfo);
+        return phoneInfo;
+    }
+
+    /**
+     * 获取手机屏幕宽度(px)
+     *
+     * @param mContext
+     * @return px
+     */
+    public static int getScreenWidth(Context mContext) {
+        int width = 0;
+        WindowManager wm = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        //        width = display.getWidth();//已过时
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        display.getMetrics(displayMetrics);
+        width = displayMetrics.widthPixels;
+        return width;
+    }
+
+
+    /**
+     * 获取手机屏幕高度
+     *
+     * @param mContext
+     * @return
+     */
+    public static int getScreenHeight(Context mContext) {
+        int height = 0;
+        WindowManager wm = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        height = display.getHeight();
+        return height;
+    }
+
+
+    /**
+     * 判断是否安装了某个应用
+     *
+     * @param context
+     * @param packageName app包名
+     * @return
+     */
+    public static boolean isApkInstalled(Context context, String packageName) {
+        try {
+            PackageManager packageManager = context.getPackageManager();
+            ApplicationInfo applicationInfo = packageManager.getApplicationInfo(packageName, PackageManager.GET_UNINSTALLED_PACKAGES);
+            return true;
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
         }
     }
 }
