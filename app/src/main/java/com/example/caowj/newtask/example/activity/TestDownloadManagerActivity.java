@@ -103,6 +103,7 @@ public class TestDownloadManagerActivity extends BaseActivity implements View.On
             @Override
             public void onReceive(Context context, Intent intent) {
                 //点击跳转到下载查看页面
+                LogUtil.myD("点击跳转到下载查看页面");
                 Intent viewDownloadIntent = new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS);
                 viewDownloadIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(viewDownloadIntent);
@@ -143,6 +144,14 @@ public class TestDownloadManagerActivity extends BaseActivity implements View.On
         mActivity.unregisterReceiver(clickNotifacationReceiver);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == 10086) {
+            installProcess();//再次执行安装流程，包含权限判等
+        }
+    }
+
     /**
      * 手机是否支持默认的下载管理器；如果不支持，就跳转浏览器下载。
      * <p>
@@ -165,14 +174,6 @@ public class TestDownloadManagerActivity extends BaseActivity implements View.On
             return false;
         }
         return true;
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK && requestCode == 10086) {
-            installProcess();//再次执行安装流程，包含权限判等
-        }
     }
 
     /**
@@ -228,9 +229,9 @@ public class TestDownloadManagerActivity extends BaseActivity implements View.On
                 // 创建构建器
                 AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
                 // 设置参数
-                builder.setTitle("提示").setIcon(R.drawable.ic_launcher)
+                builder.setTitle("重要提示").setIcon(R.drawable.ic_launcher)
                         .setMessage("安装应用需要打开未知来源权限，请去设置中开启权限")
-                        .setPositiveButton("美", new DialogInterface.OnClickListener() {
+                        .setPositiveButton("开启", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 //注意这个是8.0新API
@@ -263,7 +264,7 @@ public class TestDownloadManagerActivity extends BaseActivity implements View.On
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
                 intent.setDataAndType(Uri.fromFile(apkFile), "application/vnd.android.package-archive");
             } else {
-                //Android7.0之后获取uri要用contentProvider
+                //Android7.0之后获取uri要用FileProvider
                 Uri uri = FileProvider.getUriForFile(mActivity, "com.example.caowj.newtask.fileprovider", apkFile);
                 intent.setDataAndType(uri, "application/vnd.android.package-archive");
                 intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);

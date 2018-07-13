@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <paths>
+
+        <!--Environment.getExternalStorageDirectory()下的所有文件-->
         <external-path
             path="."
             name="myFile"></external-path>
-        <files-path
-            path="."
-            name="download" />
     </paths>
 </resources>

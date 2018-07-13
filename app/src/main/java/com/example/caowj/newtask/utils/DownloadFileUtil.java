@@ -31,7 +31,7 @@ public class DownloadFileUtil {
     /**
      * 自定义文件下载路径
      */
-    private static String apkPathByCustom = Environment.getExternalStorageDirectory() + "/NewTask/download/" + apkName;
+    private static String apkPathByCustom = Environment.getExternalStorageDirectory() + "/NewTask/Download/" + apkName;
 
     /**
      * 设置文件下载路径（根据设定的状态，设置对应的下载目录）
