@@ -2,10 +2,10 @@
 <resources>
     <paths>
         <external-path
-            path=""
+            path="."
             name="myFile"></external-path>
         <files-path
-            path=""
+            path="."
             name="download" />
     </paths>
-</resources><!--<?xml version="1.0" encoding="utf-8"?>--><!--<paths xmlns:android="http://schemas.android.com/apk/res/android">--><!--<external-path--><!--name="caches"--><!--path="images/" />--><!--<root-path--><!--name="root_path"--><!--path="." />--><!--</paths>-->
+</resources>

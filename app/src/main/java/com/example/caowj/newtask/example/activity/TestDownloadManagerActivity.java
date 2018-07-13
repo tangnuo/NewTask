@@ -28,9 +28,9 @@ import java.io.File;
  * <p>
  * 1、首先需要配置android6.0,7.0,8.0的权限
  * <p>
- * https://blog.csdn.net/u012209506/article/details/56012744
+ * https://blog.csdn.net/u012209506/article/details/56012744 (使用handler，可以在页面中显示下载进度)
  * <p>
- * https://www.cnblogs.com/liyiran/p/6393813.html
+ * https://www.cnblogs.com/liyiran/p/6393813.html （使用Service，只能在通知栏显示下载进度）
  */
 public class TestDownloadManagerActivity extends BaseActivity implements View.OnClickListener {
     private TextView down;
@@ -147,9 +147,11 @@ public class TestDownloadManagerActivity extends BaseActivity implements View.On
         if (apkName != null) {
             LogUtil.d("DownApkReceiver", "存放路径：" + Environment.DIRECTORY_DOWNLOADS + "，apkName：" + apkName);
             File apkFile = mActivity.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS + "/" + apkName);
+
             if (apkFile != null) {
-                LogUtil.myD("完整路径：" + apkFile.getAbsolutePath());
+                LogUtil.myD("完整路径1：" + apkFile.getAbsolutePath());
                 Intent intent = new Intent(Intent.ACTION_VIEW);
+
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
                     intent.setDataAndType(Uri.fromFile(apkFile), "application/vnd.android.package-archive");
                 } else {
