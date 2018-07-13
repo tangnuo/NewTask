@@ -1,6 +1,8 @@
-package com.kedacom.utils;
+package com.example.caowj.newtask.utils;
 
 import android.text.TextUtils;
+
+import com.kedacom.utils.LogUtil;
 
 /**
  * Created by Pan S.Q
