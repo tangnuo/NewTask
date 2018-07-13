@@ -1,7 +1,36 @@
 package com.kedacom.utils.DataList;
 
+import android.Manifest;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
+import static android.Manifest.permission.ACCESS_FINE_LOCATION;
+import static android.Manifest.permission.ADD_VOICEMAIL;
+import static android.Manifest.permission.ANSWER_PHONE_CALLS;
+import static android.Manifest.permission.BODY_SENSORS;
+import static android.Manifest.permission.CALL_PHONE;
+import static android.Manifest.permission.CAMERA;
+import static android.Manifest.permission.GET_ACCOUNTS;
+import static android.Manifest.permission.PROCESS_OUTGOING_CALLS;
+import static android.Manifest.permission.READ_CALENDAR;
+import static android.Manifest.permission.READ_CALL_LOG;
+import static android.Manifest.permission.READ_CONTACTS;
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.Manifest.permission.READ_PHONE_NUMBERS;
+import static android.Manifest.permission.READ_PHONE_STATE;
+import static android.Manifest.permission.READ_SMS;
+import static android.Manifest.permission.RECEIVE_MMS;
+import static android.Manifest.permission.RECEIVE_SMS;
+import static android.Manifest.permission.RECEIVE_WAP_PUSH;
+import static android.Manifest.permission.RECORD_AUDIO;
+import static android.Manifest.permission.SEND_SMS;
+import static android.Manifest.permission.USE_SIP;
+import static android.Manifest.permission.WRITE_CALENDAR;
+import static android.Manifest.permission.WRITE_CALL_LOG;
+import static android.Manifest.permission.WRITE_CONTACTS;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
 /**
  * @Dec ：数据资源合集
@@ -11,6 +40,69 @@ import java.util.List;
 
 public class DataList {
 
+
+    /**
+     * 通过组id，获取想对应的危险权限
+     * <p>
+     * https://developer.android.google.cn/guide/topics/permissions/overview#permission-groups
+     *
+     * @param groupId <p>
+     *                1:CALENDAR
+     *                <p>
+     *                2:CAMERA
+     *                <p>
+     *                3:CONTACTS
+     *                <p>
+     *                4:LOCATION
+     *                <p>
+     *                5:MICROPHONE
+     *                <p>
+     *                6:PHONE
+     *                <p>
+     *                7:SENSORS
+     *                <p>
+     *                8:SMS
+     *                <p>
+     *                9:STORAGE
+     * @return
+     */
+    public static String[] getDangerousPermissionsByGroup(int groupId) {
+        String[] permissionArray = new String[0];
+        switch (groupId) {
+            case 1:
+                permissionArray = new String[]{READ_CALENDAR, WRITE_CALENDAR};
+                break;
+            case 2:
+                permissionArray = new String[]{CAMERA};
+                break;
+            case 3:
+                permissionArray = new String[]{READ_CONTACTS, WRITE_CONTACTS, GET_ACCOUNTS};
+                break;
+            case 4:
+                permissionArray = new String[]{ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION};
+                break;
+            case 5:
+                permissionArray = new String[]{RECORD_AUDIO};
+                break;
+            case 6:
+                permissionArray = new String[]{READ_PHONE_STATE, READ_PHONE_NUMBERS, CALL_PHONE,
+                        ANSWER_PHONE_CALLS, READ_CALL_LOG, WRITE_CALL_LOG, ADD_VOICEMAIL,
+                        USE_SIP, PROCESS_OUTGOING_CALLS};
+                break;
+            case 7:
+                permissionArray = new String[]{BODY_SENSORS};
+                break;
+            case 8:
+                permissionArray = new String[]{SEND_SMS, RECEIVE_SMS, READ_SMS,
+                        RECEIVE_WAP_PUSH, RECEIVE_MMS};
+                break;
+            case 9:
+                permissionArray = new String[]{READ_EXTERNAL_STORAGE,
+                        WRITE_EXTERNAL_STORAGE};
+                break;
+        }
+        return permissionArray;
+    }
 
     /**
      * 获取指定数目的图片

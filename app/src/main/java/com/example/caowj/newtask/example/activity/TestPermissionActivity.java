@@ -14,13 +14,13 @@ import android.widget.Toast;
 import com.example.caowj.newtask.utils.business.MyAndroidUtils;
 
 /**
- * Android 6.0 动态权限申请
+ * Android 6.0 动态权限申请(原生代码)
  * <br/>
  * https://blog.csdn.net/xietansheng/article/details/54315674
- *
+ * <p>
  * 危险权限列表：https://developer.android.google.cn/guide/topics/permissions/overview#permission-groups
  */
-public class TestPremissionActivity extends AppCompatActivity {
+public class TestPermissionActivity extends AppCompatActivity {
 
     /**
      * 需要android6.0(23)以上处理的权限

@@ -75,6 +75,7 @@
             </intent-filter>
         </activity-alias>
 
+        <activity android:name=".RequestPermissionsActivity" />
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize|uiMode"
@@ -169,7 +170,7 @@
         <activity android:name=".example.activity.TestAnnotationActivity" />
         <activity android:name=".example.activity.TestReflectActivity" />
         <activity android:name=".example.activity.TestFingerPrintActivity" />
-        <activity android:name=".example.activity.TestPremissionActivity" />
+        <activity android:name=".example.activity.TestPermissionActivity" />
         <activity android:name=".designPattern.TestDesignPatternActivity" />
         <activity android:name=".example.activity.TestSideLetterActivity" />
         <activity
