@@ -7,13 +7,12 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Binder;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.IBinder;
 import android.text.TextUtils;
 
 import com.example.caowj.newtask.utils.DownloadFileUtil;
 import com.kedacom.utils.LogUtil;
-import com.kedacom.utils.SharedPreferenceUtil;
+import com.kedacom.utils.PreferenceUtil;
 
 import java.io.File;
 
@@ -24,7 +23,7 @@ import java.io.File;
  */
 public class DownApkService extends Service {
     Context context = this;
-    SharedPreferenceUtil mSp;
+    PreferenceUtil mSp;
     private Long id;
 
     public class MyBinder extends Binder {
@@ -52,7 +51,7 @@ public class DownApkService extends Service {
         if (downloadBundle != null) {
             String downloadUrl = downloadBundle.getString("downloadUrl");
             if (!TextUtils.isEmpty(downloadUrl)) {
-                mSp = SharedPreferenceUtil.getInstance(context);
+                mSp = PreferenceUtil.getInstance(context);
                 long downloadId = downloadApk(downloadUrl);
                 id = downloadId;
 

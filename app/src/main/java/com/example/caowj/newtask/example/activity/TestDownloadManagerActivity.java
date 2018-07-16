@@ -2,35 +2,27 @@ package com.example.caowj.newtask.example.activity;
 
 import android.app.DownloadManager;
 import android.content.BroadcastReceiver;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
-import android.os.IBinder;
 import android.provider.Settings;
-import android.support.annotation.RequiresApi;
 import android.support.v4.content.FileProvider;
-import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.TextView;
 
 import com.example.caowj.newtask.R;
 import com.example.caowj.newtask.example.manager.UpdateAppManager;
-import com.example.caowj.newtask.example.service.DownApkService;
 import com.example.caowj.newtask.utils.DownloadFileUtil;
 import com.kedacom.base.common.BaseActivity;
 import com.kedacom.utils.AlertDialogUtil;
 import com.kedacom.utils.LogUtil;
-import com.kedacom.utils.SharedPreferenceUtil;
-import com.kedacom.utils.ToastUtil;
+import com.kedacom.utils.PreferenceUtil;
 
 import java.io.File;
 
@@ -47,7 +39,7 @@ public class TestDownloadManagerActivity extends BaseActivity implements View.On
     private TextView down;
     public static String downloadUrl = "http://ucdl.25pp.com/fs08/2017/01/20/2/2_87a290b5f041a8b512f0bc51595f839a.apk";
     long id;
-    private SharedPreferenceUtil mSharedP;
+    private PreferenceUtil mSharedP;
     DownloadManager mManager;
 
 //    private ServiceConnection conn = new ServiceConnection() {
@@ -81,7 +73,7 @@ public class TestDownloadManagerActivity extends BaseActivity implements View.On
         setContentView(R.layout.activity_download);
         down = findViewById(R.id.down);
         down.setOnClickListener(this);
-        mSharedP = SharedPreferenceUtil.getInstance(mActivity);
+        mSharedP = PreferenceUtil.getInstance(mActivity);
 
         // TODO: 2018/7/12 需要先判断是否具有读写权限（先去权限页面申请权限，然后再回来下载文件）
 //        startActivity(new Intent(this, TestPremissionActivity.class));
@@ -90,7 +82,7 @@ public class TestDownloadManagerActivity extends BaseActivity implements View.On
             @Override
             public void onReceive(Context context, Intent intent) {
                 long downloadApkId = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1L);
-                mSharedP = SharedPreferenceUtil.getInstance(mActivity);
+                mSharedP = PreferenceUtil.getInstance(mActivity);
                 long saveApkId = mSharedP.getLong("downloadId", -1L);
 
                 if (downloadApkId == saveApkId) {

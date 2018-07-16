@@ -2,7 +2,6 @@ package com.kedacom.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.IInterface;
 import android.util.Base64;
 
 import java.io.ByteArrayInputStream;
@@ -15,22 +14,22 @@ import java.io.StreamCorruptedException;
 /**
  * Created by Administrator on 2016/7/15.
  */
-public class SharedPreferenceUtil {
+public class PreferenceUtil {
 
     private Context context;
-    private static SharedPreferenceUtil intance = null;
+    private static PreferenceUtil intance = null;
     private SharedPreferences sp;
     private SharedPreferences.Editor editor;
 
-    private SharedPreferenceUtil(Context context) {
+    private PreferenceUtil(Context context) {
         this.context = context;
         sp = context.getSharedPreferences("caowj_sp", Context.MODE_PRIVATE);
         editor = sp.edit();
     }
 
-    public static SharedPreferenceUtil getInstance(Context context) {
+    public static PreferenceUtil getInstance(Context context) {
         if (intance == null) {
-            intance = new SharedPreferenceUtil(context);
+            intance = new PreferenceUtil(context);
         }
         return intance;
     }
