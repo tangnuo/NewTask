@@ -3,10 +3,13 @@ package com.example.caowj.newtask;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 
 import com.kedacom.base.common.AppManager;
 import com.kedacom.base.common.BaseActivity;
+import com.kedacom.utils.AlertDialogUtil;
 import com.kedacom.utils.DataList.DataList;
 import com.kedacom.utils.LogUtil;
 import com.kedacom.utils.ToastUtil;
@@ -32,6 +35,15 @@ public class RequestPermissionsActivity extends BaseActivity implements EasyPerm
      */
     private String[] PERMISSIONS = DataList.getDangerousPermissionsByGroup(9);
     private static final int RC_CAMERA_PERM = 123;
+    /**
+     * 倒计时定时器
+     */
+    private TimeCount timeCount;
+    /**
+     * 倒计时弹窗
+     */
+    private AlertDialog alertDialog;
+    private long millisInFuture = 6000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +56,8 @@ public class RequestPermissionsActivity extends BaseActivity implements EasyPerm
         } else {
             LogUtil.myD("低版本无需考虑危险权限");
         }
+
+        timeCount = new TimeCount(millisInFuture, 1000);// 构造CountDownTimer对象
     }
 
     @Override
@@ -84,8 +98,9 @@ public class RequestPermissionsActivity extends BaseActivity implements EasyPerm
             new AppSettingsDialog.Builder(this).build().show();
         } else {
 //            3秒后自动关闭APP
-            ToastUtil.showLongToast(mActivity, "3秒后自动退出");
-            AppManager.getAppManager().AppExit();
+            timeCount.start();
+            alertDialog = AlertDialogUtil.getMaterialDialog(mActivity, false, null, millisInFuture / 1000 + "秒后将退出APP", null, null, null, null);
+            alertDialog.show();
         }
     }
 
@@ -118,5 +133,32 @@ public class RequestPermissionsActivity extends BaseActivity implements EasyPerm
      */
     private boolean hasPermission() {
         return EasyPermissions.hasPermissions(this, PERMISSIONS);
+    }
+
+    /**
+     * 倒计时定时器
+     */
+    class TimeCount extends CountDownTimer {
+        public TimeCount(long millisInFuture, long countDownInterval) {
+            super(millisInFuture, countDownInterval);// 参数依次为总时长,和计时的时间间隔
+        }
+
+        @Override
+        public void onFinish() {
+            // 计时完毕时触发
+            if (alertDialog != null) {
+                alertDialog.dismiss();
+                alertDialog = null;
+            }
+            AppManager.getAppManager().AppExit();
+        }
+
+        @Override
+        public void onTick(long millisUntilFinished) {
+            // 计时过程显示
+            if (alertDialog != null) {
+                alertDialog.setMessage(millisUntilFinished / 1000 + "秒后将退出APP");
+            }
+        }
     }
 }

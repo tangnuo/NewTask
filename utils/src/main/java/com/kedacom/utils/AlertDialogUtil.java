@@ -33,15 +33,6 @@ public class AlertDialogUtil {
     private static android.support.v7.app.AlertDialog.Builder builder;
     private static TextView tv_progress;
 
-    /**
-     * 温馨提示
-     *
-     * @param context
-     * @param msg
-     */
-    public static void showSimpleDialog(Context context, String msg) {
-        showDialog(context, true, "温馨提示", msg, null, "确定", null, null);
-    }
 
     /**
      * 加载中(标题+图形)<br/>
@@ -54,13 +45,6 @@ public class AlertDialogUtil {
      * @return
      */
     public static AlertDialog Loading(Context context, String msg, int width, int height) {
-        //锤子手机属性设置无效
-//        if (MyAndroidUtils.isSmartisan()) {
-//            width = width * 2;
-//            height = height * 2;
-//        }
-
-//        builder = new android.support.v7.app.AlertDialog.Builder(context, android.support.v7.app.AlertDialog.THEME_DEVICE_DEFAULT_DARK);
         builder = new AlertDialog.Builder(context);
         builder.setCancelable(true);
 
@@ -142,6 +126,73 @@ public class AlertDialogUtil {
         }
     }
 
+    /**
+     * 简单弹窗（只有标题和消息），包含确定按钮
+     *
+     * @param context
+     * @param titleStr
+     * @param msg
+     */
+    public static void showSimpleDialog(Context context, String titleStr, String msg) {
+        showDialog(context, true, titleStr, msg, null, "确定", null, null);
+    }
+
+
+    /**
+     * 显示Material风格的dialog
+     *
+     * @param mContext             上下文
+     * @param cancelable           可否取消
+     * @param titleStr             标题
+     * @param messageStr           内容消息
+     * @param leftBtn              取消按钮
+     * @param rightBtn             确定按钮
+     * @param leftOnClickListener  取消按钮事件
+     * @param rightOnClickListener 确定按钮事件
+     */
+    public static void showDialog(Context mContext, boolean cancelable, String titleStr, String messageStr,
+                                  String leftBtn, String rightBtn,
+                                  OnClickListener leftOnClickListener,
+                                  OnClickListener rightOnClickListener) {
+        getMaterialDialog(mContext, cancelable, titleStr, messageStr, leftBtn, rightBtn, leftOnClickListener, rightOnClickListener).show();
+    }
+
+    /**
+     * 创建Material风格的dialog
+     *
+     * @param mContext
+     * @param cancelable
+     * @param titleStr
+     * @param messageStr
+     * @param leftBtn
+     * @param rightBtn
+     * @param leftOnClickListener
+     * @param rightOnClickListener
+     * @return
+     */
+    public static AlertDialog getMaterialDialog(Context mContext, boolean cancelable, String titleStr, String messageStr,
+                                                String leftBtn, String rightBtn,
+                                                OnClickListener leftOnClickListener,
+                                                OnClickListener rightOnClickListener) {
+        android.support.v7.app.AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+        builder.setCancelable(cancelable);
+        if (!TextUtils.isEmpty(titleStr)) {
+            builder.setTitle(titleStr);
+        }
+        if (!TextUtils.isEmpty(messageStr)) {
+            builder.setMessage(messageStr);
+        }
+        if (!TextUtils.isEmpty(leftBtn)) {
+            builder.setNegativeButton(leftBtn, leftOnClickListener);
+        }
+        //可以设置两个setNegativeButton，效果有变化哦
+        if (!TextUtils.isEmpty(rightBtn)) {
+            builder.setPositiveButton(rightBtn, rightOnClickListener);
+        }
+
+        AlertDialog alertDialog = builder.create();
+        return alertDialog;
+    }
 
     /**
      * @param context
@@ -163,41 +214,6 @@ public class AlertDialogUtil {
         builder.setNegativeButton(leftbtnid, LeftOnClickListener);
         builder.setPositiveButton(rightbtnid, RightOnClickListener).create();
         builder.show();
-    }
-
-    /**
-     * 显示Material风格的dialog
-     *
-     * @param mContext             上下文
-     * @param cancelable           可否取消
-     * @param titleStr             标题
-     * @param messageStr           内容消息
-     * @param leftBtn              取消按钮
-     * @param rightBtn             确定按钮
-     * @param leftOnClickListener  取消按钮事件
-     * @param rightOnClickListener 确定按钮事件
-     */
-    public static void showDialog(Context mContext, boolean cancelable, String titleStr, String messageStr,
-                                  String leftBtn, String rightBtn,
-                                  OnClickListener leftOnClickListener,
-                                  OnClickListener rightOnClickListener) {
-        android.support.v7.app.AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-        builder.setCancelable(cancelable);
-        if (!TextUtils.isEmpty(titleStr)) {
-            builder.setTitle(titleStr);
-        }
-        if (!TextUtils.isEmpty(messageStr)) {
-            builder.setMessage(messageStr);
-        }
-        if (!TextUtils.isEmpty(leftBtn)) {
-            builder.setNegativeButton(leftBtn, leftOnClickListener);
-        }
-        //可以设置两个setNegativeButton，效果有变化哦
-        if (!TextUtils.isEmpty(rightBtn)) {
-            builder.setPositiveButton(rightBtn, rightOnClickListener);
-        }
-
-        builder.create().show();
     }
 
     /**
