@@ -23,6 +23,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.caowj.newtask.R;
+import com.example.caowj.newtask.example.manager.UpdateAppManager;
 import com.example.caowj.newtask.example.service.DownApkService;
 import com.example.caowj.newtask.utils.DownloadFileUtil;
 import com.kedacom.base.common.BaseActivity;
@@ -116,15 +117,42 @@ public class TestDownloadManagerActivity extends BaseActivity implements View.On
 
     @Override
     public void onClick(View v) {
+
+
         if (canDownloadState(mActivity)) {
             LogUtil.d("UpdateVersion", "DownloadManager 可用");
-            Intent downloadApkIntent = new Intent(mActivity, DownApkService.class);
-            Bundle bundle = new Bundle();
-            bundle.putString("downloadUrl", downloadUrl);
-            downloadApkIntent.putExtra("download", bundle);
-            mActivity.startService(downloadApkIntent);
-//            可以使用bind广播的形式代替SharedPreference获取id
-//            mActivity.bindService(downloadApkIntent, conn, Context.BIND_AUTO_CREATE);
+
+            //方法一:
+            UpdateAppManager.getInstance(mActivity).downloading().setOnDownloadResultListener(new UpdateAppManager.OnDownloadResultListener() {
+                @Override
+                public void onDownloading(long progress, long totalSize) {
+                    //计算当前进度
+                    int percent = (int) ((float) progress * 100 / totalSize);
+                    LogUtil.myD("当前进度：" + progress + "\t总大小：" + totalSize + "\t百分比：" + percent);
+                }
+
+                @Override
+                public void onSucceed(Uri uri) {
+                    LogUtil.myD("当前存储路径Uri：" + uri.toString() + "\t下载位置：" + uri.getPath());
+                    //下载完成，自动调用安装应用
+                    installProcess();
+                }
+
+                @Override
+                public void onFailed(String error) {
+                    LogUtil.myD("下载失败：" + error);
+                }
+            });
+
+
+//            //方法二：
+//            Intent downloadApkIntent = new Intent(mActivity, DownApkService.class);
+//            Bundle bundle = new Bundle();
+//            bundle.putString("downloadUrl", downloadUrl);
+//            downloadApkIntent.putExtra("download", bundle);
+//            mActivity.startService(downloadApkIntent);
+////            可以使用bind广播的形式代替SharedPreference获取id
+////            mActivity.bindService(downloadApkIntent, conn, Context.BIND_AUTO_CREATE);
         } else {
             LogUtil.d("UpdateVersion", "DownloadManager 不可用");
             Intent intent = new Intent();

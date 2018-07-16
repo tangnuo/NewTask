@@ -95,7 +95,7 @@ public class RequestPermissionsActivity extends BaseActivity implements EasyPerm
         if (EasyPermissions.somePermissionPermanentlyDenied(this, perms)) {
             new AppSettingsDialog.Builder(this).build().show();
         } else {
-//            3秒后自动关闭APP
+//            6秒后自动关闭APP
             timeCount.start();
             alertDialog = AlertDialogUtil.getMaterialDialog(mActivity, false, null, millisInFuture / 1000 + "秒后将退出APP", null, null, null, null);
             alertDialog.show();
