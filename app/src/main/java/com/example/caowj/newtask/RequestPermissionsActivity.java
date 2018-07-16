@@ -21,9 +21,7 @@ import pub.devrel.easypermissions.AppSettingsDialog;
 import pub.devrel.easypermissions.EasyPermissions;
 
 /**
- * 1、通过theme设置background背景，不用加载Layout。
- * <p>
- * 2、申请危险权限：https://github.com/googlesamples/easypermissions
+ * 申请危险权限：https://github.com/googlesamples/easypermissions
  */
 public class RequestPermissionsActivity extends BaseActivity implements EasyPermissions.PermissionCallbacks,
         EasyPermissions.RationaleCallbacks {
