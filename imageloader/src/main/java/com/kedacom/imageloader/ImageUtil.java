@@ -22,15 +22,18 @@ import android.graphics.Shader.TileMode;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.provider.MediaStore.MediaColumns;
-import android.text.TextUtils;
+import android.util.Base64;
 import android.util.DisplayMetrics;
+import android.widget.ImageView;
 
-import java.io.BufferedInputStream;
+import com.kedacom.utils.DensityUtil;
+import com.kedacom.utils.LogUtil;
+
 import java.io.BufferedOutputStream;
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -38,6 +41,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -51,24 +56,6 @@ public class ImageUtil {
 
     public final static String SDCARD_MNT = "/mnt/sdcard";
     public final static String SDCARD = "/sdcard";
-    /**
-     * 请求相册
-     */
-    public static final int REQUEST_CODE_GETIMAGE_BYSDCARD = 0;
-    public static final int REQUEST_CODE_GETIMAGE_BYSDCARD_info = 4;
-    /**
-     * 请求相机
-     */
-    public static final int REQUEST_CODE_GETIMAGE_BYCAMERA = 1;
-    /**
-     * 请求裁剪
-     */
-    public static final int REQUEST_CODE_GETIMAGE_BYCROP = 2;
-    /**
-     * 从图片浏览界面发送动弹
-     */
-    public static final int REQUEST_CODE_GETIMAGE_IMAGEPAVER = 3;
-    private static final float MAX_SIZE = 200;//接受的最大图片尺寸为200k，200k以上的图片压缩到200k一下
     static Bitmap bitmap = null;
 
     /**
@@ -120,25 +107,6 @@ public class ImageUtil {
         }
     }
 
-    public static void saveBackgroundImage(Context ctx, String filePath,
-                                           Bitmap bitmap, int quality) throws IOException {
-        if (bitmap != null) {
-            File file = new File(filePath.substring(0,
-                    filePath.lastIndexOf(File.separator)));
-            if (!file.exists()) {
-                file.mkdirs();
-            }
-            BufferedOutputStream bos = new BufferedOutputStream(
-                    new FileOutputStream(filePath));
-            bitmap.compress(CompressFormat.PNG, quality, bos);
-            bos.flush();
-            bos.close();
-            if (ctx != null) {
-                scanPhoto(ctx, filePath);
-            }
-        }
-    }
-
     /**
      * 让Gallery上能马上看到该图片
      */
@@ -150,6 +118,130 @@ public class ImageUtil {
         mediaScanIntent.setData(contentUri);
         ctx.sendBroadcast(mediaScanIntent);
     }
+
+    /**
+     * 将bitmap保存到本地
+     *
+     * @param mBitmap
+     * @param fileUrl
+     * @param imageName
+     * @throws IOException
+     */
+    public static void saveImageBitmap(Bitmap mBitmap, String fileUrl, String imageName) throws IOException {
+        // 文件目录
+        File dirFile = new File(fileUrl);
+        // 文件目录是否存在
+        if (!dirFile.exists()) {
+            dirFile.mkdirs();
+        }
+
+        // 文件
+        File imgFile = new File(fileUrl + imageName);
+        // 删除目录下已经存在的图片
+        if (imgFile.exists()) {
+            String tmpPath = imgFile.getParent() + File.separator + System.currentTimeMillis();
+            File tmp = new File(tmpPath);
+            imgFile.renameTo(tmp);
+            tmp.delete();
+        }
+        imgFile.createNewFile();
+
+        FileOutputStream fOut = null;
+        try {
+            fOut = new FileOutputStream(imgFile);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        //保存图片
+        mBitmap.compress(Bitmap.CompressFormat.PNG, 100, fOut);
+        try {
+            fOut.flush();
+            //TODO 如果调用close方法，会报异常：close failed: EIO (I/O error)；未解。
+//            fOut.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 保存网络图片到本地，并且设置水印，并刷新相册
+     *
+     * @param mContext
+     * @param bm          网络图片
+     * @param waterBitmap 水印
+     * @param imageName   图片名称
+     * @param fileUrl     本地文件目录
+     * @throws IOException
+     */
+    public static void saveImageBitmapAndWaterMarkAndRefresh(Context mContext, Bitmap bm, Bitmap waterBitmap, String imageName, String fileUrl) throws IOException {
+        // 文件
+        File f = new File(fileUrl + imageName);
+        // 文件目录
+        File dirFile = new File(fileUrl);
+        // 文件目录是否存在
+        if (!dirFile.exists()) {
+            dirFile.mkdirs();
+        }
+        // 删除目录下已经存在的图片
+        if (f.exists()) {
+            f.delete();
+        }
+        f.createNewFile();
+        FileOutputStream fOut = null;
+        try {
+            fOut = new FileOutputStream(f);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+//        添加水印后的图片
+        Bitmap newBitmap = createWaterMaskRightBottom(mContext, bm, waterBitmap, 10, 10);
+        newBitmap.compress(Bitmap.CompressFormat.PNG, 100, fOut);
+
+        if (bm.isRecycled()) {
+            bm.recycle();
+        }
+        if (waterBitmap.isRecycled()) {
+            waterBitmap.recycle();
+        }
+
+        try {
+            fOut.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            fOut.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //发一个系统广播通知手机有图片更新
+        Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+        Uri uri = Uri.fromFile(f);
+        intent.setData(uri);
+        mContext.sendBroadcast(intent);
+    }
+
+
+    /**
+     * 设置水印图片在右下角
+     *
+     * @param context
+     * @param src
+     * @param watermark
+     * @param paddingRight
+     * @param paddingBottom
+     * @return
+     */
+    public static Bitmap createWaterMaskRightBottom(
+            Context context, Bitmap src, Bitmap watermark,
+            int paddingRight, int paddingBottom) {
+        return createWaterMaskBitmap(src, watermark,
+                src.getWidth() - watermark.getWidth() - DensityUtil.dip2px(context, paddingRight),
+                src.getHeight() - watermark.getHeight() - DensityUtil.dip2px(context, paddingBottom));
+    }
+
 
     /**
      * 获取bitmap
@@ -420,48 +512,34 @@ public class ImageUtil {
     }
 
     /**
-     * 放大缩小图片
+     * 使用矩阵缩放图片至期待的宽高
      *
-     * @param bitmap
-     * @param w
-     * @param h
-     * @return
+     * @param source       被缩放的图片
+     * @param expectWidth  期待的宽
+     * @param expectHeight 期待的高
+     * @return 返回压缩后的图片
      */
-    public static Bitmap zoomBitmap(Bitmap bitmap, int w, int h) {
-        Bitmap newbmp = null;
-        if (bitmap != null) {
-            int width = bitmap.getWidth();
-            int height = bitmap.getHeight();
-            Matrix matrix = new Matrix();
-            float scaleWidht = ((float) w / width);
-            float scaleHeight = ((float) h / height);
-            matrix.postScale(scaleWidht, scaleHeight);
-            newbmp = Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix,
-                    true);
-        }
-        return newbmp;
-    }
-
-    public static Bitmap scaleBitmap(Bitmap bitmap) {
+    public static Bitmap zoomBitmap(Bitmap source, float expectWidth, float expectHeight) {
         // 获取这个图片的宽和高
-        int width = bitmap.getWidth();
-        int height = bitmap.getHeight();
-        // 定义预转换成的图片的宽度和高度
-        int newWidth = 200;
-        int newHeight = 200;
-        // 计算缩放率，新尺寸除原始尺寸
-        float scaleWidth = ((float) newWidth) / width;
-        float scaleHeight = ((float) newHeight) / height;
+        float width = source.getWidth();
+        float height = source.getHeight();
         // 创建操作图片用的matrix对象
         Matrix matrix = new Matrix();
+        //默认不缩放
+        float scaleWidth = 1;
+        float scaleHeight = 1;
+        // 计算宽高缩放率
+        if (expectWidth < width) {
+            scaleWidth = ((float) expectWidth) / width;
+        }
+        if (expectHeight < height) {
+            scaleHeight = ((float) expectHeight) / height;
+        }
         // 缩放图片动作
         matrix.postScale(scaleWidth, scaleHeight);
-        // 旋转图片 动作
-        // matrix.postRotate(45);
-        // 创建新的图片
-        Bitmap resizedBitmap = Bitmap.createBitmap(bitmap, 0, 0, width, height,
-                matrix, true);
-        return resizedBitmap;
+        Bitmap bitmap = Bitmap.createBitmap(source, 0, 0, (int) width,
+                (int) height, matrix, true);
+        return bitmap;
     }
 
     /**
@@ -699,28 +777,6 @@ public class ImageUtil {
         return (b[0] == 0x42) && (b[1] == 0x4d);
     }
 
-    /**
-     * 获取图片路径
-     *
-     * @param uri
-     * @param
-     */
-    public static String getImagePath(Uri uri, Activity context) {
-
-        String[] projection = {MediaColumns.DATA};
-        Cursor cursor = context.getContentResolver().query(uri, projection,
-                null, null, null);
-        if (cursor != null) {
-            cursor.moveToFirst();
-            int columIndex = cursor.getColumnIndexOrThrow(MediaColumns.DATA);
-            String ImagePath = cursor.getString(columIndex);
-            cursor.close();
-            return ImagePath;
-        }
-
-        return uri.toString();
-    }
-
     public static Bitmap loadPicasaImageFromGalley(final Uri uri,
                                                    final Activity context) {
 
@@ -754,99 +810,6 @@ public class ImageUtil {
         } else {
             return null;
         }
-    }
-
-    /******************************************************************/
-
-    /**
-     * 压缩Bitmap,同时使用两种策略压缩,先压缩宽高，再压缩质量
-     *
-     * @return 存储Bitmap的文件
-     * @throws IOException
-     */
-    public static File compressBitmap(String url, String storageDir, String prefix) throws IOException {
-        if (!TextUtils.isEmpty(url)) {
-            File img = new File(url);
-            Bitmap bitmap = revitionImageSize(img);
-            bitmap = compressImage(bitmap);
-            return convertToFile(bitmap, storageDir, prefix);
-        }
-        return null;
-    }
-
-
-    /**
-     * 使用矩阵缩放图片至期待的宽高
-     *
-     * @param source       被缩放的图片
-     * @param expectWidth  期待的宽
-     * @param expectHeight 期待的高
-     * @return 返回压缩后的图片
-     */
-    public static Bitmap zoomBitmap(Bitmap source, float expectWidth, float expectHeight) {
-        // 获取这个图片的宽和高
-        float width = source.getWidth();
-        float height = source.getHeight();
-        // 创建操作图片用的matrix对象
-        Matrix matrix = new Matrix();
-        //默认不缩放
-        float scaleWidth = 1;
-        float scaleHeight = 1;
-        // 计算宽高缩放率
-        if (expectWidth < width) {
-            scaleWidth = ((float) expectWidth) / width;
-        }
-        if (expectHeight < height) {
-            scaleHeight = ((float) expectHeight) / height;
-        }
-        // 缩放图片动作
-        matrix.postScale(scaleWidth, scaleHeight);
-        Bitmap bitmap = Bitmap.createBitmap(source, 0, 0, (int) width,
-                (int) height, matrix, true);
-        return bitmap;
-    }
-
-    //压缩图片大小
-    public static Bitmap revitionImageSize(File file) throws IOException {
-        BufferedInputStream in = new BufferedInputStream(new FileInputStream(file));
-        BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inJustDecodeBounds = true;
-        BitmapFactory.decodeStream(in, null, options);
-        in.close();
-        int i = 1;
-        Bitmap bitmap = null;
-        while (true) {
-            if (((options.outWidth / i) <= 600)
-                    && ((options.outHeight / i) <= 600)) {
-                in = new BufferedInputStream(
-                        new FileInputStream(file));
-                options.inSampleSize = i;
-                options.inJustDecodeBounds = false;
-                bitmap = BitmapFactory.decodeStream(in, null, options);
-                break;
-            }
-            i += 1;
-        }
-        return bitmap;
-    }
-
-
-    //压缩图片质量
-    public static Bitmap compressImage(Bitmap image) {
-
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        image.compress(CompressFormat.JPEG, 100, baos);//质量压缩方法，这里100表示不压缩，把压缩后的数据存放到baos中
-        int offset = 100;
-        while (baos.toByteArray().length / 1024 > MAX_SIZE) {  //循环判断如果压缩后图片是否大于200kb,大于继续压缩
-
-            baos.reset();//重置baos即清空baos
-            image.compress(CompressFormat.JPEG, offset, baos);//这里压缩options%，把压缩后的数据存放到baos中
-            offset -= 10;//每次都减少10
-        }
-        ByteArrayInputStream isBm = new ByteArrayInputStream(baos.toByteArray());
-        //把压缩后的数据baos存放到ByteArrayInputStream中
-        Bitmap bitmap = BitmapFactory.decodeStream(isBm, null, null);//把ByteArrayInputStream数据生成图片
-        return bitmap;
     }
 
     /**
@@ -900,5 +863,167 @@ public class ImageUtil {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmssSSS", Locale.CHINA);
         String filename = prefix + dateFormat.format(new Date(System.currentTimeMillis())) + suffix;
         return new File(folder, filename);
+    }
+
+
+    /**
+     * 把图片路径转换成base64
+     *
+     * @param filePath
+     * @return
+     */
+    public static String bitmapToString(String filePath) {
+
+        Bitmap bm = CompressedImageUtil.getSmallBitmapByCompressedMemory(filePath);
+        if (bm == null) {
+            LogUtil.myD("bm is null,,," + filePath);
+            return "";
+        }
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bm.compress(Bitmap.CompressFormat.JPEG, 40, baos);
+        byte[] b = baos.toByteArray();
+
+        return Base64.encodeToString(b, Base64.DEFAULT);
+
+    }
+
+    /**
+     * base64转为bitmap
+     *
+     * @param base64Data
+     * @return
+     */
+    public static Bitmap base64ToBitmap(String base64Data) {
+        byte[] bytes = Base64.decode(base64Data, Base64.DEFAULT);
+        return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+    }
+
+    /**
+     * 将bitmap压缩转换成base64字节码
+     *
+     * @param bitmap
+     */
+    public static String bitmapToBase64(Bitmap bitmap) {
+        String result = null;
+        ByteArrayOutputStream baos = null;
+        try {
+            if (bitmap != null) {
+                baos = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 60, baos);
+
+                baos.flush();
+                baos.close();
+
+                byte[] bitmapBytes = baos.toByteArray();
+                result = Base64.encodeToString(bitmapBytes, Base64.DEFAULT);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (baos != null) {
+                    baos.flush();
+                    baos.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
+    }
+
+    /**
+     * 图片反转
+     *
+     * @param img
+     * @return
+     */
+    public static Bitmap toturn(Bitmap img) {
+        Matrix matrix = new Matrix();
+        matrix.postRotate(180); /* 翻转180度 */
+        int width = img.getWidth();
+        int height = img.getHeight();
+        img = Bitmap.createBitmap(img, 0, 0, width, height, matrix, true);
+        return img;
+    }
+
+    /**
+     * 放大缩小图片
+     *
+     * @param bitmap
+     * @param w
+     * @param h
+     * @return
+     */
+    public static Bitmap zoomBitmap(Bitmap bitmap, int w, int h) {
+        int width = bitmap.getWidth();
+        int height = bitmap.getHeight();
+        Matrix matrix = new Matrix();
+        float scaleWidht = ((float) w / width);
+        float scaleHeight = ((float) h / height);
+        matrix.postScale(scaleWidht, scaleHeight);
+        bitmap = Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix, true);
+        return bitmap;
+    }
+
+    /**
+     * 获取bitmap的size
+     *
+     * @param bitmap
+     * @return
+     */
+    public static int getBitmapSize(Bitmap bitmap) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {    //API 19
+            return bitmap.getAllocationByteCount();
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR1) {//API 12
+            return bitmap.getByteCount();
+        }
+        return bitmap.getRowBytes() * bitmap.getHeight();                //earlier version
+    }
+
+
+    /**
+     * 在图片上加水印
+     *
+     * @param src
+     * @param watermark
+     * @param paddingLeft
+     * @param paddingTop
+     * @return
+     */
+    private static Bitmap createWaterMaskBitmap(Bitmap src, Bitmap watermark,
+                                                int paddingLeft, int paddingTop) {
+        if (src == null) {
+            return null;
+        }
+        int width = src.getWidth();
+        int height = src.getHeight();
+        //创建一个bitmap
+        Bitmap newb = Bitmap.createBitmap(width, height, Config.ARGB_8888);// 创建一个新的和SRC长度宽度一样的位图
+        //将该图片作为画布
+        Canvas canvas = new Canvas(newb);
+        //在画布 0，0坐标上开始绘制原始图片
+        canvas.drawBitmap(src, 0, 0, null);
+        //在画布上绘制水印图片
+        canvas.drawBitmap(watermark, paddingLeft, paddingTop, null);
+        // 保存
+        canvas.save(Canvas.ALL_SAVE_FLAG);
+        // 存储
+        canvas.restore();
+        return newb;
+    }
+
+    /****************************************** 创建缩略图 end *************/
+
+    public interface GetBitmapCallBack {
+        void onSucced(Bitmap myBitmap);
+
+        void onFailure(String result);
+    }
+
+    public interface ImageCallback {
+        public void imageLoad(ImageView imageView, Bitmap bitmap, Object... params);
     }
 }

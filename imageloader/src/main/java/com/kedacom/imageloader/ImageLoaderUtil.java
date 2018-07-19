@@ -6,7 +6,7 @@ import com.bumptech.glide.request.RequestListener;
 import com.kedacom.imageloader.glide.GlideImpl;
 
 /**
- * @Dec ：图片加载工具
+ * @Dec ：图片加载工具（依赖第三方库）
  * @Author : Caowj
  * @Date : 2018/6/13 12:39
  */
