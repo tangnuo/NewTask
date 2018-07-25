@@ -61,6 +61,9 @@ android {
             applicationIdSuffix ".debug"
             manifestPlaceholders = [app_name: "@string/app_name_test"]
 //            buildConfigField("boolean", "LOG_DEBUG", "true")
+            ext.enableCrashlytics = false // 不需要运行 Crashlytics
+            ext.alwaysUpdateBuildId = false //在每个构建期间阻止 Crashlytics 使用它自己的独特构建 ID 更新应用资源。
+
         }
     }
 
