@@ -33,5 +33,5 @@ dependencies {
 //    //picasso
 //    implementation "com.squareup.picasso:picasso:2.5.2"
 
-    compile project(path: ':utils')
+    implementation project(path: ':utils')
 }

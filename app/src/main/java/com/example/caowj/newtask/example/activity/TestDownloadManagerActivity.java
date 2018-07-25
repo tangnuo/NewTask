@@ -281,7 +281,7 @@ public class TestDownloadManagerActivity extends BaseActivity implements View.On
                 intent.setDataAndType(Uri.fromFile(apkFile), "application/vnd.android.package-archive");
             } else {
                 //Android7.0之后获取uri要用FileProvider
-                Uri uri = FileProvider.getUriForFile(mActivity, "com.example.caowj.newtask.fileprovider", apkFile);
+                Uri uri = FileProvider.getUriForFile(mActivity, mActivity.getPackageName() + ".fileprovider", apkFile);
                 intent.setDataAndType(uri, "application/vnd.android.package-archive");
                 intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             }
