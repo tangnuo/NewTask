@@ -3,6 +3,7 @@ package com.kedacom.imageloader;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.text.TextUtils;
 
 import com.kedacom.utils.AppUtil;
@@ -13,6 +14,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 /**
@@ -250,4 +252,93 @@ public class CompressedImageUtil {
         }
         return bitmap;
     }
+
+
+    /**
+     * 保存城管执法的图片
+     * <p>
+     * 1、图片加水印
+     * <p>
+     * 2、图片小于50k
+     *
+     * @param localUrl 本地图片路径（例如：/storage/emulated/0/Pictures/multi_image_20180808_130928.jpg）
+     * @param path     目标文件路径（例如：/storage/emulated/0/zhcx/img/cgzf/）
+     * @param filename 文件名称（例如：33000019_0.jpg）
+     */
+    public static void saveCgzfPic(String localUrl, String path, String filename) {
+
+        //获得图片的宽和高，但并不把图片加载到内存当中
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inPreferredConfig = Bitmap.Config.RGB_565;
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeFile(localUrl, options);
+
+        options.inSampleSize = computeSampleSize(options, -1, (int) (0.5 * 1024 * 1024));
+
+        //使用获取到的inSampleSize再次解析图片
+        options.inJustDecodeBounds = false;
+
+        Bitmap bitmap = BitmapFactory.decodeFile(localUrl, options);
+
+
+        LogUtil.myD("inSampleSize:" + options.inSampleSize);
+
+
+        File rootFile = new File(path);
+        if (!rootFile.exists()) {
+            rootFile.mkdirs();
+        }
+        File file = new File(rootFile, filename);
+        try {
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+
+
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);// 质量压缩方法，这里100表示不压缩，把压缩后的数据存放到baos中
+            //质量压缩
+            int quality = 95;
+
+            while (baos.toByteArray().length / 1024 > 50) { // 循环判断如果压缩后图片是否大于50kb,大于继续压缩
+                LogUtil.d("caowj", "length:" + baos.toByteArray().length + ",,,quality:" + quality);
+                baos.reset(); // 重置baos即清空baos
+                bitmap.compress(Bitmap.CompressFormat.JPEG, quality, baos);// 这里压缩options%，把压缩后的数据存放到baos中
+
+                //每次减少5%质量
+                if (quality > 5) {//避免出现options<=0
+                    quality -= 5;
+                } else {
+                    break;
+                }
+            }
+
+            LogUtil.d("caowj", "2length:" + baos.toByteArray().length + ",,,2quality:" + quality);
+
+
+            //保存图片
+            FileOutputStream fos = new FileOutputStream(file);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, quality, fos);
+
+//// TODO: 2018/8/8 问题：byte数组解析成bitmap后，再次解析成byte数组，变大了，为什么？
+//            ByteArrayInputStream isBm = new ByteArrayInputStream(baos.toByteArray());// 把压缩后的数据baos存放到ByteArrayInputStream中
+//            L.d("caowj", "3length:" + baos.toByteArray().length);
+//
+//            Bitmap bitmap2 = BitmapFactory.decodeStream(isBm, null, null);// 把ByteArrayInputStream数据生成图片
+//
+//            bitmap2.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+//            L.d("caowj", "sss:" + baos.toByteArray().length);
+//            bitmap2.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+
+
+            fos.flush();
+            fos.close();
+            if (bitmap.isRecycled()) {
+                bitmap.recycle();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }
