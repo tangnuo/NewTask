@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".RadioActivity">
+
+    <data>
+
+        <import type="com.example.caowj.newtask.mvvm.viewmodel.RadioViewModel" />
+
+        <variable
+            name="radioViewModel"
+            type="RadioViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:id="@+id/ll_index0"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <com.kedacom.customview.view.StateImageView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:src="@mipmap/uncheck"
+                bind:auto="false"
+                bind:toggleImage="@mipmap/check"
+                bind:toggleState="@{0 == radioViewModel.selectIndex}" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_index1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <com.kedacom.customview.view.StateImageView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:src="@mipmap/uncheck"
+                bind:auto="false"
+                bind:toggleImage="@mipmap/check"
+                bind:toggleState="@{1 == radioViewModel.selectIndex}" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_index2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <com.kedacom.customview.view.StateImageView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:src="@mipmap/uncheck"
+                bind:auto="false"
+                bind:toggleImage="@mipmap/check"
+                bind:toggleState="@{2 == radioViewModel.selectIndex}" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_index3"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <com.kedacom.customview.view.StateImageView
+                android:id="@+id/state_image"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:src="@mipmap/uncheck"
+                bind:auto="false"
+                bind:toggleImage="@mipmap/check"
+                bind:toggleState="@{3 == radioViewModel.selectIndex}" />
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

@@ -6,27 +6,18 @@ android {
 
     signingConfigs {
         newTask_signing {
-//            storeFile file('C:/Users/Administrator/Desktop/mKeyStore.jks')
-            storeFile file('config/mKeyStore.jks')
-            storePassword '411524'
-            keyAlias '曹维健'
-            keyPassword '046834'
+            storeFile file(releaseStoreFile)
+            storePassword releaseStorePassword
+            keyAlias releaseKeyAlias
+            keyPassword releaseKeyPassword
         }
-//        release {
-//            storeFile file("release.keystore")
-//            storePassword "123456"
-//            keyAlias "leon"
-//            keyPassword "123456"
-//            v1SigningEnabled true
-//            v2SigningEnabled false
-//        }
-//
 
         debug {
-            storeFile file('config/mKeyStore.jks')
-            storePassword '411524'
+            storeFile file(releaseStoreFile)
+            storePassword releaseStorePassword
+//            keyAlias releaseKeyAlias
             keyAlias '曹维健'
-            keyPassword '046834'
+            keyPassword releaseKeyPassword
             v1SigningEnabled true
             v2SigningEnabled true
         }
@@ -49,6 +40,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.newTask_signing
             manifestPlaceholders = [app_name: "@string/app_name"]
+//            resValue("string", "app_name", "GradleTestDebug")
 //            buildConfigField("boolean", "LOG_DEBUG", "false")
         }
 
@@ -60,6 +52,7 @@ android {
             versionNameSuffix "_debug"
             applicationIdSuffix ".debug"
             manifestPlaceholders = [app_name: "@string/app_name_test"]
+//            resValue("string", "app_name", "GradleTestDebug")
 //            buildConfigField("boolean", "LOG_DEBUG", "true")
             ext.enableCrashlytics = false // 不需要运行 Crashlytics
             ext.alwaysUpdateBuildId = false //在每个构建期间阻止 Crashlytics 使用它自己的独特构建 ID 更新应用资源。
@@ -83,6 +76,20 @@ android {
     dataBinding {
         enabled = true
     }
+
+
+//    applicationVariants.all { variant ->
+//        variant.outputs.all { output ->
+//            if (output.outputFile != null && output.outputFile.name.endsWith('.apk')) {
+//                outputFileName "NewTask${variant.buildType.name}_" + buildTime() + "_ver${variant.versionName}.apk"
+//            }
+//        }
+//    }
+
+}
+
+static def buildTime() {
+    return new Date().format("MM-dd")
 }
 
 //不需要加固的情况下使用：
