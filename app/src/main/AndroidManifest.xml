@@ -76,7 +76,7 @@
             </intent-filter>
         </activity-alias>
 
-        <activity android:name=".RequestPermissionsActivity" />
+        <activity android:name=".permission.RequestPermissionsActivity" />
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize|uiMode"

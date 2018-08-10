@@ -1,4 +1,4 @@
-package com.example.caowj.newtask;
+package com.example.caowj.newtask.permission;
 
 import android.content.Intent;
 import android.os.Build;
@@ -7,6 +7,8 @@ import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 
+import com.example.caowj.newtask.MainActivity;
+import com.example.caowj.newtask.R;
 import com.kedacom.base.common.AppManager;
 import com.kedacom.base.common.BaseActivity;
 import com.kedacom.utils.AlertDialogUtil;
@@ -22,6 +24,8 @@ import pub.devrel.easypermissions.EasyPermissions;
 
 /**
  * 申请危险权限：https://github.com/googlesamples/easypermissions
+ *
+ * @deprecated 进一步的权限封装参考 {@link PermissionActivity}
  */
 public class RequestPermissionsActivity extends BaseActivity implements EasyPermissions.PermissionCallbacks,
         EasyPermissions.RationaleCallbacks {
