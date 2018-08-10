@@ -14,22 +14,22 @@ import java.io.StreamCorruptedException;
 /**
  * Created by Administrator on 2016/7/15.
  */
-public class PreferenceUtil {
+public class SPUtil {
 
     private Context context;
-    private static PreferenceUtil intance = null;
+    private static SPUtil intance = null;
     private SharedPreferences sp;
     private SharedPreferences.Editor editor;
 
-    private PreferenceUtil(Context context) {
+    private SPUtil(Context context) {
         this.context = context;
         sp = context.getSharedPreferences("caowj_sp", Context.MODE_PRIVATE);
         editor = sp.edit();
     }
 
-    public static PreferenceUtil getInstance(Context context) {
+    public static SPUtil getInstance(Context context) {
         if (intance == null) {
-            intance = new PreferenceUtil(context);
+            intance = new SPUtil(context);
         }
         return intance;
     }

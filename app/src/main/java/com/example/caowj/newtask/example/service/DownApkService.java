@@ -12,7 +12,7 @@ import android.text.TextUtils;
 
 import com.example.caowj.newtask.utils.DownloadFileUtil;
 import com.kedacom.utils.LogUtil;
-import com.kedacom.utils.PreferenceUtil;
+import com.kedacom.utils.SPUtil;
 
 import java.io.File;
 
@@ -23,7 +23,7 @@ import java.io.File;
  */
 public class DownApkService extends Service {
     Context context = this;
-    PreferenceUtil mSp;
+    SPUtil mSp;
     private Long id;
 
     public class MyBinder extends Binder {
@@ -51,7 +51,7 @@ public class DownApkService extends Service {
         if (downloadBundle != null) {
             String downloadUrl = downloadBundle.getString("downloadUrl");
             if (!TextUtils.isEmpty(downloadUrl)) {
-                mSp = PreferenceUtil.getInstance(context);
+                mSp = SPUtil.getInstance(context);
                 long downloadId = downloadApk(downloadUrl);
                 id = downloadId;
 

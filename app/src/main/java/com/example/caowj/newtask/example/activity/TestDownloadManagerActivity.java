@@ -22,7 +22,7 @@ import com.example.caowj.newtask.utils.DownloadFileUtil;
 import com.kedacom.base.common.BaseActivity;
 import com.kedacom.utils.AlertDialogUtil;
 import com.kedacom.utils.LogUtil;
-import com.kedacom.utils.PreferenceUtil;
+import com.kedacom.utils.SPUtil;
 
 import java.io.File;
 
@@ -39,7 +39,7 @@ public class TestDownloadManagerActivity extends BaseActivity implements View.On
     private TextView down;
     public static String downloadUrl = "http://ucdl.25pp.com/fs08/2017/01/20/2/2_87a290b5f041a8b512f0bc51595f839a.apk";
     long id;
-    private PreferenceUtil mSharedP;
+    private SPUtil mSharedP;
     DownloadManager mManager;
 
 //    private ServiceConnection conn = new ServiceConnection() {
@@ -73,7 +73,7 @@ public class TestDownloadManagerActivity extends BaseActivity implements View.On
         setContentView(R.layout.activity_download);
         down = findViewById(R.id.down);
         down.setOnClickListener(this);
-        mSharedP = PreferenceUtil.getInstance(mActivity);
+        mSharedP = SPUtil.getInstance(mActivity);
 
         // TODO: 2018/7/12 需要先判断是否具有读写权限（先去权限页面申请权限，然后再回来下载文件）
 //        startActivity(new Intent(this, TestPremissionActivity.class));
@@ -82,7 +82,7 @@ public class TestDownloadManagerActivity extends BaseActivity implements View.On
             @Override
             public void onReceive(Context context, Intent intent) {
                 long downloadApkId = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1L);
-                mSharedP = PreferenceUtil.getInstance(mActivity);
+                mSharedP = SPUtil.getInstance(mActivity);
                 long saveApkId = mSharedP.getLong("downloadId", -1L);
 
                 if (downloadApkId == saveApkId) {

@@ -8,7 +8,7 @@ import android.database.Cursor;
 
 import com.example.caowj.newtask.example.activity.TestDownloadManagerActivity;
 import com.kedacom.utils.LogUtil;
-import com.kedacom.utils.PreferenceUtil;
+import com.kedacom.utils.SPUtil;
 import com.kedacom.utils.ToastUtil;
 
 import static android.content.Context.DOWNLOAD_SERVICE;
@@ -23,7 +23,7 @@ import static android.content.Context.DOWNLOAD_SERVICE;
  * seen{@link TestDownloadManagerActivity#downloadSuccessReceiver } 和 {@link TestDownloadManagerActivity#clickNotifacationReceiver}
  */
 public class DownApkReceiver extends BroadcastReceiver {
-    PreferenceUtil mSharedP;
+    SPUtil mSharedP;
     DownloadManager mManager;
     Context ctx;
 
@@ -32,7 +32,7 @@ public class DownApkReceiver extends BroadcastReceiver {
         ctx = context;
         if (intent.getAction().equals(DownloadManager.ACTION_DOWNLOAD_COMPLETE)) {
             long downloadApkId = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1L);
-            mSharedP = PreferenceUtil.getInstance(ctx);
+            mSharedP = SPUtil.getInstance(ctx);
             long saveApkId = mSharedP.getLong("downloadId", -1L);
 
             if (downloadApkId == saveApkId) {

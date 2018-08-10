@@ -9,7 +9,7 @@ import android.os.Environment;
 import android.os.Looper;
 import android.util.Log;
 
-import com.kedacom.utils.PreferenceUtil;
+import com.kedacom.utils.SPUtil;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -77,16 +77,16 @@ public class CrashHandler2 implements UncaughtExceptionHandler {
 //        System.exit(1);
 
             // TODO: 2018/7/6 需要结合缓存信息，跳转到主页。
-            int a = PreferenceUtil.getInstance(mContext).getInt("retry", 0);
-            if (PreferenceUtil.getInstance(mContext).getInt("retry", 0) < 3) {
-                PreferenceUtil.getInstance(mContext).saveInt("retry", PreferenceUtil.getInstance(mContext).getInt("retry", 0) + 1);
+            int a = SPUtil.getInstance(mContext).getInt("retry", 0);
+            if (SPUtil.getInstance(mContext).getInt("retry", 0) < 3) {
+                SPUtil.getInstance(mContext).saveInt("retry", SPUtil.getInstance(mContext).getInt("retry", 0) + 1);
 //                Intent intent = new Intent();
 //                intent.setClass(mContext, MainActivity.class);
 //                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 //                mContext.startActivity(intent);
                 Log.w(TAG, "需要跳转页面。");
             } else {
-                PreferenceUtil.getInstance(mContext).saveInt("retry", 0);
+                SPUtil.getInstance(mContext).saveInt("retry", 0);
             }
 
 
