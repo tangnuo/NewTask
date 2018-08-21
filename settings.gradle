@@ -1,1 +1,11 @@
-include ':app', ':imageloader', ':imageloader', ':utils', ':base', ':network', ':db', ':customview', ':module_common', ':module_learn', ':module_mvp', ':module_login', ':module_share', ':module_pay', ':module_news'
+include ':app', ':module_main',
+        ':module_music',
+        ':module_chat',
+        ':module_video',
+        ':module_live',
+        ':module_common',
+        ':module_learn',
+        ':module_login',
+        ':module_share',
+        ':module_pay',
+        ':module_news'

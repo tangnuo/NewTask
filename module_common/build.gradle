@@ -1,18 +1,24 @@
 apply plugin: 'com.android.library'
 
+
+def root = rootProject.ext
 android {
-    compileSdkVersion 28
 
-
+    compileSdkVersion root.compileSdkVersion
 
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 28
+        minSdkVersion root.minSdkVersion
+        targetSdkVersion root.targetSdkVersion
         versionCode 1
         versionName "1.0"
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+    dataBinding {
+        enabled = true
     }
 
     buildTypes {
@@ -27,8 +33,45 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'com.android.support:appcompat-v7:28.0.0-rc01'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    implementation "com.android.support:appcompat-v7:$root.supportLibraryVersion"
+    implementation "com.android.support:design:$root.supportLibraryVersion"
+    implementation "com.android.support:support-v4:$root.supportLibraryVersion"
+    implementation "com.android.support:recyclerview-v7:$root.supportLibraryVersion"
+    api "com.google.code.gson:gson:2.8.4"
+
+    def glideVersion = '4.7.1'
+    def frescoVersion = '1.9.0'
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //glide 4
+    api "com.github.bumptech.glide:glide:$glideVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
+
+//    //fresco
+//    implementation "com.facebook.fresco:fresco:$frescoVersion"
+////    implementation 'com.facebook.fresco:animated-gif:1.5.0'//加载gif动图需添加此库
+////    implementation 'com.facebook.fresco:animated-webp:1.5.0'//加载webp动图需添加此库
+////    implementation 'com.facebook.fresco:webpsupport:1.5.0'//支持webp需添加此库
+////    implementation 'com.facebook.fresco:imagepipeline-okhttp3:1.5.0'//网络实现层使用okhttp3需添加此库
+////    implementation 'jp.wasabeef:fresco-processors:2.1.0@aar'//用于提供fresco的各种图片变换
+//
+//
+//    //picasso
+//    implementation "com.squareup.picasso:picasso:2.5.2"
+
+    api 'com.jakewharton:butterknife:8.8.1'
+    //Rxjava2+Retrofit2
+    api 'com.squareup.retrofit2:retrofit:2.4.0'
+    api('com.squareup.retrofit2:converter-gson:2.4.0', {
+        exclude group: "com.google.code.gson"
+    })
+    api 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    api 'io.reactivex.rxjava2:rxjava:2.1.14'
+    api 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    // 持久化 Cookie
+    //    implementation 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
 }
+
+

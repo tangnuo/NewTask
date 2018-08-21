@@ -4,7 +4,7 @@
 
         <!--Environment.getExternalStorageDirectory()下的所有文件-->
         <external-path
-            path="."
-            name="myFile"></external-path>
+            name="myFile"
+            path="."></external-path>
     </paths>
 </resources>

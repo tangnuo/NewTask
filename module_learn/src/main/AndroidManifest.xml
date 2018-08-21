@@ -1,2 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.kedacom.module_learn" />
+    package="com.kedacom.module_learn">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application android:theme="@style/AppTheme">
+        <activity android:name=".FunctionListActivity"></activity>
+    </application>
+
+</manifest>

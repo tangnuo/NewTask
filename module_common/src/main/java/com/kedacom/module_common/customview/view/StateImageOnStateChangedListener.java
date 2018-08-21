@@ -1,0 +1,11 @@
+package com.kedacom.module_common.customview.view;
+
+/**
+ * Created by chumengwei on 2018/3/14.
+ */
+
+public interface StateImageOnStateChangedListener {
+
+    void onStateChanged(boolean state);
+
+}

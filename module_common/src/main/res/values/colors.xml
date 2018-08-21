@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="red">#FF0000</color>
+    <color name="colorGray">#9b999a</color>
+
+    <color name="colorblack">#080808</color>
+
+    <color name="colorGrayl">#d2cace</color>
+    <color name="transparent">#00000000</color>
+    <color name="grey_light">#EAEAEA</color>
+
+    <!--雅物-->
+    <color name="collection_navigation_title">#686868</color>
+    <color name="tv_checked_bg">#a40000</color>
+    <color name="white">#ffffff</color>
+
+
+    <!-- 上传图片添加的颜色 -->
+    <!--半透明-->
+    <color name="black">#000000</color>
+    <color name="black_light">#010101</color>
+    <!-- 主画面模块文字颜色-今日拍品等 -->
+
+    <!-- 搜索栏 -->
+    <color name="tv_grey_light">#B3B3B3</color>
+
+    <!--宝贝预展详情页 宝贝介绍  交易须知  评论 的颜色-->
+    <color name="red_transparent_44">#44ff0000</color>
+    <!--余额和保证金显示颜色-->
+    <!--转入 和 转出 选中与为选中的颜色-->
+    <!--确认充值选中状态-->
+    <!--确认充值未选中状态-->
+
+    <!--裁剪图片-->
+    <!--保证金说明-->
+    <!--登录界面 获取验证码 和 忘记密码 字体颜色-->
+    <color name="elem_primary">#079ff1</color>
+
+    <!--日期选择器 begin-->
+
+    <color name="cutting_line">#dfdfdf</color>
+
+    <!--日期选择器 end-->
+
+    <color name="find_item_bg">#262626</color>
+    <color name="black_5_alpha">#f2262626</color>
+    <!--精选功能使用的颜色-->
+    <color name="find_item_6e6c6c">#6e6c6c</color>
+
+    <!--商品详情 宝贝描述-->
+    <color name="item_333">#333333</color>
+    <color name="find_item_82">#828282</color>
+    <color name="item_1c">#1c1c1c</color>
+    <color name="item_e5">#e5e5e5</color>
+    <color name="item_c2">#c2c2c2</color>
+    <color name="item_85">#858585</color>
+    <color name="item_71">#717171</color>
+    <color name="item_df">#dfdfdf</color>
+    <color name="item_72">#72000000</color>
+    <color name="item_b4282d">#b4282d</color>
+    <color name="item_f7">#f7f7f7</color>
+    <color name="Blue_Grey">#607d8b</color>
+    <color name="textColorPrimary">#616161</color>
+    <color name="viewBackground">@android:color/white</color>
+
+    <color name="warning_color">#f4511e</color>
+    <color name="hint_color">#42000000</color>
+    <color name="success_color">#009688</color>
+
+    <color name="black12">#1F000000</color>
+
+    <color name="grey300">#FFE0E0E0</color>
+
+    <color name="f5">#FFF5F5F5</color>
+
+    <color name="text_color">#EE383838</color>
+    <color name="alpha_gray">#CC646464</color>
+</resources>

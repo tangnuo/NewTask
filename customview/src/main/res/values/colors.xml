@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <color name="colorGrayl">#d2cace</color>
-    <color name="transparent">#00000000</color>
-    <color name="grey_light">#EAEAEA</color>
-    <color name="colorAccent">#FF2196F3</color>
-    <color name="projectInfoNormal">#49cc99</color>
-</resources>
