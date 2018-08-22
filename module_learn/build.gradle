@@ -3,22 +3,29 @@ if (isModule.toBoolean()) {
 } else {
     apply plugin: 'com.android.library'
 }
+apply plugin: 'com.jakewharton.butterknife'
 
 def root = rootProject.ext
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdkVersion root.compileSdkVersion
+    buildToolsVersion root.buildToolsVersion
 
     defaultConfig {
         if (isModule.toBoolean()) {
             applicationId "com.kedacom.module_learn"
         }
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        minSdkVersion root.minSdkVersion
+        targetSdkVersion root.targetSdkVersion
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
 
     compileOptions {
@@ -47,8 +54,9 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation "com.android.support:appcompat-v7:$root.supportLibraryVersion"
-
     implementation project(':module_common')
-    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    //ARouter
+    annotationProcessor "com.alibaba:arouter-compiler:$root.arouterCompiler"
+    //butterknife
+    annotationProcessor "com.jakewharton:butterknife-compiler:$root.butterknifeCompiler"
 }

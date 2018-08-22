@@ -5,7 +5,9 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application android:theme="@style/AppTheme">
-        <activity android:name=".FunctionListActivity"></activity>
+        <activity android:name=".FunctionListActivity" />
+        <activity android:name=".activity.TestSmartRefreshLayoutActivity" />
+        <activity android:name=".activity.TestStethoActivity"></activity>
     </application>
 
 </manifest>

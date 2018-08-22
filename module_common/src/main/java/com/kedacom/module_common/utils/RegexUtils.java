@@ -1,7 +1,7 @@
 package com.kedacom.module_common.utils;
 
 
-import com.kedacom.module_common.utils.constant.RegexConstants;
+import com.kedacom.module_common.constant.RegexConstants;
 
 import java.util.ArrayList;
 import java.util.List;

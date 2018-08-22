@@ -1,4 +1,4 @@
-package com.kedacom.module_common.utils.constant;
+package com.kedacom.module_common.constant;
 
 /**
  * Created by goldze on 2017/5/14.

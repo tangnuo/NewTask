@@ -1,4 +1,4 @@
-package com.kedacom.module_common.utils.constant;
+package com.kedacom.module_common.constant;
 
 import android.support.annotation.IntDef;
 

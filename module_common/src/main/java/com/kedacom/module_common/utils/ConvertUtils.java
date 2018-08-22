@@ -10,8 +10,8 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 
-import com.kedacom.module_common.utils.constant.MemoryConstants;
-import com.kedacom.module_common.utils.constant.TimeConstants;
+import com.kedacom.module_common.constant.MemoryConstants;
+import com.kedacom.module_common.constant.TimeConstants;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
