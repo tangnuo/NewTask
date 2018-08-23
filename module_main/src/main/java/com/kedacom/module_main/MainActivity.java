@@ -7,9 +7,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;
 
-import com.kedacom.module_lib.base.mvc.BaseButterKnifeActivity;
 import com.kedacom.module_common.constant.RouteConstants;
+import com.kedacom.module_common.service.ILoginService;
+import com.kedacom.module_common.service.ServiceFactory;
+import com.kedacom.module_lib.base.mvc.BaseButterKnifeActivity;
 import com.kedacom.module_lib.utils.LogUtil;
+import com.kedacom.module_lib.utils.ToastUtil;
 import com.kedacom.module_main.adapter.MainAdapter;
 
 import butterknife.BindView;
@@ -38,7 +41,13 @@ public class MainActivity extends BaseButterKnifeActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         LogUtil.myD("44444");
+        ILoginService accountService = ServiceFactory.getInstance().getAccountService();
 
+        if (accountService.isLogin()) {
+            LogUtil.myD("用户已登录" + accountService.getAccountId());
+        } else {
+            ToastUtil.showShortToast(mActivity, "请先登录！");
+        }
         mRecyclerView.setAdapter(functionListAdapter);
     }
 

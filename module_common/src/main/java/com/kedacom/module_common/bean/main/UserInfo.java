@@ -76,4 +76,13 @@ public class UserInfo implements Parcelable {
             return new UserInfo[size];
         }
     };
+
+    @Override
+    public String toString() {
+        return "UserInfo{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
 }

@@ -9,8 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.facade.Postcard;
+import com.alibaba.android.arouter.facade.callback.NavCallback;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.kedacom.module_common.bean.main.UserInfo;
+import com.kedacom.module_lib.utils.LogUtil;
 import com.kedacom.module_main.R;
 import com.kedacom.module_main.R2;
 
@@ -62,7 +65,32 @@ public class MainAdapter extends RecyclerView.Adapter {
                             .withParcelable("userInfo", userInfo)
                             .navigation();
                 } else {
-                    ARouter.getInstance().build(routePath).navigation();
+                    //简单写法：
+//                    ARouter.getInstance().build(routePath).navigation();
+
+                    //监听过程：
+                    ARouter.getInstance().build(routePath).navigation(mContext, new NavCallback() {
+
+                        @Override
+                        public void onFound(Postcard postcard) {
+                            LogUtil.myD("onArrival: 找到了 ");
+                        }
+
+                        @Override
+                        public void onLost(Postcard postcard) {
+                            LogUtil.myD("onArrival: 找不到了 ");
+                        }
+
+                        @Override
+                        public void onArrival(Postcard postcard) {
+                            LogUtil.myD("onArrival: 跳转完了 ");
+                        }
+
+                        @Override
+                        public void onInterrupt(Postcard postcard) {
+                            LogUtil.myD("onArrival: 被拦截了 ");
+                        }
+                    });
                 }
             }
         });
