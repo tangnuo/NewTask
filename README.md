@@ -6,6 +6,8 @@ android学习、提高
 
 ### NewTask1.0
 
+https://github.com/tangnuo/NewTask/tree/newTask1.0
+
 学习过程中的代码，尝试使用各种开源库。
 
 - module化：base,network,imageloader,util...
