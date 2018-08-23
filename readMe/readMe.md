@@ -30,4 +30,6 @@ model：数据请求。只放接口声明，实现放presenter中。
 研究字母列表；
 权限预申请；
 
-
+module_lib分离module_common中涉及到业务逻辑的部分，module_lib存放通用的功能。
+module_common依赖于module_lib，module_common中存放业务相关的代码。
+所有的的module都依赖于module_common

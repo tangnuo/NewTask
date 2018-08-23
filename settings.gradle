@@ -1,4 +1,6 @@
-include ':app', ':module_main',
+include ':app',
+        ':module_main',
+        ':module_lib',
         ':module_music',
         ':module_chat',
         ':module_video',

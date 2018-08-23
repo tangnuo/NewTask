@@ -7,9 +7,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;
 
-import com.kedacom.module_common.base.mvc.BaseButterKnifeActivity;
+import com.kedacom.module_lib.base.mvc.BaseButterKnifeActivity;
 import com.kedacom.module_common.constant.RouteConstants;
-import com.kedacom.module_common.utils.LogUtil;
+import com.kedacom.module_lib.utils.LogUtil;
 import com.kedacom.module_main.adapter.MainAdapter;
 
 import butterknife.BindView;

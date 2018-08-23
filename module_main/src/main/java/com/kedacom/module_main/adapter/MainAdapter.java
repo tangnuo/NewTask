@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.kedacom.module_common.bean.main.UserInfo;
 import com.kedacom.module_main.R;
 import com.kedacom.module_main.R2;
 
@@ -52,7 +53,17 @@ public class MainAdapter extends RecyclerView.Adapter {
         fHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ARouter.getInstance().build(routePath).navigation();
+                UserInfo userInfo = new UserInfo(12, "caowj", "留园");
+
+                if (position == 0) {
+                    ARouter.getInstance().build(routePath)
+                            .withString("name", "曹维健")
+                            .withLong("age", 25)
+                            .withParcelable("userInfo", userInfo)
+                            .navigation();
+                } else {
+                    ARouter.getInstance().build(routePath).navigation();
+                }
             }
         });
     }
