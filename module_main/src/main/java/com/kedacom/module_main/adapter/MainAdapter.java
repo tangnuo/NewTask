@@ -15,10 +15,6 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.kedacom.module_common.bean.main.UserInfo;
 import com.kedacom.module_lib.utils.LogUtil;
 import com.kedacom.module_main.R;
-import com.kedacom.module_main.R2;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * @Dec ：
@@ -102,12 +98,11 @@ public class MainAdapter extends RecyclerView.Adapter {
     }
 
     class FunctionViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R2.id.textView)
         TextView tvTitle;
 
         public FunctionViewHolder(View view) {
             super(view);
-            ButterKnife.bind(this, view);
+            tvTitle = view.findViewById(R.id.textView);
         }
     }
 }

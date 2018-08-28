@@ -1,0 +1,139 @@
+package com.kedacom.module_learn.activity;
+
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+
+import com.kedacom.module_learn.R;
+import com.kedacom.module_learn.api.ApiService;
+import com.kedacom.module_learn.bean.UploadInfo;
+import com.kedacom.module_lib.base.common.BaseActivity;
+import com.kedacom.module_lib.network.retrofit.RetrofitFactory;
+import com.kedacom.module_lib.utils.LogUtil;
+import com.kedacom.module_lib.utils.ToastUtil;
+
+import java.io.File;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+
+/**
+ * Retrofit2上传图片
+ */
+public class TestUploadActivity extends BaseActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_test_upload);
+
+        Button button = findViewById(R.id.button);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                uploadImage();
+
+                upload2();
+            }
+        });
+
+    }
+
+    /**
+     * 图片上传（注意Android6.0 动态权限）
+     * <p>
+     * https://www.zhaoapi.cn/file/upload?uid=10134
+     */
+    public void uploadImage() {
+        try {
+            String BASE_URL = "https://www.zhaoapi.cn/file/";
+
+
+            File file = new File("/storage/emulated/0/zhcx/img/cgzf/33000033_0.jpg");
+
+            System.out.println("file路径 = " + file.getAbsolutePath());
+            if (file != null) {
+                Retrofit retrofit = RetrofitFactory.getRetrofit(BASE_URL);
+
+                //动态代理生成实现类
+                ApiService interfaceApi = retrofit.create(ApiService.class);
+                RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+                MultipartBody.Part filePart = MultipartBody.Part.createFormData("file", file.getName(), requestBody);
+
+                Call<ResponseBody> bodyCall = interfaceApi.uploadImage(filePart);
+                bodyCall.enqueue(new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        LogUtil.myD("上传成功" + response.body());
+                        ToastUtil.showShortToast(mActivity, "上传成功");
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        ToastUtil.showShortToast(mActivity, "上传成功");
+                        LogUtil.myD("上传失败" + t.fillInStackTrace());
+                    }
+                });
+
+            } else {
+                Log.d("caowj", "文件不存在：" + file.getName());
+            }
+        } catch (Exception e) {
+            Log.d("caowj", e.getMessage());
+        }
+    }
+
+
+    /**
+     * 白城智查通图片上传
+     * <p>
+     * http://122.138.250.132:9900/file/upload/teupload/ydzf/33/33000034
+     */
+    private void upload2() {
+        try {
+            String BASE_URL = "http://122.138.250.132:9900/file/upload/teupload/";
+
+            File file = new File("/storage/emulated/0/zhcx/img/cgzf/33000033_0.jpg");
+
+            System.out.println("file路径 = " + file.getAbsolutePath());
+            if (file != null) {
+                Retrofit retrofit = RetrofitFactory.getRetrofit(BASE_URL);
+
+                //动态代理生成实现类
+                ApiService interfaceApi = retrofit.create(ApiService.class);
+                RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+                MultipartBody.Part filePart = MultipartBody.Part.createFormData("file", file.getName(), requestBody);
+
+                Call<UploadInfo> bodyCall = interfaceApi.upload(filePart);
+                bodyCall.enqueue(new Callback<UploadInfo>() {
+                    @Override
+                    public void onResponse(Call<UploadInfo> call, Response<UploadInfo> response) {
+                        LogUtil.myD("上传成功" + response.body().toString());
+                        ToastUtil.showShortToast(mActivity, "上传成功");
+                    }
+
+                    @Override
+                    public void onFailure(Call<UploadInfo> call, Throwable t) {
+                        ToastUtil.showShortToast(mActivity, "上传成功");
+                        LogUtil.myD("上传失败" + t.fillInStackTrace());
+                    }
+                });
+
+            } else {
+                Log.d("caowj", "文件不存在：" + file.getName());
+            }
+        } catch (Exception e) {
+            Log.d("caowj", e.getMessage());
+        }
+    }
+
+}
+

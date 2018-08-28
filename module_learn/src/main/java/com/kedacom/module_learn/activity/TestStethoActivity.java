@@ -1,10 +1,9 @@
 package com.kedacom.module_learn.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
-import com.kedacom.module_lib.base.common.BaseActivity;
 import com.kedacom.module_learn.R;
+import com.kedacom.module_lib.base.common.BaseActivity;
 
 public class TestStethoActivity extends BaseActivity {
 

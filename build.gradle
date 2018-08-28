@@ -38,6 +38,7 @@ ext {
     supportLibraryVersion = '27.1.1'
 
     arouterCompiler='1.2.0'
-    butterknifeCompiler='8.5.1'
+//    butterknifeCompiler='8.5.1'
+    butterknifeCompiler='8.8.1'
 
 }

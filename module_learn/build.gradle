@@ -3,7 +3,7 @@ if (isModule.toBoolean()) {
 } else {
     apply plugin: 'com.android.library'
 }
-apply plugin: 'com.jakewharton.butterknife'
+//apply plugin: 'com.jakewharton.butterknife'
 
 def root = rootProject.ext
 
@@ -56,6 +56,7 @@ dependencies {
 
     implementation project(':module_common')
     //ARouter
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     annotationProcessor "com.alibaba:arouter-compiler:$root.arouterCompiler"
     //butterknife
     annotationProcessor "com.jakewharton:butterknife-compiler:$root.butterknifeCompiler"

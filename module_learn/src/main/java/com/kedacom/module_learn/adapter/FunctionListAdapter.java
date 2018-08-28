@@ -10,9 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 /**
  * @Dec ：
  * @Author : Caowj
@@ -65,22 +62,11 @@ public class FunctionListAdapter extends RecyclerView.Adapter {
     }
 
     class FunctionViewHolder extends RecyclerView.ViewHolder {
-        @BindView(android.R.id.text1)
         TextView tvTitle;
 
         public FunctionViewHolder(View view) {
             super(view);
-            ButterKnife.bind(this, view);
+            tvTitle = view.findViewById(android.R.id.text1);
         }
     }
-
-
-//    class FunctionViewHolder extends RecyclerView.ViewHolder {
-//        TextView tvTitle;
-//
-//        public FunctionViewHolder(View view) {
-//            super(view);
-//            tvTitle = view.findViewById(android.R.id.text1);
-//        }
-//    }
 }

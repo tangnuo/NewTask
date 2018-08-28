@@ -1,5 +1,6 @@
 package com.kedacom.module_learn;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,21 +13,28 @@ import com.kedacom.module_common.bean.main.UserInfo;
 import com.kedacom.module_common.constant.RouteConstants;
 import com.kedacom.module_learn.activity.TestSmartRefreshLayoutActivity;
 import com.kedacom.module_learn.activity.TestStethoActivity;
+import com.kedacom.module_learn.activity.TestUploadActivity;
 import com.kedacom.module_learn.adapter.FunctionListAdapter;
-import com.kedacom.module_lib.base.mvc.BaseButterKnifeActivity;
-import com.kedacom.module_lib.utils.LogUtil;
+import com.kedacom.module_lib.base.common.BaseActivity;
+import com.kedacom.module_lib.base.permission.PermissionControl;
 import com.kedacom.module_lib.utils.ToastUtil;
 
-import butterknife.BindView;
-
 @Route(path = RouteConstants.LEARN_FUNCTION_LIST)
-public class FunctionListActivity extends BaseButterKnifeActivity {
+public class FunctionListActivity extends BaseActivity {
 
-    @BindView(R2.id.mRecyclerView)
     RecyclerView mRecyclerView;
 
     private SparseArray<Class> sparseArray;
     private FunctionListAdapter functionListAdapter;
+
+    private static final String[] requirePermission = {
+            Manifest.permission.CAMERA,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.READ_PHONE_STATE,
+            Manifest.permission.READ_CONTACTS
+    };
+    private PermissionControl control;
 
     public static void newInstance(Context context) {
         //显示Intent
@@ -39,50 +47,41 @@ public class FunctionListActivity extends BaseButterKnifeActivity {
 //        context.startActivity(intent);
     }
 
+    @Override
+    protected String[] setRequirePermission() {
+        String[] requirePermission = {
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+        };
+        return requirePermission;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.activity_function_list);
+        mRecyclerView = findViewById(R.id.mRecyclerView);
 
         String name = getIntent().getStringExtra("name");
         long age = getIntent().getLongExtra("age", 0);
         UserInfo userInfo = getIntent().getParcelableExtra("userInfo");
-        ToastUtil.showShortToast(mActivity, "name:" + name + ",age:" + age + ",userInfo:" + userInfo.toString());
+        ToastUtil.showShortToast(mActivity, "name:" + name + ",age:" + age + ",userInfo:" + userInfo == null ? userInfo.toString() : "");
 
+        initData();
+
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(mActivity));
         mRecyclerView.setAdapter(functionListAdapter);
     }
 
-    @Override
-    protected int getContentView() {
-        return R.layout.activity_function_list;
-    }
 
-    @Override
-    protected void initWidget() {
-        super.initWidget();
-        LogUtil.myD("222222");
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(mActivity));
-    }
-
-    /**
-     *
-     */
-    @Override
     protected void initData() {
-        super.initData();
-
         sparseArray = new SparseArray<>();
         sparseArray.put(0, TestSmartRefreshLayoutActivity.class);
         sparseArray.put(1, TestStethoActivity.class);
+        sparseArray.put(2, TestUploadActivity.class);
 
 
         functionListAdapter = new FunctionListAdapter(mActivity, sparseArray);
-    }
-
-    @Override
-    protected void memoryRecovery() {
-
     }
 }
 

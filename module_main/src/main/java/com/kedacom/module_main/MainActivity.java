@@ -10,16 +10,13 @@ import android.util.SparseArray;
 import com.kedacom.module_common.constant.RouteConstants;
 import com.kedacom.module_common.service.ILoginService;
 import com.kedacom.module_common.service.ServiceFactory;
-import com.kedacom.module_lib.base.mvc.BaseButterKnifeActivity;
+import com.kedacom.module_lib.base.common.BaseActivity;
 import com.kedacom.module_lib.utils.LogUtil;
 import com.kedacom.module_lib.utils.ToastUtil;
 import com.kedacom.module_main.adapter.MainAdapter;
 
-import butterknife.BindView;
+public class MainActivity extends BaseActivity {
 
-public class MainActivity extends BaseButterKnifeActivity {
-
-    @BindView(R2.id.mRecyclerView)
     RecyclerView mRecyclerView;
 
     private SparseArray<String> sparseArray;
@@ -41,6 +38,12 @@ public class MainActivity extends BaseButterKnifeActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         LogUtil.myD("44444");
+
+        setContentView(R.layout.activity_main);
+
+        initData();
+
+
         ILoginService accountService = ServiceFactory.getInstance().getAccountService();
 
         if (accountService.isLogin()) {
@@ -48,37 +51,17 @@ public class MainActivity extends BaseButterKnifeActivity {
         } else {
             ToastUtil.showShortToast(mActivity, "请先登录！");
         }
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(mActivity));
         mRecyclerView.setAdapter(functionListAdapter);
     }
 
-    @Override
-    protected int getContentView() {
-        return R.layout.activity_main;
-    }
 
-    @Override
-    protected void initWidget() {
-        super.initWidget();
-        LogUtil.myD("222222");
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(mActivity));
-    }
-
-    /**
-     *
-     */
-    @Override
     protected void initData() {
-        super.initData();
         sparseArray = new SparseArray<>();
 
         sparseArray.put(0, RouteConstants.LEARN_FUNCTION_LIST);
         sparseArray.put(1, RouteConstants.NEWS_ACTIVITY);
 
         functionListAdapter = new MainAdapter(mActivity, sparseArray);
-    }
-
-    @Override
-    protected void memoryRecovery() {
-
     }
 }
