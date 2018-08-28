@@ -22,6 +22,11 @@ public interface ApiService {
     @POST("ydzf/33/33000034")
     Call<UploadInfo> upload(@Part MultipartBody.Part file);
 
+
+    @Multipart
+    @POST("servlet/UploadHandleServlet")
+    Call<UploadInfo> upload3(@Part MultipartBody.Part file);
+
     @Multipart
     @POST("upload?uid=10134")
     Call<ResponseBody> uploadImage(@Part MultipartBody.Part file);

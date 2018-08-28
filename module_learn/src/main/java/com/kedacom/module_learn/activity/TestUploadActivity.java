@@ -43,8 +43,9 @@ public class TestUploadActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
 
-//                uploadImage();
-                upload2();
+                uploadImage();
+//                upload2();
+//                upload3();
             }
         });
 
@@ -81,7 +82,7 @@ public class TestUploadActivity extends BaseActivity {
 
                     @Override
                     public void onFailure(Call<ResponseBody> call, Throwable t) {
-                        ToastUtil.showShortToast(mActivity, "上传成功");
+                        ToastUtil.showShortToast(mActivity, "上传失败");
                         LogUtil.myD("上传失败" + t.fillInStackTrace());
                     }
                 });
@@ -139,7 +140,7 @@ public class TestUploadActivity extends BaseActivity {
 
                     @Override
                     public void onFailure(Call<UploadInfo> call, Throwable t) {
-                        ToastUtil.showShortToast(mActivity, "上传成功");
+                        ToastUtil.showShortToast(mActivity, "上传失败");
                         LogUtil.myD("上传失败" + t.fillInStackTrace());
                     }
                 });
@@ -151,6 +152,64 @@ public class TestUploadActivity extends BaseActivity {
             Log.d("caowj", e.getMessage());
         }
     }
+
+    /**
+     * 自定义服务端
+     * <p>
+     * http://10.79.0.32:8080/UploadFileServer/servlet/UploadHandleServlet
+     * <p>
+     * 注意：需要自定义ConverterFactory，否则gson异常。
+     */
+    private void upload3() {
+        try {
+            String BASE_URL = "http://10.79.0.32:8080/UploadFileServer/";
+
+            File file = new File("/storage/emulated/0/zhcx/img/cgzf/33000033_1.jpg");
+
+            System.out.println("file路径 = " + file.getAbsolutePath());
+            if (file != null) {
+
+                //方法二：使用stetho
+                OkHttpClient client = new OkHttpClient.Builder()
+//                .addInterceptor(cacheInterceptor()) //缓存拦截器
+                        .addNetworkInterceptor(new StethoInterceptor())
+                        .build();
+
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl(BASE_URL)
+                        .client(client)
+                        .addConverterFactory(GsonConverterFactory.create())//注意，这里需要特殊处理
+                        .build();
+
+                ApiService interfaceApi = retrofit.create(ApiService.class);
+
+
+                RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+                MultipartBody.Part filePart = MultipartBody.Part.createFormData("file", file.getName(), requestBody);
+
+                Call<UploadInfo> bodyCall = interfaceApi.upload3(filePart);
+                bodyCall.enqueue(new Callback<UploadInfo>() {
+                    @Override
+                    public void onResponse(Call<UploadInfo> call, Response<UploadInfo> response) {
+                        LogUtil.myD("上传成功" + response.body().toString());
+                        ToastUtil.showShortToast(mActivity, "上传成功");
+                    }
+
+                    @Override
+                    public void onFailure(Call<UploadInfo> call, Throwable t) {
+                        ToastUtil.showShortToast(mActivity, "上传失败，可能gson异常");
+                        LogUtil.myD("上传失败" + t.fillInStackTrace());
+                    }
+                });
+
+            } else {
+                Log.d("caowj", "文件不存在：" + file.getName());
+            }
+        } catch (Exception e) {
+            Log.d("caowj", e.getMessage());
+        }
+    }
+
 
 }
 
