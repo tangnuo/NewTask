@@ -7,7 +7,9 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-    <application android:theme="@style/AppTheme">
+    <application
+        android:name=".LearnApplication"
+        android:theme="@style/AppTheme">
         <activity android:name=".FunctionListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

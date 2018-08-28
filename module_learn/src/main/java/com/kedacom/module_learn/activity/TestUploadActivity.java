@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.kedacom.module_learn.R;
 import com.kedacom.module_learn.api.ApiService;
 import com.kedacom.module_learn.bean.UploadInfo;
@@ -17,12 +18,14 @@ import java.io.File;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Retrofit2上传图片
@@ -39,8 +42,8 @@ public class TestUploadActivity extends BaseActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                uploadImage();
 
+//                uploadImage();
                 upload2();
             }
         });
@@ -105,10 +108,24 @@ public class TestUploadActivity extends BaseActivity {
 
             System.out.println("file路径 = " + file.getAbsolutePath());
             if (file != null) {
-                Retrofit retrofit = RetrofitFactory.getRetrofit(BASE_URL);
 
-                //动态代理生成实现类
+////                方法一：常规写法
+//                Retrofit retrofit = RetrofitFactory.getRetrofit(BASE_URL);
+//                //动态代理生成实现类
+//                ApiService interfaceApi = retrofit.create(ApiService.class);
+
+
+                //方法二：使用stetho
+                OkHttpClient client = new OkHttpClient.Builder()
+//                .addInterceptor(cacheInterceptor()) //缓存拦截器
+                        .addNetworkInterceptor(new StethoInterceptor())
+                        .build();
+
+                Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL).client(client).addConverterFactory(GsonConverterFactory.create()).build();
+
                 ApiService interfaceApi = retrofit.create(ApiService.class);
+
+
                 RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
                 MultipartBody.Part filePart = MultipartBody.Part.createFormData("file", file.getName(), requestBody);
 
