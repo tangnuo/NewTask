@@ -69,12 +69,12 @@ public class MainAdapter extends RecyclerView.Adapter {
 
                         @Override
                         public void onFound(Postcard postcard) {
-                            LogUtil.myD("onArrival: 找到了 ");
+                            LogUtil.myD("onFound: 找到了 ");
                         }
 
                         @Override
                         public void onLost(Postcard postcard) {
-                            LogUtil.myD("onArrival: 找不到了 ");
+                            LogUtil.myD("onLost: 找不到了 ");
                         }
 
                         @Override
@@ -84,7 +84,7 @@ public class MainAdapter extends RecyclerView.Adapter {
 
                         @Override
                         public void onInterrupt(Postcard postcard) {
-                            LogUtil.myD("onArrival: 被拦截了 ");
+                            LogUtil.myD("onInterrupt: 被拦截了 ");
                         }
                     });
                 }
