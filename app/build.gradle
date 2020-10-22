@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 apply plugin: 'org.greenrobot.greendao' // apply plugin
 apply plugin: 'channel'
 
@@ -125,4 +126,8 @@ dependencies {
         implementation project(':module_main')
         implementation project(':module_learn')
     }
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }

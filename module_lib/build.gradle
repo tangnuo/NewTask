@@ -55,7 +55,7 @@ dependencies {
 
     api 'com.jakewharton:butterknife:8.5.1'
     //ARouter
-    api 'com.alibaba:arouter-api:1.4.0'
+    api "com.alibaba:arouter-api:$root.arouterCompiler"
 
     //Rxjava2+Retrofit2
     api 'com.squareup.retrofit2:retrofit:2.4.0'

@@ -14,14 +14,13 @@
         <activity android:name=".FunctionListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
         <activity android:name=".activity.TestSmartRefreshLayoutActivity" />
-        <activity android:name=".activity.TestStethoActivity"></activity>
-        <activity android:name=".activity.TestUploadActivity"></activity>
+        <activity android:name=".activity.TestStethoActivity" />
+        <activity android:name=".activity.TestUploadActivity" />
     </application>
 
 </manifest>
