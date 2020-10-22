@@ -33,6 +33,12 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        if (isModule.toBoolean()){
+            buildConfigField("boolean", "isARouter", "true")
+        }else {
+            buildConfigField("boolean", "isARouter", "false")
+        }
     }
 
     buildTypes {
@@ -88,9 +94,9 @@ android {
 
 }
 
-static def buildTime() {
-    return new Date().format("MM-dd")
-}
+//static def buildTime() {
+//    return new Date().format("MM-dd")
+//}
 
 //不需要加固的情况下使用：
 //channel{
