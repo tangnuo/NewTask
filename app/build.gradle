@@ -124,6 +124,5 @@ dependencies {
     if (!isModule.toBoolean()) {
         implementation project(':module_main')
         implementation project(':module_learn')
-        implementation project(':module_news')
     }
 }

@@ -1,13 +1,6 @@
 include ':app',
         ':module_main',
         ':module_lib',
-        ':module_music',
-        ':module_chat',
         ':module_video',
-        ':module_live',
         ':module_common',
-        ':module_learn',
-        ':module_login',
-        ':module_share',
-        ':module_pay',
-        ':module_news'
+        ':module_learn'
