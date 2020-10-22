@@ -5,6 +5,7 @@ if (isModule.toBoolean()) {
 }
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 def root = rootProject.ext
 
@@ -62,7 +63,7 @@ dependencies {
     implementation project(':module_common')
     //ARouter
     implementation 'com.android.support.constraint:constraint-layout:2.0.2'
-    annotationProcessor "com.alibaba:arouter-compiler:$root.arouterCompiler"
+    kapt "com.alibaba:arouter-compiler:$root.arouterCompiler"
 
     implementation 'com.facebook.stetho:stetho:1.5.0'
     implementation 'com.facebook.stetho:stetho-okhttp3:1.5.0'

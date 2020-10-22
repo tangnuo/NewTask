@@ -37,6 +37,13 @@
         android:label="${app_name}"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:replace="android:label,android:name"></application>
+        tools:replace="android:label,android:name">
+        <activity android:name=".activity.IndexActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
 
 </manifest>

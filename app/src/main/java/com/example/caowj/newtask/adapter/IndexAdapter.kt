@@ -1,4 +1,4 @@
-package com.kedacom.module_main.adapter
+package com.example.caowj.newtask.adapter
 
 import android.content.Context
 import android.graphics.Color
@@ -20,7 +20,7 @@ import com.kedacom.module_main.R
  * @Author : Caowj
  * @Date : 2018/8/22 13:13
  */
-class MainAdapter(private val mContext: Context, array: SparseArray<String>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class IndexAdapter(private val mContext: Context, array: SparseArray<String>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var sparseArray: SparseArray<String> = array
     private val mLayoutInflater: LayoutInflater = LayoutInflater.from(mContext)
 

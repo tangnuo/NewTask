@@ -9,5 +9,5 @@ public class RouteConstants {
 
     public static final String LEARN_FUNCTION_LIST = "/learn/functionList";
 
-    public static final String NEWS_ACTIVITY = "/news/activity";
+    public static final String MAIN_ACTIVITY = "/main/activity";
 }

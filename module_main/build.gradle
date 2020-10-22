@@ -5,6 +5,7 @@ if (isModule.toBoolean()) {
 }
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 def root = rootProject.ext
 
@@ -61,7 +62,7 @@ dependencies {
 
     implementation project(':module_common')
     //ARouter
-    annotationProcessor "com.alibaba:arouter-compiler:$root.arouterCompiler"
+    kapt "com.alibaba:arouter-compiler:$root.arouterCompiler"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 }
 
