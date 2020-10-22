@@ -12,7 +12,7 @@ import com.kedacom.module_common.service.ServiceFactory
 import com.kedacom.module_lib.base.common.BaseActivity
 import com.kedacom.module_lib.utils.LogUtil
 import com.kedacom.module_lib.utils.ToastUtil
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_index.*
 
 class IndexActivity : BaseActivity() {
     private var sparseArray: SparseArray<String>? = null
@@ -21,7 +21,7 @@ class IndexActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         LogUtil.myD("11111")
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_index)
         initData()
         val accountService = ServiceFactory.getInstance().accountService
         if (accountService.isLogin) {
