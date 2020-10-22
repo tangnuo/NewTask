@@ -13,7 +13,6 @@ https://github.com/tangnuo/NewTask/tree/newTask1.0
 - module化：base,network,imageloader,util...
 - Android Architecture Components
 - MVVM，MVP封装
-- ButterKnife
 - greenDao
 - livedata
 - room

@@ -63,8 +63,6 @@ dependencies {
     //ARouter
     implementation 'com.android.support.constraint:constraint-layout:2.0.2'
     annotationProcessor "com.alibaba:arouter-compiler:$root.arouterCompiler"
-//    //butterknife
-//    annotationProcessor "com.jakewharton:butterknife-compiler:$root.butterknifeCompiler"
 
     implementation 'com.facebook.stetho:stetho:1.5.0'
     implementation 'com.facebook.stetho:stetho-okhttp3:1.5.0'
