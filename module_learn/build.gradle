@@ -56,7 +56,7 @@ dependencies {
 
     implementation project(':module_common')
     //ARouter
-    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    implementation 'com.android.support.constraint:constraint-layout:2.0.2'
     annotationProcessor "com.alibaba:arouter-compiler:$root.arouterCompiler"
     //butterknife
     annotationProcessor "com.jakewharton:butterknife-compiler:$root.butterknifeCompiler"

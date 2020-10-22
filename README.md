@@ -28,15 +28,17 @@ https://github.com/tangnuo/NewTask/tree/newTask1.0
 
 #### 工程结构
 
-- APP：壳工程
+- APP：壳工程 （可以查看所有的模块）
+- module_lib：通用的基础模块（适合任何项目）；已单独提取到Lib_demo项目中，逐渐转移；
 - module_common：通用业务模块（继承自module_lib）
-- module_learn：学习模块
-- module_lib：通用的基础模块（适合任何项目）
-- module_main：入口模块模块
+- module_learn：零碎知识点
+- module_main：架构的示例（MVVM，MVP，Jetpack等框架）；
 - module_video：视频模块
 
-
-
+后续整理的专题有：
+1、设计模式；
+2、Binder机制；
+3、跨进程等；
 
 > 组件开发（ARouter），能独立运行，也可以共同运行。
 

@@ -51,6 +51,7 @@ public class MainActivity extends BaseActivity {
         } else {
             ToastUtil.showShortToast(mActivity, "请先登录！");
         }
+        mRecyclerView = findViewById(R.id.mRecyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mActivity));
         mRecyclerView.setAdapter(functionListAdapter);
     }
