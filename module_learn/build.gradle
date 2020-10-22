@@ -3,7 +3,8 @@ if (isModule.toBoolean()) {
 } else {
     apply plugin: 'com.android.library'
 }
-//apply plugin: 'com.jakewharton.butterknife'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 def root = rootProject.ext
 
@@ -33,6 +34,10 @@ android {
         sourceCompatibility 1.8
     }
 
+    dataBinding {
+        enabled = true
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -58,8 +63,8 @@ dependencies {
     //ARouter
     implementation 'com.android.support.constraint:constraint-layout:2.0.2'
     annotationProcessor "com.alibaba:arouter-compiler:$root.arouterCompiler"
-    //butterknife
-    annotationProcessor "com.jakewharton:butterknife-compiler:$root.butterknifeCompiler"
+//    //butterknife
+//    annotationProcessor "com.jakewharton:butterknife-compiler:$root.butterknifeCompiler"
 
     implementation 'com.facebook.stetho:stetho:1.5.0'
     implementation 'com.facebook.stetho:stetho-okhttp3:1.5.0'

@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'org.greenrobot.greendao' // apply plugin
-apply plugin: 'channel'
+//apply plugin: 'org.greenrobot.greendao' // apply plugin
+//apply plugin: 'channel'
 
 android {
 
@@ -72,10 +72,10 @@ android {
 //    targetGenDir：生成源应存储在的位置。 默认为构建目录（ build / generated / source / greendao）中生成的源文件夹。
 //    generateTests： 设置为true以自动生成单元测试。
 //    targetGenDirTests： 应存储生成的单元测试的基本目录。默认为 src / androidTest / java。
-    greendao {
-        schemaVersion 3
-        targetGenDir 'src/main/java'
-    }
+//    greendao {
+//        schemaVersion 3
+//        targetGenDir 'src/main/java'
+//    }
     compileOptions {
         targetCompatibility 1.8
         sourceCompatibility 1.8
@@ -111,19 +111,19 @@ android {
 //}
 
 //需要加固的情况下使用：
-rebuildChannel {
-    //指定渠道文件
-    channelFile = file("../channel.txt")
-//    baseDebugApk = new File(project.projectDir, "baseApk/app-base-debug.apk")
-    //注意目录和文件名称（名称中必须包含base）
-    baseReleaseApk = new File(project.projectDir, "baseApk/app-base-release.apk")
-    //默认为new File(project.buildDir, "rebuildChannel/debug")
-    debugOutputDir = new File(project.buildDir, "rebuildChannel/debug")
-    //默认为new File(project.buildDir, "rebuildChannel/release")
-    releaseOutputDir = new File(project.buildDir, "rebuildChannel/release")
-    //快速模式：生成渠道包时不进行校验（速度可以提升10倍以上）
-    isFastMode = false
-}
+//rebuildChannel {
+//    //指定渠道文件
+//    channelFile = file("../channel.txt")
+////    baseDebugApk = new File(project.projectDir, "baseApk/app-base-debug.apk")
+//    //注意目录和文件名称（名称中必须包含base）
+//    baseReleaseApk = new File(project.projectDir, "baseApk/app-base-release.apk")
+//    //默认为new File(project.buildDir, "rebuildChannel/debug")
+//    debugOutputDir = new File(project.buildDir, "rebuildChannel/debug")
+//    //默认为new File(project.buildDir, "rebuildChannel/release")
+//    releaseOutputDir = new File(project.buildDir, "rebuildChannel/release")
+//    //快速模式：生成渠道包时不进行校验（速度可以提升10倍以上）
+//    isFastMode = false
+//}
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
@@ -132,7 +132,7 @@ dependencies {
         implementation project(':module_main')
         implementation project(':module_learn')
     }
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${rootProject.kotlin_version}"
 }
 repositories {
     mavenCentral()
