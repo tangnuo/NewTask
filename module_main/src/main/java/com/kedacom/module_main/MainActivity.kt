@@ -12,7 +12,7 @@ import com.kedacom.module_main.adapter.MainAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
 @Route(path = RouteConstants.MAIN_ACTIVITY)
-public class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity() {
     private var sparseArray: SparseArray<String>? = null
     private var mainAdapter: MainAdapter? = null
 
@@ -23,8 +23,8 @@ public class MainActivity : BaseActivity() {
         initData()
 
 
-        mRecyclerView.layoutManager = LinearLayoutManager(mActivity)
-        mRecyclerView.adapter = mainAdapter
+        mainList.layoutManager = LinearLayoutManager(mActivity)
+        mainList.adapter = mainAdapter
     }
 
     private fun initData() {
