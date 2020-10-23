@@ -1,4 +1,4 @@
-package com.kedacom.module_main.mvvm.viewmodel;
+package com.kedacom.module_main.mvvm.base;
 
 import android.databinding.BaseObservable;
 import android.databinding.ObservableBoolean;

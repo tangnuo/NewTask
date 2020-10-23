@@ -1,4 +1,4 @@
-package com.kedacom.module_main.mvvm;
+package com.kedacom.module_main.mvvm.holder;
 
 import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;

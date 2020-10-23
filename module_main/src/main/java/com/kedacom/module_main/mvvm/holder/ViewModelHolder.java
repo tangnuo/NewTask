@@ -1,4 +1,4 @@
-package com.kedacom.module_main.mvvm;
+package com.kedacom.module_main.mvvm.holder;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
