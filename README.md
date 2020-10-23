@@ -28,8 +28,7 @@ https://github.com/tangnuo/NewTask/tree/newTask1.0
 #### 工程结构
 
 - APP：壳工程 （可以查看所有的模块）
-- module_lib：通用的基础模块（适合任何项目）；已单独提取到Lib_demo项目中，逐渐转移；
-- module_common：通用业务模块（继承自module_lib）
+- module_common：通用业务模块
 - module_learn：零碎知识点
 - module_main：架构的示例（MVVM，MVP，Jetpack等框架）；
 - module_video：视频模块
@@ -71,6 +70,3 @@ model：数据请求。只放接口声明，实现放presenter中。
 研究字母列表；
 权限预申请；
 
-module_lib分离module_common中涉及到业务逻辑的部分，module_lib存放通用的功能。
-module_common依赖于module_lib，module_common中存放业务相关的代码。
-所有的的module都依赖于module_common
