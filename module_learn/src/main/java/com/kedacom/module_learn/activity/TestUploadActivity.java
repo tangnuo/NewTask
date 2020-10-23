@@ -5,12 +5,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.caowj.lib_network.HttpServicesFactory2;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.kedacom.module_learn.R;
 import com.kedacom.module_learn.api.ApiService;
 import com.kedacom.module_learn.bean.UploadInfo;
 import com.kedacom.module_lib.base.common.BaseActivity;
-import com.kedacom.module_lib.network.retrofit.RetrofitFactory;
 import com.kedacom.module_lib.utils.LogUtil;
 import com.kedacom.module_lib.utils.ToastUtil;
 
@@ -65,10 +65,8 @@ public class TestUploadActivity extends BaseActivity {
 
             System.out.println("file路径 = " + file.getAbsolutePath());
             if (file != null) {
-                Retrofit retrofit = RetrofitFactory.getRetrofit(BASE_URL);
-
                 //动态代理生成实现类
-                ApiService interfaceApi = retrofit.create(ApiService.class);
+                ApiService interfaceApi = HttpServicesFactory2.getInstance().createService(ApiService.class);
                 RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
                 MultipartBody.Part filePart = MultipartBody.Part.createFormData("file", file.getName(), requestBody);
 

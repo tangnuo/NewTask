@@ -29,6 +29,7 @@ dependencies {
     api project(':module_lib')
     implementation 'com.caowj.library:lib_logs:0.0.2'
     implementation 'com.caowj.library:lib_utils:0.0.2'
+    api 'com.caowj.library:lib_network:0.0.1'
 }
 
 
