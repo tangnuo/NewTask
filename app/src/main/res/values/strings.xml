@@ -2,85 +2,17 @@
     <string name="app_name">模板</string>
     <string name="app_name_test">模板测试版</string>
 
-    <string name="item_home">Home</string>
-    <string name="item_location">Location</string>
-    <string name="item_like">Like</string>
-    <string name="item_person">Me</string>
-
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="start">开始</string>
-    <string name="dialog_fragment">DialogFragment弹窗</string>
-    <string name="cancle">取消</string>
-    <string name="ok">确定</string>
-    <string name="test1">测试1</string>
-    <string name="test2">测试2</string>
-    <string name="test_hint">参考代码写法，有些代码没有输出结果。</string>
-    <string name="title_news">新闻</string>
-    <string name="title_photo">图片</string>
-    <string name="title_video">视频</string>
-    <string name="title_media">头条号</string>
 
     <!--Main Activity-->
-    <string name="navigation_drawer_open">打开侧栏</string>
-    <string name="navigation_drawer_close">关闭侧栏</string>
-    <string name="action_search">搜索</string>
-    <string name="double_click_exit">再按一次退出程序</string>
-    <string name="network_error">网络错误</string>
-    <string name="share_to">分享</string>
-    <string name="copied_to_clipboard">复杂成功</string>
-    <string name="share_content">分享内容</string>
-    <string name="copy_content">复制内容</string>
-    <string name="no_more_content">暂无更多内容</string>
-    <string name="my_cahnnel">我的频道</string>
-    <string name="tip_drag">长按编辑，拖拽排序</string>
-    <string name="edit">编辑</string>
-    <string name="finish">完成</string>
-    <string name="other_channel">隐藏频道</string>
-    <string name="title_item_drag">拖拽排序</string>
-    <string name="verificate_code">验证码</string>
 
     <!--FingerPrint start-->
 
-    <string name="fingerprint_description">确认您的指纹。</string>
-    <string name="fingerprint_hint">触摸传感器</string>
-
     <!-- Button text -->
-    <string name="start_btn">Start</string>
-    <string name="cancel_btn">Cancel</string>
-
-    <string name="fingerprint_success">指纹验证通过.</string>
-    <string name="fingerprint_not_recognized">指纹验证失败. Try again.</string>
 
     <!-- Dialog info -->
-    <string name="no_sensor_dialog_title">没有指纹传感器</string>
-    <string name="no_sensor_dialog_message">No fingerprint sensor on your device, click cancel to exit.</string>
-    <string name="no_fingerprint_enrolled_dialog_title">没有登记的指纹</string>
-    <string name="no_fingerprint_enrolled_dialog_message">No fingerprint enrolled, enter\n
-        to enrollor click cancel to exit.</string>
-    <string name="cancel_btn_dialog">Cancel</string>
 
     <!-- auth result error amd help code warning -->
-    <string name="AcquiredGood_warning">The image acquired was good.</string>
-    <string name="AcquiredImageDirty_warning">由于怀疑或检测到传感器上的污垢，指纹图像太过嘈杂。例如，在多次获得足够或足够的条件后，返回这个值是合理的。实际检测传感器上的污垢(粘贴像素、扫描件等)。当这个传感器返回时，用户将会采取行动清理传感器。</string>
-    <string name="AcquiredInsufficient_warning">指纹图像太吵，无法处理。检测到的情况(即干性皮肤)或可能是脏的传感器。</string>
-    <string name="AcquiredPartial_warning">只有部分指纹图像被检测到。在注册过程中，用户应该了解需要解决的问题，例如“按下传感器”。</string>
-    <string name="AcquiredTooFast_warning">The fingerprint image was incomplete due to quick motion.
-        While mostly appropriate for linear array sensors, this could also happen if the finger was moved during acquisition.
-        The user should be asked to move the finger slower (linear) or leave the finger on the sensor longer.</string>
-    <string name="AcquiredToSlow_warning">The fingerprint image was unreadable due to lack of motion.
-        This is most appropriate for linear array sensors that require a swipe motion.</string>
-    <string name="ErrorCanceled_warning">The operation was canceled because the fingerprint sensor is unavailable.
-        For example, this may happen when the user is switched,
-        the device is locked, or another pending operation prevents or disables it.</string>
-    <string name="ErrorHwUnavailable_warning">The hardware is unavailable. Try again later.</string>
-    <string name="ErrorLockout_warning">The operation was canceled because the API is locked out due to too many attempts.</string>
-    <string name="ErrorNoSpace_warning">如注册等操作返回错误状态;操作无法完成，因为没有足够的存储空间来完成操作。.</string>
-    <string name="ErrorTimeout_warning">当当前请求运行时间过长时，返回错误状态。这是为了防止程序无限期地等待指纹传感器。超时是平台和sensor-specific，但通常是30秒。.</string>
-    <string name="ErrorUnableToProcess_warning">当传感器无法处理当前图像时返回错误状态.</string>
 
     <!--FingerPrint end-->
-    <string name="loaded_desc">没有更多了</string>
-    <string name="loading_desc">正在加载</string>
-    <string name="title_activity_constraint_layout_test">ConstraintLayoutTestActivity</string>
 </resources>
