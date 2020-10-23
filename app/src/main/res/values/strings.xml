@@ -1,18 +1,4 @@
 <resources>
-    <string name="app_name">模板</string>
-    <string name="app_name_test">模板测试版</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-
-    <!--Main Activity-->
-
-    <!--FingerPrint start-->
-
-    <!-- Button text -->
-
-    <!-- Dialog info -->
-
-    <!-- auth result error amd help code warning -->
-
-    <!--FingerPrint end-->
+    <string name="app_name">NewTask</string>
+    <string name="app_name_test">NewTask-debug</string>
 </resources>

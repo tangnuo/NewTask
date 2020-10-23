@@ -1,4 +1,4 @@
-package com.kedacom.module_main.mvp;
+package com.kedacom.module_main.mvp.view;
 
 
 /**
@@ -20,15 +20,8 @@ public interface IBaseView<T> {
     /**
      * 显示网络错误
      */
-    void onShowNetError();
+    void onLoadData();
 
-    /**
-     * 设置 presenter
-     */
-    void setPresenter(T presenter);
+    void onRefreshData(String data);
 
-    /**
-     * 绑定生命周期
-     */
-//    <X> AutoDisposeConverter<X> bindAutoDispose();
 }

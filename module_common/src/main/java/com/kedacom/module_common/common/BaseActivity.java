@@ -18,8 +18,6 @@ import com.kedacom.module_common.permission.PermissionControl;
  * date: 2017/9/1 11:50
  */
 public abstract class BaseActivity extends AppCompatActivity {
-    public String mTag = this.getClass().getSimpleName() + "~~";
-    public Activity mActivity;
     private static String[] requirePermission = {
             Manifest.permission.CAMERA,
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -27,6 +25,8 @@ public abstract class BaseActivity extends AppCompatActivity {
             Manifest.permission.READ_PHONE_STATE,
             Manifest.permission.READ_CONTACTS
     };
+    public String mTag = this.getClass().getSimpleName() + "~~";
+    public Activity mActivity;
     private PermissionControl control;
 
 

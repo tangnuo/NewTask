@@ -31,7 +31,6 @@ https://github.com/tangnuo/NewTask/tree/newTask1.0
 - module_common：通用业务模块
 - module_learn：零碎知识点
 - module_main：架构的示例（MVVM，MVP，Jetpack等框架）；
-- module_video：视频模块
 
 后续整理的专题有：
 1、设计模式；

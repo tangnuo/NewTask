@@ -32,11 +32,11 @@ class IndexAdapter(private val mContext: Context, array: SparseArray<String>) : 
         val routePath = sparseArray[position]
         val fHolder = holder as FunctionViewHolder?
         fHolder!!.tvTitle.text = routePath
-        if (position % 3 == 0) {
-            fHolder.itemView.setBackgroundColor(Color.parseColor("#fa8072"))
-        } else {
-            fHolder.itemView.setBackgroundColor(Color.parseColor("#354825"))
-        }
+//        if (position % 3 == 0) {
+//            fHolder.itemView.setBackgroundColor(Color.parseColor("#fa8072"))
+//        } else {
+//            fHolder.itemView.setBackgroundColor(Color.parseColor("#354825"))
+//        }
         fHolder.itemView.setOnClickListener {
             val userInfo = UserInfo(12, "caowj", "留园")
             if (position == 0) {
