@@ -20,16 +20,30 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 
 }
 
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
+    api "com.android.support:appcompat-v7:$root.supportLibraryVersion"
+    api "com.android.support:design:$root.supportLibraryVersion"
+    api "com.android.support:support-v4:$root.supportLibraryVersion"
+    api "com.android.support:recyclerview-v7:$root.supportLibraryVersion"
+    api "com.android.support.constraint:constraint-layout:2.0.2"
+    api "com.android.support:support-core-utils:$root.supportLibraryVersion"
 
-    api project(':module_lib')
+    // 权限框架
+    api 'pub.devrel:easypermissions:1.2.0'
+    //ARouter
+    api "com.alibaba:arouter-api:$root.arouterCompiler"
+    
+    api 'com.caowj.library:lib_network:0.0.1'
     implementation 'com.caowj.library:lib_logs:0.0.2'
     implementation 'com.caowj.library:lib_utils:0.0.2'
-    api 'com.caowj.library:lib_network:0.0.1'
 }
 
 

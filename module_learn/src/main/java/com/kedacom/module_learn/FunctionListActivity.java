@@ -10,14 +10,13 @@ import android.util.SparseArray;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.kedacom.module_common.bean.main.UserInfo;
+import com.kedacom.module_common.common.BaseActivity;
 import com.kedacom.module_common.constant.RouteConstants;
+import com.kedacom.module_common.utils.ToastUtil;
 import com.kedacom.module_learn.activity.TestSmartRefreshLayoutActivity;
 import com.kedacom.module_learn.activity.TestStethoActivity;
 import com.kedacom.module_learn.activity.TestUploadActivity;
 import com.kedacom.module_learn.adapter.FunctionListAdapter;
-import com.kedacom.module_lib.base.common.BaseActivity;
-import com.kedacom.module_lib.base.permission.PermissionControl;
-import com.kedacom.module_lib.utils.ToastUtil;
 
 @Route(path = RouteConstants.LEARN_FUNCTION_LIST)
 public class FunctionListActivity extends BaseActivity {
@@ -34,7 +33,6 @@ public class FunctionListActivity extends BaseActivity {
             Manifest.permission.READ_PHONE_STATE,
             Manifest.permission.READ_CONTACTS
     };
-    private PermissionControl control;
 
     public static void newInstance(Context context) {
         //显示Intent

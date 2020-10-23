@@ -1,5 +1,4 @@
 include ':app',
         ':module_main',
-        ':module_lib',
         ':module_common',
         ':module_learn'

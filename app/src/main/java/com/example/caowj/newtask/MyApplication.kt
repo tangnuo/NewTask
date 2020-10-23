@@ -1,7 +1,7 @@
 package com.example.caowj.newtask
 
 import com.alibaba.android.arouter.launcher.ARouter
-import com.kedacom.module_lib.base.common.BaseApplication
+import com.kedacom.module_common.common.BaseApplication
 
 /**
  * @Dec ：

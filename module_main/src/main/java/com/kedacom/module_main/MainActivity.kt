@@ -3,11 +3,11 @@ package com.kedacom.module_main
 import android.content.Context
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.util.SparseArray
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.kedacom.module_common.constant.RouteConstants
-import com.kedacom.module_lib.base.common.BaseActivity
-import com.kedacom.module_lib.utils.LogUtil
+import com.kedacom.module_common.common.BaseActivity
 import com.kedacom.module_main.adapter.MainAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -18,7 +18,7 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        LogUtil.myD("44444")
+        Log.d("caowj", "44444")
         setContentView(R.layout.activity_main)
         initData()
 

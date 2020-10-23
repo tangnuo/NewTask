@@ -3,7 +3,7 @@ package com.kedacom.module_learn.activity;
 import android.os.Bundle;
 
 import com.kedacom.module_learn.R;
-import com.kedacom.module_lib.base.common.BaseActivity;
+import com.kedacom.module_common.common.BaseActivity;
 
 public class TestSmartRefreshLayoutActivity extends BaseActivity {
 

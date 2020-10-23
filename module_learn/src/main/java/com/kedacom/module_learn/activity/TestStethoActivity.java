@@ -1,14 +1,13 @@
 package com.kedacom.module_learn.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.kedacom.module_learn.R;
 import com.kedacom.module_learn.api.ApiService;
-import com.kedacom.module_lib.base.common.BaseActivity;
-import com.kedacom.module_lib.utils.FileHelper;
-import com.kedacom.module_lib.utils.LogUtil;
+import com.kedacom.module_common.common.BaseActivity;
 
 import java.io.File;
 import java.io.IOException;
@@ -49,7 +48,8 @@ public class TestStethoActivity extends BaseActivity {
         OkHttpClient client = new OkHttpClient.Builder()
 //                .addInterceptor(cacheInterceptor()) //缓存拦截器
                 .addNetworkInterceptor(new StethoInterceptor())
-                .cache(cache()).build();
+//                .cache(cache())
+                .build();
 
         String BASE_URL = "https://gank.io/api/";
         Retrofit mRetrofit = new Retrofit.Builder().baseUrl(BASE_URL).client(client).addConverterFactory(GsonConverterFactory.create()).build();
@@ -65,7 +65,7 @@ public class TestStethoActivity extends BaseActivity {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {
-                    LogUtil.myD("请求结果：" + response.body().string());
+                    Log.d("caowj", "请求结果：" + response.body().string());
                     textView.setText("请求成功，结果见日志。");
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -78,14 +78,11 @@ public class TestStethoActivity extends BaseActivity {
                 textView.setText(t.getLocalizedMessage());
             }
         });
-
-
     }
 
 
-    private Cache cache() {
-        final File cacheDir = FileHelper.buildFile("HttpResponseCache");
-        return (new Cache(cacheDir, 10 * 1024 * 1024));
-
-    }
+//    private Cache cache() {
+//        final File cacheDir = FileHelper.buildFile("HttpResponseCache");
+//        return (new Cache(cacheDir, 10 * 1024 * 1024));
+//    }
 }

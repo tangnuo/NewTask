@@ -1,7 +1,7 @@
 package com.kedacom.module_learn;
 
 import com.facebook.stetho.Stetho;
-import com.kedacom.module_lib.base.common.BaseApplication;
+import com.kedacom.module_common.common.BaseApplication;
 
 /**
  * @Dec ：

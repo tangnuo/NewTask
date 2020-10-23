@@ -64,11 +64,10 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    implementation project(':module_common')
     //ARouter
     kapt "com.alibaba:arouter-compiler:$root.arouterCompiler"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation project(':module_common')
 }
 
 repositories {

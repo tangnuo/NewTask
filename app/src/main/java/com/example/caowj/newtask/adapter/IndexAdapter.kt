@@ -3,6 +3,7 @@ package com.example.caowj.newtask.adapter
 import android.content.Context
 import android.graphics.Color
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.util.SparseArray
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +13,6 @@ import com.alibaba.android.arouter.facade.Postcard
 import com.alibaba.android.arouter.facade.callback.NavCallback
 import com.alibaba.android.arouter.launcher.ARouter
 import com.kedacom.module_common.bean.main.UserInfo
-import com.kedacom.module_lib.utils.LogUtil
 import com.kedacom.module_main.R
 
 /**
@@ -52,19 +52,19 @@ class IndexAdapter(private val mContext: Context, array: SparseArray<String>) : 
                 //监听过程：
                 ARouter.getInstance().build(routePath).navigation(mContext, object : NavCallback() {
                     override fun onFound(postcard: Postcard) {
-                        LogUtil.myD("onFound: 找到了 ")
+                        Log.d("caowj","onFound: 找到了 ")
                     }
 
                     override fun onLost(postcard: Postcard) {
-                        LogUtil.myD("onLost: 找不到了 ")
+                        Log.d("caowj","onLost: 找不到了 ")
                     }
 
                     override fun onArrival(postcard: Postcard) {
-                        LogUtil.myD("onArrival: 跳转完了 ")
+                        Log.d("caowj","onArrival: 跳转完了 ")
                     }
 
                     override fun onInterrupt(postcard: Postcard) {
-                        LogUtil.myD("onInterrupt: 被拦截了 ")
+                        Log.d("caowj","onInterrupt: 被拦截了 ")
                     }
                 })
             }

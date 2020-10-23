@@ -7,12 +7,11 @@ import android.widget.Button;
 
 import com.caowj.lib_network.HttpServicesFactory2;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
+import com.kedacom.module_common.utils.ToastUtil;
 import com.kedacom.module_learn.R;
 import com.kedacom.module_learn.api.ApiService;
 import com.kedacom.module_learn.bean.UploadInfo;
-import com.kedacom.module_lib.base.common.BaseActivity;
-import com.kedacom.module_lib.utils.LogUtil;
-import com.kedacom.module_lib.utils.ToastUtil;
+import com.kedacom.module_common.common.BaseActivity;
 
 import java.io.File;
 
@@ -74,14 +73,14 @@ public class TestUploadActivity extends BaseActivity {
                 bodyCall.enqueue(new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                        LogUtil.myD("上传成功" + response.body());
+                        Log.d("caowj","上传成功" + response.body());
                         ToastUtil.showShortToast(mActivity, "上传成功");
                     }
 
                     @Override
                     public void onFailure(Call<ResponseBody> call, Throwable t) {
                         ToastUtil.showShortToast(mActivity, "上传失败");
-                        LogUtil.myD("上传失败" + t.fillInStackTrace());
+                        Log.d("caowj","上传失败" + t.fillInStackTrace());
                     }
                 });
 
@@ -132,14 +131,14 @@ public class TestUploadActivity extends BaseActivity {
                 bodyCall.enqueue(new Callback<UploadInfo>() {
                     @Override
                     public void onResponse(Call<UploadInfo> call, Response<UploadInfo> response) {
-                        LogUtil.myD("上传成功" + response.body().toString());
+                        Log.d("caowj","上传成功" + response.body().toString());
                         ToastUtil.showShortToast(mActivity, "上传成功");
                     }
 
                     @Override
                     public void onFailure(Call<UploadInfo> call, Throwable t) {
                         ToastUtil.showShortToast(mActivity, "上传失败");
-                        LogUtil.myD("上传失败" + t.fillInStackTrace());
+                        Log.d("caowj","上传失败" + t.fillInStackTrace());
                     }
                 });
 
@@ -189,14 +188,14 @@ public class TestUploadActivity extends BaseActivity {
                 bodyCall.enqueue(new Callback<UploadInfo>() {
                     @Override
                     public void onResponse(Call<UploadInfo> call, Response<UploadInfo> response) {
-                        LogUtil.myD("上传成功" + response.body().toString());
+                        Log.d("caowj","上传成功" + response.body().toString());
                         ToastUtil.showShortToast(mActivity, "上传成功");
                     }
 
                     @Override
                     public void onFailure(Call<UploadInfo> call, Throwable t) {
                         ToastUtil.showShortToast(mActivity, "上传失败，可能gson异常");
-                        LogUtil.myD("上传失败" + t.fillInStackTrace());
+                        Log.d("caowj","上传失败" + t.fillInStackTrace());
                     }
                 });
 
