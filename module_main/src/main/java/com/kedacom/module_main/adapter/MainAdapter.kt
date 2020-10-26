@@ -8,8 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.kedacom.module_common.bean.ItemBean
 import com.kedacom.module_main.R
-import com.kedacom.module_main.bean.ItemBean
 
 /**
  * @Dec ：

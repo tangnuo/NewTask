@@ -1,4 +1,4 @@
-package com.kedacom.module_main.bean;
+package com.kedacom.module_common.bean;
 
 /**
  * <pre>

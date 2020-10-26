@@ -6,10 +6,10 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.kedacom.module_common.constant.RouteConstants
+import com.kedacom.module_common.bean.ItemBean
 import com.kedacom.module_common.common.BaseActivity
+import com.kedacom.module_common.constant.RouteConstants
 import com.kedacom.module_main.adapter.MainAdapter
-import com.kedacom.module_main.bean.ItemBean
 import com.kedacom.module_main.mvp.view.MvpDemoActivity
 import com.kedacom.module_main.mvvm.MvvmDemoActivity
 import kotlinx.android.synthetic.main.activity_main.*
