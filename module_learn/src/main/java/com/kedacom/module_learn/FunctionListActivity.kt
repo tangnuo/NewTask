@@ -16,6 +16,7 @@ import com.kedacom.module_learn.activity.TestSmartRefreshLayoutActivity
 import com.kedacom.module_learn.activity.TestStethoActivity
 import com.kedacom.module_learn.activity.TestUploadActivity
 import com.kedacom.module_learn.adapter.FunctionListAdapter
+import com.kedacom.module_learn.binder.NoAidlActivity
 import kotlinx.android.synthetic.main.activity_function_list.*
 import java.util.*
 
@@ -42,11 +43,12 @@ class FunctionListActivity : BaseActivity() {
         mRecyclerView.adapter = functionListAdapter
     }
 
-    protected fun initData() {
+    private fun initData() {
         sparseArray = ArrayList()
         sparseArray!!.add(ItemBean("SmartRefresh刷新控件", TestSmartRefreshLayoutActivity::class.java))
         sparseArray!!.add(ItemBean("Stetho调试工具", TestStethoActivity::class.java))
         sparseArray!!.add(ItemBean("Retrofit2上传图片", TestUploadActivity::class.java))
+        sparseArray!!.add(ItemBean("Binder浅析", NoAidlActivity::class.java))
         functionListAdapter = FunctionListAdapter(mActivity, sparseArray)
     }
 
