@@ -12,6 +12,7 @@ import com.kedacom.module_common.bean.main.UserInfo
 import com.kedacom.module_common.common.BaseActivity
 import com.kedacom.module_common.constant.RouteConstants
 import com.kedacom.module_common.utils.ToastUtil
+import com.kedacom.module_learn.activity.SearchActivity
 import com.kedacom.module_learn.activity.TestSmartRefreshLayoutActivity
 import com.kedacom.module_learn.activity.TestStethoActivity
 import com.kedacom.module_learn.activity.TestUploadActivity
@@ -49,6 +50,7 @@ class FunctionListActivity : BaseActivity() {
         sparseArray!!.add(ItemBean("Stetho调试工具", TestStethoActivity::class.java))
         sparseArray!!.add(ItemBean("Retrofit2上传图片", TestUploadActivity::class.java))
         sparseArray!!.add(ItemBean("Binder浅析", NoAidlActivity::class.java))
+        sparseArray!!.add(ItemBean("实时模糊搜索", SearchActivity::class.java))
         functionListAdapter = FunctionListAdapter(mActivity, sparseArray)
     }
 
