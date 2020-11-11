@@ -41,7 +41,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (setRequirePermission().length > 1) {
             requirePermission = setRequirePermission();
         }
-        control = new PermissionControl(this, requirePermission, () -> Log.e("CMW", "has permission"));
+        control = new PermissionControl(this, requirePermission, () -> Log.e("caowj", "has permission"));
         control.getAppPermissions();
 
     }

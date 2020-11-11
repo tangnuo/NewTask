@@ -49,10 +49,12 @@ class ScopedStorageActivity : AppCompatActivity() {
         if (permissionsToRequire.isNotEmpty()) {
             ActivityCompat.requestPermissions(this, permissionsToRequire.toTypedArray(), 0)
         }
+        //1、获取相册中的图片
         browseAlbum.setOnClickListener {
             val intent = Intent(this, BrowseAlbumActivity::class.java)
             startActivity(intent)
         }
+        //2、添加图片到相册
         addImageToAlbum.setOnClickListener {
             val bitmap = BitmapFactory.decodeResource(resources, R.drawable.image)
             val displayName = "${System.currentTimeMillis()}.jpg"
@@ -60,11 +62,13 @@ class ScopedStorageActivity : AppCompatActivity() {
             val compressFormat = Bitmap.CompressFormat.JPEG
             addBitmapToAlbum(bitmap, displayName, mimeType, compressFormat)
         }
+        //3、下载文件到Download目录
         downloadFile.setOnClickListener {
             val fileUrl = "http://guolin.tech/android.txt"
             val fileName = "android.txt"
             downloadFile(fileUrl, fileName)
         }
+        //4、使用文件选择器
         pickFile.setOnClickListener {
             pickFileAndCopyUriToExternalFilesDir()
         }
@@ -82,6 +86,13 @@ class ScopedStorageActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * 添加图片到相册
+     * @param bitmap Bitmap
+     * @param displayName String
+     * @param mimeType String
+     * @param compressFormat CompressFormat
+     */
     private fun addBitmapToAlbum(bitmap: Bitmap, displayName: String, mimeType: String, compressFormat: Bitmap.CompressFormat) {
         val values = ContentValues()
         values.put(MediaStore.MediaColumns.DISPLAY_NAME, displayName)
@@ -89,10 +100,13 @@ class ScopedStorageActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             values.put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_DCIM)
         } else {
+            // _data -> /storage/emulated/0/DCIM/1605084532390.jpg
             values.put(MediaStore.MediaColumns.DATA, "${Environment.getExternalStorageDirectory().path}/${Environment.DIRECTORY_DCIM}/$displayName")
         }
         val uri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
         if (uri != null) {
+            // content://media/external/images/media/479011
+            Log.d("caowj", "新增uri:$uri")
             val outputStream = contentResolver.openOutputStream(uri)
             if (outputStream != null) {
                 bitmap.compress(compressFormat, 100, outputStream)
@@ -102,6 +116,11 @@ class ScopedStorageActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * 下载网络文件到Download目录
+     * @param fileUrl String
+     * @param fileName String
+     */
     private fun downloadFile(fileUrl: String, fileName: String) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             Toast.makeText(this, "You must use device running Android 10 or higher", Toast.LENGTH_SHORT).show()
@@ -144,10 +163,13 @@ class ScopedStorageActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * 使用文件选择器
+     */
     private fun pickFileAndCopyUriToExternalFilesDir() {
         val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
         intent.addCategory(Intent.CATEGORY_OPENABLE)
-        intent.type = "*/*"
+        intent.type = "*/*" //表示显示所有类型的文件。
         startActivityForResult(intent, PICK_FILE)
     }
 
@@ -177,6 +199,12 @@ class ScopedStorageActivity : AppCompatActivity() {
         return fileName
     }
 
+
+    /**
+     * 第三方SDK不支持作用域存储时：
+     *
+     * 自己编写一个文件复制功能，将Uri对象所对应的文件复制到应用程序的关联目录下。
+     */
     private fun copyUriToExternalFilesDir(uri: Uri, fileName: String) {
         thread {
             val inputStream = contentResolver.openInputStream(uri)
@@ -196,6 +224,7 @@ class ScopedStorageActivity : AppCompatActivity() {
                 bos.close()
                 fos.close()
                 runOnUiThread {
+                    // /storage/emulated/0/Android/data/<包名>/files
                     Log.d("caowj", "" + tempDir)
                     Toast.makeText(this, "Copy file into $tempDir succeeded.", Toast.LENGTH_LONG).show()
                 }

@@ -27,11 +27,13 @@ class FunctionListAdapter(private val mContext: Context, sparseArray1: ArrayList
     override fun onBindViewHolder(holder: androidx.recyclerview.widget.RecyclerView.ViewHolder, position: Int) {
         val itemBean = sparseArray[position]
         val fHolder = holder as FunctionViewHolder?
-        fHolder!!.tvTitle.text = itemBean.name
-        if (position % 3 == 0) {
-            fHolder.itemView.setBackgroundColor(Color.parseColor("#fa8072"))
-        } else {
-        }
+        fHolder!!.tvTitle.text = (position+1).toString()+"、"+itemBean.name
+
+//        if (position % 3 == 0) {
+//            fHolder.itemView.setBackgroundColor(Color.parseColor("#fa8072"))
+//        } else {
+//
+//        }
         fHolder.itemView.setOnClickListener {
             val mIntent = Intent(mContext, itemBean.className)
             //                mIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

@@ -55,6 +55,7 @@ public class AppUtil {
      */
     public static String getCrashPath(Context context) {
         String path = AppUtil.getFileRootPath(context) + "/crash/";
+        Log.w("caowj", "崩溃日志保存路径：" + path);
         return path;
     }
 
@@ -118,7 +119,12 @@ public class AppUtil {
         return absolutepath.toString();
     }
 
-
+    /**
+     * 根目录/appName/crash
+     *
+     * @param context
+     * @return
+     */
     public static String getFileRootPath(Context context) {
         String fileRootPath_ = "";
 

@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.kedacom.module_learn.R
 
-class AlbumAdapter(val context: Context, val imageList: List<Uri>, val imageSize: Int) : RecyclerView.Adapter<AlbumAdapter.ViewHolder>() {
+class AlbumAdapter(private val context: Context, private val imageList: List<Uri>, private val imageSize: Int) : RecyclerView.Adapter<AlbumAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val imageView: ImageView = view.findViewById(R.id.imageView)
@@ -30,6 +30,15 @@ class AlbumAdapter(val context: Context, val imageList: List<Uri>, val imageSize
         val uri = imageList[position]
         val options = RequestOptions().placeholder(R.drawable.album_loading_bg).override(imageSize, imageSize)
         Glide.with(context).load(uri).apply(options).into(holder.imageView)
+
+//        // 不使用Glide框架（需要压缩）
+//        val fd = context.contentResolver.openFileDescriptor(uri, "r")
+//        if (fd != null) {
+//            // https://www.jianshu.com/p/d72900336d26
+//            val bitmap = BitmapFactory.decodeFileDescriptor(fd.fileDescriptor)
+//            fd.close()
+//            holder.imageView.setImageBitmap(bitmap)
+//        }
     }
 
 }
