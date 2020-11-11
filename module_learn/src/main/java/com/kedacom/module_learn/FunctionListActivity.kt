@@ -10,10 +10,7 @@ import com.kedacom.module_common.bean.main.UserInfo
 import com.kedacom.module_common.common.BaseActivity
 import com.kedacom.module_common.constant.RouteConstants
 import com.kedacom.module_common.utils.ToastUtil
-import com.kedacom.module_learn.activity.SearchActivity
-import com.kedacom.module_learn.activity.TestSmartRefreshLayoutActivity
-import com.kedacom.module_learn.activity.TestStethoActivity
-import com.kedacom.module_learn.activity.TestUploadActivity
+import com.kedacom.module_learn.activity.*
 import com.kedacom.module_learn.adapter.FunctionListAdapter
 import com.kedacom.module_learn.binder.NoAidlActivity
 import kotlinx.android.synthetic.main.activity_function_list.*
@@ -49,6 +46,7 @@ class FunctionListActivity : BaseActivity() {
         sparseArray!!.add(ItemBean("Retrofit2上传图片", TestUploadActivity::class.java))
         sparseArray!!.add(ItemBean("Binder浅析", NoAidlActivity::class.java))
         sparseArray!!.add(ItemBean("实时模糊搜索", SearchActivity::class.java))
+        sparseArray!!.add(ItemBean("Android 10 作用域存储", ScopedStorageActivity::class.java))
         functionListAdapter = FunctionListAdapter(mActivity, sparseArray)
     }
 

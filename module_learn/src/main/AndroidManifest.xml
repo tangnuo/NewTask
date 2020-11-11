@@ -21,6 +21,9 @@
         <activity android:name=".activity.TestSmartRefreshLayoutActivity" />
         <activity android:name=".activity.TestStethoActivity" />
         <activity android:name=".activity.TestUploadActivity" />
+        <activity android:name=".activity.ScopedStorageActivity" />
+        <activity android:name=".activity.BrowseAlbumActivity" />
+        <activity android:name=".activity.SearchActivity" />
     </application>
 
 </manifest>
