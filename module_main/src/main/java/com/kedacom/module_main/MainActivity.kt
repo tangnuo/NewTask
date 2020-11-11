@@ -3,7 +3,6 @@ package com.kedacom.module_main
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.kedacom.module_common.bean.ItemBean
@@ -25,7 +24,7 @@ class MainActivity : BaseActivity() {
         setContentView(R.layout.activity_main)
         initData()
 
-        mainList.layoutManager = LinearLayoutManager(mActivity)
+        mainList.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(mActivity)
         mainList.adapter = mainAdapter
     }
 

@@ -1,7 +1,5 @@
 package com.kedacom.module_main.mvp.model.impl;
 
-import android.os.Handler;
-
 import com.caowj.lib_network.HttpServicesFactory2;
 import com.kedacom.module_main.mvp.listener.HttpCallback;
 import com.kedacom.module_main.mvp.model.IBaseModel;

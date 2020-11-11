@@ -3,8 +3,9 @@ package com.kedacom.module_common.permission;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 
 import java.util.List;
 

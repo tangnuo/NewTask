@@ -1,7 +1,7 @@
 package com.kedacom.module_main.mvvm.base;
 
-import android.databinding.ObservableBoolean;
-import android.databinding.ObservableList;
+import androidx.databinding.ObservableBoolean;
+import androidx.databinding.ObservableList;
 
 import java.util.List;
 

@@ -3,10 +3,8 @@ package com.kedacom.module_main.mvp.presenter.impl;
 import android.util.Log;
 
 import com.kedacom.module_main.mvp.listener.HttpCallback;
-import com.kedacom.module_main.mvp.model.IBaseModel;
 import com.kedacom.module_main.mvp.model.impl.DemoModel;
 import com.kedacom.module_main.mvp.presenter.IBasePresenter;
-import com.kedacom.module_main.mvp.view.IBaseView;
 import com.kedacom.module_main.mvp.view.MvpDemoActivity;
 
 /**

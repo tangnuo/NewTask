@@ -33,11 +33,11 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
 
-        if (isModule.toBoolean()){
+        if (isModule.toBoolean()) {
             buildConfigField("boolean", "isARouter", "true")
-        }else {
+        } else {
             buildConfigField("boolean", "isARouter", "false")
         }
     }
@@ -81,8 +81,9 @@ android {
         targetCompatibility 1.8
         sourceCompatibility 1.8
     }
-    dataBinding {
-        enabled = true
+
+    buildFeatures {
+        dataBinding = true
     }
 
 //    applicationVariants.all { variant ->

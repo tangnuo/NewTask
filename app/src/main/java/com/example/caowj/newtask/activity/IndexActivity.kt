@@ -3,15 +3,14 @@ package com.example.caowj.newtask.activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.util.SparseArray
 import com.example.caowj.newtask.R
 import com.example.caowj.newtask.adapter.IndexAdapter
-import com.kedacom.module_common.utils.ToastUtil
+import com.kedacom.module_common.common.BaseActivity
 import com.kedacom.module_common.constant.RouteConstants
 import com.kedacom.module_common.service.ServiceFactory
-import com.kedacom.module_common.common.BaseActivity
+import com.kedacom.module_common.utils.ToastUtil
 import kotlinx.android.synthetic.main.activity_index.*
 
 class IndexActivity : BaseActivity() {
@@ -30,7 +29,7 @@ class IndexActivity : BaseActivity() {
             ToastUtil.showShortToast(mActivity, "请先登录！")
         }
 
-        mIndex.layoutManager = LinearLayoutManager(mActivity)
+        mIndex.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(mActivity)
         mIndex.adapter = indexAdapter
     }
 

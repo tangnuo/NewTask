@@ -1,6 +1,6 @@
 package com.kedacom.module_main.mvvm.viewmodel
 
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.MutableLiveData
 import com.caowj.lib_network.HttpServicesFactory2
 import com.kedacom.module_main.mvvm.base.BaseViewModel
 import retrofit2.Call

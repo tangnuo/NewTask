@@ -1,6 +1,5 @@
 package com.kedacom.module_main.mvvm
 
-import android.arch.lifecycle.MutableLiveData
 import android.os.Bundle
 import com.kedacom.module_main.R
 import com.kedacom.module_main.databinding.ActivityMvvmDemoBinding
@@ -18,7 +17,7 @@ class MvvmDemoActivity : BaseMvvmActivity<ActivityMvvmDemoBinding>() {
     }
 
     private fun initData() {
-        mViewModel.data .value=""
+        mViewModel.data.value = ""
     }
 
     override fun getLayout(): Int {

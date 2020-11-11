@@ -2,7 +2,6 @@ package com.kedacom.module_learn.activity
 
 import android.os.Bundle
 import android.util.Log
-import android.widget.TextView
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.kedacom.module_common.common.BaseActivity
 import com.kedacom.module_learn.R

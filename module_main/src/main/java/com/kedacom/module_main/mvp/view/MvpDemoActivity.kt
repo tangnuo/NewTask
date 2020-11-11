@@ -2,11 +2,9 @@ package com.kedacom.module_main.mvp.view
 
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import com.kedacom.module_common.common.BaseActivity
 import com.kedacom.module_main.R
 import com.kedacom.module_main.mvp.presenter.impl.DemoPresenter
-import com.kedacom.module_main.mvp.view.IBaseView
 import kotlinx.android.synthetic.main.activity_mvp_demo.*
 
 class MvpDemoActivity : BaseActivity(), IBaseView<String> {
@@ -34,7 +32,7 @@ class MvpDemoActivity : BaseActivity(), IBaseView<String> {
     }
 
     override fun onRefreshData(data: String?) {
-        tv_data.text = ""+data
+        tv_data.text = "" + data
     }
 
 }

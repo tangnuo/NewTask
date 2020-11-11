@@ -9,9 +9,9 @@ import android.os.Build;
 import android.os.Environment;
 import android.util.Log;
 
+import com.kedacom.module_common.common.AppManager;
 import com.kedacom.module_common.utils.AppUtil;
 import com.kedacom.module_common.utils.TimeUtil;
-import com.kedacom.module_common.common.AppManager;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -219,7 +219,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
                     if (flat) {
                         save2File(sb, fileName, path);
                     } else {
-                        Log.w("caowj","新建文件夹失败，可能缺少文件读写权限。");
+                        Log.w("caowj", "新建文件夹失败，可能缺少文件读写权限。");
                     }
                 } else {
                     save2File(sb, fileName, path);

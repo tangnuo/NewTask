@@ -4,7 +4,6 @@ import android.R
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,15 +16,15 @@ import java.util.*
  * @Author : Caowj
  * @Date : 2018/8/22 14:28
  */
-class FunctionListAdapter(private val mContext: Context, sparseArray1: ArrayList<ItemBean>?) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class FunctionListAdapter(private val mContext: Context, sparseArray1: ArrayList<ItemBean>?) : androidx.recyclerview.widget.RecyclerView.Adapter<androidx.recyclerview.widget.RecyclerView.ViewHolder>() {
     private var sparseArray: ArrayList<ItemBean>
     private val mLayoutInflater: LayoutInflater
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): androidx.recyclerview.widget.RecyclerView.ViewHolder {
         return FunctionViewHolder(mLayoutInflater.inflate(R.layout.simple_list_item_1, parent, false))
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: androidx.recyclerview.widget.RecyclerView.ViewHolder, position: Int) {
         val itemBean = sparseArray[position]
         val fHolder = holder as FunctionViewHolder?
         fHolder!!.tvTitle.text = itemBean.name
@@ -48,7 +47,7 @@ class FunctionListAdapter(private val mContext: Context, sparseArray1: ArrayList
         this.sparseArray = sparseArray
     }
 
-    internal inner class FunctionViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    internal inner class FunctionViewHolder(view: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(view) {
         var tvTitle: TextView
 
         init {

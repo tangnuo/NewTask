@@ -4,8 +4,6 @@ import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.kedacom.module_common.bean.ItemBean
 import com.kedacom.module_common.bean.main.UserInfo
@@ -40,7 +38,7 @@ class FunctionListActivity : BaseActivity() {
         val userInfo: UserInfo? = intent.getParcelableExtra("userInfo")
         ToastUtil.showShortToast(mActivity, if ("name:$name,age:$age,userInfo:$userInfo" == null) userInfo.toString() else "")
         initData()
-        mRecyclerView.layoutManager = LinearLayoutManager(mActivity)
+        mRecyclerView.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(mActivity)
         mRecyclerView.adapter = functionListAdapter
     }
 

@@ -17,7 +17,7 @@ allprojects {
         google()
         jcenter()
         maven { url "https://jitpack.io" }
-        maven{url "https://dl.bintray.com/caowj/LibRepo"} //jcenter审核通过后可以注释掉；
+        maven { url "https://dl.bintray.com/caowj/LibRepo" } //jcenter审核通过后可以注释掉；
     }
 }
 
@@ -27,13 +27,13 @@ task clean(type: Delete) {
 
 ext {
     minSdkVersion = 23
-    targetSdkVersion = 28
-    compileSdkVersion = 28
-    buildToolsVersion = '28.0.3'
+    targetSdkVersion = 29
+    compileSdkVersion = 29
+    buildToolsVersion = '29.0.2'
 
-    // App dependencies
-    supportLibraryVersion = '28.0.0'
+//    // App dependencies
+//    supportLibraryVersion = '28.0.0'
 
-    arouterCompiler='1.5.1'
+    arouterCompiler = '1.5.1'
 
 }

@@ -1,8 +1,6 @@
 package com.example.caowj.newtask.adapter
 
 import android.content.Context
-import android.graphics.Color
-import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.util.SparseArray
 import android.view.LayoutInflater
@@ -12,23 +10,23 @@ import android.widget.TextView
 import com.alibaba.android.arouter.facade.Postcard
 import com.alibaba.android.arouter.facade.callback.NavCallback
 import com.alibaba.android.arouter.launcher.ARouter
+import com.example.caowj.newtask.R
 import com.kedacom.module_common.bean.main.UserInfo
-import com.kedacom.module_main.R
 
 /**
  * @Dec ：
  * @Author : Caowj
  * @Date : 2018/8/22 13:13
  */
-class IndexAdapter(private val mContext: Context, array: SparseArray<String>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class IndexAdapter(private val mContext: Context, array: SparseArray<String>) : androidx.recyclerview.widget.RecyclerView.Adapter<androidx.recyclerview.widget.RecyclerView.ViewHolder>() {
     private var sparseArray: SparseArray<String> = array
     private val mLayoutInflater: LayoutInflater = LayoutInflater.from(mContext)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): androidx.recyclerview.widget.RecyclerView.ViewHolder {
         return FunctionViewHolder(mLayoutInflater.inflate(R.layout.item_todo, parent, false))
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: androidx.recyclerview.widget.RecyclerView.ViewHolder, position: Int) {
         val routePath = sparseArray[position]
         val fHolder = holder as FunctionViewHolder?
         fHolder!!.tvTitle.text = routePath
@@ -52,19 +50,19 @@ class IndexAdapter(private val mContext: Context, array: SparseArray<String>) : 
                 //监听过程：
                 ARouter.getInstance().build(routePath).navigation(mContext, object : NavCallback() {
                     override fun onFound(postcard: Postcard) {
-                        Log.d("caowj","onFound: 找到了 ")
+                        Log.d("caowj", "onFound: 找到了 ")
                     }
 
                     override fun onLost(postcard: Postcard) {
-                        Log.d("caowj","onLost: 找不到了 ")
+                        Log.d("caowj", "onLost: 找不到了 ")
                     }
 
                     override fun onArrival(postcard: Postcard) {
-                        Log.d("caowj","onArrival: 跳转完了 ")
+                        Log.d("caowj", "onArrival: 跳转完了 ")
                     }
 
                     override fun onInterrupt(postcard: Postcard) {
-                        Log.d("caowj","onInterrupt: 被拦截了 ")
+                        Log.d("caowj", "onInterrupt: 被拦截了 ")
                     }
                 })
             }
@@ -75,7 +73,7 @@ class IndexAdapter(private val mContext: Context, array: SparseArray<String>) : 
         return sparseArray.size()
     }
 
-    internal inner class FunctionViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    internal inner class FunctionViewHolder(view: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(view) {
         var tvTitle: TextView = view.findViewById(R.id.textView)
     }
 

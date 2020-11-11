@@ -2,8 +2,6 @@ package com.kedacom.module_main.adapter
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,15 +14,15 @@ import com.kedacom.module_main.R
  * @Author : Caowj
  * @Date : 2018/8/22 13:13
  */
-class MainAdapter(private val mContext: Context, list: ArrayList<ItemBean>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class MainAdapter(private val mContext: Context, list: ArrayList<ItemBean>) : androidx.recyclerview.widget.RecyclerView.Adapter<androidx.recyclerview.widget.RecyclerView.ViewHolder>() {
     private var itemList: ArrayList<ItemBean> = list
     private val mLayoutInflater: LayoutInflater = LayoutInflater.from(mContext)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): androidx.recyclerview.widget.RecyclerView.ViewHolder {
         return FunctionViewHolder(mLayoutInflater.inflate(R.layout.item_todo, parent, false))
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: androidx.recyclerview.widget.RecyclerView.ViewHolder, position: Int) {
         val bean: ItemBean = itemList[position]
         val fHolder = holder as FunctionViewHolder?
         fHolder!!.tvTitle.text = bean.name
@@ -42,7 +40,7 @@ class MainAdapter(private val mContext: Context, list: ArrayList<ItemBean>) : Re
         return itemList.size
     }
 
-    internal inner class FunctionViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    internal inner class FunctionViewHolder(view: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(view) {
         var tvTitle: TextView = view.findViewById(R.id.textView)
     }
 

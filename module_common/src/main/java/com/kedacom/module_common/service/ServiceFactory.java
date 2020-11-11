@@ -24,8 +24,14 @@ public class ServiceFactory {
         return Inner.serviceFactory;
     }
 
-    private static class Inner {
-        private static ServiceFactory serviceFactory = new ServiceFactory();
+    /**
+     * 返回 Login 组件的 Service 实例
+     */
+    public ILoginService getAccountService() {
+        if (accountService == null) {
+            accountService = new EmptyAccountService();
+        }
+        return accountService;
     }
 
     /**
@@ -35,13 +41,7 @@ public class ServiceFactory {
         this.accountService = accountService;
     }
 
-    /**
-     * 返回 Login 组件的 Service 实例
-     */
-    public ILoginService getAccountService() {
-        if (accountService == null) {
-            accountService = new EmptyAccountService();
-        }
-        return accountService;
+    private static class Inner {
+        private static ServiceFactory serviceFactory = new ServiceFactory();
     }
 }
