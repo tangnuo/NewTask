@@ -103,7 +103,6 @@ class ScopedStorageActivity : AppCompatActivity() {
         } else {
             // _data -> /storage/emulated/0/DCIM/1605084532390.jpg
             values.put(MediaStore.MediaColumns.DATA, "${Environment.getExternalStorageDirectory().path}/${Environment.DIRECTORY_DCIM}/$displayName")
-            values.put(MediaStore.Images.Media.DATA, "${Environment.getExternalStorageDirectory().path}/${Environment.DIRECTORY_DCIM}/$displayName")
         }
         val uri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
         if (uri != null) {

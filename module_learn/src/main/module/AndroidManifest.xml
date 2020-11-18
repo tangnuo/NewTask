@@ -11,7 +11,8 @@
         android:name=".LearnApplication"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.ScopedStorageActivity"></activity>
+        <activity android:name=".activity.ScopedStorageActivity2"></activity>
+        <activity android:name=".activity.ScopedStorageActivity" />
         <activity android:name=".activity.SearchActivity" />
         <activity android:name=".binder.NoAidlActivity" />
         <activity android:name=".FunctionListActivity">
