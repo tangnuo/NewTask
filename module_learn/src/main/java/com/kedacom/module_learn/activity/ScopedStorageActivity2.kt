@@ -34,10 +34,10 @@ class ScopedStorageActivity2 : AppCompatActivity(), View.OnClickListener {
             R.id.btn1 -> {
                 val am = resources.assets
                 val image = readFile(am.open("yuner.png"))
-                FileUtil.saveImage2SandBox(this, "test_yuner.jpg", image, Environment.DIRECTORY_PICTURES)
+                FileUtil.saveImage2SandBox(this, "test_yuner.png", image, Environment.DIRECTORY_PICTURES)
             }
             R.id.btn2 -> {
-                FileUtil.loadImageFromSandBox(this, "test_yuner.jpg", Environment.DIRECTORY_PICTURES)
+                FileUtil.loadImageFromSandBox(this, "test_yuner.png", Environment.DIRECTORY_PICTURES)
             }
         }
     }

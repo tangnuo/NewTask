@@ -38,7 +38,7 @@ object FileUtil {
             context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
         }
 
-        //存储路径:/storage/emulated/0/Android/data/com.kedacom.module_learn/files/Pictures/NewTask
+        //存储路径:/storage/emulated/0/Android/data/com.kedacom.module_learn/files/Pictures/
         Log.d("caowj", "存储路径:$standardDirectory")
 
         //创建文件夹
@@ -52,7 +52,7 @@ object FileUtil {
 
         //保存文件
         try {
-            // /storage/emulated/0/Android/data/com.kedacom.module_learn/files/Pictures/test_yuner.jpg
+            // /storage/emulated/0/Android/data/com.kedacom.module_learn/files/Pictures/test_yuner.png
             val imageFile = File("$imageFileDirctory/$fileName")
             val fileOutputStream = FileOutputStream(imageFile)
             fileOutputStream.write(imageArray)
