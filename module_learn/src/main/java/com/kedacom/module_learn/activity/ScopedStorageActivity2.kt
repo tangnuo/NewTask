@@ -42,18 +42,6 @@ class ScopedStorageActivity2 : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    /**
-     * 图片转化为byte数组
-     * @param path
-     * @return
-     */
-
-    /**
-     * @param 将图片内容解析成字节数组
-     * @param inStream
-     * @return byte[]
-     * @throws Exception
-     */
     @Throws(Exception::class)
     fun readFile(inStream: InputStream): ByteArray {
 //        val inStream = FileInputStream(path)

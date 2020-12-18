@@ -48,6 +48,7 @@ class FunctionListActivity : BaseActivity() {
         sparseArray!!.add(ItemBean("实时模糊搜索", SearchActivity::class.java))
         sparseArray!!.add(ItemBean("Android 10 作用域存储", ScopedStorageActivity::class.java))
         sparseArray!!.add(ItemBean("Android 10 沙盒文件保存，读取", ScopedStorageActivity2::class.java))
+        sparseArray!!.add(ItemBean("RecyclerView + PagerSnapHelper", PagerSnapHelperActivity::class.java))
         functionListAdapter = FunctionListAdapter(mActivity, sparseArray)
     }
 
