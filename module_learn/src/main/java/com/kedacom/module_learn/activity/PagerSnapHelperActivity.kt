@@ -3,6 +3,7 @@ package com.kedacom.module_learn.activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.kedacom.module_learn.R
 import com.kedacom.module_learn.adapter.SanpHelperAdapter
@@ -13,7 +14,12 @@ import java.util.*
 /**
  *  RecyclerView + SnapHelper实现炫酷ViewPager效果
  *
+ * 1、PagerSnapHelper：一次滚动一条
+ * 2、LinearSnapHelper：一次滚动多条
+ * 3、区别于RecyclerView：列表内容滚动时候，总是把某一项内容处于屏幕（视野）正中间。
+ *
  *  https://www.jianshu.com/p/f23f6271a074
+ *  http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2016/0904/6595.html
  *
  *  作者：Caowj
  *  邮箱：caoweijian@kedacom.com
@@ -43,7 +49,13 @@ class PagerSnapHelperActivity : AppCompatActivity() {
         }
         recyclerView.adapter = SanpHelperAdapter(this, mDatas)
 
+        /**
+         * PagerSnapHelper：一次滚动一条
+         * LinearSnapHelper：一次滚动多条
+         * 区别于RecyclerView：列表内容滚动时候，总是把某一项内容处于屏幕（视野）正中间。
+         */
         val snapHelper = PagerSnapHelper()
+//        val snapHelper = LinearSnapHelper()
         snapHelper.attachToRecyclerView(recyclerView)
 
 
