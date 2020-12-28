@@ -1,3 +1,4 @@
+include ':module_java'
 include ':app',
         ':module_main',
         ':module_common',
